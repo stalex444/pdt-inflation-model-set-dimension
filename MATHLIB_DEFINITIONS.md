@@ -1,8 +1,8 @@
 # Imported Mathlib definitions
 
-The compared statements in `Challenge.lean` rest on the Mathlib definitions below. The remaining vocabulary is standard Mathlib and is not quoted: `Submodule`, `Submodule.span`, `Submodule.subtype`, `IsCompl`, `LinearMap.ker`, `LinearMap.id`, `Module.finrank`, `Polynomial.aeval`, `Polynomial.map`, `Polynomial.natDegree`, `Polynomial.X`, `Int.castRingHom`, `algebraMap`, `Irreducible`, `Multiset.filter`/`card`/`map`/`sum`, `Fintype.card`, `Pi.single`, `Set.MapsTo`, `Set.image`, `closure`, `Metric.ball`, `Bornology.IsBounded`, `IsCompact`, `Convex`, `Filter.Tendsto` and `nhds`, the pointwise difference of sets, `Complex.re`/`im` and the norm on `ℂ`, `Matrix.map`, `Matrix.of` (`!![…]`), and the ring, field and order structures. Each excerpt is copied verbatim from Mathlib at the pinned revision `065356127b1dc0016f66b7283ce0ce2c4055aa55` (the revision required in `lakefile.toml` and recorded in `lake-manifest.json`), with its file path, line numbers and a permalink; every excerpt was byte-compared against `raw.githubusercontent.com` at that revision when this file was generated. Mathlib is released under the Apache 2.0 license; copyright of these excerpts remains with the Mathlib authors named in each file's header.
+The compared statements in `Challenge.lean` rest on the Mathlib definitions below. The remaining vocabulary is standard Mathlib and is not quoted: `Submodule`, `Submodule.span`, `Submodule.subtype`, `IsCompl`, `LinearMap.ker`, `LinearMap.id`, `Module.finrank`, `Polynomial.aeval`, `Polynomial.map`, `Polynomial.natDegree`, `Polynomial.X`, `Int.castRingHom`, `algebraMap`, `Irreducible`, `Multiset.filter`/`card`/`map`/`sum`/`toFinset`, `Finset.sum`, `IsUnit`, `min`, natural-number subtraction and division, `Fintype.card`, `Pi.single`, `Set.MapsTo`, `Set.image`, `closure`, `Metric.ball`, `Bornology.IsBounded`, `IsCompact`, `Convex`, `Filter.Tendsto` and `nhds`, the pointwise difference of sets, `Complex.re`/`im` and the norm on `ℂ`, `Matrix.map`, `Matrix.of` (`!![…]`), and the ring, field and order structures. Each excerpt is copied verbatim from Mathlib at the pinned revision `065356127b1dc0016f66b7283ce0ce2c4055aa55` (the revision required in `lakefile.toml` and recorded in `lake-manifest.json`), with its file path, line numbers and a permalink; every excerpt was byte-compared against `raw.githubusercontent.com` at that revision when this file was generated. Mathlib is released under the Apache 2.0 license; copyright of these excerpts remains with the Mathlib authors named in each file's header.
 
-The entry's own definitions (`intLattice`, `act`, `InvariantCPS` and its projections, windows, model sets, admissibility and orbit window, `physDims`, `eigenvalues`, `unstableCount`, `IsHyperbolic`, `stableSet`, `unstableSet`, `charpolyQ`, `IsCircleFactor`, `circleCount`, the matrices `Cρ`, `CQ`, `CSalem`, `mulMatrix`, `mulρ`, `mulQ`, `mulθ`, `mulρQ`, `GramRho`, `GramQ`, and `formOf`, `pairing`, `sectorQ`, `sectorRho`) are stated in `Challenge.lean` itself, between the lines `-- BEGIN SHARED DEFINITIONS` and `-- END SHARED DEFINITIONS` (the same text as `InflationDimension/Defs.lean`, on which the proof modules are built), and are described in its opening docstring.
+The entry's own definitions (`intLattice`, `act`, `InvariantCPS` and its projections, windows, model sets, admissibility and orbit window, `physDims`, `eigenvalues`, `unstableCount`, `IsHyperbolic`, `stableSet`, `unstableSet`, `charpolyQ`, `IsCircleFactor`, `circleCount`, the Jordan data `factorMult`, `kerRankQ`, `sizeOneBlocks`, `expandingRootCount`, `circleRootCount`, `factorContribution` and `dimensionFormula`, the matrices `Cρ`, `CQ`, `CSalem`, `mulMatrix`, `mulρ`, `mulQ`, `mulθ`, `mulρQ`, `GramRho`, `GramQ`, and `formOf`, `pairing`, `sectorQ`, `sectorRho`) are stated in `Challenge.lean` itself, between the lines `-- BEGIN SHARED DEFINITIONS` and `-- END SHARED DEFINITIONS` (the same text as `InflationDimension/Defs.lean`, on which the proof modules are built), and are described in its opening docstring.
 
 The file `DefinitionAudit.lean` in this repository is built with the package (it is a default target) and checks, as theorems, the facts about these definitions that the informal account relies on. It is not part of the compared set and imports Mathlib only. All its theorems use only the standard axioms `propext`, `Classical.choice` and `Quot.sound` (see `BUILD.txt`).
 
@@ -198,9 +198,34 @@ noncomputable def normalizedFactors (a : α) : Multiset α :=
   Multiset.map normalize <| factors a
 ```
 
-The irreducible factors of `χ_A` over `ℚ` with multiplicity, in `circleCount` and statements 3, 5 and 6. Kernel-checked: `DefinitionAudit.irreducible_of_mem_normalizedFactors`, `DefinitionAudit.monic_of_mem_normalizedFactors` and `DefinitionAudit.prod_normalizedFactors` (they are monic, irreducible, and multiply to the polynomial up to a unit).
+The irreducible factors of `χ_A` over `ℚ` with multiplicity, in `circleCount`, `factorMult`, `dimensionFormula` and statements 3, 5 and 6. Kernel-checked: `DefinitionAudit.irreducible_of_mem_normalizedFactors`, `DefinitionAudit.monic_of_mem_normalizedFactors` and `DefinitionAudit.prod_normalizedFactors` (they are monic, irreducible, and multiply to the polynomial up to a unit).
 
-## 14. `Polynomial.cyclotomic`
+## 14. `Multiset.countP`
+
+`Mathlib/Data/Multiset/Count.lean`, lines 37–40: <https://github.com/leanprover-community/mathlib4/blob/065356127b1dc0016f66b7283ce0ce2c4055aa55/Mathlib/Data/Multiset/Count.lean#L37-L40>
+
+```lean
+/-- `countP p s` counts the number of elements of `s` (with multiplicity) that
+  satisfy `p`. -/
+def countP (s : Multiset α) : ℕ :=
+  Quot.liftOn s (List.countP p) fun _l₁ _l₂ => Perm.countP_eq (p ·)
+```
+
+The number of elements of a multiset satisfying a predicate, with multiplicity; `Multiset.count` is defined from it.
+
+## 15. `Multiset.count`: multiplicity in a multiset
+
+`Mathlib/Data/Multiset/Count.lean`, lines 122–124: <https://github.com/leanprover-community/mathlib4/blob/065356127b1dc0016f66b7283ce0ce2c4055aa55/Mathlib/Data/Multiset/Count.lean#L122-L124>
+
+```lean
+/-- `count a s` is the multiplicity of `a` in `s`. -/
+def count (a : α) : Multiset α → ℕ :=
+  countP (a = ·)
+```
+
+The multiplicity `m_p` of an irreducible factor `p` in `χ_A` (`factorMult`), in `dimensionFormula` and statement 3. Kernel-checked: `DefinitionAudit.count_replicate_self`.
+
+## 16. `Polynomial.cyclotomic`
 
 `Mathlib/RingTheory/Polynomial/Cyclotomic/Basic.lean`, lines 229–232: <https://github.com/leanprover-community/mathlib4/blob/065356127b1dc0016f66b7283ce0ce2c4055aa55/Mathlib/RingTheory/Polynomial/Cyclotomic/Basic.lean#L229-L232>
 
@@ -213,7 +238,7 @@ def cyclotomic (n : ℕ) (R : Type*) [Ring R] : R[X] :=
 
 Statements 3 and 6. Kernel-checked: `DefinitionAudit.cyclotomic_one`, `DefinitionAudit.cyclotomic_two`.
 
-## 15. `Squarefree`
+## 17. `Squarefree`
 
 `Mathlib/Algebra/Squarefree/Basic.lean`, lines 40–43: <https://github.com/leanprover-community/mathlib4/blob/065356127b1dc0016f66b7283ce0ce2c4055aa55/Mathlib/Algebra/Squarefree/Basic.lean#L40-L43>
 
@@ -226,7 +251,7 @@ def Squarefree [Monoid R] (r : R) : Prop :=
 
 The hypothesis of statements 3, 5 and 6, applied to `charpolyQ A`. Kernel-checked: `DefinitionAudit.squarefree_iff` (`Iff.rfl`).
 
-## 16. `Matrix.kroneckerMap`
+## 18. `Matrix.kroneckerMap`
 
 `Mathlib/LinearAlgebra/Matrix/Kronecker.lean`, lines 54–56: <https://github.com/leanprover-community/mathlib4/blob/065356127b1dc0016f66b7283ce0ce2c4055aa55/Mathlib/LinearAlgebra/Matrix/Kronecker.lean#L54-L56>
 
@@ -238,7 +263,7 @@ def kroneckerMap (f : α → β → γ) (A : Matrix l m α) (B : Matrix n p β) 
 
 Used through the notation `⊗ₖ` below.
 
-## 17. The Kronecker product `⊗ₖ`
+## 19. The Kronecker product `⊗ₖ`
 
 `Mathlib/LinearAlgebra/Matrix/Kronecker.lean`, lines 271–278: <https://github.com/leanprover-community/mathlib4/blob/065356127b1dc0016f66b7283ce0ce2c4055aa55/Mathlib/LinearAlgebra/Matrix/Kronecker.lean#L271-L278>
 
@@ -255,7 +280,7 @@ scoped[Kronecker] infixl:100 " ⊗ₖ " => Matrix.kroneckerMap (· * ·)
 
 The matrices `mulMatrix`, `mulρ`, `mulQ`, `mulθ`, `mulρQ` and the Gram matrix `GramRho ⊗ₖ GramQ` of statement 10. Kernel-checked: `DefinitionAudit.kronecker_apply` (`(A ⊗ₖ B)_{(i,k),(j,l)} = A_{ij} B_{kl}`, `rfl`).
 
-## 18. `dotProduct`
+## 20. `dotProduct`
 
 `Mathlib/Data/Matrix/Mul.lean`, lines 69–73: <https://github.com/leanprover-community/mathlib4/blob/065356127b1dc0016f66b7283ce0ce2c4055aa55/Mathlib/Data/Matrix/Mul.lean#L69-L73>
 
@@ -269,7 +294,7 @@ def dotProduct [Mul α] [AddCommMonoid α] (v w : m → α) : α :=
 
 Used in the entry's `pairing`.
 
-## 19. `Matrix.mulVec`
+## 21. `Matrix.mulVec`
 
 `Mathlib/Data/Matrix/Mul.lean`, lines 691–699: <https://github.com/leanprover-community/mathlib4/blob/065356127b1dc0016f66b7283ce0ce2c4055aa55/Mathlib/Data/Matrix/Mul.lean#L691-L699>
 
@@ -287,7 +312,7 @@ def mulVec [Fintype n] (M : Matrix m n α) (v : n → α) : m → α
 
 Used in the entry's `pairing`. Kernel-checked: `DefinitionAudit.dotProduct_mulVec` (`x ⬝ᵥ (M *ᵥ y) = Σ_{i,j} x_i M_{ij} y_j`).
 
-## 20. `LinearMap.BilinMap.toQuadraticMap`
+## 22. `LinearMap.BilinMap.toQuadraticMap`
 
 `Mathlib/LinearAlgebra/QuadraticForm/Basic.lean`, lines 675–679: <https://github.com/leanprover-community/mathlib4/blob/065356127b1dc0016f66b7283ce0ce2c4055aa55/Mathlib/LinearAlgebra/QuadraticForm/Basic.lean#L675-L679>
 
@@ -301,7 +326,7 @@ def toQuadraticMap (B : BilinMap R M N) : QuadraticMap R M N where
 
 Used through `Matrix.toQuadraticForm'` below.
 
-## 21. `Matrix.toQuadraticForm'`
+## 23. `Matrix.toQuadraticForm'`
 
 `Mathlib/LinearAlgebra/QuadraticForm/Basic.lean`, lines 1164–1166: <https://github.com/leanprover-community/mathlib4/blob/065356127b1dc0016f66b7283ce0ce2c4055aa55/Mathlib/LinearAlgebra/QuadraticForm/Basic.lean#L1164-L1166>
 
@@ -313,7 +338,7 @@ def Matrix.toQuadraticForm' (M : Matrix n n R) : QuadraticForm R (n → R) :=
 
 The entry's `formOf G` is `(G.map Int.cast).toQuadraticForm'`. Kernel-checked: `DefinitionAudit.toQuadraticForm'_apply` (`c ↦ Σ_{i,j} M_{ij} c_i c_j`).
 
-## 22. `QuadraticMap.comp`
+## 24. `QuadraticMap.comp`
 
 `Mathlib/LinearAlgebra/QuadraticForm/Basic.lean`, lines 540–546: <https://github.com/leanprover-community/mathlib4/blob/065356127b1dc0016f66b7283ce0ce2c4055aa55/Mathlib/LinearAlgebra/QuadraticForm/Basic.lean#L540-L546>
 
@@ -329,7 +354,7 @@ def comp (Q : QuadraticMap R N P) (f : M →ₗ[R] N) : QuadraticMap R M P where
 
 The restriction of `formOf GramQ` to a subspace, as `(formOf GramQ).comp S.E.subtype`, in statement 11.
 
-## 23. `sigPos`: the positive index of inertia
+## 25. `sigPos`: the positive index of inertia
 
 `Mathlib/LinearAlgebra/QuadraticForm/Signature.lean`, lines 58–71: <https://github.com/leanprover-community/mathlib4/blob/065356127b1dc0016f66b7283ce0ce2c4055aa55/Mathlib/LinearAlgebra/QuadraticForm/Signature.lean#L58-L71>
 
@@ -352,7 +377,7 @@ def sigPos : ℕ := max' {r ∈ Iic (Module.finrank R M) |
 
 `sigPos Q` is the largest dimension of a subspace on which `Q` is positive definite (D. Loeffler's `Signature.lean`). Statements 10 and 11. Kernel-checked: `DefinitionAudit.sigPos_eq_card_pos_weights` (Sylvester's law: the number of positive weights of any diagonalization) and `DefinitionAudit.sigPos_x_sq_sub_y_sq` (non-vacuity).
 
-## 24. `sigNeg`: the negative index of inertia
+## 26. `sigNeg`: the negative index of inertia
 
 `Mathlib/LinearAlgebra/QuadraticForm/Signature.lean`, lines 96–98: <https://github.com/leanprover-community/mathlib4/blob/065356127b1dc0016f66b7283ce0ce2c4055aa55/Mathlib/LinearAlgebra/QuadraticForm/Signature.lean#L96-L98>
 
@@ -364,7 +389,7 @@ def sigNeg : ℕ := sigPos (-Q)
 
 Kernel-checked: `DefinitionAudit.sigNeg_eq_sigPos_neg`, `DefinitionAudit.sigNeg_eq_card_neg_weights` and `DefinitionAudit.sigNeg_x_sq_sub_y_sq`.
 
-## 25. `Delone.DeloneSet`
+## 27. `Delone.DeloneSet`
 
 `Mathlib/Analysis/AperiodicOrder/Delone/Basic.lean`, lines 63–76: <https://github.com/leanprover-community/mathlib4/blob/065356127b1dc0016f66b7283ce0ce2c4055aa55/Mathlib/Analysis/AperiodicOrder/Delone/Basic.lean#L63-L76>
 
@@ -387,7 +412,7 @@ structure DeloneSet (X : Type*) [MetricSpace X] where
 
 Statement 13 (N. Jensen's `Delone/Basic.lean`). Kernel-checked: `DefinitionAudit.deloneSet_separated` (distinct points farther apart than the packing radius) and `DefinitionAudit.deloneSet_cover` (every point within the covering radius of the set).
 
-## 26. `Metric.IsSeparated`
+## 28. `Metric.IsSeparated`
 
 `Mathlib/Topology/MetricSpace/MetricSeparated.lean`, lines 42–44: <https://github.com/leanprover-community/mathlib4/blob/065356127b1dc0016f66b7283ce0ce2c4055aa55/Mathlib/Topology/MetricSpace/MetricSeparated.lean#L42-L44>
 
@@ -399,7 +424,7 @@ def IsSeparated (ε : ℝ≥0∞) (s : Set X) : Prop := s.Pairwise (ε < edist �
 
 A field of `Delone.DeloneSet`.
 
-## 27. `Metric.IsCover`
+## 29. `Metric.IsCover`
 
 `Mathlib/Topology/MetricSpace/Cover.lean`, lines 42–48: <https://github.com/leanprover-community/mathlib4/blob/065356127b1dc0016f66b7283ce0ce2c4055aa55/Mathlib/Topology/MetricSpace/Cover.lean#L42-L48>
 
@@ -415,7 +440,7 @@ def IsCover (ε : ℝ≥0) (s N : Set X) : Prop := SetRel.IsCover {(x, y) | edis
 
 A field of `Delone.DeloneSet`.
 
-## 28. `segment`
+## 30. `segment`
 
 `Mathlib/Analysis/Convex/Segment.lean`, lines 49–51: <https://github.com/leanprover-community/mathlib4/blob/065356127b1dc0016f66b7283ce0ce2c4055aa55/Mathlib/Analysis/Convex/Segment.lean#L49-L51>
 
@@ -427,7 +452,7 @@ def segment (x y : E) : Set E :=
 
 Statement 11 (the window is a segment). Kernel-checked: `DefinitionAudit.segment_eq_image`.
 
-## 29. `IsLeast`
+## 31. `IsLeast`
 
 `Mathlib/Order/Bounds/Defs.lean`, lines 43–46: <https://github.com/leanprover-community/mathlib4/blob/065356127b1dc0016f66b7283ce0ce2c4055aa55/Mathlib/Order/Bounds/Defs.lean#L43-L46>
 

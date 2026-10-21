@@ -268,4 +268,9 @@ open scoped Pointwise in
 theorem mem_sub {n : Type*} (s t : Set (n → ℝ)) (x : n → ℝ) :
     x ∈ s - t ↔ ∃ a ∈ s, ∃ b ∈ t, a - b = x := Set.mem_sub
 
+/-- `Multiset.count a s` is the multiplicity of `a` in `s`; in `replicate n a` it is `n` (Mathlib's
+`Multiset.count_replicate_self`). -/
+theorem count_replicate_self (a : ℚ[X]) (n : ℕ) : (Multiset.replicate n a).count a = n :=
+  Multiset.count_replicate_self a n
+
 end DefinitionAudit

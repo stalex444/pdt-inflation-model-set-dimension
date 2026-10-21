@@ -9,16 +9,23 @@ least physical dimension `dim E` of an admissible scheme:
 
 * for every integer `A`, admissibility is power-boundedness of `A` on `H` (1), and density is
   Kronecker's criterion (2);
-* for `det A ≠ 0` and `χ_A` squarefree over `ℚ`, the admissible splittings are characterized and
-  `d(A) = U(A) + circleCount A`, where `U(A)` counts the eigenvalues of modulus `> 1` and
-  `circleCount A` counts `1` for each factor `x ± 1` and `2` for each other cyclotomic factor (3);
+* for every `A` with `det A ≠ 0`, `d(A)` is the sum over the distinct irreducible factors `p` of
+  `χ_A` over `ℚ` of `m_p u_p + c_p (m_p − r₁(p))`, plus `min (deg p, 2)` when every root of `p`
+  lies on the unit circle and every Jordan block at the roots of `p` has size one; here `m_p` is
+  the multiplicity, `u_p`, `c_p` count the roots of `p` of modulus `> 1` and `= 1`, and `r₁(p)` is
+  the number of Jordan blocks of size one at each root of `p`, computed from ranks over `ℚ`. The
+  value is an invariant of rational similarity, and for squarefree `χ_A` the admissible splittings
+  are characterized and `d(A) = U(A) + circleCount A`, where `U(A)` counts the eigenvalues of
+  modulus `> 1` and `circleCount A` counts `1` for each factor `x ± 1` and `2` for each other
+  cyclotomic factor (3);
 * for `det A ≠ 0` and hyperbolic `A`, any `χ_A`, an invariant splitting carries an admissible
   scheme exactly when `E ⊇ E^u`, and `d(A) = U(A)`, attained only by the unstable/stable splitting
   `(E^u, E^s)` (4);
-* for `det A ≠ 0` and `χ_A` squarefree, `d(A) = 1` exactly when `χ_A` is irreducible with one root
-  of modulus `> 1` (up to sign a Pisot or Salem number) or `A = ±1` on `ℤ¹` (5); with every root on
-  the unit circle, `d(A) = Σ_p min(deg p, 2)`, a plane for each `Φ_n` with `n ≥ 3` (6); and the
-  squarefree hypothesis cannot be dropped (7);
+* for `det A ≠ 0`, any `χ_A`, `d(A) = 1` exactly when `χ_A` is irreducible with one root of
+  modulus `> 1` (up to sign a Pisot or Salem number) or `A = ±1` (5); for `A` of finite order,
+  `d(A) = Σ_p min(deg p, 2)` over the distinct factors, a plane for each `Φ_n` with `n ≥ 3` (6); and
+  Jordan blocks on the unit circle count in full while a cyclotomic factor with blocks of size one
+  costs a line or a plane whatever its multiplicity (7);
 * model sets are Delone sets with uniformly discrete difference sets (13).
 
 These are then applied to multiplication by `ρ` (`ρ³ = ρ + 1`), `ρ⁻¹`, `Q` (`Q⁴ = Q + 1`),
@@ -41,29 +48,41 @@ stated there, between `-- BEGIN SHARED DEFINITIONS` and `-- END SHARED DEFINITIO
 2. `kronecker_density_criterion` — for complementary `E`, `H`, the projection of `ℤ^ι` to `H`
    along `E` is dense in `H` if and only if every real functional that is integer-valued on
    `ℤ^ι` and vanishes on `E` is zero.
-3. `least_physical_dimension_squarefree` — for `det A ≠ 0` and `χ_A` squarefree over `ℚ`:
-   (a) every `A`-invariant splitting is `E = ker q_E(A)`, `H = ker q_H(A)` with `χ_A = q_E q_H`
-   over `ℝ`, `q_E`, `q_H` the characteristic polynomials of `A|_E`, `A|_H`; (b) it carries an
-   admissible scheme if and only if every root of `q_H` lies in the closed unit disk and every
-   irreducible factor of `χ_A` over `ℚ` shares a complex root with `q_E`; (c)
-   `d(A) = U(A) + circleCount A`; (d) an irreducible factor has all its roots on the unit circle
-   if and only if it is cyclotomic.
+3. `least_physical_dimension` — for `det A ≠ 0`, any `χ_A`: (a) `d(A) = dimensionFormula A`, the
+   sum over the distinct irreducible factors `p` of `χ_A` over `ℚ` of
+   `m_p u_p + c_p (m_p − r₁(p))`, plus `min (deg p, 2)` if every root of `p` lies on the unit
+   circle and `r₁(p) = m_p`, where `r₁(p) = (2 dim_ℚ ker p(A) − dim_ℚ ker p(A)²) / deg p`; through
+   the Jordan form (which the definitions do not use) this reads
+   `d(A) = Σ_{|λ|>1} a_λ + Σ_{|λ|=1} (a_λ − s_λ) + #{n ≤ 2 : n ∈ 𝒮(A)} + 2·#{n ≥ 3 : n ∈ 𝒮(A)}`,
+   `a_λ` the multiplicity, `s_λ` the number of Jordan blocks of size one at `λ`, `𝒮(A)` the set
+   of `n` whose primitive `n`-th roots of unity are eigenvalues with all blocks of size one;
+   (b) if `P A = B P` for an invertible rational `P`, then `B` has the same value; (c) an
+   irreducible factor has all its roots on the unit circle if and only if it is cyclotomic;
+   (d) for `χ_A` squarefree over `ℚ`, every `A`-invariant splitting is `E = ker q_E(A)`,
+   `H = ker q_H(A)` with `χ_A = q_E q_H` over `ℝ`, `q_E`, `q_H` the characteristic polynomials of
+   `A|_E`, `A|_H`; it carries an admissible scheme if and only if every root of `q_H` lies in the
+   closed unit disk and every irreducible factor of `χ_A` over `ℚ` shares a complex root with
+   `q_E`; and the value is `U(A) + circleCount A`.
 4. `hyperbolic_case` — for `det A ≠ 0` and no eigenvalue on the unit circle, any `χ_A` (no
    diagonalizability): a scheme is admissible if and only if `E ⊇ E^u(A)`, if and only if
    `H ⊆ E^s(A)`; an `A`-invariant splitting `E ⊕ H` carries an admissible scheme if and only if
    `E ⊇ E^u(A)`; `(E^u, E^s)` carries an admissible scheme; `d(A) = U(A)`; and every admissible
    scheme with `dim E = U(A)` is `(E^u, E^s)`. Here `E^u` is the set of vectors with a backward
    orbit tending to `0`, `E^s` the set of vectors whose forward orbit tends to `0`.
-5. `dimension_one_pisot_or_salem` — for `det A ≠ 0` and `χ_A` squarefree: `d(A) = 1` if and only
-   if `χ_A` is irreducible with exactly one root of modulus `> 1`, or `A = ±1` on `ℤ¹`; in the
-   irreducible case that root `r` is real, every other root has modulus at most `1` (so `|r|` is
+5. `dimension_one_pisot_or_salem` — for `det A ≠ 0`, any `χ_A`: `d(A) = 1` if and only if `χ_A`
+   is irreducible with exactly one root of modulus `> 1`, or `A = ±1` (on `ℤ^ι`, `ι` nonempty, of
+   any rank); in the irreducible case that root `r` is real, every other root has modulus at most `1` (so `|r|` is
    a Pisot number, a Salem number, or for `#ι = 1` an integer `≥ 2`), and every admissible scheme
    with `dim E = 1` has `E` the `r`-eigenline.
-6. `finite_order_case` — for `χ_A` squarefree with all roots on the unit circle: every
-   irreducible factor is cyclotomic and `d(A) = Σ_p min(deg p, 2)`; every integer matrix with
-   `χ_A = Φ_n`, `n ≥ 3` (for example, multiplication by `ζ_n` on `ℤ[ζ_n]`), has `d = 2`.
-7. `squarefree_hypothesis_needed` — on `ℤ²`, `I₂` and `J₂ = [[1, 1], [0, 1]]` both have
-   `χ = (x − 1)²`, for which the count of (3) gives `2`; but `d(I₂) = 1` and `d(J₂) = 2`.
+6. `finite_order_case` — if `A^k = 1` for some `k ≥ 1`: every irreducible factor of `χ_A` is
+   cyclotomic and `d(A) = Σ_p min(deg p, 2)` over the distinct factors, whatever the
+   multiplicities; the same for `χ_A` squarefree with all roots on the unit circle; every integer
+   matrix with `χ_A = Φ_n`, `n ≥ 3` (for example, multiplication by `ζ_n` on `ℤ[ζ_n]`), has
+   `d = 2`.
+7. `jordan_block_witnesses` — on `ℤ²`, `I₂` and `J₂ = [[1, 1], [0, 1]]` both have
+   `χ = (x − 1)²`, for which the squarefree count of (3) gives `2`; but `d(I₂) = 1` and
+   `d(J₂) = 2`; and `1 ⊕ J₂(1)` on `ℤ³` and `1 ⊕ J₃(1)` on `ℤ⁴` have `d = 2` and `d = 3` (the block
+   of size one costs nothing: the internal line is tilted into the socle of the larger block).
 8. `sector_rings` — `Cρ`, `Cρ² − 1`, `CQ`, `1 − CQ³` (multiplication by `ρ`, `ρ⁻¹`, `Q`, `θ` on
    `ℤ[ρ]`, `ℤ[Q]` in the power bases) have characteristic polynomials `x³ − x − 1`,
    `x³ + x² − 1`, `x⁴ − x − 1`, `x⁴ − x³ − 1`, are hyperbolic, and have `d = 1, 2, 3, 1`; the one
@@ -115,10 +134,11 @@ stated there, between `-- BEGIN SHARED DEFINITIONS` and `-- END SHARED DEFINITIO
   Thm 13.1 and of HKW §3.4 (codimension-one schemes with interval windows), and the translation
   set of the Thurston dual tiling of the Pisot unit `−1/q′` is a model set of the same kind
   (Kalle–Steiner 2012, Lemma 4.3). The entry gives the instance explicitly and in the kernel.
-* **Beyond the cited cases.** The entry proves the characterization of every admissible splitting
-  ((3)(a)(b), (4)); the admissibility criterion (1) and the hyperbolic case (4) for every integer
-  matrix, with no diagonalizability; and the uniqueness of the minimal scheme when `A` is hyperbolic
-  (4) or when `χ_A` is irreducible with `d(A) = 1` (5). For `det A ≠ 0` and squarefree `χ_A` with a
+* **Beyond the cited cases.** The entry proves the least physical dimension for every nonsingular
+  integer matrix, Jordan blocks on the unit circle included (3); the characterization of every
+  admissible splitting for squarefree `χ_A` ((3), (4)); the admissibility criterion (1) and the
+  hyperbolic case (4) for every integer matrix, with no diagonalizability; and the uniqueness of the
+  minimal scheme when `A` is hyperbolic (4) or when `χ_A` is irreducible with `d(A) = 1` (5). For `det A ≠ 0` and squarefree `χ_A` with a
   factor `Φ_n`, `n ∉ {1, 2, 3, 4, 6}`, the minimal scheme is not unique, by (3).
 * **Priority, bounded (literature).** The necessity halves of the window criterion (1) and of the
   hyperbolic case (4) are MMP Prop. 13.2 and Cor. 13.4 (diagonalizable maps, generic schemes); the
@@ -134,19 +154,29 @@ stated there, between `-- BEGIN SHARED DEFINITIONS` and `-- END SHARED DEFINITIO
   (Czech Technical University in Prague, hdl 10467/82624), whose abstract treats existence for all
   linear maps and minimal scheme dimension for diagonalizable maps, physical map first, was not
   read: the repository record has no public full text. This is a search result, not a guarantee.
-* **Scheme notion.** Aperiodicity (`ℤ^ι ∩ E = 0`) is not required and `H = 0` is admitted. For
-  `det A ≠ 0` and squarefree `χ_A`, the line of a factor `x ± 1` and the plane of a factor `Φ₃`,
-  `Φ₄` or `Φ₆` lie in `E` in every admissible scheme (3)(b), so the model set is periodic in those
+* **Scheme notion.** Aperiodicity (`ℤ^ι ∩ E = 0`) is not required, `H = 0` is admitted, and `A`
+  need not be unimodular: the counts assume `det A ≠ 0` only. For `det A ≠ 0` and squarefree `χ_A`,
+  the line of a factor `x ± 1` and the plane of a factor `Φ₃`, `Φ₄` or `Φ₆` lie in `E` in every
+  admissible scheme (3), so the model set is periodic in those
   directions, and under MMP's generic (aperiodic) schemes such a factor makes a scheme impossible.
   The least dimension under aperiodicity is not treated. "Minimal" in Baake–Lenz–Moody (2007) and
   Aujogue (2016) refers to a given point set, a different question.
 * **Proved here.** All thirteen statements, from Mathlib, with no Jordan form and no
-  diagonalization. Used and not re-proved from Mathlib: Kronecker's theorem on algebraic integers
+  diagonalization. In (3) the lower bound comes from the largest power-bounded invariant summand,
+  of dimension `Σ_p (m_p s_p + c_p r₁(p))` with `s_p` the number of roots of `p` inside the unit
+  disk (a power-bounded map is semisimple on its unit-circle part), and from the fact that at a
+  cyclotomic factor with all Jordan blocks of size one the physical space meets the generalized
+  eigenspace in at least `min (deg p, 2)` dimensions; the upper bound replaces, in a largest
+  power-bounded summand, the component of each cyclotomic factor by a scheme of the integer matrix
+  by which `A` acts on a `ℤ`-basis of the lattice points of that component, a generic line or plane
+  at one place of `ℚ(ζ_n)` when all blocks have size one and otherwise an internal space tilted into
+  the socle of the larger blocks (generic parameters avoid countably many proper affine subspaces,
+  by Haar measure). Used and not re-proved from Mathlib: Kronecker's theorem on algebraic integers
   with all conjugates on the unit circle (`NumberField.Embeddings.pow_eq_one_of_norm_eq_one`),
   Gelfand's spectral radius formula, Sylvester's law of inertia (D. Loeffler's
   `QuadraticForm.sigPos_of_equiv_weightedSumSquares`), the `ZSpan` floor, Selmer's
   irreducibility of `x^n − x − 1` (`X_pow_sub_X_sub_one_irreducible_rat`) and Mathlib's Delone
-  sets (N. Jensen). The rational kernel lemma behind the necessity half of (3)(b), that
+  sets (N. Jensen). The rational kernel lemma behind the necessity half of (3)(d), that
   `ker p(A)` contains a nonzero lattice vector for every irreducible rational factor `p` of
   `χ_A` (`InflationDimension.exists_int_mem_ker`, with no squarefree or `det` hypothesis), is
   proved here.
@@ -245,8 +275,13 @@ place counts twice), and has a unique minimal scheme (4, 9).
   Mathlib only.
 * `InflationDimension/Defs.lean` — the same definitions, byte for byte; the proof modules are
   built on it.
-* `InflationDimension/Admissibility.lean` (1), (2); `Normal.lean` (3)(a)(b) and the rational kernel
-  lemma; `Count.lean` (3); `Hyperbolic.lean` (4); `DimOne.lean` (5), (6), (7), (12);
+* `InflationDimension/Admissibility.lean` (1), (2); `Normal.lean` (the squarefree normal form and
+  characterization in (3)) and the rational kernel lemma; `Count.lean` (the squarefree count in
+  (3)); `Hyperbolic.lean` (4); `DimOne.lean` (the squarefree forms of (5), (6), the `ℤ²` examples
+  of (7), and (12)); `JordanData.lean` (Jordan data from rational ranks; the largest power-bounded
+  invariant summand); `Tilt.lean` (a single cyclotomic factor: the semisimple collapse and the
+  tilt; the examples `1 ⊕ J₂(1)`, `1 ⊕ J₃(1)` of (7)); `FormulaA.lean` ((3) for every nonsingular
+  `A`, and (5), (6), (7));
   `Compositum/Tower.lean`, `Compositum/CircleFree.lean` (the degree-12 field and its
   circle-freeness, ported from the author's registered entry PALOMAR-2026-10-21-000012
   (stalex444/pdt-hermite-signature-compositum@5aa870e9), which ported its `ℚ`-level inputs from
@@ -259,8 +294,8 @@ place counts twice), and has a unique minimal scheme (4, 9).
   facts about the Mathlib definitions the statements use (the matrix action and the standard
   basis, the projection along a complement, the sup norm, characteristic polynomials and
   determinants in any basis, roots with multiplicity, normalized factors, cyclotomic
-  polynomials, the Kronecker product, the matrix quadratic form, Sylvester's law, Delone sets,
-  segments, `IsLeast`).
+  polynomials, multiplicities in a multiset, the Kronecker product, the matrix quadratic form,
+  Sylvester's law, Delone sets, segments, `IsLeast`).
 * `MATHLIB_DEFINITIONS.md` — those Mathlib definitions quoted verbatim with permalinks at the
   pinned revision, byte-compared against GitHub when generated.
 * `formalization.yaml` — sources, classification and disclosure; `BUILD.txt` — the build and
