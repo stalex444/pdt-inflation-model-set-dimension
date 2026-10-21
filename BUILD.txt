@@ -3,9 +3,9 @@ Toolchain: leanprover/lean4:v4.35.0-rc2
 Mathlib rev: 065356127b1dc0016f66b7283ce0ce2c4055aa55 (lake-manifest.json; required in git form in lakefile.toml; no lake update)
 Build: lake build (defaultTargets ["InflationDimension", "Challenge", "Solution", "DefinitionAudit"]) -> exit 0
   build log tail:
-    warning: Challenge.lean:613:8: declaration uses `sorry`
-    ✔ [8945/8949] Built InflationDimension.Instances (19s)
-    ✔ [8948/8949] Built Solution (2.9s)
+    ✔ [8945/8949] Built InflationDimension.Instances (8.5s)
+    ✔ [8946/8949] Built InflationDimension (2.3s)
+    ✔ [8948/8949] Built Solution (3.3s)
     Build completed successfully (8949 jobs).
   warnings and errors by file: {'Challenge.lean': 13}
   'declaration uses sorry' warnings: 13, all in Challenge.lean: True; compared statements: 13
@@ -83,6 +83,31 @@ Build: lake build (defaultTargets ["InflationDimension", "Challenge", "Solution"
 
 Statement identity, Challenge.lean vs Solution.lean (opens, namespace, docstrings and statement text after the shared definitions, proofs removed): identical
 Shared definitions, Challenge.lean vs InflationDimension/Defs.lean: PASS: shared block identical in Challenge.lean and InflationDimension/Defs.lean (175 lines, 8227 bytes)
+
+The registry's pipeline, replicated locally on a fresh clone of commit 8675066 (the Lean content
+of this commit; only this file differs), with .lake/packages linked to the pinned, prebuilt
+Mathlib:
+  clean clone build: lake build -> Build completed successfully (8949 jobs); all 15 project
+    modules (12 library modules, Challenge, Solution, DefinitionAudit) compiled from scratch;
+    13 warnings, all 'declaration uses sorry' in Challenge.lean
+  canonical-challenge: lean -o on Challenge.lean under the alias
+    PalomarCanonical30a10af5308a12ee13768c9b.Challenge, with only the toolchain and the manifest
+    packages on LEAN_PATH -> 13 sorry warnings, 0 errors
+  challenge-provenance: lean --src-deps Challenge.lean -> 3 transitive sources (2 toolchain,
+    1 mathlib); untrusted sources []
+  source requirements (scripts.source_requirements.inspect_lean_sources): 15 files, issues []
+  challenge-export / solution-export: leanexport on the registry's 46 targets (13 theorem_names,
+    3 axioms, Quot, Quot.mk, Quot.lift, Quot.ind, 26 primitives); lake build Solution -> ok
+  lake comparator (toolchain v4.35.0-rc2), --inadvisably-no-sandbox (no bubblewrap on macOS):
+    submitted comparator.json, from the clone root:
+      Lean default kernel accepts the solution / Your solution is okay!   exit 0   (87 s)
+    protected configuration (challenge_module = the alias, definition_names [], external kernels
+    nanoda and con-ron), from an empty judge directory:
+      con-ron: accepted 72096 declarations (--verified) / con-ron kernel accepts / nanoda kernel
+      accepts / Lean default kernel accepts / Your solution is okay!   exit 0   (127 s)
+  formalization.yaml through the registry contract (scripts.submission_contract
+    load_formalization_metadata, normalized_provenance): no error; result_origin source-based;
+    JSON schema v0.4: 0 errors
 
 Proof map (Solution.lean, one application each):
   ModelSetDimension.admissibility_criterion := InflationDimension.admissibility_criterion
