@@ -189,8 +189,8 @@ of `ℤ²` with period formulas for rational slope and no finite period for irra
 (D. Kunert, github.com/dkunert/cut-and-project, 2026); Bohr₀ sets (PALOMAR-2026-10-18-000015); a
 trivial-kernel lemma for one linear map `ℤ⁴ → ℝ³` (J. Reed, Zenodo 10.5281/zenodo.21796509); and the
 author's PALOMAR-2026-09-04-000004 (the Meyer property of one cubic window set,
-`cubic_record_windows`) and PALOMAR-2026-08-19-000006 (its uncompared module `Settling.lean`:
-`meyer_separation`, `windowed_separation`). Mathlib has Delone sets
+`cubic_record_windows`) and PALOMAR-2026-08-19-000006 (its uncompared module `Settling.lean` at the
+registered commit c48eb128: `meyer_separation`, `windowed_separation`). Mathlib has Delone sets
 (`Mathlib/Analysis/AperiodicOrder/Delone`, N. Jensen), used in (13); the entry does not claim the
 first Delone set in Lean. Kronecker's density theorem (2) is not claimed first in any prover; only
 Mathlib was checked for it, and Mathlib at the pin has one-dimensional analogues. This is a search

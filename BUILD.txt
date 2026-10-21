@@ -3,9 +3,9 @@ Toolchain: leanprover/lean4:v4.35.0-rc2
 Mathlib rev: 065356127b1dc0016f66b7283ce0ce2c4055aa55 (lake-manifest.json; required in git form in lakefile.toml; no lake update)
 Build: lake build (defaultTargets ["InflationDimension", "Challenge", "Solution", "DefinitionAudit"]) -> exit 0
   build log tail:
-    ✔ [8945/8949] Built InflationDimension.Instances (7.2s)
-    ✔ [8946/8949] Built InflationDimension (2.4s)
-    ✔ [8948/8949] Built Solution (3.3s)
+    ✔ [8945/8949] Built InflationDimension.Instances (8.7s)
+    ✔ [8946/8949] Built InflationDimension (2.3s)
+    ✔ [8948/8949] Built Solution (3.2s)
     Build completed successfully (8949 jobs).
   warnings and errors by file: {'Challenge.lean': 13}
   'declaration uses sorry' warnings: 13, all in Challenge.lean: True; compared statements: 13
@@ -84,6 +84,31 @@ Build: lake build (defaultTargets ["InflationDimension", "Challenge", "Solution"
 Statement identity, Challenge.lean vs Solution.lean (opens, namespace, docstrings and statement text after the shared definitions, proofs removed): identical
 Shared definitions, Challenge.lean vs InflationDimension/Defs.lean: PASS: shared block identical in Challenge.lean and InflationDimension/Defs.lean (175 lines, 8227 bytes)
 
+The registry's pipeline, replicated locally on a fresh clone of commit 88dde8a (the Lean content
+of this commit; only README.md and this file differ), with .lake/packages linked to the pinned,
+prebuilt Mathlib:
+  clean clone build: lake build -> Build completed successfully (8949 jobs); all 15 project
+    modules (12 library modules, Challenge, Solution, DefinitionAudit) compiled from scratch;
+    13 warnings, all 'declaration uses sorry' in Challenge.lean
+  canonical-challenge: lean -o on Challenge.lean under the alias
+    PalomarCanonical54491f30f692b1ccb96bddb9.Challenge, with only the toolchain and the manifest
+    packages on LEAN_PATH -> 13 sorry warnings, 0 errors
+  challenge-provenance: lean --src-deps Challenge.lean -> 3 transitive sources (2 toolchain,
+    1 mathlib); untrusted sources []
+  source requirements (scripts.source_requirements.inspect_lean_sources): 15 files, issues []
+  challenge-export / solution-export: leanexport on the registry's 46 targets (13 theorem_names,
+    3 axioms, Quot, Quot.mk, Quot.lift, Quot.ind, 26 primitives); lake build Solution -> ok
+  lake comparator (toolchain v4.35.0-rc2), --inadvisably-no-sandbox (no bubblewrap on macOS):
+    submitted comparator.json, from the clone root:
+      Lean default kernel accepts the solution / Your solution is okay!   exit 0   (87 s)
+    protected configuration (challenge_module = the alias, definition_names [], external kernels
+    nanoda and con-ron), from an empty judge directory:
+      con-ron: accepted 72096 declarations (--verified) / con-ron kernel accepts / nanoda kernel
+      accepts / Lean default kernel accepts / Your solution is okay!   exit 0   (130 s)
+  formalization.yaml through the registry contract (scripts.submission_contract
+    load_formalization_metadata, normalized_provenance): no error; result_origin source-based;
+    JSON schema v0.4: 0 errors
+
 Proof map (Solution.lean, one application each):
   ModelSetDimension.admissibility_criterion := InflationDimension.admissibility_criterion
   ModelSetDimension.kronecker_density_criterion := InflationDimension.kronecker_density_criterion
@@ -117,7 +142,7 @@ FILES (sha256, lines; git ls-files, BUILD.txt excluded):
   09bfaf99474bfd42af491578c13424becc80467ca57a2494eea12c585b503fa2    828  InflationDimension/Normal.lean
   d32be532ae3b0129081943d5ba0140833d203720b69e21bc64c735160db351cb     21  LICENSE
   8f922a45ef38a54ea8adc36f02a725d2b603415cb6fef056a3eb0efa2c5f371c    441  MATHLIB_DEFINITIONS.md
-  fb47d02a224b2458e50a6d2ff1f385ebf486033c6280eb3695ce3d679a7bafb7    329  README.md
+  1bb8ff2924a9608cd5ca18c32d9f4f6bc11f0a210f5f7eaa39ffff2c7e959c4e    329  README.md
   2af154ea5b640cdb8cd3ca310ea68c9168d68e51fcb20cd8de595a2cb7be9eb6    266  Solution.lean
   fcbd7dd084338356688e22f91f2b3c06ed244994c993900f98d5a95c9af7d3cb     24  comparator.json
   da90d60c120ff1c2b407c02762204c04149dff05aa6f2905ca8c73d9b0e7c77e    761  formalization.yaml
