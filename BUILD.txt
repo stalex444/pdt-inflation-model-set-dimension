@@ -1,16 +1,16 @@
-cut-project-dimension -- kernel build record, 2026-10-21
+pdt-inflation-model-set-dimension -- kernel build record, 2026-10-21
 Toolchain: leanprover/lean4:v4.35.0-rc2
 Mathlib rev: 065356127b1dc0016f66b7283ce0ce2c4055aa55 (lake-manifest.json; required in git form in lakefile.toml; no lake update)
 Build: lake build (defaultTargets ["InflationDimension", "Challenge", "Solution", "DefinitionAudit"]) -> exit 0
   build log tail:
-    ✔ [8948/8952] Built InflationDimension.FormulaA (5.0s)
-    ✔ [8949/8952] Built InflationDimension (2.0s)
-    ✔ [8951/8952] Built Solution (2.9s)
+    ✔ [8948/8952] Built InflationDimension.FormulaA (5.8s)
+    ✔ [8949/8952] Built InflationDimension (2.2s)
+    ✔ [8951/8952] Built Solution (3.1s)
     Build completed successfully (8952 jobs).
   warnings and errors by file: {'Challenge.lean': 13}
   'declaration uses sorry' warnings: 13, all in Challenge.lean: True; compared statements: 13
   every other file (InflationDimension.lean, InflationDimension/*.lean, InflationDimension/Compositum/*.lean, Solution.lean, DefinitionAudit.lean): no warnings
-  Challenge.lean imports: ['Mathlib']; 727 lines, 49721 bytes
+  Challenge.lean imports: ['Mathlib']; 735 lines, 50665 bytes
   sorry / native_decide / axiom outside Challenge.lean: 0
 
 #print axioms for the 13 compared declarations (check file outside the package: `import Solution`, `import DefinitionAudit`, then #print axioms):
@@ -85,14 +85,14 @@ Build: lake build (defaultTargets ["InflationDimension", "Challenge", "Solution"
 Statement identity, Challenge.lean vs Solution.lean (opens, namespace, docstrings and statement text after the shared definitions, proofs removed): identical
 Shared definitions, Challenge.lean vs InflationDimension/Defs.lean: PASS: shared block identical in Challenge.lean and InflationDimension/Defs.lean (217 lines, 10296 bytes)
 
-The registry's pipeline, replicated locally on a fresh clone of commit 69cb91a (the Lean content
+The registry's pipeline, replicated locally on a fresh clone of commit a781aa7 (the Lean content
 of this commit; only this file differs), with .lake/packages linked to the pinned, prebuilt
 Mathlib:
   clean clone build: lake build -> Build completed successfully (8952 jobs); all 18 project
     modules (15 library modules, Challenge, Solution, DefinitionAudit) compiled from scratch, no
     Mathlib module rebuilt; 13 warnings, all 'declaration uses sorry' in Challenge.lean
   canonical-challenge: lean -o on Challenge.lean under the alias
-    PalomarCanonical3825c1ed750441d978551057.Challenge, with only the toolchain and the manifest
+    PalomarCanonicale2f098081151449816cc2ecd.Challenge, with only the toolchain and the manifest
     packages on LEAN_PATH -> 13 sorry warnings, 0 errors
   challenge-provenance: lean --src-deps Challenge.lean -> 3 transitive sources (2 toolchain,
     1 mathlib); untrusted sources []
@@ -102,11 +102,11 @@ Mathlib:
     both exports pass verify_export
   lake comparator (toolchain v4.35.0-rc2), --inadvisably-no-sandbox (no bubblewrap on macOS):
     submitted comparator.json, from the clone root:
-      Lean default kernel accepts the solution / Your solution is okay!   exit 0   (131 s)
+      Lean default kernel accepts the solution / Your solution is okay!   exit 0   (137 s)
     protected configuration (challenge_module = the alias, definition_names [], external kernels
     nanoda and con-ron), from an empty judge directory:
       con-ron: accepted 73438 declarations (--verified) / con-ron kernel accepts / nanoda kernel
-      accepts / Lean default kernel accepts / Your solution is okay!   exit 0   (146 s)
+      accepts / Lean default kernel accepts / Your solution is okay!   exit 0   (159 s)
   formalization.yaml through the registry contract (scripts.submission_contract
     load_formalization_metadata, normalized_provenance): no error; result_origin source-based;
     JSON schema v0.4: 0 errors
@@ -129,7 +129,7 @@ Proof map (Solution.lean, one application each):
 FILES (sha256, lines; git ls-files, BUILD.txt excluded):
   054145cf46a7a7a950a7027a79369b1fe1ed92b8dff0512ab0350b00141ec91e     24  .github/workflows/palomar-preflight.yml
   c14b0bd2a9533a6177683e29926f2e053b0db769736ad816adf1df752f7bb727      2  .gitignore
-  2715effc3509001f41abc6a35861386c2e2dfd92eefa4f7d465a282289c79661    727  Challenge.lean
+  8242b3c8f9613de9604ca3abe2f091eb3f1fd8a433e276aed12cec424d7b3c2b    735  Challenge.lean
   ca3b720cfbad2843487446df990e32352c35e319b18ccc8061aba74235fb94f2    276  DefinitionAudit.lean
   fc75a59517fc4546810cc85450a750b94bced3331c64419a0726bf257437fe09     50  InflationDimension.lean
   74f8dc36f893fe40b789abf450796f279a4c2f31197a96acd14c32bd7c5b2f37    742  InflationDimension/Admissibility.lean
@@ -148,10 +148,10 @@ FILES (sha256, lines; git ls-files, BUILD.txt excluded):
   07e4211d949ba1bbd971ba6fb101121ade0fd551b10858f9402fe5e3de9aff17   2479  InflationDimension/Tilt.lean
   d32be532ae3b0129081943d5ba0140833d203720b69e21bc64c735160db351cb     21  LICENSE
   a179eacadc3091873b2bf598f3f7dc477dc6198c9cd61d3b1a9b950d78e6ec3b    466  MATHLIB_DEFINITIONS.md
-  fbd8aed7c7bbaaf5240a6f43a36681a8b4daed86124f35c8095461e2330fd933    386  README.md
-  63d8b5335003f18c0a40f55d8d58a0a51c57205bca176f08acfb6b0a300d2913    298  Solution.lean
+  6293b520eac940764570c638a732c1e9d037aa377a4aeea1c3ceec25bc20f8c1    399  README.md
+  46711b77947bc6e86cd39dbcc48e6365d7b5953cd2a931809ddd8d38de505ff0    298  Solution.lean
   e30bd7b4b8847dd368e4ebcd54be73d79edc4065869a1f4f165eb0473a3a746e     24  comparator.json
-  bb133f35abf26802e564377b2371b27794214f63c1dfa43bcc0f60fa8bdbad1c    845  formalization.yaml
-  40e50b31779815c75f6e29385cdad2baf58198f04cb4fde8c081a370f6321db7    117  lake-manifest.json
-  cfeeb28199118f04164392cbd4b6de0195c41e1c1e6bd1421066bf555f707f6a     20  lakefile.toml
+  9ab9af0c747d2f7e5aef318b134df724df508e55b8a27bd64354e733044e82f1    885  formalization.yaml
+  b691a8e5d3ec9207386ae6af8016caf073db3866b15ccb7e1a3e564535b29600    117  lake-manifest.json
+  6f6c1b79d123415019434a5cd0017eabd3e998d2e211a5a0de552ac894d4bc6f     20  lakefile.toml
   8dc8d6f560141069d9073e370611716ef77ada0da8ffa37e2149f44b2e63ac7a      1  lean-toolchain
