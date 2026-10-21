@@ -145,7 +145,7 @@ stated there, between `-- BEGIN SHARED DEFINITIONS` and `-- END SHARED DEFINITIO
   gives `d = 6`, against `d = 2` for two copies of the companion matrix of (12) (the same `χ_A`),
   and in both cases the minimal scheme meets the lattice only in `0` (the values are (3) evaluated
   by hand; this last fact is not formalized). The master's thesis of J. Mazáč, "Delone sets closed
-  under affine mappings" (Czech Technical University in Prague, 2019, hdl 10467/82624), whose
+  under afine [sic] mappings" (Czech Technical University in Prague, 2019, hdl 10467/82624), whose
   abstract treats, physical map first, the existence of a scheme with a given self-similarity for
   all linear maps and the minimal lattice dimension for diagonalizable maps, was not read: the
   repository record has no public full text. Its treatment of non-diagonalizable maps, existence
