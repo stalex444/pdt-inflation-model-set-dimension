@@ -16,8 +16,9 @@ inside the open unit disk, gives the `A`-invariant splitting `ℝ^ι = ker r(A) 
 
 When `A` has no eigenvalue on the unit circle such a factorization exists, and then an
 `A`-invariant cut-and-project scheme on `ℤ^ι` is admissible if and only if `E ⊇ E^u(A)`, if and
-only if `H ⊆ E^s(A)`; the scheme `(E^u, E^s)` is admissible, the least physical dimension is
-`U(A)`, and `(E^u, E^s)` is the only admissible scheme with `dim E = U(A)`.
+only if `H ⊆ E^s(A)`; an `A`-invariant splitting carries an admissible scheme if and only if
+`E ⊇ E^u(A)`; the scheme `(E^u, E^s)` is admissible, the least physical dimension is `U(A)`, and
+`(E^u, E^s)` is the only admissible scheme with `dim E = U(A)`.
 
 The uniform bounds for `Aⁿ` on `ker r(A)` and for `A⁻ⁿ` on `ker q(A)` come from Gelfand's spectral
 radius formula, applied to the complexified matrix of the restriction. No diagonalizability is
@@ -1106,13 +1107,18 @@ theorem exists_unstable_stable_submodules (A : Matrix ι ι ℤ) (hdet : A.det �
   rw [hdim, unstableCount_eq_natDegree A q r hq hr hχ hqroots hrroots]
 
 /-- **(4) The hyperbolic case** (`det A ≠ 0`, no eigenvalue on the unit circle). An `A`-invariant
-scheme is admissible if and only if `E ⊇ E^u(A)`, if and only if `H ⊆ E^s(A)`; `(E^u, E^s)`
+scheme is admissible if and only if `E ⊇ E^u(A)`, if and only if `H ⊆ E^s(A)`; an `A`-invariant
+splitting `ℝ^ι = E ⊕ H` carries an admissible scheme if and only if `E ⊇ E^u(A)`; `(E^u, E^s)`
 carries an admissible scheme; the least physical dimension is `U(A)`; and every admissible scheme
 with `dim E = U(A)` is `(E^u, E^s)`. No diagonalizability is assumed. -/
 theorem hyperbolic_case {ι : Type*} [Fintype ι] [DecidableEq ι] (A : Matrix ι ι ℤ)
     (hdet : A.det ≠ 0) (hhyp : IsHyperbolic A) :
     (∀ S : InvariantCPS A, (S.Admissible ↔ unstableSet A ⊆ (S.E : Set (ι → ℝ))) ∧
       (S.Admissible ↔ (S.H : Set (ι → ℝ)) ⊆ stableSet A)) ∧
+    (∀ (E H : Submodule ℝ (ι → ℝ)), IsCompl E H → (∀ v ∈ E, act A v ∈ E) →
+      (∀ v ∈ H, act A v ∈ H) →
+      ((∃ S : InvariantCPS A, S.E = E ∧ S.H = H ∧ S.Admissible) ↔
+        unstableSet A ⊆ (E : Set (ι → ℝ)))) ∧
     (∃ S : InvariantCPS A, (S.E : Set (ι → ℝ)) = unstableSet A ∧
       (S.H : Set (ι → ℝ)) = stableSet A ∧ S.Admissible) ∧
     IsLeast (physDims A) (unstableCount A) ∧
@@ -1139,7 +1145,7 @@ theorem hyperbolic_case {ι : Type*} [Fintype ι] [DecidableEq ι] (A : Matrix �
       dense := hyp.dense hinj }
   have hS0 : S0.Admissible := hyp.admissible_of_le S0 le_rfl
   refine ⟨fun S => ⟨⟨fun hS => ?_, fun h => ?_⟩, ⟨fun hS => ?_, fun h => ?_⟩⟩,
-    ⟨S0, hu, hs, hS0⟩, ⟨⟨S0, hS0, hU⟩, ?_⟩, ?_⟩
+    fun E H hc hE hH => ⟨?_, fun h => ?_⟩, ⟨S0, hu, hs, hS0⟩, ⟨⟨S0, hS0, hU⟩, ?_⟩, ?_⟩
   · exact hyp.unstableSet_subset S.isCompl S.mapsTo_E S.mapsTo_H (hyp.internal_le S hS)
   · refine hyp.admissible_of_le S ?_
     have hle : Vu ≤ S.E := fun x hx => h (hu ▸ hx)
@@ -1151,6 +1157,45 @@ theorem hyperbolic_case {ι : Type*} [Fintype ι] [DecidableEq ι] (A : Matrix �
   · refine hyp.admissible_of_le S ?_
     rw [← hs] at h
     exact h
+  · rintro ⟨S, rfl, rfl, hS⟩
+    exact hyp.unstableSet_subset S.isCompl S.mapsTo_E S.mapsTo_H (hyp.internal_le S hS)
+  · -- an invariant splitting with `E ⊇ E^u` has `H ⊆ E^s`, hence a lattice-injective, dense,
+    -- admissible scheme
+    have hle : Vu ≤ E := fun x hx => h (hu ▸ hx)
+    have hHs : H ≤ Vs := by
+      have := hyp.subset_stableSet hc hE hH hle
+      rw [← hs] at this
+      exact this
+    have hdense : (H : Set (ι → ℝ)) ⊆
+        closure (H.projection E hc.symm '' (intLattice ι : Set (ι → ℝ))) := by
+      set πH := H.projection E hc.symm with hπH
+      set πs := Vs.projection Vu hyp.compl with hπs
+      have hfac : ∀ v, πH (πs v) = πH v := by
+        intro v
+        have htop : v ∈ Vs ⊔ Vu := by rw [hyp.compl.sup_eq_top]; trivial
+        obtain ⟨s, hs', u, hu', rfl⟩ := Submodule.mem_sup.mp htop
+        have h1 : πs (s + u) = s := by
+          rw [map_add, hπs, Submodule.projection_apply_of_mem_left _ hs',
+            Submodule.projection_apply_of_mem_right _ hu', add_zero]
+        have h2 : πH u = 0 := by
+          rw [hπH]
+          exact Submodule.projection_apply_of_mem_right _ (hle hu')
+        rw [h1, map_add πH s u, h2, add_zero]
+      have hcont : Continuous πH := LinearMap.continuous_of_finiteDimensional πH
+      intro x hx
+      have hxs : x ∈ closure (πs '' (intLattice ι : Set (ι → ℝ))) := hyp.dense hinj (hHs hx)
+      have h1 := map_mem_closure hcont hxs (t := πH '' (intLattice ι : Set (ι → ℝ)))
+        (by rintro _ ⟨γ, hγ, rfl⟩; exact ⟨γ, hγ, (hfac γ).symm⟩)
+      rwa [hπH, Submodule.projection_apply_of_mem_left _ hx] at h1
+    let S1 : InvariantCPS A :=
+      { E := E
+        H := H
+        isCompl := hc
+        mapsTo_E := hE
+        mapsTo_H := hH
+        inj := fun γ hγ hγH => hyp.lattice_inj hinj hγ (hHs hγH)
+        dense := hdense }
+    exact ⟨S1, rfl, rfl, hyp.admissible_of_le S1 hHs⟩
   · rintro d ⟨S, hS, rfl⟩
     rw [← hU]
     exact Submodule.finrank_mono (hu_le S hS)
@@ -1167,7 +1212,7 @@ theorem hyperbolic_case {ι : Type*} [Fintype ι] [DecidableEq ι] (A : Matrix �
 /-- The least physical dimension of a hyperbolic `A` with `det A ≠ 0` is `U(A)`. -/
 theorem isLeast_physDims_of_isHyperbolic (A : Matrix ι ι ℤ) (hdet : A.det ≠ 0)
     (hhyp : IsHyperbolic A) : IsLeast (physDims A) (unstableCount A) :=
-  (hyperbolic_case A hdet hhyp).2.2.1
+  (hyperbolic_case A hdet hhyp).2.2.2.1
 
 end
 

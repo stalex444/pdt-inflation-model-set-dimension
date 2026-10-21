@@ -91,16 +91,21 @@ theorem least_physical_dimension_squarefree {ι : Type*} [Fintype ι] [Decidable
   InflationDimension.least_physical_dimension_squarefree A hdet hsf
 
 /-- **(4) The hyperbolic case**, every `χ_A` (`det A ≠ 0`, no eigenvalue on the unit circle). An
-`A`-invariant scheme is admissible if and only if `E ⊇ E^u(A)`, if and only if `H ⊆ E^s(A)`.
-`(E^u, E^s)` carries an admissible scheme, `d(A) = U(A)`, and every admissible scheme with
-`dim E = U(A)` is `(E^u, E^s)`. No diagonalizability is assumed. For diagonalizable maps and
-generic schemes the necessity of `H ⊆ E^s` is Masáková–Mazáč–Pelantová (2021), Prop. 13.2 and
-Cor. 13.4; the statement is the inclusion-notion analogue of the expansive case of
+`A`-invariant scheme is admissible if and only if `E ⊇ E^u(A)`, if and only if `H ⊆ E^s(A)`, and
+an `A`-invariant splitting `ℝ^ι = E ⊕ H` carries an admissible scheme if and only if
+`E ⊇ E^u(A)`. `(E^u, E^s)` carries an admissible scheme, `d(A) = U(A)`, and every admissible
+scheme with `dim E = U(A)` is `(E^u, E^s)`. No diagonalizability is assumed. For diagonalizable
+maps and generic schemes the necessity of `H ⊆ E^s` is Masáková–Mazáč–Pelantová (2021),
+Prop. 13.2 and Cor. 13.4; the statement is the inclusion-notion analogue of the expansive case of
 Harriss–Koivusalo–Walton (preprint, arXiv:2512.13659), Thm 3.3. -/
 theorem hyperbolic_case {ι : Type*} [Fintype ι] [DecidableEq ι] (A : Matrix ι ι ℤ)
     (hdet : A.det ≠ 0) (hhyp : IsHyperbolic A) :
     (∀ S : InvariantCPS A, (S.Admissible ↔ unstableSet A ⊆ (S.E : Set (ι → ℝ))) ∧
       (S.Admissible ↔ (S.H : Set (ι → ℝ)) ⊆ stableSet A)) ∧
+    (∀ (E H : Submodule ℝ (ι → ℝ)), IsCompl E H → (∀ v ∈ E, act A v ∈ E) →
+      (∀ v ∈ H, act A v ∈ H) →
+      ((∃ S : InvariantCPS A, S.E = E ∧ S.H = H ∧ S.Admissible) ↔
+        unstableSet A ⊆ (E : Set (ι → ℝ)))) ∧
     (∃ S : InvariantCPS A, (S.E : Set (ι → ℝ)) = unstableSet A ∧
       (S.H : Set (ι → ℝ)) = stableSet A ∧ S.Admissible) ∧
     IsLeast (physDims A) (unstableCount A) ∧
@@ -159,7 +164,7 @@ theorem squarefree_hypothesis_needed :
 multiplication by `ρ`, `ρ⁻¹ = ρ² − 1`, `Q` and `θ = −Q⁻¹ = 1 − Q³` has the stated characteristic
 polynomials, is hyperbolic, and needs exactly `1`, `2`, `3`, `1` physical dimensions; by (4) each
 minimum is attained only by `(E^u, E^s)`. The one expanding eigenvalue of `θ` is real,
-`θ₄ = −1/q′ ≈ 1.38028`, where `q′` is the negative real root of `x⁴ − x − 1`. -/
+`t = −1/q′ ≈ 1.38028`, where `q′` is the negative real root of `x⁴ − x − 1`. -/
 theorem sector_rings :
     Cρ.charpoly = X ^ 3 - X - 1 ∧ (Cρ ^ 2 - 1).charpoly = X ^ 3 + X ^ 2 - 1 ∧
     CQ.charpoly = X ^ 4 - X - 1 ∧ (1 - CQ ^ 3).charpoly = X ^ 4 - X ^ 3 - 1 ∧

@@ -30,8 +30,8 @@ each of them by one application of the theorem of the same name in namespace
 * `InflationDimension.Hyperbolic` — statement (4): the hyperbolic case.
 * `InflationDimension.DimOne` — statements (5), (6), (7) and (12).
 * `InflationDimension.Compositum.Tower`, `InflationDimension.Compositum.CircleFree` — the
-  degree-12 field and its circle-freeness, ported from stalex444/pdt-hermite-signature-compositum
-  at commit 5aa870e8.
+  degree-12 field and its circle-freeness, ported from the author's registered entry
+  PALOMAR-2026-10-21-000012 (stalex444/pdt-hermite-signature-compositum@5aa870e8).
 * `InflationDimension.Instances` — statements (8), (9) and (10).
 * `InflationDimension.ModelSetQ` — statement (11).
 * `InflationDimension.Meyer` — statement (13).

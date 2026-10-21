@@ -25,14 +25,18 @@ project:
     with q_E; d(A) = U(A) + circleCount(A), counting 1 for each factor
     x - 1, x + 1 and 2 for each other cyclotomic factor; and the factors
     with all roots on the unit circle are the cyclotomic ones. (4) For
-    hyperbolic A, any chi_A and no diagonalizability: admissible iff E
-    contains the unstable set iff H lies in the stable set; d(A) = U(A),
-    attained only by the unstable/stable splitting. (5) d(A) = 1 iff chi_A
-    is irreducible with exactly one root of modulus > 1 (a real root, a
-    Pisot or Salem number up to sign, or an integer on Z^1), or A = +-1 on
-    Z^1; every admissible line is the eigenline. (6) The cyclotomic case:
-    d = sum of min(deg p, 2) over the factors; multiplication by a
-    primitive n-th root of unity, n >= 3, needs a plane. (7) The squarefree
+    det A != 0 and hyperbolic A, any chi_A and no diagonalizability: a
+    scheme is admissible iff E contains the unstable set iff H lies in the
+    stable set; an invariant splitting carries an admissible scheme iff E
+    contains the unstable set; d(A) = U(A), attained only by the
+    unstable/stable splitting. (5) For det A != 0 and chi_A squarefree:
+    d(A) = 1 iff chi_A is irreducible with exactly one root of modulus > 1
+    (a real root, a Pisot or Salem number up to sign, or an integer on
+    Z^1), or A = +-1 on Z^1; every admissible line is the eigenline. (6)
+    For chi_A squarefree with all roots on the unit circle: every factor is
+    cyclotomic and d = sum of min(deg p, 2) over the factors; every integer
+    matrix with chi_A = Phi_n, n >= 3 (multiplication by a primitive n-th
+    root of unity), needs exactly a plane. (7) The squarefree
     hypothesis is needed: I_2 and the Jordan block J_2 both have
     chi = (x - 1)^2, with d = 1 and 2. (8) Multiplication by rho, rho^-1, Q
     and theta = -Q^-1 = 1 - Q^3 on Z[rho] and Z[Q] (rho^3 = rho + 1,
@@ -59,15 +63,26 @@ project:
     chi_A the count (3) also follows from Masakova-Mazac-Pelantova Lemma
     5.1, Prop. 8.1(iii) and Cor. 13.4; the lattice-first least physical
     dimension was not found stated in the sources read (search completed
-    2026-10-20). That the matrices of (9) are multiplication on the ring of
-    integers of Q(rho, Q) and that GramRho (x) GramQ is its trace form are
-    cited from the author's stalex444/pdt-hermite-signature-compositum at
-    commit 5aa870e8 and not compared.
+    2026-10-20). New here, beyond the cited cases: the lattice-first
+    question; the characterization of every admissible splitting ((3)(a)(b),
+    (4)); the admissibility criterion (1) and the hyperbolic case (4) for
+    every integer matrix, with no diagonalizability; and the uniqueness of
+    minimal schemes. The companion matrices are multiplication by rho and Q
+    in the power bases by definition, so Crho^i (x) CQ^j is multiplication
+    by rho^i Q^j in the product basis. That the rho^i Q^j are a Z-basis of
+    the ring of integers of Q(rho, Q) is statement (8) of the author's
+    registered entry PALOMAR-2026-10-21-000012
+    (stalex444/pdt-hermite-signature-compositum@5aa870e8); that GramRho,
+    GramQ and GramRho (x) GramQ are the Gram matrices of the trace forms in
+    these bases is statements (8), (9) and (19) of the author's registered
+    entry PALOMAR-2026-09-02-000014, in which Q(rho) (x) Q(Q) is the field
+    Q(rho, Q) (its (23)). These are cited, not compared.
     Application (cited, not a claim of the entry): In the author's Pisot
     Dimensional Theory, Q(rho) is the arithmetic of three-dimensional space
     and Q(Q) the arithmetic of four-dimensional spacetime, and their
     compositum K, whose integers are Z[rho] (x) Z[Q], is the parent of both
-    (stalex444/pdt-hermite-signature-compositum@5aa870e8, statements (7),
+    (the author's registered entry PALOMAR-2026-10-21-000012
+    (stalex444/pdt-hermite-signature-compositum@5aa870e8), statements (7),
     (8)). A model set is the shadow of a lattice cut through a window, a
     standard mathematical model of a quasicrystal (Moody 2000). Read through
     the theory, this entry's theorems fix how many dimensions each of the
@@ -83,7 +98,7 @@ project:
     rho = 1.3247..., the same stretch in every direction (10).
     Symmetrically, the unit theta = -Q^-1 = 1 - Q^3 needs exactly three, and
     those three are a copy of space's: Q(rho)'s real space with its form of
-    type (2,1) unchanged, dilated by theta_4 = -1/q' = 1.3803... (8, 9, 10).
+    type (2,1) unchanged, dilated by t = -1/q' = 1.3803... (8, 9, 10).
     Taken over all three embeddings of Q(rho) instead of the one expanding
     embedding, the form on the quartic sector is tripled: the factor 3 of
     the companion's statement (13).
@@ -95,8 +110,9 @@ project:
     Rauzy-fractal windows in C (Baake and Grimm 2020), and in the theory the
     line is time and its points are the ticks (PALOMAR-2026-08-19-000006,
     PALOMAR-2026-10-18-000019). The coupling ruler rho Q, which generates
-    the whole parent (the companion's statement (15);
-    PALOMAR-2026-09-01-000005), needs exactly five, over a
+    the parent field (Q(rho Q) = K; the companion's statement (15), where
+    Z[rho Q] has index 53 in the integers; PALOMAR-2026-09-01-000005),
+    needs exactly five, over a
     seven-dimensional window (9): one real and two complex expanding places,
     a dimension neither sector has.
 
@@ -202,8 +218,9 @@ sources:
       beta > 1 then beta is a Pisot or Salem number; conversely every Pisot
       or Salem number is the inflation factor of a model set. Compared
       statement (5) proves the lattice-first, model-set form: for
-      A-invariant schemes, d(A) = 1 iff chi_A is irreducible with exactly
-      one root of modulus > 1 (or A = +-1 on Z^1), that root real; it does
+      A-invariant schemes with det A != 0 and chi_A squarefree, d(A) = 1 iff
+      chi_A is irreducible with exactly one root of modulus > 1 (or A = +-1
+      on Z^1), that root real; it does
       not prove the theorem for arbitrary Meyer sets. The dichotomy goes
       back to Meyer, Algebraic Numbers and Harmonic Analysis, North-Holland
       Mathematical Library 2 (1972).
@@ -235,11 +252,29 @@ sources:
     location: "https://doi.org/10.1515/crll.1857.53.173"
     relationship: "background"
     note: >-
-      Kronecker's theorem that an algebraic integer whose conjugates all
-      lie on the unit circle is a root of unity, used through Mathlib's
+      Kronecker's root-of-unity theorem, that an algebraic integer whose
+      conjugates all lie on the unit circle is a root of unity, used through
+      Mathlib's
       NumberField.Embeddings.pow_eq_one_of_norm_eq_one for the last clause
       of compared statement (3) (the circle factors are the cyclotomic
       ones). Not re-proved.
+    license: "unknown"
+    author_endorsement: "n/a"
+  - title: "Naeherungsweise ganzzahlige Aufloesung linearer Gleichungen"
+    authors:
+      - "Leopold Kronecker"
+    id: "Sitzungsberichte der Koeniglich Preussischen Akademie der Wissenschaften zu Berlin (1884), 1179-1193, continued 1271-1300; JFM 16.0083.02, 17.0073.01"
+    # zbMATH (JFM) records checked 2026-10-21 through the zbMATH Open API: JFM 16.0083.02
+    # (Berl. Ber. 1884, 1179-1193) and JFM 17.0073.01 (1271-1300, listed under 1885). No DOI.
+    # Primary not opened.
+    type: "article"
+    location: "https://zbmath.org/?q=an%3A16.0083.02"
+    relationship: "background"
+    note: >-
+      Kronecker's density (approximation) theorem, of which compared
+      statement (2) is the cut-and-project form (Pleasants 2000, Cor. 2.12).
+      Cited for the attribution of (2); not the root-of-unity theorem of the
+      1857 paper.
     license: "unknown"
     author_endorsement: "n/a"
   - title: "Uniqueness in Discrete Tomography of Planar Model Sets"
@@ -400,6 +435,41 @@ sources:
       Pure-point spectrum of regular model sets, cited and not formalized.
     license: "unknown"
     author_endorsement: "n/a"
+  - title: "The entropies of topological Markov shifts and a related class of algebraic integers"
+    authors:
+      - "D. A. Lind"
+    id: "Ergodic Theory and Dynamical Systems 4 (1984), 283-300"
+    # Crossref-verified 2026-10-21: DOI 10.1017/S0143385700002443 (ETDS 4(2), 283-300, 1984-06).
+    type: "article"
+    location: "https://doi.org/10.1017/S0143385700002443"
+    relationship: "background"
+    note: >-
+      Thm 1: the Perron numbers are the spectral radii of primitive
+      non-negative integer matrices, so (through a primitive substitution
+      with such a matrix) the expansions of self-similar tilings of the
+      line. Cited in the opening scope account: Q and
+      rho Q (about 1.6171, next conjugate modulus about 1.4086) are Perron,
+      so self-similar tilings of the line with those expansions exist, while
+      the inflation-symmetric model sets need 3 and 5 physical dimensions
+      (compared statements (8), (9)).
+    license: "unknown"
+    author_endorsement: "n/a"
+  - title: "On the Characterization of Expansion Maps for Self-Affine Tilings"
+    authors:
+      - "Richard Kenyon"
+      - "Boris Solomyak"
+    id: "Discrete and Computational Geometry 43 (2010), 577-593; arXiv:0801.1993"
+    # Crossref-verified 2026-10-21: DOI 10.1007/s00454-009-9199-6 (DCG 43(3), 577-593).
+    type: "article"
+    location: "https://doi.org/10.1007/s00454-009-9199-6"
+    relationship: "background"
+    note: >-
+      Restates Lind's characterization: a real number is the expansion of a
+      self-similar tiling of the line iff its absolute value is Perron.
+      Cited with Lind 1984 in the opening scope account (tilings versus
+      model sets).
+    license: "unknown"
+    author_endorsement: "n/a"
   - title: "Diffraction of a model set with complex windows"
     authors:
       - "Michael Baake"
@@ -435,7 +505,7 @@ related_formalizations:
       (X_pow_sub_X_sub_one_irreducible_rat), the ZSpan floor and Mathlib's
       Delone sets (N. Jensen).
 
-  - id: "https://github.com/stalex444/pdt-hermite-signature-compositum (commit 5aa870e98236ba240561b798265c629df8c2d031; submitted to the registry, registration pending)"
+  - id: "Registered entry PALOMAR-2026-10-21-000012 (stalex444/pdt-hermite-signature-compositum, commit 5aa870e98236ba240561b798265c629df8c2d031)"
     relationship: "builds-on"
     note: >-
       The author's entry on the degree-12 compositum L of Q(rho) and Q(Q).
@@ -444,10 +514,10 @@ related_formalizations:
       has a conjugate on the unit circle) are ported to this repository in
       InflationDimension/Compositum/Tower.lean and
       InflationDimension/Compositum/CircleFree.lean, statements unchanged,
-      and used in the proof of compared statement (9). That the matrices of
-      (9) are multiplication on O_L = Z[rho] (x) Z[Q] in the basis
-      rho^i Q^j, and that GramRho (x) GramQ is the trace form of L in that
-      basis, are its statements (8) and (11), cited here and not compared.
+      and used in the proof of compared statement (9). Its statement (8),
+      that the rho^i Q^j are a Z-basis of O_L = Z[rho] (x) Z[Q], is cited
+      here and not compared: with it, the matrices of (9) are multiplication
+      on O_L in that basis.
 
   - id: "Registered entry PALOMAR-2026-09-02-000014 (stalex444/golden-family-trace-forms)"
     relationship: "builds-on"
@@ -455,7 +525,11 @@ related_formalizations:
       The Q-level inputs of the ported tower (the two polynomials and their
       basic facts) come from this entry through the companion's port; the
       irreducibility of x^3 - x - 1 and x^4 - x - 1 is taken here from
-      Mathlib's Selmer theorem.
+      Mathlib's Selmer theorem. Its statements (8), (9) and (19), that
+      GramRho, GramQ and GramRho (x) GramQ are the Gram matrices of the
+      trace forms in the power and tensor power bases, and (23), that
+      Q(rho) (x) Q(Q) is a field, are cited for compared statements (10)
+      and (11) and not compared.
 
   - id: "Registered entry PALOMAR-2026-09-04-000004 (stalex444/chiral-padovan-histories)"
     relationship: "other"
@@ -466,10 +540,13 @@ related_formalizations:
       quartic_record_obstruction shows that a window on the real expanding
       place of Z[Q], observed at the complex place, gives a set that is not
       uniformly discrete, and quartic_escaping_coordinate that the omitted
-      coordinate at q' is unbounded along the units Q^-n. Compared statement
-      (4) accounts for both: every admissible Q-invariant scheme on Z^4 has
-      H in E^s, the line of the contracting place q', and (11) builds that
-      scheme.
+      coordinate at q' is unbounded along the units Q^-n. Keeping the
+      dropped coordinate at q' gives the model set of the Q-invariant scheme
+      whose window line is the expanding real place; it is a Delone set by
+      compared statement (13), but it is not Q-admissible by (4), since every
+      admissible Q-invariant scheme on Z^4 has H in E^s, the line of q'.
+      Dropping that coordinate, unbounded along Q^-n, is what destroys
+      uniform discreteness; (11) is the admissible scheme.
 
   - id: "Registered entries PALOMAR-2026-08-19-000006, PALOMAR-2026-10-18-000019 and PALOMAR-2026-09-01-000005 (version 2)"
     relationship: "other"
@@ -505,8 +582,10 @@ status:
     circle (Jordan blocks on the circle); the least dimension under
     aperiodicity; regularity and pure-point diffraction of the model sets
     (Hof 1995; Schlottmann 2000, cited); the identification of the matrices
-    of (9) with multiplication on the ring of integers of Q(rho, Q) and of
-    GramRho (x) GramQ with its trace form (cited from the companion); and
+    of (9) with multiplication on the ring of integers of Q(rho, Q) (cited
+    from PALOMAR-2026-10-21-000012) and of GramRho, GramQ and
+    GramRho (x) GramQ with the trace forms (cited from
+    PALOMAR-2026-09-02-000014); and
     everything in the application paragraph.
   sorry_count: 0
   sorry_in_definitions: 0
@@ -627,7 +706,7 @@ alignment:
       lean: "ModelSetDimension.hyperbolic_case"
       module: "Solution"
       status: "proved"
-      note: "Admissible iff E contains E^u iff H lies in E^s; d(A) = U(A), attained only by (E^u, E^s). Proved by InflationDimension.hyperbolic_case."
+      note: "Admissible iff E contains E^u iff H lies in E^s; an invariant splitting carries an admissible scheme iff E contains E^u; d(A) = U(A), attained only by (E^u, E^s). Proved by InflationDimension.hyperbolic_case."
     - source: "Meyer 1972; Meyer 1995, Thm 6 (lattice-first model-set form); Salem case Solomyak 2020, Section 4(iv), credited to Akiyama"
       lean: "ModelSetDimension.dimension_one_pisot_or_salem"
       module: "Solution"
@@ -648,7 +727,7 @@ alignment:
       module: "Solution"
       status: "proved"
       note: "rho, rho^-1, Q, theta on Z[rho], Z[Q]: characteristic polynomials, hyperbolic, d = 1, 2, 3, 1; the expanding eigenvalue of theta in (1.3802, 1.3803). Proved by InflationDimension.sector_rings."
-    - source: "instances of (4); circle-freeness ported from stalex444/pdt-hermite-signature-compositum@5aa870e8"
+    - source: "instances of (4); circle-freeness ported from the author's registered entry PALOMAR-2026-10-21-000012 (stalex444/pdt-hermite-signature-compositum@5aa870e8)"
       lean: "ModelSetDimension.compositum_lattice"
       module: "Solution"
       status: "proved"

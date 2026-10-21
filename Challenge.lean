@@ -5,10 +5,13 @@ public import Mathlib
 /-!
 # The least physical dimension of an inflation-symmetric model set
 
-Thirteen compared statements, (1)–(13) below: seven about every integer matrix ((1)–(6) and
-(13)), two examples ((7) and (12)), and four about the integer matrices of multiplication by `ρ`,
-`Q` and their products on `ℤ[ρ]`, `ℤ[Q]` and `ℤ[ρ] ⊗ ℤ[Q]` ((8)–(11)), where `ρ³ = ρ + 1` and
-`Q⁴ = Q + 1`.
+Thirteen compared statements, (1)–(13) below. The main theorem is (3) together with (4): for
+`det A ≠ 0` and squarefree `χ_A`, every admissible splitting is characterized and
+`d(A) = U(A) + #{x ± 1 ∣ χ_A} + 2·#{Φ_n ∣ χ_A, n ≥ 3}`; for `det A ≠ 0` and hyperbolic `A`, any
+`χ_A`, `d(A) = U(A)`, attained only by `(E^u, E^s)`. (1), (2) and (13) are the general tools,
+(5)–(7) the corollaries and sharpness of (3), and (8)–(12) the instances: multiplication by `ρ`,
+`ρ⁻¹`, `Q`, `θ = −Q⁻¹` and `ρQ` on `ℤ[ρ]`, `ℤ[Q]` and `ℤ[ρ] ⊗ ℤ[Q]`, where `ρ³ = ρ + 1` and
+`Q⁴ = Q + 1`, and a Salem witness.
 
 **Setting.** `ι` is a finite type, `ℤ^ι ⊂ ℝ^ι` is the integer lattice (`intLattice`) and an
 integer matrix `A` acts on `ℝ^ι` (`act A`). An `A`-invariant cut-and-project scheme
@@ -43,7 +46,9 @@ unit circle.
 * The statements are about inflation-symmetric model sets, not tilings. The substitution
   `a ↦ b, b ↦ c, c ↦ d, d ↦ ab` is primitive and its substitution matrix is the companion matrix of
   `x⁴ − x − 1`, so its self-similar tiling of the line has expansion `Q`; a model set inflated by
-  `Q` on `ℤ[Q]` needs three physical dimensions (8).
+  `Q` on `ℤ[Q]` needs three physical dimensions (8). Likewise `ρQ ≈ 1.6171` is a Perron number, so
+  it is the expansion of a self-similar tiling of the line (Lind 1984; Kenyon–Solomyak 2010), but a
+  model set inflated by `ρQ` on `ℤ[ρ] ⊗ ℤ[Q]` needs five physical dimensions (9).
 
 **The compared statements** (namespace `ModelSetDimension`).
 1. `admissibility_criterion` — for every integer `A`, a scheme is admissible if and only if `A`
@@ -61,7 +66,8 @@ unit circle.
    `d(A) = U(A) + circleCount A`; and the irreducible factors with all roots on the unit circle
    are exactly the cyclotomic ones.
 4. `hyperbolic_case` — for `det A ≠ 0` and `A` hyperbolic, any `χ_A`: a scheme is admissible if
-   and only if `E ⊇ E^u`, if and only if `H ⊆ E^s`; `(E^u, E^s)` carries an admissible scheme;
+   and only if `E ⊇ E^u`, if and only if `H ⊆ E^s`; an `A`-invariant splitting carries an
+   admissible scheme if and only if `E ⊇ E^u`; `(E^u, E^s)` carries an admissible scheme;
    `d(A) = U(A)`; and every admissible scheme with `dim E = U(A)` is `(E^u, E^s)`.
 5. `dimension_one_pisot_or_salem` — for `det A ≠ 0` and `χ_A` squarefree: `d(A) = 1` if and only
    if `χ_A` is irreducible with exactly one root of modulus `> 1`, or `A = ±1` on `ℤ¹`; that
@@ -94,30 +100,20 @@ unit circle.
 13. `modelSet_isMeyer` — for every scheme and every window, `Λ(W)` is a Delone set in `E`
     (Mathlib's `Delone.DeloneSet`) and `Λ(W) − Λ(W)` is uniformly discrete.
 
-**Attributions.** The mathematics of (1), (2), (4), (5), (6) and (13) is known in other
-formulations, cited here; (1) and (4) are stated with no diagonalizability hypothesis. The necessity
-half of (1) is Masáková–Mazáč–Pelantová (Linear Algebra Appl. 625 (2021) 279–321), Prop. 13.2 and
-Cor. 13.4 in the numbering of arXiv:1909.10753v2, for diagonalizable maps and generic schemes. (2)
-is Kronecker's density theorem; its cut-and-project form is Pleasants (2000), Cor. 2.12, and
-Masáková–Mazáč–Pelantová, Prop. 3.3(iii). (4) is the hyperbolic case on a fixed lattice, with no
-diagonalizability; for substitutional patterns with expansive inflation, Harriss–Koivusalo–Walton
-(preprint, arXiv:2512.13659), Thm 3.3, show that the internal space is the contracting subspace. (5)
-is the lattice-first, model-set form of Meyer's theorem (1972; 1995, Thm 6) that the inflation
-factors of Meyer sets are the Pisot and Salem numbers; the Salem model set on `ℤ^s` is Solomyak
-(2020), §4(iv), credited there to Akiyama, and (12) is an instance. The planes of (6) are those of
-the classical planar cyclotomic model sets (Huck, arXiv:math/0701141, Def. 11; Baake–Grimm 2013,
-§7.3), of internal dimension `φ(n) − 2`; `φ(n)`, the least lattice rank for a planar model set with
-`n`-fold symmetry (Baake–Joseph–Schlottmann 1991), is the dual quantity. (13) is classical (Meyer
-1972; Moody 1997). The scheme and model set of (11) are, in substance, instances of
-Masáková–Mazáč–Pelantová, Thm 13.1, and of Harriss–Koivusalo–Walton, §3.4, and the translation set
-of the Thurston dual tiling of the Pisot unit `−1/q′` is a model set of the same kind
-(Kalle–Steiner, Trans. Amer. Math. Soc. 364 (2012), Lemma 4.3); none of this is claimed as new. For
-squarefree `χ_A`, so for diagonalizable `A`, the count of (3) also follows from
-Masáková–Mazáč–Pelantová, Lemma 5.1, Prop. 8.1(iii) and Cor. 13.4. We did not find the least
-physical dimension for a given lattice map, statement (3), stated in the sources we read (search
-completed 2026-10-20); this is a search result, not a guarantee. The master's thesis of J. Mazáč
-(Czech Technical University in Prague, hdl 10467/82624), whose abstract treats minimal scheme
-dimension for diagonalizable maps, physical map first, was not read: its full text is not public.
+**Attributions.** Each statement's docstring names its sources, and the README gives them
+statement by statement. The mathematics of (1), (2), (4), (5), (6) and (13) is known in other
+formulations, and the scheme and model set of (11) are, in substance, an instance of
+Masáková–Mazáč–Pelantová (Linear Algebra Appl. 625 (2021) 279–321), Thm 13.1; none of this is
+claimed as new. New here, beyond the cited cases: the lattice-first question; the
+characterization of every admissible splitting ((3)(a)(b), (4)); the admissibility criterion (1)
+and the hyperbolic case (4) for every integer matrix, with no diagonalizability; and the
+uniqueness of minimal schemes. For squarefree `χ_A`, so for diagonalizable `A`, the count of (3)
+also follows from Masáková–Mazáč–Pelantová, Lemma 5.1, Prop. 8.1(iii) and Cor. 13.4 (numbering of
+arXiv:1909.10753v2). We did not find the least physical dimension for a given lattice map,
+statement (3), stated in the sources we read (search completed 2026-10-20); this is a search
+result, not a guarantee. The master's thesis of J. Mazáč (Czech Technical University in Prague,
+hdl 10467/82624), whose abstract treats existence for all linear maps and minimal scheme dimension
+for diagonalizable maps, physical map first, was not read: its full text is not public.
 
 **The proofs.** No Jordan form and no diagonalization is used. Necessity in (3) comes from a
 rational kernel lemma (for an irreducible rational factor `p` of `χ_A`, `ker p(A)` contains a
@@ -128,16 +124,22 @@ on `H` and the orbit window of (1). The count in (3) is a root count over the ra
 spectral radius formula. The signatures in (10) and (11) are computed by Sylvester's law of
 inertia in Mathlib (D. Loeffler's `sigPos`, `sigNeg`). Statements (8)–(11) are about explicit
 integer matrices. That `Cρ` and `CQ` are multiplication by `ρ` and `Q` in the power bases is
-their definition (companion matrices). That `mulMatrix a` is multiplication by
-`Σ a(i,j) ρ^i Q^j` on the ring of integers `ℤ[ρ] ⊗ ℤ[Q]` of `ℚ(ρ, Q)` in the basis `ρ^i Q^j`, and
-that `GramRho ⊗ GramQ` is the Gram matrix of its trace form in that basis, are theorems of the
-author's stalex444/pdt-hermite-signature-compositum at commit 5aa870e8 (statements (8) and (11)
-there), cited and not compared here. The circle-freeness of `ℚ(ρ, Q)` (statement (17) there) is
-ported to this repository (`InflationDimension/Compositum`) and used in (9). The author's
-registered entry PALOMAR-2026-09-04-000004 shows (`quartic_record_obstruction`) that a window on
-the real expanding place of `ℤ[Q]`, observed at the complex place, gives a set that is not
-uniformly discrete. Statement (4) accounts for this: every admissible `Q`-invariant scheme on `ℤ⁴`
-has `H ⊆ E^s`, the line of the contracting place `q′`, and (11) is that scheme.
+their definition (companion matrices), so `Cρ^i ⊗ CQ^j` is multiplication by `ρ^i Q^j` in the
+product basis. That the `ρ^i Q^j` are a `ℤ`-basis of the ring of integers of `ℚ(ρ, Q)` is
+statement (8) of the author's registered entry PALOMAR-2026-10-21-000012
+(stalex444/pdt-hermite-signature-compositum@5aa870e8); that `GramRho`, `GramQ` and
+`GramRho ⊗ GramQ` are the Gram matrices of the trace forms in these bases is statements (8), (9)
+and (19) of the author's registered entry PALOMAR-2026-09-02-000014, in which `ℚ(ρ) ⊗ ℚ(Q)` is
+the field `ℚ(ρ, Q)` (its (23)). These are cited, not compared. The circle-freeness of `ℚ(ρ, Q)`
+(statement (17) of PALOMAR-2026-10-21-000012) is ported to this repository
+(`InflationDimension/Compositum`) and used in (9). The author's registered entry
+PALOMAR-2026-09-04-000004 shows (`quartic_record_obstruction`) that a window on the real expanding
+place of `ℤ[Q]`, observed at the complex place, gives a set that is not uniformly discrete.
+Keeping the dropped coordinate at `q′` gives the model set of the `Q`-invariant scheme whose
+window line is the expanding real place; it is a Delone set by (13), but it is not `Q`-admissible
+by (4), since every admissible `Q`-invariant scheme on `ℤ⁴` has `H ⊆ E^s`, the line of `q′`.
+Dropping that coordinate, which is unbounded along `Q⁻ⁿ` (`quartic_escaping_coordinate`), is what
+destroys uniform discreteness. (11) is the admissible scheme.
 
 **Definitions.** The entry's definitions are stated in this file, between the lines
 `-- BEGIN SHARED DEFINITIONS` and `-- END SHARED DEFINITIONS`; that text is byte for byte the body
@@ -152,7 +154,8 @@ pure-point diffraction of the model sets (Hof 1995; Schlottmann 2000), which are
 **Application (cited, not a claim of the entry).** In the author's Pisot Dimensional Theory,
 `ℚ(ρ)` is the arithmetic of three-dimensional space and `ℚ(Q)` the arithmetic of
 four-dimensional spacetime, and their compositum `K`, whose integers are `ℤ[ρ] ⊗ ℤ[Q]`, is the
-parent of both (stalex444/pdt-hermite-signature-compositum@5aa870e8, statements (7), (8)). A
+parent of both (the author's registered entry PALOMAR-2026-10-21-000012
+(stalex444/pdt-hermite-signature-compositum@5aa870e8), statements (7), (8)). A
 model set is the shadow of a lattice cut through a window, a standard mathematical model of a
 quasicrystal (Moody 2000). Read through the theory, this entry's theorems fix how many dimensions
 each of the theory's inflations needs to be the symmetry of one, and which ones.
@@ -164,7 +167,7 @@ in `ℚ(ρ)`, the real one, and the spectral projection maps the quartic sector 
 `ℤ[Q]` with its trace form unchanged, of Lorentzian type `(3, 1)` (10). `ρ` acts on them as a pure
 dilation by `ρ ≈ 1.3247`, the same stretch in every direction (10). Symmetrically, the unit
 `θ = −Q⁻¹ = 1 − Q³` needs exactly three, and those three are a copy of space's: `ℚ(ρ)`'s real space
-with its form of type `(2, 1)` unchanged, dilated by `θ₄ = −1/q′ ≈ 1.3803` (8, 9, 10). Taken over
+with its form of type `(2, 1)` unchanged, dilated by `t = −1/q′ ≈ 1.3803` (8, 9, 10). Taken over
 all three embeddings of `ℚ(ρ)` instead of the one expanding embedding, the form on the quartic
 sector is tripled: the factor 3 of the companion's statement (13).
 
@@ -173,7 +176,8 @@ exactly one: the line, over a two-dimensional window at the complex place (8). T
 substitution's control-point sets are regular model sets in this scheme, with Rauzy-fractal
 windows in `ℂ` (Baake and Grimm 2020), and in the theory the line is time and its points are the
 ticks (PALOMAR-2026-08-19-000006, PALOMAR-2026-10-18-000019). The coupling ruler `ρQ`, which
-generates the whole parent (the companion's statement (15); PALOMAR-2026-09-01-000005), needs
+generates the parent field (`ℚ(ρQ) = K`; the companion's statement (15), where `ℤ[ρQ]` has index
+53 in the integers; PALOMAR-2026-09-01-000005), needs
 exactly five, over a seven-dimensional window (9): one real and two complex expanding places, a
 dimension neither sector has.
 
@@ -436,16 +440,21 @@ theorem least_physical_dimension_squarefree {ι : Type*} [Fintype ι] [Decidable
   sorry
 
 /-- **(4) The hyperbolic case**, every `χ_A` (`det A ≠ 0`, no eigenvalue on the unit circle). An
-`A`-invariant scheme is admissible if and only if `E ⊇ E^u(A)`, if and only if `H ⊆ E^s(A)`.
-`(E^u, E^s)` carries an admissible scheme, `d(A) = U(A)`, and every admissible scheme with
-`dim E = U(A)` is `(E^u, E^s)`. No diagonalizability is assumed. For diagonalizable maps and
-generic schemes the necessity of `H ⊆ E^s` is Masáková–Mazáč–Pelantová (2021), Prop. 13.2 and
-Cor. 13.4; the statement is the inclusion-notion analogue of the expansive case of
+`A`-invariant scheme is admissible if and only if `E ⊇ E^u(A)`, if and only if `H ⊆ E^s(A)`, and
+an `A`-invariant splitting `ℝ^ι = E ⊕ H` carries an admissible scheme if and only if
+`E ⊇ E^u(A)`. `(E^u, E^s)` carries an admissible scheme, `d(A) = U(A)`, and every admissible
+scheme with `dim E = U(A)` is `(E^u, E^s)`. No diagonalizability is assumed. For diagonalizable
+maps and generic schemes the necessity of `H ⊆ E^s` is Masáková–Mazáč–Pelantová (2021),
+Prop. 13.2 and Cor. 13.4; the statement is the inclusion-notion analogue of the expansive case of
 Harriss–Koivusalo–Walton (preprint, arXiv:2512.13659), Thm 3.3. -/
 theorem hyperbolic_case {ι : Type*} [Fintype ι] [DecidableEq ι] (A : Matrix ι ι ℤ)
     (hdet : A.det ≠ 0) (hhyp : IsHyperbolic A) :
     (∀ S : InvariantCPS A, (S.Admissible ↔ unstableSet A ⊆ (S.E : Set (ι → ℝ))) ∧
       (S.Admissible ↔ (S.H : Set (ι → ℝ)) ⊆ stableSet A)) ∧
+    (∀ (E H : Submodule ℝ (ι → ℝ)), IsCompl E H → (∀ v ∈ E, act A v ∈ E) →
+      (∀ v ∈ H, act A v ∈ H) →
+      ((∃ S : InvariantCPS A, S.E = E ∧ S.H = H ∧ S.Admissible) ↔
+        unstableSet A ⊆ (E : Set (ι → ℝ)))) ∧
     (∃ S : InvariantCPS A, (S.E : Set (ι → ℝ)) = unstableSet A ∧
       (S.H : Set (ι → ℝ)) = stableSet A ∧ S.Admissible) ∧
     IsLeast (physDims A) (unstableCount A) ∧
@@ -504,7 +513,7 @@ theorem squarefree_hypothesis_needed :
 multiplication by `ρ`, `ρ⁻¹ = ρ² − 1`, `Q` and `θ = −Q⁻¹ = 1 − Q³` has the stated characteristic
 polynomials, is hyperbolic, and needs exactly `1`, `2`, `3`, `1` physical dimensions; by (4) each
 minimum is attained only by `(E^u, E^s)`. The one expanding eigenvalue of `θ` is real,
-`θ₄ = −1/q′ ≈ 1.38028`, where `q′` is the negative real root of `x⁴ − x − 1`. -/
+`t = −1/q′ ≈ 1.38028`, where `q′` is the negative real root of `x⁴ − x − 1`. -/
 theorem sector_rings :
     Cρ.charpoly = X ^ 3 - X - 1 ∧ (Cρ ^ 2 - 1).charpoly = X ^ 3 + X ^ 2 - 1 ∧
     CQ.charpoly = X ^ 4 - X - 1 ∧ (1 - CQ ^ 3).charpoly = X ^ 4 - X ^ 3 - 1 ∧

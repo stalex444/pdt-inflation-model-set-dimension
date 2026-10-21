@@ -23,7 +23,8 @@ Statements (8), (9), (10) of `Challenge.lean`, at the level of explicit integer 
 * (9), general part: for each pair of roots `(z, w)` there is a ring map `L → ℂ` from the field
   `L = ℚ(ρ)[Y]/(Y⁴ − Y − 1)` sending `ρ ↦ z`, `Q ↦ w`, so `α(z, w)` is a conjugate of
   `β = Σ a(i,j) ρ^i Q^j ∈ L`. The field `L` is circle-free (an element with a conjugate on the unit
-  circle is `±1`; ported from stalex444/pdt-hermite-signature-compositum@5aa870e8, see
+  circle is `±1`; ported from the author's registered entry PALOMAR-2026-10-21-000012,
+  stalex444/pdt-hermite-signature-compositum@5aa870e8, see
   `InflationDimension.Compositum.CircleFree`), and `β = c ∈ ℤ` forces `a = c · e₀₀` because
   `V₃ ⊗ V₄` is invertible.
 * (10): the spectral projections are `Π ⊗ I₄` and `I₃ ⊗ Π′` with `Π = v ℓᵀ/(ℓ·v)` built from the
@@ -1366,7 +1367,7 @@ theorem gramQ_eq_sum_roots (i j : Fin 4) :
 /-- **(8) The sector rings.** On `ℤ[ρ]` (basis `1, ρ, ρ²`) and `ℤ[Q]` (basis `1, Q, Q², Q³`),
 multiplication by `ρ`, `ρ⁻¹ = ρ² − 1`, `Q` and `θ = −Q⁻¹ = 1 − Q³` has the stated characteristic
 polynomials, is hyperbolic, and needs exactly `1`, `2`, `3`, `1` physical dimensions. The one
-expanding eigenvalue of `θ` is real, `θ₄ = −1/q′ ≈ 1.38028`. -/
+expanding eigenvalue of `θ` is real, `t = −1/q′ ≈ 1.38028`. -/
 theorem sector_rings :
     Cρ.charpoly = X ^ 3 - X - 1 ∧ (Cρ ^ 2 - 1).charpoly = X ^ 3 + X ^ 2 - 1 ∧
     CQ.charpoly = X ^ 4 - X - 1 ∧ (1 - CQ ^ 3).charpoly = X ^ 4 - X ^ 3 - 1 ∧

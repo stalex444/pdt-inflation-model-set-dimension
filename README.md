@@ -12,15 +12,18 @@ least physical dimension `dim E` of an admissible scheme:
 * for `det A ≠ 0` and `χ_A` squarefree over `ℚ`, the admissible splittings are characterized and
   `d(A) = U(A) + circleCount A`, where `U(A)` counts the eigenvalues of modulus `> 1` and
   `circleCount A` counts `1` for each factor `x ± 1` and `2` for each other cyclotomic factor (3);
-* for hyperbolic `A`, any `χ_A`, `d(A) = U(A)`, attained only by the unstable/stable splitting
+* for `det A ≠ 0` and hyperbolic `A`, any `χ_A`, an invariant splitting carries an admissible
+  scheme exactly when `E ⊇ E^u`, and `d(A) = U(A)`, attained only by the unstable/stable splitting
   `(E^u, E^s)` (4);
-* `d(A) = 1` exactly for the Pisot and Salem cases (5), the cyclotomic case gives planes (6), and
-  the squarefree hypothesis of (3) cannot be dropped (7);
+* for `det A ≠ 0` and `χ_A` squarefree, `d(A) = 1` exactly when `χ_A` is irreducible with one root
+  of modulus `> 1` (up to sign a Pisot or Salem number) or `A = ±1` on `ℤ¹` (5); with every root on
+  the unit circle, `d(A) = Σ_p min(deg p, 2)`, a plane for each `Φ_n` with `n ≥ 3` (6); and the
+  squarefree hypothesis cannot be dropped (7);
 * model sets are Delone sets with uniformly discrete difference sets (13).
 
-These are then applied to multiplication by `ρ` (`ρ³ = ρ + 1`), `Q` (`Q⁴ = Q + 1`),
-`θ = −Q⁻¹ = 1 − Q³` and their products on `ℤ[ρ]`, `ℤ[Q]` and the degree-12 lattice
-`ℤ[ρ] ⊗ ℤ[Q]` (8)–(11), with a Salem witness (12). Thirteen compared theorems; every one on the
+These are then applied to multiplication by `ρ` (`ρ³ = ρ + 1`), `ρ⁻¹`, `Q` (`Q⁴ = Q + 1`),
+`θ = −Q⁻¹ = 1 − Q³` and `ρQ` on `ℤ[ρ]`, `ℤ[Q]` and the degree-12 lattice `ℤ[ρ] ⊗ ℤ[Q]`
+(8)–(11), with a Salem witness (12). Thirteen compared theorems; every one on the
 axioms `propext`, `Classical.choice`, `Quot.sound` alone.
 
 ## The compared statements
@@ -47,7 +50,8 @@ stated there, between `-- BEGIN SHARED DEFINITIONS` and `-- END SHARED DEFINITIO
    if and only if it is cyclotomic.
 4. `hyperbolic_case` — for `det A ≠ 0` and no eigenvalue on the unit circle, any `χ_A` (no
    diagonalizability): a scheme is admissible if and only if `E ⊇ E^u(A)`, if and only if
-   `H ⊆ E^s(A)`; `(E^u, E^s)` carries an admissible scheme; `d(A) = U(A)`; and every admissible
+   `H ⊆ E^s(A)`; an `A`-invariant splitting `E ⊕ H` carries an admissible scheme if and only if
+   `E ⊇ E^u(A)`; `(E^u, E^s)` carries an admissible scheme; `d(A) = U(A)`; and every admissible
    scheme with `dim E = U(A)` is `(E^u, E^s)`. Here `E^u` is the set of vectors with a backward
    orbit tending to `0`, `E^s` the set of vectors whose forward orbit tends to `0`.
 5. `dimension_one_pisot_or_salem` — for `det A ≠ 0` and `χ_A` squarefree: `d(A) = 1` if and only
@@ -63,7 +67,7 @@ stated there, between `-- BEGIN SHARED DEFINITIONS` and `-- END SHARED DEFINITIO
 8. `sector_rings` — `Cρ`, `Cρ² − 1`, `CQ`, `1 − CQ³` (multiplication by `ρ`, `ρ⁻¹`, `Q`, `θ` on
    `ℤ[ρ]`, `ℤ[Q]` in the power bases) have characteristic polynomials `x³ − x − 1`,
    `x³ + x² − 1`, `x⁴ − x − 1`, `x⁴ − x³ − 1`, are hyperbolic, and have `d = 1, 2, 3, 1`; the one
-   expanding eigenvalue of `θ` is real, `θ₄ = −1/q′ ∈ (1.3802, 1.3803)`, `q′` the negative root
+   expanding eigenvalue of `θ` is real, `t = −1/q′ ∈ (1.3802, 1.3803)`, `q′` the negative root
    of `x⁴ − x − 1`.
 9. `compositum_lattice` — for every integer combination `α = Σ a(i,j) ρ^i Q^j` other than `0`,
    `±1`, the matrix `mulMatrix a = Σ a(i,j) Cρ^i ⊗ CQ^j` is invertible and hyperbolic, so
@@ -92,25 +96,28 @@ stated there, between `-- BEGIN SHARED DEFINITIONS` and `-- END SHARED DEFINITIO
 
 * **Known in other formulations; no novelty claimed.** The necessity half of (1) is
   Masáková–Mazáč–Pelantová (MMP, Linear Algebra Appl. 625 (2021)), Prop. 13.2 and Cor. 13.4
-  (numbering of arXiv:1909.10753v2; the journal numbering was not checked), for diagonalizable
-  maps and generic schemes; Baake–Moody (2001), §1.4, remarked it for similarities. (2) is
-  Kronecker's density theorem, in the cut-and-project form of Pleasants (2000), Cor. 2.12 (read
-  through MMP, Prop. 3.3(iii); the primary was not opened). (4): for substitutional patterns
-  (up to mutual local derivability) with expansive inflation, Harriss–Koivusalo–Walton (HKW,
-  arXiv:2512.13659, preprint, v1) prove that the internal space is the contracting subspace (Thm
-  3.3); (4) is its analogue for the inclusion notion, and contains, with no diagonalizability, the
-  necessity of `H ⊆ E^s` from MMP Cor. 13.4. (5) is the lattice-first, model-set form of Meyer's
+  (numbering of arXiv:1909.10753v2; the journal numbering was not checked), for diagonalizable maps
+  and generic schemes; Baake–Moody (2001), §1.4, remarked it for similarities. (2) is Kronecker's
+  density theorem (Kronecker 1884, not opened), in the cut-and-project form of Pleasants (2000),
+  Cor. 2.12 (read through MMP, Prop. 3.3(iii); the primary was not opened). (4): for substitutional
+  patterns (up to mutual local derivability) with expansive inflation, Harriss–Koivusalo–Walton
+  (HKW, arXiv:2512.13659, preprint, v1) prove that the internal space is the contracting subspace
+  (Thm 3.3); (4) is its analogue for the inclusion notion, and contains, with no diagonalizability,
+  the necessity of `H ⊆ E^s` from MMP Cor. 13.4. (5) is the lattice-first, model-set form of Meyer's
   theorem (Meyer 1972; 1995, Thm 6, read through Berthé–Yassawi, arXiv:2404.04116, Thm 2.2); the
-  explicit Salem model set on `ℤ^s` is Solomyak (2020), §4(iv), credited there to Akiyama, and
-  (12) is an instance. (6): the planar cyclotomic model sets (Huck, arXiv:math/0701141, Def. 11 and
-  Rem. 18; Baake–Grimm 2013, §7.3) have physical dimension 2 and internal dimension `φ(n) − 2`;
-  `φ(n)` is the least lattice rank for a planar model set with `n`-fold symmetry
-  (Baake–Joseph–Schlottmann 1991), the dual quantity, and is not Hiller's bound `ψ(n)` for
-  lattices with an order-`n` symmetry. (13) is classical (Meyer 1972; Moody 1997).
+  explicit Salem model set on `ℤ^s` is Solomyak (2020), §4(iv), credited there to Akiyama, and (12)
+  is an instance. (6): the planar cyclotomic model sets (Huck, arXiv:math/0701141, Def. 11 and Rem.
+  18; Baake–Grimm 2013, §7.3) have physical dimension 2 and internal dimension `φ(n) − 2`; `φ(n)` is
+  the least lattice rank for a planar model set with `n`-fold symmetry (Baake–Joseph–Schlottmann
+  1991), the dual quantity, and is not Hiller's bound `ψ(n)` for lattices with an order-`n`
+  symmetry. (13) is classical (Meyer 1972; Moody 1997).
 * **(11) is not new.** The scheme and model set of (11) are, in substance, instances of MMP
   Thm 13.1 and of HKW §3.4 (codimension-one schemes with interval windows), and the translation
   set of the Thurston dual tiling of the Pisot unit `−1/q′` is a model set of the same kind
   (Kalle–Steiner 2012, Lemma 4.3). The entry gives the instance explicitly and in the kernel.
+* **New here, beyond the cited cases.** The lattice-first question; the characterization of every
+  admissible splitting ((3)(a)(b), (4)); the admissibility criterion (1) and the hyperbolic case
+  (4) for every integer matrix, with no diagonalizability; and the uniqueness of minimal schemes.
 * **Priority, bounded (literature).** The window criterion and the hyperbolic case are known:
   MMP (Prop. 13.2, Cor. 13.4, for diagonalizable maps and generic schemes) and HKW (Thm 3.3,
   expansive inflations; preprint). The dimension-one case is Meyer's (1972; 1995, Thm 6), and the
@@ -141,27 +148,33 @@ stated there, between `-- BEGIN SHARED DEFINITIONS` and `-- END SHARED DEFINITIO
   `χ_A` (`InflationDimension.exists_int_mem_ker`, with no squarefree or `det` hypothesis), is
   proved here.
 * **Instances at matrix level.** Statements (8)–(11) are about explicit integer matrices and
-  explicit Gram matrices. That `mulMatrix a` is multiplication by `α = Σ a(i,j) ρ^i Q^j` on the
-  ring of integers `ℤ[ρ] ⊗ ℤ[Q]` of `K = ℚ(ρ, Q)` in the basis `ρ^i Q^j`, and that
-  `GramRho ⊗ GramQ` is the Gram matrix of the trace form of `K` in that basis (traces multiply
-  across the two linearly disjoint sectors), are theorems of the author's
-  stalex444/pdt-hermite-signature-compositum at commit 5aa870e8 (statements (8) and (11) there;
-  submitted to the registry, registration pending), cited here and not compared. The degree-12
-  field and its circle-freeness (no element other than `±1` has a conjugate on the unit circle,
-  statement (17) there) are ported, with credit, into `InflationDimension/Compositum/` and used in
-  the proof of (9); the eigenvalues of `mulMatrix a` are the twelve conjugates of `α`, so `U`
-  counts the expanding embeddings of `α`. The general slice lemma behind the companion's factor 3
-  (the restriction of the trace form of `K` to a sector over all three embeddings of `ℚ(ρ)`) is
-  not compared here; (10) uses the one expanding embedding, where the multiple is exactly `1`.
+  explicit Gram matrices. That `Cρ` and `CQ` are multiplication by `ρ` and `Q` in the power bases is
+  their definition (companion matrices), so `Cρ^i ⊗ CQ^j` is multiplication by `ρ^i Q^j` in the
+  product basis and `mulMatrix a` is multiplication by `α = Σ a(i,j) ρ^i Q^j`. That the `ρ^i Q^j`
+  are a `ℤ`-basis of the ring of integers of `K = ℚ(ρ, Q)` is statement (8) of the author's
+  registered entry PALOMAR-2026-10-21-000012 (stalex444/pdt-hermite-signature-compositum@5aa870e8);
+  that `GramRho`, `GramQ` and `GramRho ⊗ GramQ` are the Gram matrices of the trace forms in these
+  bases is statements (8), (9) and (19) of the author's registered entry PALOMAR-2026-09-02-000014,
+  in which `ℚ(ρ) ⊗ ℚ(Q)` is the field `ℚ(ρ, Q)` (its (23)). These are cited, not compared. The
+  degree-12 field and its circle-freeness (no element other than `±1` has a conjugate on the unit
+  circle, statement (17) of PALOMAR-2026-10-21-000012) are ported, with credit, into
+  `InflationDimension/Compositum/` and used in the proof of (9); the eigenvalues of `mulMatrix a`
+  are the twelve conjugates of `α`, so `U` counts the expanding embeddings of `α`. The general slice
+  lemma behind the companion's factor 3 (the restriction of the trace form of `K` to a sector over
+  all three embeddings of `ℚ(ρ)`) is not compared here; (10) uses the one expanding embedding, where
+  the multiple is exactly `1`.
 * **The author's registered entries.** PALOMAR-2026-09-04-000004 (chiral Padovan histories) is
   the registered entry this one overlaps most. Its `cubic_record_windows` proves the Meyer
   property of the cubic record window by norm arguments, with no model-set definition; its
   `quartic_record_obstruction` shows that a window on the real expanding place of `ℤ[Q]`,
   observed at the complex place, gives a set that is not uniformly discrete, and its
   `quartic_escaping_coordinate` that the omitted coordinate, at `q′`, is unbounded along the
-  units `Q⁻ⁿ`. Statement (4) explains both: every admissible `Q`-invariant scheme on `ℤ⁴` has
-  `H ⊆ E^s`, the line of the contracting place `q′`, and (11) builds that scheme, whose model set
-  is a Delone set by (13).
+  units `Q⁻ⁿ`. Keeping the dropped coordinate at `q′` gives the model set of the `Q`-invariant
+  scheme whose window line is the expanding real place; it is a Delone set by (13), but it is not
+  `Q`-admissible by (4), since every admissible `Q`-invariant scheme on `ℤ⁴` has `H ⊆ E^s`, the
+  line of `q′`. Dropping that coordinate, which is unbounded along `Q⁻ⁿ`
+  (`quartic_escaping_coordinate`), is what destroys uniform discreteness. (11) is the admissible
+  scheme.
 
 ## Prior formalizations
 
@@ -169,13 +182,15 @@ As of a search completed 2026-10-20 — Mathlib master and its pull-request inde
 registry entries; Lean, Coq/Rocq, Isabelle and Agda repositories on GitHub; the full Isabelle AFP
 index (1,038 entries); Zenodo; OpenAlex; arXiv — we found no proof-assistant development that
 defines a cut-and-project scheme in general dimension (a lattice `Γ ⊂ ℝ^N` with a splitting
-`ℝ^N = E ⊕ H` and a window `W ⊂ H`) or a model set `Λ(W)`, that proves a model set to be a Meyer
-set (a Delone set whose difference set is uniformly discrete), or that formalizes an inflation of
-one. Narrower developments exist: a one-dimensional strip projection of `ℤ²` with period formulas
-for rational slope and no finite period for irrational slope (D. Kunert,
-github.com/dkunert/cut-and-project, 2026); Bohr₀ sets (PALOMAR-2026-10-18-000015); a
-trivial-kernel lemma for one linear map `ℤ⁴ → ℝ³` (Zenodo 10.5281/zenodo.21796509); and the
-author's PALOMAR-2026-09-04-000004 and PALOMAR-2026-08-19-000006. Mathlib has Delone sets
+`ℝ^N = E ⊕ H` and a window `W ⊂ H`) or a model set `Λ(W)`, that proves model sets in general (every
+scheme and window) to be Meyer sets (Delone sets whose difference sets are uniformly discrete), or
+that formalizes an inflation of one. Narrower developments exist: a one-dimensional strip projection
+of `ℤ²` with period formulas for rational slope and no finite period for irrational slope
+(D. Kunert, github.com/dkunert/cut-and-project, 2026); Bohr₀ sets (PALOMAR-2026-10-18-000015); a
+trivial-kernel lemma for one linear map `ℤ⁴ → ℝ³` (J. Reed, Zenodo 10.5281/zenodo.21796509); and the
+author's PALOMAR-2026-09-04-000004 (the Meyer property of one cubic window set,
+`cubic_record_windows`) and PALOMAR-2026-08-19-000006 (its uncompared module `Settling.lean`:
+`meyer_separation`, `windowed_separation`). Mathlib has Delone sets
 (`Mathlib/Analysis/AperiodicOrder/Delone`, N. Jensen), used in (13); the entry does not claim the
 first Delone set in Lean. Kronecker's density theorem (2) is not claimed first in any prover; only
 Mathlib was checked for it, and Mathlib at the pin has one-dimensional analogues. This is a search
@@ -185,11 +200,11 @@ result, not a guarantee.
 
 In the author's Pisot Dimensional Theory, `ℚ(ρ)` is the arithmetic of three-dimensional space and
 `ℚ(Q)` the arithmetic of four-dimensional spacetime, and their compositum `K`, whose integers are
-`ℤ[ρ] ⊗ ℤ[Q]`, is the parent of both (stalex444/pdt-hermite-signature-compositum@5aa870e8,
-statements (7), (8)). A model set is the shadow of a lattice cut through a window, a standard
-mathematical model of a quasicrystal (Moody 2000). Read through the theory, this entry's theorems
-fix how many dimensions each of the theory's inflations needs to be the symmetry of one, and
-which ones.
+`ℤ[ρ] ⊗ ℤ[Q]`, is the parent of both (the author's registered entry PALOMAR-2026-10-21-000012
+(stalex444/pdt-hermite-signature-compositum@5aa870e8), statements (7), (8)). A model set is the
+shadow of a lattice cut through a window, a standard mathematical model of a quasicrystal (Moody
+2000). Read through the theory, this entry's theorems fix how many dimensions each of the theory's
+inflations needs to be the symmetry of one, and which ones.
 
 Space inflates the parent through spacetime, and spacetime inflates it through space. On the
 parent's lattice the plastic inflation `ρ` needs exactly four physical dimensions, and only one
@@ -198,18 +213,18 @@ embedding in `ℚ(ρ)`, the real one, and the spectral projection maps the quart
 carrying `ℤ[Q]` with its trace form unchanged, of Lorentzian type `(3, 1)` (10). `ρ` acts on them
 as a pure dilation by `ρ ≈ 1.3247`, the same stretch in every direction (10). Symmetrically, the
 unit `θ = −Q⁻¹ = 1 − Q³` needs exactly three, and those three are a copy of space's: `ℚ(ρ)`'s real
-space with its form of type `(2, 1)` unchanged, dilated by `θ₄ = −1/q′ ≈ 1.3803` (8, 9, 10).
+space with its form of type `(2, 1)` unchanged, dilated by `t = −1/q′ ≈ 1.3803` (8, 9, 10).
 Taken over all three embeddings of `ℚ(ρ)` instead of the one expanding embedding, the form on the
 quartic sector is tripled: the factor 3 of the companion's statement (13).
 
-The clock needs one dimension; the ruler needs five. On `ℤ[ρ]` the plastic inflation needs
-exactly one: the line, over a two-dimensional window at the complex place (8). The plastic
-substitution's control-point sets are regular model sets in this scheme, with Rauzy-fractal
-windows in `ℂ` (Baake and Grimm 2020), and in the theory the line is time and its points are the
-ticks (PALOMAR-2026-08-19-000006, PALOMAR-2026-10-18-000019). The coupling ruler `ρQ`, which
-generates the whole parent (the companion's statement (15); PALOMAR-2026-09-01-000005), needs
-exactly five, over a seven-dimensional window (9): one real and two complex expanding places, a
-dimension neither sector has.
+The clock needs one dimension; the ruler needs five. On `ℤ[ρ]` the plastic inflation needs exactly
+one: the line, over a two-dimensional window at the complex place (8). The plastic substitution's
+control-point sets are regular model sets in this scheme, with Rauzy-fractal windows in `ℂ` (Baake
+and Grimm 2020), and in the theory the line is time and its points are the ticks
+(PALOMAR-2026-08-19-000006, PALOMAR-2026-10-18-000019). The coupling ruler `ρQ`, which generates the
+parent field (`ℚ(ρQ) = K`; the companion's statement (15), where `ℤ[ρQ]` has index 53 in the
+integers; PALOMAR-2026-09-01-000005), needs exactly five, over a seven-dimensional window (9): one
+real and two complex expanding places, a dimension neither sector has.
 
 The parent holds no circle, so every minimal scheme is forced. Off the parent, eigenvalues on the
 unit circle change the count: a Salem inflation needs only a line (5, 12), multiplication by a
@@ -227,12 +242,13 @@ as it has expanding embeddings (a complex place counts twice), and has a unique 
   Mathlib only.
 * `InflationDimension/Defs.lean` — the same definitions, byte for byte; the proof modules are
   built on it.
-* `InflationDimension/Admissibility.lean` (1), (2); `Normal.lean` (3)(a)(b) and the rational
-  kernel lemma; `Count.lean` (3); `Hyperbolic.lean` (4); `DimOne.lean` (5), (6), (7), (12);
+* `InflationDimension/Admissibility.lean` (1), (2); `Normal.lean` (3)(a)(b) and the rational kernel
+  lemma; `Count.lean` (3); `Hyperbolic.lean` (4); `DimOne.lean` (5), (6), (7), (12);
   `Compositum/Tower.lean`, `Compositum/CircleFree.lean` (the degree-12 field and its
-  circle-freeness, ported from stalex444/pdt-hermite-signature-compositum@5aa870e8, which ported
-  its `ℚ`-level inputs from PALOMAR-2026-09-02-000014); `Instances.lean` (8), (9), (10);
-  `ModelSetQ.lean` (11); `Meyer.lean` (13).
+  circle-freeness, ported from the author's registered entry PALOMAR-2026-10-21-000012
+  (stalex444/pdt-hermite-signature-compositum@5aa870e8), which ported its `ℚ`-level inputs from
+  PALOMAR-2026-09-02-000014); `Instances.lean` (8), (9), (10); `ModelSetQ.lean` (11); `Meyer.lean`
+  (13).
 * `Solution.lean` — the same statements, each proved by one application of the theorem of the
   same name in namespace `InflationDimension`.
 * `comparator.json` — the thirteen compared declarations, in order, and the permitted axioms.
@@ -266,7 +282,10 @@ lake build
   Pleasants), in Directions in Mathematical Quasicrystals, CRM Monogr. Ser. 13, AMS (2000),
   95–141. doi:10.1090/crmm/013/04
 - L. Kronecker, "Zwei Sätze über Gleichungen mit ganzzahligen Coefficienten", J. reine angew.
-  Math. 53 (1857), 173–175. doi:10.1515/crll.1857.53.173
+  Math. 53 (1857), 173–175. doi:10.1515/crll.1857.53.173 (the root-of-unity theorem, (3))
+- L. Kronecker, "Näherungsweise ganzzahlige Auflösung linearer Gleichungen", Sitzungsber. Königl.
+  Preuss. Akad. Wiss. Berlin (1884), 1179–1193, continued 1271–1300; JFM 16.0083.02,
+  17.0073.01 (the density theorem, (2))
 - Y. Meyer, *Algebraic Numbers and Harmonic Analysis*, North-Holland Math. Library 2 (1972).
 - Y. Meyer, "Quasicrystals, Diophantine approximation and algebraic numbers", in Beyond
   Quasicrystals, Springer (1995), 3–16. doi:10.1007/978-3-662-03130-8_1
@@ -297,6 +316,10 @@ lake build
   doi:10.1007/BF02101595
 - "Generalized model sets and dynamical systems" (M. Schlottmann), in Directions in Mathematical
   Quasicrystals, CRM Monogr. Ser. 13, AMS (2000), 143–159. doi:10.1090/crmm/013/05
+- D. A. Lind, "The entropies of topological Markov shifts and a related class of algebraic
+  integers", Ergodic Theory Dynam. Systems 4 (1984), 283–300. doi:10.1017/S0143385700002443
+- R. Kenyon, B. Solomyak, "On the characterization of expansion maps for self-affine tilings",
+  Discrete Comput. Geom. 43 (2010), 577–593. doi:10.1007/s00454-009-9199-6
 - M. Baake, U. Grimm, "Diffraction of a model set with complex windows", J. Phys.: Conf. Ser.
   1458 (2020), 012006. doi:10.1088/1742-6596/1458/1/012006; arXiv:1904.08285.
 

@@ -5,10 +5,11 @@ public import Mathlib
 /-!
 # Circle-freeness of a degree-12 field containing roots of `x³ − x − 1` and `x⁴ − x − 1`
 
-Ported from stalex444/pdt-hermite-signature-compositum@5aa870e8,
-`HermiteCompositum/Extras.lean` (the discriminant transport lemmas `discr_eq_index_sq_mul_discr`,
-`discr_map_of_monic`, `discr_minpoly_eq_discr_powerBasis`, `discr_int_eq_discr_rat`,
-`discr_pow_eq_discr_minpoly`, and the declarations from `monic_natDegree_two_eq` through
+Ported from the author's registered entry PALOMAR-2026-10-21-000012
+(stalex444/pdt-hermite-signature-compositum@5aa870e8), `HermiteCompositum/Extras.lean` (the
+discriminant transport lemmas `discr_eq_index_sq_mul_discr`, `discr_map_of_monic`,
+`discr_minpoly_eq_discr_powerBasis`, `discr_int_eq_discr_rat`, `discr_pow_eq_discr_minpoly`, and
+the declarations from `monic_natDegree_two_eq` through
 `circle_free`) and `HermiteCompositum/Defs.lean` (the definition `RootRigid`); changes: only these
 declarations are kept (the ruler-polynomial and Mahler-measure material is omitted), the section
 headers no longer carry that entry's statement numbers, and `RootRigid` is defined here.

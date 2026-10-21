@@ -5,9 +5,10 @@ public import Mathlib
 /-!
 # The degree-12 field `L = K₃[Y]/(Y⁴ − Y − 1)` over `K₃ = ℚ[X]/(X³ − X − 1)`
 
-Ported from stalex444/pdt-hermite-signature-compositum@5aa870e8, `HermiteCompositum/Defs.lean`
-(from the sections `HermiteCompositum.Port014` and `HermiteCompositum.Instance`: `fρ`, `fQ`, their
-monicity and degrees, `irreducible_map_of_coprime_finrank`, `algebraRat_eq`, the tower `K₃`, `g`,
+Ported from the author's registered entry PALOMAR-2026-10-21-000012
+(stalex444/pdt-hermite-signature-compositum@5aa870e8), `HermiteCompositum/Defs.lean` (from the
+sections `HermiteCompositum.Port014` and `HermiteCompositum.Instance`: `fρ`, `fQ`, their monicity
+and degrees, `irreducible_map_of_coprime_finrank`, `algebraRat_eq`, the tower `K₃`, `g`,
 `L` with its instances, `ρ`, `Q`, `aeval_ρ`, `aeval_Q`) and `HermiteCompositum/Instance.lean`
 (`g_natDegree`, `finrank_K₃_L`, `finrank_L`); changes: the irreducibility of `X³ − X − 1` and
 `X⁴ − X − 1` over `ℚ` is taken from Mathlib (`X_pow_sub_X_sub_one_irreducible_rat`) in place of
