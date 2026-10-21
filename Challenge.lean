@@ -83,8 +83,8 @@ unit circle.
    `x⁴ − x − 1`, `x⁴ − x³ − 1`, are hyperbolic and have `d = 1, 2, 3, 1`; the one expanding
    eigenvalue of `θ` is real and lies in `(1.3802, 1.3803)`.
 9. `compositum_lattice` — for every `a ≠ 0, ±e₀₀`, `mulMatrix a` (multiplication by
-   `Σ a(i,j) ρ^i Q^j` on `ℤ³ ⊗ ℤ⁴`) is invertible and hyperbolic, with `d = U`; for `ρ`, `θ`,
-   `ρQ` and `Q` the values are `4`, `3`, `5`, `9`.
+   `Σ a(i,j) ρ^i Q^j` on `ℤ³ ⊗ ℤ⁴`) is nonsingular (`det ≠ 0`) and hyperbolic, with `d = U`;
+   for `ρ`, `θ`, `ρQ` and `Q` the values are `4`, `3`, `5`, `9`.
 10. `compositum_dilations` — `ρ` (`mulρ`) acts on `E^u` as a real scalar `r`, `r³ = r + 1`, and
     the projection onto `E^u` along `E^s` maps the sector `e₀ ⊗ ℝ⁴` bijectively onto `E^u`,
     carrying the pairing of `GramRho ⊗ GramQ` to that of `GramQ` exactly; the same holds for
@@ -100,20 +100,23 @@ unit circle.
 13. `modelSet_isMeyer` — for every scheme and every window, `Λ(W)` is a Delone set in `E`
     (Mathlib's `Delone.DeloneSet`) and `Λ(W) − Λ(W)` is uniformly discrete.
 
-**Attributions.** Each statement's docstring names its sources, and the README gives them
-statement by statement. The mathematics of (1), (2), (4), (5), (6) and (13) is known in other
-formulations, and the scheme and model set of (11) are, in substance, an instance of
-Masáková–Mazáč–Pelantová (Linear Algebra Appl. 625 (2021) 279–321), Thm 13.1; none of this is
-claimed as new. New here, beyond the cited cases: the lattice-first question; the
-characterization of every admissible splitting ((3)(a)(b), (4)); the admissibility criterion (1)
-and the hyperbolic case (4) for every integer matrix, with no diagonalizability; and the
-uniqueness of minimal schemes. For squarefree `χ_A`, so for diagonalizable `A`, the count of (3)
-also follows from Masáková–Mazáč–Pelantová, Lemma 5.1, Prop. 8.1(iii) and Cor. 13.4 (numbering of
-arXiv:1909.10753v2). We did not find the least physical dimension for a given lattice map,
-statement (3), stated in the sources we read (search completed 2026-10-20); this is a search
-result, not a guarantee. The master's thesis of J. Mazáč (Czech Technical University in Prague,
-hdl 10467/82624), whose abstract treats existence for all linear maps and minimal scheme dimension
-for diagonalizable maps, physical map first, was not read: its full text is not public.
+**Attributions.** Each statement's docstring names its sources, and the README gives them statement
+by statement. The mathematics of (1), (2), (4), (5), (6) and (13) is known in other formulations,
+and the scheme and model set of (11) are, in substance, an instance of Masáková–Mazáč–Pelantová
+(Linear Algebra Appl. 625 (2021) 279–321), Thm 13.1; none of this is claimed as new. Beyond the
+cited cases, the entry proves the characterization of every admissible splitting ((3)(a)(b), (4));
+the admissibility criterion (1) and the hyperbolic case (4) for every integer matrix, with no
+diagonalizability; and the uniqueness of the minimal scheme when `A` is hyperbolic (4) or when `χ_A`
+is irreducible with `d(A) = 1` (5). For `det A ≠ 0` and squarefree `χ_A` with a factor `Φ_n`,
+`n ∉ {1, 2, 3, 4, 6}`, the minimal scheme is not unique, by (3). For squarefree `χ_A`, hence
+diagonalizable `A`, the count of (3) also follows from the arguments of Masáková–Mazáč–Pelantová,
+Lemma 5.1, Prop. 8.1(iii) and Cor. 13.4 (numbering of arXiv:1909.10753v2), which are stated there
+for generic (aperiodic) schemes, under which a factor `x ± 1`, `Φ₃`, `Φ₄` or `Φ₆` admits no scheme.
+We did not find the least physical dimension for a given lattice map, statement (3), stated in the
+sources we read (search completed 2026-10-20); this is a search result, not a guarantee. The
+master's thesis of J. Mazáč (Czech Technical University in Prague, hdl 10467/82624), whose abstract
+treats existence for all linear maps and minimal scheme dimension for diagonalizable maps, physical
+map first, was not read: its full text is not public.
 
 **The proofs.** No Jordan form and no diagonalization is used. Necessity in (3) comes from a
 rational kernel lemma (for an irreducible rational factor `p` of `χ_A`, `ker p(A)` contains a
@@ -182,13 +185,13 @@ exactly five, over a seven-dimensional window (9): one real and two complex expa
 dimension neither sector has.
 
 The parent holds no circle, so every minimal scheme is forced. Off the parent, eigenvalues on the
-unit circle change the count: a Salem inflation needs only a line (5, 12), multiplication by a
-primitive `n`-th root of unity, `n ≥ 3`, needs exactly a plane, and with squarefree
-characteristic polynomial every element of order `n ≥ 3` needs at least one (6). The parent has
-none. No element of `K` other than `±1` has a conjugate on the unit circle (the companion's
-statement (17)), so every inflation of the parent is hyperbolic, needs exactly as many dimensions
-as it has expanding embeddings (a complex place counts twice), and has a unique minimal scheme
-(4, 9).
+unit circle can change the count: a Salem inflation's circle eigenvalues lie in the window and
+cost nothing, so it still needs only a line (5, 12), but multiplication by a primitive `n`-th root
+of unity, `n ≥ 3`, needs exactly a plane, and with squarefree characteristic polynomial every
+element of order `n ≥ 3` needs at least one (6). The parent has none. No element of `K` other than
+`±1` has a conjugate on the unit circle (the companion's statement (17)), so every inflation of the
+parent is hyperbolic, needs exactly as many dimensions as it has expanding embeddings (a complex
+place counts twice), and has a unique minimal scheme (4, 9).
 -/
 
 -- BEGIN SHARED DEFINITIONS
@@ -420,8 +423,10 @@ admissible scheme if and only if every root of `q_H` lies in the closed unit dis
 irreducible factor of `χ_A` over `ℚ` shares a complex root with `q_E`. (c) Count:
 `d(A) = U(A) + circleCount A`, the second term counting `1` for each factor `x ± 1` and `2` for
 each other irreducible factor with all roots on the unit circle; those factors are exactly the
-cyclotomic ones (Kronecker). For diagonalizable `A` the count also follows from
-Masáková–Mazáč–Pelantová (2021), Lemma 5.1, Prop. 8.1(iii) and Cor. 13.4. -/
+cyclotomic ones (Kronecker). For squarefree `χ_A`, hence diagonalizable `A`, the count of (3)
+also follows from the arguments of Masáková–Mazáč–Pelantová (2021), Lemma 5.1, Prop. 8.1(iii) and
+Cor. 13.4, which are stated there for generic (aperiodic) schemes, under which a factor `x ± 1`,
+`Φ₃`, `Φ₄` or `Φ₆` admits no scheme. -/
 theorem least_physical_dimension_squarefree {ι : Type*} [Fintype ι] [DecidableEq ι]
     (A : Matrix ι ι ℤ) (hdet : A.det ≠ 0) (hsf : Squarefree (charpolyQ A)) :
     (∀ (E H : Submodule ℝ (ι → ℝ)), IsCompl E H → ∀ (hE : ∀ v ∈ E, act A v ∈ E)
@@ -484,9 +489,9 @@ theorem dimension_one_pisot_or_salem {ι : Type*} [Fintype ι] [DecidableEq ι] 
 /-- **(6) Finite order: the cyclotomic case.** If `χ_A` is squarefree over `ℚ` with all roots on
 the unit circle, every irreducible factor is cyclotomic and `d(A)` counts `1` for each factor
 `Φ₁ = x − 1`, `Φ₂ = x + 1` and `2` for each `Φ_n`, `n ≥ 3`. In particular every integer matrix
-with characteristic polynomial `Φ_n`, `n ≥ 3` (multiplication by `ζ_n` on `ℤ[ζ_n]`), has
-`d = 2`: the physical plane of the classical planar cyclotomic model sets, whose internal
-dimension is `φ(n) − 2`. -/
+with characteristic polynomial `Φ_n`, `n ≥ 3` (for example, multiplication by `ζ_n` on
+`ℤ[ζ_n]`), has `d = 2`: the physical plane of the classical planar cyclotomic model sets, whose
+internal dimension is `φ(n) − 2`. -/
 theorem finite_order_case {ι : Type*} [Fintype ι] [DecidableEq ι] (A : Matrix ι ι ℤ) :
     (Squarefree (charpolyQ A) → (∀ z ∈ eigenvalues A, ‖z‖ = 1) →
       (∀ p ∈ UniqueFactorizationMonoid.normalizedFactors (charpolyQ A),
@@ -526,9 +531,9 @@ theorem sector_rings :
 
 /-- **(9) The degree-12 lattice `ℤ[ρ] ⊗ ℤ[Q]`.** For every integer combination
 `α = Σ a(i,j) ρ^i Q^j` other than `0`, `1`, `−1`, multiplication by `α` in the product basis
-(`mulMatrix a`) is invertible and hyperbolic, so by (4) it needs exactly `U` physical
-dimensions, attained only by `(E^u, E^s)`. For `ρ`, `θ`, `ρQ` and `Q` the values are `4`, `3`,
-`5`, `9`. -/
+(`mulMatrix a`) is nonsingular (`det ≠ 0`) and hyperbolic, so by (4) it needs exactly `U`
+physical dimensions, attained only by `(E^u, E^s)`. For `ρ`, `θ`, `ρQ` and `Q` the values are
+`4`, `3`, `5`, `9`. -/
 theorem compositum_lattice :
     (∀ a : Fin 3 × Fin 4 → ℤ, a ≠ 0 → a ≠ Pi.single (0, 0) 1 → a ≠ -Pi.single (0, 0) 1 →
       (mulMatrix a).det ≠ 0 ∧ IsHyperbolic (mulMatrix a) ∧

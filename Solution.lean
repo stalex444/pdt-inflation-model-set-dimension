@@ -71,8 +71,10 @@ admissible scheme if and only if every root of `q_H` lies in the closed unit dis
 irreducible factor of `χ_A` over `ℚ` shares a complex root with `q_E`. (c) Count:
 `d(A) = U(A) + circleCount A`, the second term counting `1` for each factor `x ± 1` and `2` for
 each other irreducible factor with all roots on the unit circle; those factors are exactly the
-cyclotomic ones (Kronecker). For diagonalizable `A` the count also follows from
-Masáková–Mazáč–Pelantová (2021), Lemma 5.1, Prop. 8.1(iii) and Cor. 13.4. -/
+cyclotomic ones (Kronecker). For squarefree `χ_A`, hence diagonalizable `A`, the count of (3)
+also follows from the arguments of Masáková–Mazáč–Pelantová (2021), Lemma 5.1, Prop. 8.1(iii) and
+Cor. 13.4, which are stated there for generic (aperiodic) schemes, under which a factor `x ± 1`,
+`Φ₃`, `Φ₄` or `Φ₆` admits no scheme. -/
 theorem least_physical_dimension_squarefree {ι : Type*} [Fintype ι] [DecidableEq ι]
     (A : Matrix ι ι ℤ) (hdet : A.det ≠ 0) (hsf : Squarefree (charpolyQ A)) :
     (∀ (E H : Submodule ℝ (ι → ℝ)), IsCompl E H → ∀ (hE : ∀ v ∈ E, act A v ∈ E)
@@ -135,9 +137,9 @@ theorem dimension_one_pisot_or_salem {ι : Type*} [Fintype ι] [DecidableEq ι] 
 /-- **(6) Finite order: the cyclotomic case.** If `χ_A` is squarefree over `ℚ` with all roots on
 the unit circle, every irreducible factor is cyclotomic and `d(A)` counts `1` for each factor
 `Φ₁ = x − 1`, `Φ₂ = x + 1` and `2` for each `Φ_n`, `n ≥ 3`. In particular every integer matrix
-with characteristic polynomial `Φ_n`, `n ≥ 3` (multiplication by `ζ_n` on `ℤ[ζ_n]`), has
-`d = 2`: the physical plane of the classical planar cyclotomic model sets, whose internal
-dimension is `φ(n) − 2`. -/
+with characteristic polynomial `Φ_n`, `n ≥ 3` (for example, multiplication by `ζ_n` on
+`ℤ[ζ_n]`), has `d = 2`: the physical plane of the classical planar cyclotomic model sets, whose
+internal dimension is `φ(n) − 2`. -/
 theorem finite_order_case {ι : Type*} [Fintype ι] [DecidableEq ι] (A : Matrix ι ι ℤ) :
     (Squarefree (charpolyQ A) → (∀ z ∈ eigenvalues A, ‖z‖ = 1) →
       (∀ p ∈ UniqueFactorizationMonoid.normalizedFactors (charpolyQ A),
@@ -177,9 +179,9 @@ theorem sector_rings :
 
 /-- **(9) The degree-12 lattice `ℤ[ρ] ⊗ ℤ[Q]`.** For every integer combination
 `α = Σ a(i,j) ρ^i Q^j` other than `0`, `1`, `−1`, multiplication by `α` in the product basis
-(`mulMatrix a`) is invertible and hyperbolic, so by (4) it needs exactly `U` physical
-dimensions, attained only by `(E^u, E^s)`. For `ρ`, `θ`, `ρQ` and `Q` the values are `4`, `3`,
-`5`, `9`. -/
+(`mulMatrix a`) is nonsingular (`det ≠ 0`) and hyperbolic, so by (4) it needs exactly `U`
+physical dimensions, attained only by `(E^u, E^s)`. For `ρ`, `θ`, `ρQ` and `Q` the values are
+`4`, `3`, `5`, `9`. -/
 theorem compositum_lattice :
     (∀ a : Fin 3 × Fin 4 → ℤ, a ≠ 0 → a ≠ Pi.single (0, 0) 1 → a ≠ -Pi.single (0, 0) 1 →
       (mulMatrix a).det ≠ 0 ∧ IsHyperbolic (mulMatrix a) ∧

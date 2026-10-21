@@ -1388,8 +1388,8 @@ theorem sector_rings :
     rwa [U_θmat] at this
 
 /-- **(9) The degree-12 lattice `ℤ[ρ] ⊗ ℤ[Q]`.** Every `mulMatrix a` with `a ≠ 0, ±e₀₀` is
-invertible and hyperbolic, so it needs exactly `U` physical dimensions; for `ρ`, `θ`, `ρQ` and `Q`
-the values are `4`, `3`, `5`, `9`. -/
+nonsingular (`det ≠ 0`) and hyperbolic, so it needs exactly `U` physical dimensions; for `ρ`, `θ`,
+`ρQ` and `Q` the values are `4`, `3`, `5`, `9`. -/
 theorem compositum_lattice :
     (∀ a : Fin 3 × Fin 4 → ℤ, a ≠ 0 → a ≠ Pi.single (0, 0) 1 → a ≠ -Pi.single (0, 0) 1 →
       (mulMatrix a).det ≠ 0 ∧ IsHyperbolic (mulMatrix a) ∧

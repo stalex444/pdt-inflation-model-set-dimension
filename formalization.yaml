@@ -8,80 +8,84 @@ project:
     Kernel-checked proofs, in Lean 4 + Mathlib, about cut-and-project
     schemes on a fixed integer lattice Z^iota invariant under an integer
     matrix A: splittings R^iota = E + H into A-invariant subspaces with
-    Z^iota meeting H only in 0 and the projection of Z^iota to H dense in
-    H, a window W in H (bounded, containing a relative ball), the model set
+    Z^iota meeting H only in 0 and the projection of Z^iota to H dense in H,
+    a window W in H (bounded, containing a relative ball), the model set
     Lambda(W) = {pi_E g : g in Z^iota, pi_H g in W}, and admissibility, some
     window with A Lambda(W) contained in Lambda(W) (inflation symmetry in
-    Meyer's inclusion sense). The least physical dimension d(A) is the
-    least dim E over admissible schemes. Thirteen compared theorems. (1)
-    For every integer A, a scheme is admissible iff A is power-bounded on
-    H; then the orbit window is a compact convex symmetric invariant window;
-    the per-window criterion; and U(A) <= dim E, U(A) the number of
-    eigenvalues of modulus > 1. (2) Kronecker's density criterion in
-    cut-and-project form. (3) For det A != 0 and chi_A squarefree over Q:
-    every invariant splitting is E = ker q_E(A), H = ker q_H(A) with
-    chi_A = q_E q_H; it is admissible iff the roots of q_H lie in the closed
-    unit disk and every irreducible rational factor of chi_A shares a root
-    with q_E; d(A) = U(A) + circleCount(A), counting 1 for each factor
-    x - 1, x + 1 and 2 for each other cyclotomic factor; and the factors
-    with all roots on the unit circle are the cyclotomic ones. (4) For
-    det A != 0 and hyperbolic A, any chi_A and no diagonalizability: a
-    scheme is admissible iff E contains the unstable set iff H lies in the
-    stable set; an invariant splitting carries an admissible scheme iff E
-    contains the unstable set; d(A) = U(A), attained only by the
-    unstable/stable splitting. (5) For det A != 0 and chi_A squarefree:
-    d(A) = 1 iff chi_A is irreducible with exactly one root of modulus > 1
-    (a real root, a Pisot or Salem number up to sign, or an integer on
-    Z^1), or A = +-1 on Z^1; every admissible line is the eigenline. (6)
-    For chi_A squarefree with all roots on the unit circle: every factor is
-    cyclotomic and d = sum of min(deg p, 2) over the factors; every integer
-    matrix with chi_A = Phi_n, n >= 3 (multiplication by a primitive n-th
-    root of unity), needs exactly a plane. (7) The squarefree
-    hypothesis is needed: I_2 and the Jordan block J_2 both have
-    chi = (x - 1)^2, with d = 1 and 2. (8) Multiplication by rho, rho^-1, Q
-    and theta = -Q^-1 = 1 - Q^3 on Z[rho] and Z[Q] (rho^3 = rho + 1,
-    Q^4 = Q + 1): d = 1, 2, 3, 1. (9) On Z[rho] (x) Z[Q] (degree 12),
-    multiplication by every alpha other than 0, +-1 is invertible and
-    hyperbolic with d = U; for rho, theta, rho Q and Q the values are 4, 3,
-    5, 9. (10) rho and theta act on their unstable spaces as real scalars,
-    and the spectral projection carries the quartic (resp. cubic) sector
-    onto them with the Gram pairing GramRho (x) GramQ equal to that of
-    GramQ (resp. GramRho), of types (3,1) and (2,1). (11) The scheme of Q on
-    Z^4 with an interval window: a segment, an explicit Q-invariant model
-    set in R^3, determinant -1/q' on E, non-real moduli, and the types
-    (2,1) and (1,0) of the trace form on E and H. (12) A Salem witness, the
-    companion of x^4 - x^3 - x^2 - x + 1: not hyperbolic, d = 1. (13) Every
-    model set is a Delone set (Mathlib's Delone.DeloneSet) with uniformly
-    discrete difference set. The mathematics of (1), (2), (4), (5), (6) and
-    (13) is known in other formulations (Masakova-Mazac-Pelantova 2021;
-    Kronecker, Pleasants 2000; Harriss-Koivusalo-Walton 2025, preprint;
-    Meyer 1972, 1995; Solomyak 2020; the classical cyclotomic model sets;
-    Moody 1997); (1) and (4) are stated with no diagonalizability
-    hypothesis. The scheme and model set of (11) are, in substance,
-    instances of Masakova-Mazac-Pelantova Thm 13.1 and of
-    Harriss-Koivusalo-Walton Section 3.4, and are not new. For squarefree
-    chi_A the count (3) also follows from Masakova-Mazac-Pelantova Lemma
-    5.1, Prop. 8.1(iii) and Cor. 13.4; the lattice-first least physical
-    dimension was not found stated in the sources read (search completed
-    2026-10-20). New here, beyond the cited cases: the lattice-first
-    question; the characterization of every admissible splitting ((3)(a)(b),
-    (4)); the admissibility criterion (1) and the hyperbolic case (4) for
-    every integer matrix, with no diagonalizability; and the uniqueness of
-    minimal schemes. The companion matrices are multiplication by rho and Q
-    in the power bases by definition, so Crho^i (x) CQ^j is multiplication
-    by rho^i Q^j in the product basis. That the rho^i Q^j are a Z-basis of
-    the ring of integers of Q(rho, Q) is statement (8) of the author's
-    registered entry PALOMAR-2026-10-21-000012
+    Meyer's inclusion sense). The least physical dimension d(A) is the least
+    dim E over admissible schemes. Thirteen compared theorems. (1) For every
+    integer A, a scheme is admissible iff A is power-bounded on H; then the
+    orbit window is a compact convex symmetric invariant window; the
+    per-window criterion; and U(A) <= dim E, U(A) the number of eigenvalues
+    of modulus > 1. (2) Kronecker's density criterion in cut-and-project
+    form. (3) For det A != 0 and chi_A squarefree over Q: every invariant
+    splitting is E = ker q_E(A), H = ker q_H(A) with chi_A = q_E q_H; it is
+    admissible iff the roots of q_H lie in the closed unit disk and every
+    irreducible rational factor of chi_A shares a root with q_E;
+    d(A) = U(A) + circleCount(A), counting 1 for each factor x - 1, x + 1
+    and 2 for each other cyclotomic factor; and the factors with all roots
+    on the unit circle are the cyclotomic ones. (4) For det A != 0 and
+    hyperbolic A, any chi_A and no diagonalizability: a scheme is admissible
+    iff E contains the unstable set iff H lies in the stable set; an
+    invariant splitting carries an admissible scheme iff E contains the
+    unstable set; d(A) = U(A), attained only by the unstable/stable
+    splitting. (5) For det A != 0 and chi_A squarefree: d(A) = 1 iff chi_A
+    is irreducible with exactly one root of modulus > 1 (a real root, a
+    Pisot or Salem number up to sign, or an integer on Z^1), or A = +-1 on
+    Z^1; every admissible line is the eigenline. (6) For chi_A squarefree
+    with all roots on the unit circle: every factor is cyclotomic and
+    d = sum of min(deg p, 2) over the factors; every integer matrix with
+    chi_A = Phi_n, n >= 3 (multiplication by a primitive n-th root of
+    unity), needs exactly a plane. (7) The squarefree hypothesis is needed:
+    I_2 and the Jordan block J_2 both have chi = (x - 1)^2, with d = 1 and
+    2. (8) Multiplication by rho, rho^-1, Q and theta = -Q^-1 = 1 - Q^3 on
+    Z[rho] and Z[Q] (rho^3 = rho + 1, Q^4 = Q + 1): d = 1, 2, 3, 1. (9) On
+    Z[rho] (x) Z[Q] (degree 12), multiplication by every alpha other than 0,
+    +-1 is nonsingular (det != 0) and hyperbolic with d = U; for rho, theta,
+    rho Q and Q the values are 4, 3, 5, 9. (10) rho and theta act on their
+    unstable spaces as real scalars, and the spectral projection carries the
+    quartic (resp. cubic) sector onto them with the Gram pairing
+    GramRho (x) GramQ equal to that of GramQ (resp. GramRho), of types (3,1)
+    and (2,1). (11) The scheme of Q on Z^4 with an interval window: a
+    segment, an explicit Q-invariant model set in R^3, determinant -1/q' on
+    E, non-real moduli, and the types (2,1) and (1,0) of the trace form on E
+    and H. (12) A Salem witness, the companion of x^4 - x^3 - x^2 - x + 1:
+    not hyperbolic, d = 1. (13) Every model set is a Delone set (Mathlib's
+    Delone.DeloneSet) with uniformly discrete difference set. The
+    mathematics of (1), (2), (4), (5), (6) and (13) is known in other
+    formulations (Masakova-Mazac-Pelantova 2021; Kronecker, Pleasants 2000;
+    Harriss-Koivusalo-Walton 2025, preprint; Meyer 1972, 1995; Solomyak
+    2020; the classical cyclotomic model sets; Moody 1997); (1) and (4) are
+    stated with no diagonalizability hypothesis. The scheme and model set of
+    (11) are, in substance, instances of Masakova-Mazac-Pelantova Thm 13.1
+    and of Harriss-Koivusalo-Walton Section 3.4, and are not new. For
+    squarefree chi_A, hence diagonalizable A, the count of (3) also follows
+    from the arguments of Masakova-Mazac-Pelantova, Lemma 5.1, Prop.
+    8.1(iii) and Cor. 13.4, which are stated there for generic (aperiodic)
+    schemes, under which a factor x +- 1, Phi_3, Phi_4 or Phi_6 admits no
+    scheme; the lattice-first least physical dimension was not found stated
+    in the sources read (search completed 2026-10-20). Beyond the cited
+    cases, the entry proves the characterization of every admissible
+    splitting ((3)(a)(b), (4)); the admissibility criterion (1) and the
+    hyperbolic case (4) for every integer matrix, with no diagonalizability;
+    and the uniqueness of the minimal scheme when A is hyperbolic (4) or
+    when chi_A is irreducible with d(A) = 1 (5). For det A != 0 and
+    squarefree chi_A with a factor Phi_n, n not in {1, 2, 3, 4, 6}, the
+    minimal scheme is not unique, by (3). The companion matrices are
+    multiplication by rho and Q in the power bases by definition, so
+    Crho^i (x) CQ^j is multiplication by rho^i Q^j in the product basis.
+    That the rho^i Q^j are a Z-basis of the ring of integers of Q(rho, Q) is
+    statement (8) of the author's registered entry PALOMAR-2026-10-21-000012
     (stalex444/pdt-hermite-signature-compositum@5aa870e8); that GramRho,
     GramQ and GramRho (x) GramQ are the Gram matrices of the trace forms in
     these bases is statements (8), (9) and (19) of the author's registered
     entry PALOMAR-2026-09-02-000014, in which Q(rho) (x) Q(Q) is the field
-    Q(rho, Q) (its (23)). These are cited, not compared.
-    Application (cited, not a claim of the entry): In the author's Pisot
-    Dimensional Theory, Q(rho) is the arithmetic of three-dimensional space
-    and Q(Q) the arithmetic of four-dimensional spacetime, and their
-    compositum K, whose integers are Z[rho] (x) Z[Q], is the parent of both
-    (the author's registered entry PALOMAR-2026-10-21-000012
+    Q(rho, Q) (its (23)). These are cited, not compared. Application (cited,
+    not a claim of the entry): In the author's Pisot Dimensional Theory,
+    Q(rho) is the arithmetic of three-dimensional space and Q(Q) the
+    arithmetic of four-dimensional spacetime, and their compositum K, whose
+    integers are Z[rho] (x) Z[Q], is the parent of both (the author's
+    registered entry PALOMAR-2026-10-21-000012
     (stalex444/pdt-hermite-signature-compositum@5aa870e8), statements (7),
     (8)). A model set is the shadow of a lattice cut through a window, a
     standard mathematical model of a quasicrystal (Moody 2000). Read through
@@ -117,8 +121,9 @@ project:
     a dimension neither sector has.
 
     The parent holds no circle, so every minimal scheme is forced. Off the
-    parent, eigenvalues on the unit circle change the count: a Salem
-    inflation needs only a line (5, 12), multiplication by a primitive n-th
+    parent, eigenvalues on the unit circle can change the count: a Salem
+    inflation's circle eigenvalues lie in the window and cost nothing, so it
+    still needs only a line (5, 12), but multiplication by a primitive n-th
     root of unity, n >= 3, needs exactly a plane, and with squarefree
     characteristic polynomial every element of order n >= 3 needs at least
     one (6). The parent has none. No element of K other than +-1 has a
@@ -159,8 +164,10 @@ sources:
       necessity of H in E^s in (4); Lemma 5.1 (whose relevant half uses only
       non-degeneracy) is the lower-bound part of (3)(b); Prop. 3.3(iii) and
       Prop. 8.1(iii) are the cut-and-project form of (2). For squarefree
-      chi_A, hence diagonalizable A, the count of (3) follows from Lemma
-      5.1, Prop. 8.1(iii) and Cor. 13.4. Thm 13.7, the minimal lattice rank
+      chi_A, hence diagonalizable A, the count of (3) also follows from the
+      arguments of Lemma 5.1, Prop. 8.1(iii) and Cor. 13.4, which are stated
+      for generic (aperiodic) schemes, under which a factor x +- 1, Phi_3,
+      Phi_4 or Phi_6 admits no scheme. Thm 13.7, the minimal lattice rank
       for a given physical map (unit circle allowed; diagonalizable maps,
       generic schemes), is the physical-map-first dual of (3), cited and not
       re-proved. The scheme of (11) is in substance an instance of Thm 13.1.
@@ -679,10 +686,12 @@ review:
   notes: >-
     The kernel and the axiom audit are the acceptance criteria. The package
     was re-verified after assembly (build green with exactly thirteen
-    placeholder warnings, all in Challenge.lean; axioms re-elaborated for all
-    13 compared declarations; Challenge and Solution statements identical as
-    source text; the registry's comparator, run locally, accepts), and every
-    bibliographic item was checked against Crossref or arXiv.
+    placeholder warnings, all in Challenge.lean; axioms re-elaborated for
+    all 13 compared declarations; Challenge and Solution statements
+    identical as source text; the registry's comparator, run locally,
+    accepts), and every bibliographic item was checked against Crossref,
+    arXiv or zbMATH (Meyer 1972, a book with no DOI, as cited by
+    Berthe-Yassawi).
 
 alignment:
   namespace: "ModelSetDimension"
@@ -731,7 +740,7 @@ alignment:
       lean: "ModelSetDimension.compositum_lattice"
       module: "Solution"
       status: "proved"
-      note: "Every mulMatrix a, a != 0, +-e_00, is invertible and hyperbolic with d = U; rho, theta, rho Q, Q give 4, 3, 5, 9. Proved by InflationDimension.compositum_lattice."
+      note: "Every mulMatrix a, a != 0, +-e_00, is nonsingular (det != 0) and hyperbolic with d = U; rho, theta, rho Q, Q give 4, 3, 5, 9. Proved by InflationDimension.compositum_lattice."
     - source: "this work"
       lean: "ModelSetDimension.compositum_dilations"
       module: "Solution"

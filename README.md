@@ -61,7 +61,7 @@ stated there, between `-- BEGIN SHARED DEFINITIONS` and `-- END SHARED DEFINITIO
    with `dim E = 1` has `E` the `r`-eigenline.
 6. `finite_order_case` — for `χ_A` squarefree with all roots on the unit circle: every
    irreducible factor is cyclotomic and `d(A) = Σ_p min(deg p, 2)`; every integer matrix with
-   `χ_A = Φ_n`, `n ≥ 3` (multiplication by `ζ_n` on `ℤ[ζ_n]`), has `d = 2`.
+   `χ_A = Φ_n`, `n ≥ 3` (for example, multiplication by `ζ_n` on `ℤ[ζ_n]`), has `d = 2`.
 7. `squarefree_hypothesis_needed` — on `ℤ²`, `I₂` and `J₂ = [[1, 1], [0, 1]]` both have
    `χ = (x − 1)²`, for which the count of (3) gives `2`; but `d(I₂) = 1` and `d(J₂) = 2`.
 8. `sector_rings` — `Cρ`, `Cρ² − 1`, `CQ`, `1 − CQ³` (multiplication by `ρ`, `ρ⁻¹`, `Q`, `θ` on
@@ -70,9 +70,9 @@ stated there, between `-- BEGIN SHARED DEFINITIONS` and `-- END SHARED DEFINITIO
    expanding eigenvalue of `θ` is real, `t = −1/q′ ∈ (1.3802, 1.3803)`, `q′` the negative root
    of `x⁴ − x − 1`.
 9. `compositum_lattice` — for every integer combination `α = Σ a(i,j) ρ^i Q^j` other than `0`,
-   `±1`, the matrix `mulMatrix a = Σ a(i,j) Cρ^i ⊗ CQ^j` is invertible and hyperbolic, so
-   `d = U`, attained only by `(E^u, E^s)`; for `ρ`, `θ`, `ρQ`, `Q` (`Cρ ⊗ I₄`, `I₃ ⊗ (I₄ − CQ³)`,
-   `Cρ ⊗ CQ`, `I₃ ⊗ CQ`) the values are `4, 3, 5, 9`.
+   `±1`, the matrix `mulMatrix a = Σ a(i,j) Cρ^i ⊗ CQ^j` is nonsingular (`det ≠ 0`) and
+   hyperbolic, so `d = U`, attained only by `(E^u, E^s)`; for `ρ`, `θ`, `ρQ`, `Q` (`Cρ ⊗ I₄`,
+   `I₃ ⊗ (I₄ − CQ³)`, `Cρ ⊗ CQ`, `I₃ ⊗ CQ`) the values are `4, 3, 5, 9`.
 10. `compositum_dilations` — on `ℝ³ ⊗ ℝ⁴` with the pairing of `GramRho ⊗ GramQ`: (a) `ρ` acts
     on `E^u` as the real scalar `r`, `r³ = r + 1`, and the spectral projection `P` onto `E^u`
     along `E^s` carries the quartic sector `e₀ ⊗ ℝ⁴` bijectively onto `E^u`, with the pairing
@@ -115,22 +115,25 @@ stated there, between `-- BEGIN SHARED DEFINITIONS` and `-- END SHARED DEFINITIO
   Thm 13.1 and of HKW §3.4 (codimension-one schemes with interval windows), and the translation
   set of the Thurston dual tiling of the Pisot unit `−1/q′` is a model set of the same kind
   (Kalle–Steiner 2012, Lemma 4.3). The entry gives the instance explicitly and in the kernel.
-* **New here, beyond the cited cases.** The lattice-first question; the characterization of every
-  admissible splitting ((3)(a)(b), (4)); the admissibility criterion (1) and the hyperbolic case
-  (4) for every integer matrix, with no diagonalizability; and the uniqueness of minimal schemes.
-* **Priority, bounded (literature).** The window criterion and the hyperbolic case are known:
-  MMP (Prop. 13.2, Cor. 13.4, for diagonalizable maps and generic schemes) and HKW (Thm 3.3,
-  expansive inflations; preprint). The dimension-one case is Meyer's (1972; 1995, Thm 6), and the
-  density criterion is Kronecker's, in Pleasants's cut-and-project form (2000, Cor. 2.12). The
-  minimal internal dimension for a given physical map, unit-circle spectrum included, is MMP
-  Thm 13.7 (diagonalizable maps, generic schemes). For squarefree `χ_A`, hence diagonalizable `A`,
-  the count (3) is a short consequence of MMP Lemma 5.1, Prop. 8.1(iii) and Cor. 13.4. We did not
-  find the lattice-first least physical dimension, statement (3), stated in the sources listed
-  (search completed 2026-10-20). The master's thesis of J. Mazáč, "Delone sets closed under
-  affine mappings" (Czech Technical University in Prague, hdl 10467/82624), whose abstract treats
-  existence for all linear maps and minimal scheme dimension for diagonalizable maps, physical
-  map first, was not read: the repository record has no public full text. This is a search
-  result, not a guarantee.
+* **Beyond the cited cases.** The entry proves the characterization of every admissible splitting
+  ((3)(a)(b), (4)); the admissibility criterion (1) and the hyperbolic case (4) for every integer
+  matrix, with no diagonalizability; and the uniqueness of the minimal scheme when `A` is hyperbolic
+  (4) or when `χ_A` is irreducible with `d(A) = 1` (5). For `det A ≠ 0` and squarefree `χ_A` with a
+  factor `Φ_n`, `n ∉ {1, 2, 3, 4, 6}`, the minimal scheme is not unique, by (3).
+* **Priority, bounded (literature).** The necessity halves of the window criterion (1) and of the
+  hyperbolic case (4) are MMP Prop. 13.2 and Cor. 13.4 (diagonalizable maps, generic schemes); the
+  expansive substitutional analogue of (4) is HKW Thm 3.3 (preprint). The dimension-one case is
+  Meyer's (1972; 1995, Thm 6), and the density criterion is Kronecker's, in Pleasants's
+  cut-and-project form (2000, Cor. 2.12). The minimal internal dimension for a given physical map,
+  unit-circle spectrum included, is MMP Thm 13.7 (diagonalizable maps, generic schemes). For
+  squarefree `χ_A`, hence diagonalizable `A`, the count of (3) also follows from the arguments of
+  MMP, Lemma 5.1, Prop. 8.1(iii) and Cor. 13.4, which are stated there for generic (aperiodic)
+  schemes, under which a factor `x ± 1`, `Φ₃`, `Φ₄` or `Φ₆` admits no scheme. We did not find the
+  lattice-first least physical dimension, statement (3), stated in the sources listed (search
+  completed 2026-10-20). The master's thesis of J. Mazáč, "Delone sets closed under affine mappings"
+  (Czech Technical University in Prague, hdl 10467/82624), whose abstract treats existence for all
+  linear maps and minimal scheme dimension for diagonalizable maps, physical map first, was not
+  read: the repository record has no public full text. This is a search result, not a guarantee.
 * **Scheme notion.** Aperiodicity (`ℤ^ι ∩ E = 0`) is not required and `H = 0` is admitted. For
   `det A ≠ 0` and squarefree `χ_A`, the line of a factor `x ± 1` and the plane of a factor `Φ₃`,
   `Φ₄` or `Φ₆` lie in `E` in every admissible scheme (3)(b), so the model set is periodic in those
@@ -227,13 +230,13 @@ integers; PALOMAR-2026-09-01-000005), needs exactly five, over a seven-dimension
 real and two complex expanding places, a dimension neither sector has.
 
 The parent holds no circle, so every minimal scheme is forced. Off the parent, eigenvalues on the
-unit circle change the count: a Salem inflation needs only a line (5, 12), multiplication by a
-primitive `n`-th root of unity, `n ≥ 3`, needs exactly a plane, and with squarefree
-characteristic polynomial every element of order `n ≥ 3` needs at least one (6). The parent has
-none. No element of `K` other than `±1` has a conjugate on the unit circle (the companion's
-statement (17)), so every inflation of the parent is hyperbolic, needs exactly as many dimensions
-as it has expanding embeddings (a complex place counts twice), and has a unique minimal scheme
-(4, 9).
+unit circle can change the count: a Salem inflation's circle eigenvalues lie in the window and
+cost nothing, so it still needs only a line (5, 12), but multiplication by a primitive `n`-th root
+of unity, `n ≥ 3`, needs exactly a plane, and with squarefree characteristic polynomial every
+element of order `n ≥ 3` needs at least one (6). The parent has none. No element of `K` other than
+`±1` has a conjugate on the unit circle (the companion's statement (17)), so every inflation of the
+parent is hyperbolic, needs exactly as many dimensions as it has expanding embeddings (a complex
+place counts twice), and has a unique minimal scheme (4, 9).
 
 ## Layout and build
 
