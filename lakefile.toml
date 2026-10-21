@@ -1,4 +1,4 @@
-name = "cut_project_dimension"
+name = "pdt_inflation_model_set_dimension"
 defaultTargets = ["InflationDimension", "Challenge", "Solution", "DefinitionAudit"]
 
 [[require]]

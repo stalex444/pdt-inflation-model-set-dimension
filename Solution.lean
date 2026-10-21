@@ -156,8 +156,8 @@ factor of `χ_A` over `ℚ` is cyclotomic and `d(A)` counts, over the distinct f
 example, an integer matrix of order `5` with `χ_A = (x − 1)² Φ₅` has `d = 3`. The same count holds
 when `χ_A` is squarefree with all roots on the unit circle. In particular every integer matrix with
 characteristic polynomial `Φ_n`, `n ≥ 3` (for example, multiplication by `ζ_n` on `ℤ[ζ_n]`), has
-`d = 2`: the physical plane of the classical planar cyclotomic model sets, whose internal
-dimension is `φ(n) − 2`. -/
+`d = 2`: the physical plane of the classical planar cyclotomic model sets (Huck, arXiv:math/0701141;
+Baake–Grimm 2013, §7.3), whose internal dimension is `φ(n) − 2`. -/
 theorem finite_order_case {ι : Type*} [Fintype ι] [DecidableEq ι] (A : Matrix ι ι ℤ) :
     (∀ k : ℕ, 0 < k → A ^ k = 1 →
       (∀ p ∈ UniqueFactorizationMonoid.normalizedFactors (charpolyQ A),

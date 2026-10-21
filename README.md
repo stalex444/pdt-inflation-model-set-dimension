@@ -141,18 +141,24 @@ stated there, between `-- BEGIN SHARED DEFINITIONS` and `-- END SHARED DEFINITIO
   `≥ 2` at an eigenvalue on the unit circle counts in full (the terms `c_p (m_p − r₁(p))`, which
   vanish for diagonalizable `A`), and at a cyclotomic factor with such a block the blocks of size
   one cost nothing, the internal space being tilted into the socle of the larger blocks; the
-  witnesses are `J₂`, `1 ⊕ J₂(1)` and `1 ⊕ J₃(1)` (7). The master's thesis of J. Mazáč, "Delone sets
-  closed under affine mappings" (Czech Technical University in Prague, hdl 10467/82624), whose
-  abstract treats existence for all linear maps and minimal scheme dimension for diagonalizable
-  maps, physical map first, was not read: the repository record has no public full text. Its
-  treatment of non-diagonalizable maps, existence only by its abstract, was not checked against the
-  Jordan-block terms of (3). The entry also proves the characterization of every admissible
-  splitting for squarefree `χ_A` ((3)(d)), non-generic splittings included (for generic schemes its
-  necessity half is MMP, Lemma 5.1), and (1) for every integer matrix and (4) for every nonsingular
-  hyperbolic integer matrix, with no diagonalizability hypothesis; for diagonalizable `A` and
-  generic schemes, the uniqueness of the minimal scheme in (4) and of the minimal physical line
-  in (5) is immediate from MMP Cor. 13.4. For `det A ≠ 0` and squarefree `χ_A` with a factor `Φ_n`,
-  `n ∉ {1, 2, 3, 4, 6}`, the minimal scheme is not unique, by (3)(d).
+  witnesses are `J₂`, `1 ⊕ J₂(1)` and `1 ⊕ J₃(1)` (7). The Jordan-block terms are not confined to
+  periodic schemes: for the companion matrix of the square of the Salem polynomial of (12), (3)
+  gives `d = 6`, against `d = 2` for two copies of the companion matrix of (12) (the same `χ_A`),
+  and in both cases the minimal scheme meets the lattice only in `0` (the values are (3) evaluated
+  by hand; this last fact is not formalized). The master's thesis of J. Mazáč, "Delone sets closed
+  under affine mappings" (Czech Technical University in Prague, 2019, hdl 10467/82624), whose
+  abstract treats, physical map first, the existence of a scheme with a given self-similarity for
+  all linear maps and the minimal lattice dimension for diagonalizable maps, was not read: the
+  repository record has no public full text. Its treatment of non-diagonalizable maps, existence
+  only by its abstract, was not checked against the Jordan-block terms of (3); the later paper of
+  MMP states (§14) that its answer covers nonsingular maps diagonalizable over ℂ only. The entry
+  also proves the characterization of every admissible splitting for squarefree `χ_A` ((3)(d)),
+  non-generic splittings included (its necessity half is the argument of MMP, Lemma 5.1, which uses
+  only the injectivity `ℤ^ι ∩ H = 0` and so needs no genericity), and (1) for every integer matrix
+  and (4) for every nonsingular hyperbolic integer matrix, with no diagonalizability hypothesis; for
+  diagonalizable `A` and generic schemes, the uniqueness of the minimal scheme in (4) and of the
+  minimal physical line in (5) is immediate from MMP Cor. 13.4. For `det A ≠ 0` and squarefree `χ_A`
+  with a factor `Φ_n`, `n ∉ {1, 2, 3, 4, 6}`, the minimal scheme is not unique, by (3)(d).
 * **Priority, bounded (literature).** The necessity halves of the window criterion (1) and of the
   hyperbolic case (4) are MMP Prop. 13.2 and Cor. 13.4 (diagonalizable maps, generic schemes); the
   expansive substitutional analogue of (4) is HKW Thm 3.3 (preprint). The dimension-one case, for
@@ -166,11 +172,13 @@ stated there, between `-- BEGIN SHARED DEFINITIONS` and `-- END SHARED DEFINITIO
   statement (3), stated in the sources listed (search completed 2026-10-20). This is a search
   result, not a guarantee.
 * **Scheme notion.** Aperiodicity (`ℤ^ι ∩ E = 0`) is not required, `H = 0` is admitted, and `A` need
-  not be unimodular: the counts assume `det A ≠ 0` only. For `det A ≠ 0` and squarefree `χ_A`, the
-  line of a factor `x ± 1` and the plane of a factor `Φ₃`, `Φ₄` or `Φ₆` lie in `E` in every
-  admissible scheme ((3)(d)), so the model set is periodic in those directions, and under MMP's
-  generic (aperiodic) schemes such a factor makes a scheme impossible. Likewise, at a cyclotomic
-  factor `p` with a Jordan block of size `≥ 2`, `p(A)` kills the `p`-component of `H`
+  not be unimodular: the counts assume `det A ≠ 0` only. The internal space is a real subspace of
+  `ℝ^ι`; for `|det A| ≥ 2`, inflation-symmetric model sets with `p`-adic internal spaces
+  (Baake–Moody–Schlottmann 1998; Lee–Moody 2001) are outside this notion. For `det A ≠ 0` and
+  squarefree `χ_A`, the line of a factor `x ± 1` and the plane of a factor `Φ₃`, `Φ₄` or `Φ₆` lie in
+  `E` in every admissible scheme ((3)(d)), so the model set is periodic in those directions, and
+  under MMP's generic (aperiodic) schemes such a factor makes a scheme impossible. Likewise, at a
+  cyclotomic factor `p` with a Jordan block of size `≥ 2`, `p(A)` kills the `p`-component of `H`
   (power-boundedness), so the nonzero rational subspace `im p(A)` of that component lies in `E`: at
   a root of unity, the Jordan-block terms and the tilt occur only in schemes with `ℤ^ι ∩ E ≠ 0`. The
   least dimension under aperiodicity is not treated. "Minimal" in Baake–Lenz–Moody (2007) and
@@ -358,6 +366,11 @@ lake build
   541–544. doi:10.1107/S0108767385001180 (as cited by MMP §1; not opened)
 - M. Baake, R. V. Moody, "Self-similarities and invariant densities for model sets", in Algebraic
   Methods in Physics, Springer (2001), 1–15. doi:10.1007/978-1-4613-0119-6_1
+- M. Baake, R. V. Moody, M. Schlottmann, "Limit-(quasi)periodic point sets as quasicrystals with
+  p-adic internal spaces", J. Phys. A: Math. Gen. 31 (1998), 5755–5765.
+  doi:10.1088/0305-4470/31/27/006; arXiv:math-ph/9901008.
+- J.-Y. Lee, R. V. Moody, "Lattice substitution systems and model sets", Discrete Comput. Geom.
+  25 (2001), 173–201. doi:10.1007/s004540010083; arXiv:math/0002019.
 - R. V. Moody, "Meyer sets and their duals", in The Mathematics of Long-Range Aperiodic Order,
   NATO ASI Ser. C 489, Kluwer (1997), 403–441. doi:10.1007/978-94-015-8784-6_16
 - R. V. Moody, "Model sets: a survey", in From Quasicrystals to More Complex Systems, Springer

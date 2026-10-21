@@ -45,14 +45,16 @@ Jordan blocks of size one at each root of `p`; no Jordan form enters the definit
 * Inflation symmetry is the inclusion `A Λ ⊆ Λ`, in Meyer's sense, linear and centred at the origin.
   It is not the substitutional notion (up to mutual local derivability) of Harriss–Koivusalo–Walton.
 * Aperiodicity (`ℤ^ι ∩ E = 0`) is not required, `H = 0` is admitted, and `A` need not be unimodular:
-  the counts assume `det A ≠ 0` only. When `det A ≠ 0` and `χ_A` is squarefree, the line of a factor
-  `x ± 1` and the plane of a factor `Φ₃`, `Φ₄` or `Φ₆` lie in `E` in every admissible scheme
-  (by (3)(d)), so such a factor excludes an aperiodic scheme; the generic schemes of
-  Masáková–Mazáč–Pelantová are aperiodic. Likewise, at a cyclotomic factor `p` with a Jordan block
-  of size `≥ 2`, `p(A)` kills the `p`-component of `H` (power-boundedness), so the nonzero rational
-  subspace `im p(A)` of that component lies in `E`: at a root of unity, the Jordan-block terms and
-  the tilt occur only in schemes with `ℤ^ι ∩ E ≠ 0`. The least dimension under aperiodicity is a
-  different problem and is not treated.
+  the counts assume `det A ≠ 0` only. The internal space is a real subspace of `ℝ^ι`; for
+  `|det A| ≥ 2`, inflation-symmetric model sets with `p`-adic internal spaces
+  (Baake–Moody–Schlottmann 1998; Lee–Moody 2001) are outside this notion. When `det A ≠ 0` and `χ_A`
+  is squarefree, the line of a factor `x ± 1` and the plane of a factor `Φ₃`, `Φ₄` or `Φ₆` lie in
+  `E` in every admissible scheme (by (3)(d)), so such a factor excludes an aperiodic scheme; the
+  generic schemes of Masáková–Mazáč–Pelantová are aperiodic. Likewise, at a cyclotomic factor `p`
+  with a Jordan block of size `≥ 2`, `p(A)` kills the `p`-component of `H` (power-boundedness), so
+  the nonzero rational subspace `im p(A)` of that component lies in `E`: at a root of unity, the
+  Jordan-block terms and the tilt occur only in schemes with `ℤ^ι ∩ E ≠ 0`. The least dimension
+  under aperiodicity is a different problem and is not treated.
 * The value is an invariant of the `ℚ`-module `(ℚ^ι, A)` (3), not of an eigenvalue: multiplication
   by `ρ` needs one physical dimension on `ℤ[ρ]` (8) and four on `ℤ[ρ] ⊗ ℤ[Q]` (9).
 * The statements are about inflation-symmetric model sets, not tilings. The substitution
@@ -117,31 +119,37 @@ Jordan blocks of size one at each root of `p`; no Jordan form enters the definit
 
 **Attributions.** Each statement's docstring names its sources, and the README gives them statement
 by statement. The mathematics of (1), (2), (4), (5) for irreducible `χ_A`, and (13), and of (6) for
-squarefree `χ_A`, is known in other formulations, and the scheme and model set of (11) are, in
-substance, an instance of Masáková–Mazáč–Pelantová (Linear Algebra Appl. 625 (2021) 279–321),
-Thm 13.1; none of this is claimed as new. Beyond the cited cases, the entry proves the least
-physical dimension for every nonsingular integer matrix (3), including what lies outside the
-diagonalizable class of Masáková–Mazáč–Pelantová: a Jordan block of size `≥ 2` at an eigenvalue on
-the unit circle counts in full (the terms `c_p (m_p − r₁(p))`, which vanish for diagonalizable `A`),
-and at a cyclotomic factor with such a block the blocks of size one cost nothing, the internal space
-being tilted into the socle of the larger blocks; the witnesses are `J₂`, `1 ⊕ J₂(1)` and
-`1 ⊕ J₃(1)` (7). The master's thesis of J. Mazáč (Czech Technical University in Prague, hdl
-10467/82624), whose abstract treats existence for all linear maps and minimal scheme dimension for
-diagonalizable maps, physical map first, was not read: its full text is not public. Its treatment of
-non-diagonalizable maps, existence only by its abstract, was not checked against the Jordan-block
-terms of (3). The entry also proves the characterization of every admissible splitting for
-squarefree `χ_A` ((3)(d)), non-generic splittings included (for generic schemes its necessity half
-is Masáková–Mazáč–Pelantová, Lemma 5.1), and (1) for every integer matrix and (4) for every
-nonsingular hyperbolic integer matrix, with no diagonalizability hypothesis; for diagonalizable `A`
-and generic schemes, the uniqueness of the minimal scheme in (4) and of the minimal physical line
-in (5) is immediate from Masáková–Mazáč–Pelantová, Cor. 13.4. For `det A ≠ 0` and squarefree `χ_A`
-with a factor `Φ_n`, `n ∉ {1, 2, 3, 4, 6}`, the minimal scheme is not unique, by (3)(d). For
-squarefree `χ_A`, hence diagonalizable `A`, the count of (3) also follows from the arguments of
-Masáková–Mazáč–Pelantová, Lemma 5.1, Prop. 8.1(iii) and Cor. 13.4 (numbering of arXiv:1909.10753v2),
-which are stated there for generic (aperiodic) schemes, under which a factor `x ± 1`, `Φ₃`, `Φ₄` or
-`Φ₆` admits no scheme. We did not find the least physical dimension for a given lattice map,
-statement (3), stated in the sources we read (search completed 2026-10-20); this is a search result,
-not a guarantee.
+`χ_A = Φ_n` (the planar cyclotomic model sets), is known in other formulations, and the scheme and
+model set of (11) are, in substance, an instance of Masáková–Mazáč–Pelantová (Linear Algebra Appl.
+625 (2021) 279–321), Thm 13.1; none of this is claimed as new. Beyond the cited cases, the entry
+proves the least physical dimension for every nonsingular integer matrix (3), including what lies
+outside the diagonalizable class of Masáková–Mazáč–Pelantová: a Jordan block of size `≥ 2` at an
+eigenvalue on the unit circle counts in full (the terms `c_p (m_p − r₁(p))`, which vanish for
+diagonalizable `A`), and at a cyclotomic factor with such a block the blocks of size one cost
+nothing, the internal space being tilted into the socle of the larger blocks; the witnesses are
+`J₂`, `1 ⊕ J₂(1)` and `1 ⊕ J₃(1)` (7). The Jordan-block terms are not confined to periodic schemes:
+for the companion matrix of the square of the Salem polynomial of (12), (3) gives `d = 6`, against
+`d = 2` for two copies of the companion matrix of (12) (the same `χ_A`), and in both cases the
+minimal scheme meets the lattice only in `0` (the values are (3) evaluated by hand; this last fact
+is not formalized). The master's thesis of J. Mazáč (Czech Technical University in Prague, 2019, hdl
+10467/82624), whose abstract treats, physical map first, the existence of a scheme with a given
+self-similarity for all linear maps and the minimal lattice dimension for diagonalizable maps, was
+not read: its full text is not public. Its treatment of non-diagonalizable maps, existence only by
+its abstract, was not checked against the Jordan-block terms of (3); the later paper of
+Masáková–Mazáč–Pelantová states (§14) that its answer covers nonsingular maps diagonalizable over ℂ
+only. The entry also proves the characterization of every admissible splitting for squarefree `χ_A`
+((3)(d)), non-generic splittings included (its necessity half is the argument of
+Masáková–Mazáč–Pelantová, Lemma 5.1, which uses only the injectivity `ℤ^ι ∩ H = 0` and so needs no
+genericity), and (1) for every integer matrix and (4) for every nonsingular hyperbolic integer
+matrix, with no diagonalizability hypothesis; for diagonalizable `A` and generic schemes, the
+uniqueness of the minimal scheme in (4) and of the minimal physical line in (5) is immediate from
+Masáková–Mazáč–Pelantová, Cor. 13.4. For `det A ≠ 0` and squarefree `χ_A` with a factor `Φ_n`,
+`n ∉ {1, 2, 3, 4, 6}`, the minimal scheme is not unique, by (3)(d). For squarefree `χ_A`, hence
+diagonalizable `A`, the count of (3) also follows from the arguments of Masáková–Mazáč–Pelantová,
+Lemma 5.1, Prop. 8.1(iii) and Cor. 13.4 (numbering of arXiv:1909.10753v2), which are stated there
+for generic (aperiodic) schemes, under which a factor `x ± 1`, `Φ₃`, `Φ₄` or `Φ₆` admits no scheme.
+We did not find the least physical dimension for a given lattice map, statement (3), stated in the
+sources we read (search completed 2026-10-20); this is a search result, not a guarantee.
 
 **The proofs.** No Jordan form of `A` and no diagonalization of `A` is used: the Jordan data of (3)
 are ranks of rational kernels. The lower bound in (3): admissibility is power-boundedness on `H`
@@ -585,8 +593,8 @@ factor of `χ_A` over `ℚ` is cyclotomic and `d(A)` counts, over the distinct f
 example, an integer matrix of order `5` with `χ_A = (x − 1)² Φ₅` has `d = 3`. The same count holds
 when `χ_A` is squarefree with all roots on the unit circle. In particular every integer matrix with
 characteristic polynomial `Φ_n`, `n ≥ 3` (for example, multiplication by `ζ_n` on `ℤ[ζ_n]`), has
-`d = 2`: the physical plane of the classical planar cyclotomic model sets, whose internal
-dimension is `φ(n) − 2`. -/
+`d = 2`: the physical plane of the classical planar cyclotomic model sets (Huck, arXiv:math/0701141;
+Baake–Grimm 2013, §7.3), whose internal dimension is `φ(n) − 2`. -/
 theorem finite_order_case {ι : Type*} [Fintype ι] [DecidableEq ι] (A : Matrix ι ι ℤ) :
     (∀ k : ℕ, 0 < k → A ^ k = 1 →
       (∀ p ∈ UniqueFactorizationMonoid.normalizedFactors (charpolyQ A),

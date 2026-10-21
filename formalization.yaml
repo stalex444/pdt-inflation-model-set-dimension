@@ -39,65 +39,65 @@ project:
     only by the unstable/stable splitting. (5) For det A != 0, any chi_A:
     d(A) = 1 iff chi_A is irreducible with exactly one root of modulus > 1
     (a real root, a Pisot or Salem number up to sign, or an integer on Z^1),
-    or A = +-1 in any rank; every admissible line is the eigenline. (6) If
-    A^k = 1: every factor is cyclotomic and d = sum of min(deg p, 2) over
-    the distinct factors; the same for chi_A squarefree with all roots on
-    the unit circle; every integer matrix with chi_A = Phi_n, n >= 3
-    (multiplication by a primitive n-th root of unity), needs exactly a
-    plane. (7) Jordan blocks on the circle: I_2 and the Jordan block J_2
-    both have chi = (x - 1)^2, for which the squarefree count of (3), with
-    x - 1 counted twice, gives 2, but d = 1 and 2; 1 + J_2(1) and 1 + J_3(1)
-    have d = 2 and 3. (8) Multiplication by rho, rho^-1, Q and
-    theta = -Q^-1 = 1 - Q^3 on Z[rho] and Z[Q] (rho^3 = rho + 1,
-    Q^4 = Q + 1): d = 1, 2, 3, 1. (9) On Z[rho] (x) Z[Q] (degree 12),
-    multiplication by every alpha other than 0, +-1 is nonsingular
-    (det != 0) and hyperbolic with d = U; for rho, theta, rho Q and Q the
-    values are 4, 3, 5, 9. (10) rho and theta act on their unstable spaces
-    as real scalars, and the spectral projection carries the quartic (resp.
-    cubic) sector onto them with the Gram pairing GramRho (x) GramQ equal to
-    that of GramQ (resp. GramRho), of types (3,1) and (2,1). (11) The scheme
-    of Q on Z^4 with an interval window: a segment, an explicit Q-invariant
-    model set in R^3, determinant -1/q' on E, non-real moduli, and the types
-    (2,1) and (1,0) of the trace form on E and H. (12) A Salem witness, the
-    companion of x^4 - x^3 - x^2 - x + 1: not hyperbolic, d = 1. (13) Every
-    model set is a Delone set (Mathlib's Delone.DeloneSet) with uniformly
-    discrete difference set. The mathematics of (1), (2), (4), (5) for
-    irreducible chi_A, and (13), and of (6) for squarefree chi_A, is known
-    in other formulations (Masakova-Mazac-Pelantova 2021; Kronecker,
-    Pleasants 2000; Harriss-Koivusalo-Walton 2025, preprint; Meyer 1972,
-    1995; Lagarias 1999; Solomyak 2020; the classical cyclotomic model sets;
-    Moody 1997); (1) and (4) are stated with no diagonalizability
-    hypothesis. The scheme and model set of (11) are, in substance,
-    instances of Masakova-Mazac-Pelantova Thm 13.1 and of
-    Harriss-Koivusalo-Walton Section 3.4, and are not new. For squarefree
-    chi_A the count of (3) also follows from the arguments of
-    Masakova-Mazac-Pelantova (Lemma 5.1, Prop. 8.1(iii), Cor. 13.4), stated
-    there for generic (aperiodic) schemes; the lattice-first least physical
-    dimension was not found stated in the sources read (search completed
-    2026-10-20). Beyond the cited cases, the entry proves the least physical
-    dimension for every nonsingular integer matrix (3), including what lies
-    outside the diagonalizable class of Masakova-Mazac-Pelantova: a Jordan
-    block of size >= 2 at an eigenvalue on the unit circle counts in full
-    (the terms c_p (m_p - r_1(p)), which vanish for diagonalizable A), and
-    at a cyclotomic factor with such a block the blocks of size one cost
-    nothing, the internal space being tilted into the socle of the larger
-    blocks; the witnesses are J_2, 1 + J_2(1) and 1 + J_3(1) (7). Every
-    admissible scheme of an A with such a block at a root of unity has
-    Z^iota meeting E in a nonzero vector. It also proves the
-    characterization of every admissible splitting for squarefree chi_A
-    ((3)(d)), non-generic splittings included (for generic schemes its
-    necessity half is Masakova-Mazac-Pelantova, Lemma 5.1), and (1) for
-    every integer matrix and (4) for every nonsingular hyperbolic integer
-    matrix, with no diagonalizability hypothesis; for diagonalizable A and
-    generic schemes, the uniqueness of the minimal scheme in (4) and of the
-    minimal physical line in (5) is immediate from Masakova-Mazac-Pelantova,
-    Cor. 13.4. For det A != 0 and squarefree chi_A with a factor Phi_n, n
-    not in {1, 2, 3, 4, 6}, the minimal scheme is not unique, by (3)(d). The
-    companion matrices are multiplication by rho and Q in the power bases by
-    definition, so Crho^i (x) CQ^j is multiplication by rho^i Q^j in the
-    product basis. That the rho^i Q^j are a Z-basis of the ring of integers
-    of Q(rho, Q) is statement (8) of the author's registered entry
-    PALOMAR-2026-10-21-000012
+    or A = +-1 in any rank; in the irreducible case every admissible line is
+    the eigenline. (6) If A^k = 1: every factor is cyclotomic and d = sum of
+    min(deg p, 2) over the distinct factors; the same for chi_A squarefree
+    with all roots on the unit circle; every integer matrix with
+    chi_A = Phi_n, n >= 3 (multiplication by a primitive n-th root of
+    unity), needs exactly a plane. (7) Jordan blocks on the circle: I_2 and
+    the Jordan block J_2 both have chi = (x - 1)^2, for which the squarefree
+    count of (3), with x - 1 counted twice, gives 2, but d = 1 and 2;
+    1 + J_2(1) and 1 + J_3(1) have d = 2 and 3. (8) Multiplication by rho,
+    rho^-1, Q and theta = -Q^-1 = 1 - Q^3 on Z[rho] and Z[Q]
+    (rho^3 = rho + 1, Q^4 = Q + 1): d = 1, 2, 3, 1. (9) On Z[rho] (x) Z[Q]
+    (degree 12), multiplication by every alpha other than 0, +-1 is
+    nonsingular (det != 0) and hyperbolic with d = U; for rho, theta, rho Q
+    and Q the values are 4, 3, 5, 9. (10) rho and theta act on their
+    unstable spaces as real scalars, and the spectral projection carries the
+    quartic (resp. cubic) sector onto them with the Gram pairing
+    GramRho (x) GramQ equal to that of GramQ (resp. GramRho), of types (3,1)
+    and (2,1). (11) The scheme of Q on Z^4 with an interval window: a
+    segment, an explicit Q-invariant model set in R^3, determinant -1/q' on
+    E, non-real moduli, and the types (2,1) and (1,0) of the trace form on E
+    and H. (12) A Salem witness, the companion of x^4 - x^3 - x^2 - x + 1:
+    not hyperbolic, d = 1. (13) Every model set is a Delone set (Mathlib's
+    Delone.DeloneSet) with uniformly discrete difference set. The
+    mathematics of (1), (2), (4), (5) for irreducible chi_A, and (13), and
+    of (6) for chi_A = Phi_n, is known in other formulations
+    (Masakova-Mazac-Pelantova 2021; Kronecker, Pleasants 2000;
+    Harriss-Koivusalo-Walton 2025, preprint; Meyer 1972, 1995; Lagarias
+    1999; Solomyak 2020; the classical cyclotomic model sets; Moody 1997);
+    (1) and (4) are stated with no diagonalizability hypothesis. The scheme
+    and model set of (11) are, in substance, instances of
+    Masakova-Mazac-Pelantova Thm 13.1 and of Harriss-Koivusalo-Walton
+    Section 3.4, and are not new. For squarefree chi_A the count of (3) also
+    follows from the arguments of Masakova-Mazac-Pelantova (Lemma 5.1, Prop.
+    8.1(iii), Cor. 13.4), stated there for generic (aperiodic) schemes; the
+    lattice-first least physical dimension was not found stated in the
+    sources read (search completed 2026-10-20). Beyond the cited cases, the
+    entry proves the least physical dimension for every nonsingular integer
+    matrix (3), including what lies outside the diagonalizable class of
+    Masakova-Mazac-Pelantova: a Jordan block of size >= 2 at an eigenvalue
+    on the unit circle counts in full (the terms c_p (m_p - r_1(p)), which
+    vanish for diagonalizable A), and at a cyclotomic factor with such a
+    block the blocks of size one cost nothing, the internal space being
+    tilted into the socle of the larger blocks; the witnesses are J_2,
+    1 + J_2(1) and 1 + J_3(1) (7). Every admissible scheme of an A with such
+    a block at a root of unity has Z^iota meeting E in a nonzero vector. It
+    also proves the characterization of every admissible splitting for
+    squarefree chi_A ((3)(d)), non-generic splittings included (its
+    necessity half is the injectivity argument of Masakova-Mazac-Pelantova,
+    Lemma 5.1), and (1) for every integer matrix and (4) for every
+    nonsingular hyperbolic integer matrix, with no diagonalizability
+    hypothesis; for diagonalizable A and generic schemes, the uniqueness of
+    the minimal scheme in (4) and of the minimal physical line in (5) is
+    immediate from Masakova-Mazac-Pelantova, Cor. 13.4. For det A != 0 and
+    squarefree chi_A with a factor Phi_n, n not in {1, 2, 3, 4, 6}, the
+    minimal scheme is not unique, by (3)(d). The companion matrices are
+    multiplication by rho and Q in the power bases by definition, so
+    Crho^i (x) CQ^j is multiplication by rho^i Q^j in the product basis.
+    That the rho^i Q^j are a Z-basis of the ring of integers of Q(rho, Q) is
+    statement (8) of the author's registered entry PALOMAR-2026-10-21-000012
     (stalex444/pdt-hermite-signature-compositum@5aa870e98236ba240561b798265c629df8c2d031);
     that GramRho, GramQ and GramRho (x) GramQ are the Gram matrices of the
     trace forms in these bases is statements (8), (9) and (19) of the
@@ -367,10 +367,11 @@ sources:
     relationship: "background"
     note: >-
       phi(n) as the least lattice rank of a planar model set with n-fold
-      symmetry (as cited by Masakova-Mazac-Pelantova, Section 14): the dual
-      quantity to the physical dimension 2 of compared statement (6). Not
-      Hiller's bound psi(n) for lattices with an order-n symmetry (Hiller
-      1985, listed below).
+      symmetry (as cited by Masakova-Mazac-Pelantova, Section 1; their
+      Section 14 recovers the planar case as Baake-Grimm 2013, Thm 3.2): the
+      dual quantity to the physical dimension 2 of compared statement (6).
+      Not Hiller's bound psi(n) for lattices with an order-n symmetry
+      (Hiller 1985, listed below).
     license: "unknown"
     author_endorsement: "n/a"
   - title: "The crystallographic restriction in higher dimensions"
@@ -415,6 +416,42 @@ sources:
       Section 1.4: for a self-similarity of a model set, compactness of the
       window forces the internal map to have no eigenvalue of modulus > 1;
       an early form of the necessity half of compared statement (1).
+    license: "unknown"
+    author_endorsement: "n/a"
+  - title: "Limit-(quasi)periodic point sets as quasicrystals with p-adic internal spaces"
+    authors:
+      - "Michael Baake"
+      - "Robert V. Moody"
+      - "Martin Schlottmann"
+    id: "Journal of Physics A: Mathematical and General 31 (1998), 5755-5765; arXiv:math-ph/9901008"
+    # Crossref-verified 2026-10-21: DOI 10.1088/0305-4470/31/27/006 (J. Phys. A 31(27),
+    # 5755-5765, 1998-07). arXiv abstract read; primary not opened.
+    type: "article"
+    location: "https://doi.org/10.1088/0305-4470/31/27/006"
+    relationship: "background"
+    note: >-
+      Model sets with p-adic or mixed Euclidean/p-adic internal spaces; the
+      chair and Robinson square tilings are of this form. Cited in the scope
+      account only: for |det A| >= 2, inflation-symmetric model sets with
+      p-adic internal spaces are outside the scheme notion here, whose
+      internal space is a real subspace of R^iota.
+    license: "unknown"
+    author_endorsement: "n/a"
+  - title: "Lattice substitution systems and model sets"
+    authors:
+      - "Jeong-Yup Lee"
+      - "Robert V. Moody"
+    id: "Discrete and Computational Geometry 25 (2001), 173-201; arXiv:math/0002019"
+    # Crossref-verified 2026-10-21: DOI 10.1007/s004540010083 (DCG 25(2), 173-201, 2001-03).
+    # arXiv abstract read; primary not opened.
+    type: "article"
+    location: "https://doi.org/10.1007/s004540010083"
+    relationship: "background"
+    note: >-
+      Main theorem: equivalent conditions under which a matrix substitution
+      system on a lattice in R^n gives regular model sets with p-adic-like
+      internal spaces. Cited in the scope account only, with
+      Baake-Moody-Schlottmann 1998.
     license: "unknown"
     author_endorsement: "n/a"
   - title: "Beta-expansions, natural extensions and multiple tilings associated with Pisot units"
@@ -717,9 +754,12 @@ fidelity:
     endomorphism is reduced to this case by a choice of basis. (ii) The
     scheme notion: A-invariant complementary subspaces E, H with Z^iota
     meeting H only in 0 and the projection of Z^iota to H dense in H;
-    aperiodicity is not required and H = 0 is allowed. At a cyclotomic
-    factor p with a Jordan block of size >= 2, p(A) kills the p-component of
-    H (power-boundedness), so the nonzero rational subspace im p(A) of that
+    aperiodicity is not required and H = 0 is allowed. The internal space is
+    a real subspace of R^iota; for |det A| >= 2, inflation-symmetric model
+    sets with p-adic internal spaces (Baake-Moody-Schlottmann 1998;
+    Lee-Moody 2001) are outside this notion. At a cyclotomic factor p with a
+    Jordan block of size >= 2, p(A) kills the p-component of H
+    (power-boundedness), so the nonzero rational subspace im p(A) of that
     component lies in E: at a root of unity, the Jordan-block terms and the
     tilt occur only in schemes in which Z^iota meets E in a nonzero vector.
     A window is a bounded subset of H containing a relative ball of H (not
