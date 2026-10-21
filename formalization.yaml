@@ -117,8 +117,8 @@ project:
 
     Space inflates the parent through spacetime, and spacetime inflates it
     through space. On the parent's lattice the plastic inflation rho needs
-    exactly four physical dimensions, and only one scheme attains four (9).
-    Those four are a copy of spacetime's: rho has a single expanding
+    exactly four physical dimensions, and only one scheme attains four
+    (4, 9). Those four are a copy of spacetime's: rho has a single expanding
     embedding in Q(rho), the real one, and the spectral projection maps the
     quartic sector onto them, carrying Z[Q] with its trace form unchanged,
     of Lorentzian type (3,1) (10). rho acts on them as a pure dilation by

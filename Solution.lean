@@ -29,10 +29,12 @@ namespace ModelSetDimension
 admissible if and only if `A` is power-bounded on `H`; then the orbit window
 `W_* = {h ∈ H : ‖Aⁿ h‖ ≤ 1 for all n}` is a compact, convex, centrally symmetric window with
 `A W_* ⊆ W_*` and `A Λ(W_*) ⊆ Λ(W_*)`. (b) Per window: `A Λ(W) ⊆ Λ(W)` if and only if `A` maps the
-lattice points `W ∩ π_H(ℤ^ι)` of the window into `W`; for a closed window contained in the
-closure of its lattice points, if and only if `A W ⊆ W`. (c) Every eigenvalue of `A|_H` lies in
-the closed unit disk, so `U(A) ≤ dim E`. The necessity half is Masáková–Mazáč–Pelantová (2021),
-Prop. 13.2 and Cor. 13.4, there for diagonalizable maps and generic schemes. -/
+lattice points `W ∩ π_H(ℤ^ι)` of the window into `W`; for a closed window contained in the closure
+of its lattice points, if and only if `A W ⊆ W`. (c) Every eigenvalue of `A|_H` lies in the closed
+unit disk, so `U(A) ≤ dim E`. The necessity half is Masáková–Mazáč–Pelantová (2021), Prop. 13.2 and
+Cor. 13.4, there for diagonalizable maps and generic schemes; for self-similarities,
+Baake–Moody (2001), §1.4, remarked that a compact window forces the internal map to have no
+eigenvalue of modulus `> 1`. -/
 theorem admissibility_criterion {ι : Type*} [Fintype ι] [DecidableEq ι] (A : Matrix ι ι ℤ)
     (S : InvariantCPS A) :
     (S.Admissible ↔ ∃ C : ℝ, ∀ n : ℕ, ∀ v ∈ S.H, ‖(act A ^ n) v‖ ≤ C * ‖v‖) ∧
@@ -64,27 +66,27 @@ theorem kronecker_density_criterion {ι : Type*} [Fintype ι] [DecidableEq ι]
   InflationDimension.kronecker_density_criterion E H hc
 
 /-- **(3) The least physical dimension** (`det A ≠ 0`; any `χ_A`; eigenvalues on the unit circle and
-Jordan blocks allowed). (a) `d(A) = Σ_p f_p` over the distinct irreducible factors `p` of `χ_A`
-over `ℚ` (`dimensionFormula A`), where `f_p = m_p u_p + c_p (m_p − r₁(p))`, plus `min (deg p, 2)`
-when every root of `p` lies on the unit circle and `r₁(p) = m_p` (`factorContribution`): every
-root of modulus `> 1` counts with its multiplicity, every Jordan block of size `≥ 2` at a root on
-the unit circle counts in full, and a cyclotomic factor all of whose Jordan blocks have size one
-costs one line (`x ± 1`) or one plane (`Φ_n`, `n ≥ 3`), however large its multiplicity.
-Equivalently, through the Jordan form (which the definitions do not use),
-`d(A) = Σ_{|λ|>1} a_λ + Σ_{|λ|=1} (a_λ − s_λ) + #{n ≤ 2 : n ∈ 𝒮(A)} + 2·#{n ≥ 3 : n ∈ 𝒮(A)}`,
-with `a_λ` the multiplicity of `λ`, `s_λ` the number of Jordan blocks of size one at `λ`, and
-`𝒮(A)` the set of `n` whose primitive `n`-th roots of unity are eigenvalues with all Jordan blocks
-of size one. (b) The value is an invariant of rational similarity: if `P A = B P` with `P` rational
-and invertible, `B` has the same least physical dimension. (c) The irreducible factors whose roots
-all lie on the unit circle are exactly the cyclotomic ones (Kronecker). (d) For `χ_A` squarefree
-over `ℚ`: every `A`-invariant splitting `ℝ^ι = E ⊕ H` is `E = ker q_E(A)`, `H = ker q_H(A)` with
+Jordan blocks allowed). (a) `d(A) = Σ_p f_p` over the distinct irreducible factors `p` of `χ_A` over
+`ℚ` (`dimensionFormula A`), where `f_p = m_p u_p + c_p (m_p − r₁(p))`, plus `min (deg p, 2)` when
+every root of `p` lies on the unit circle and `r₁(p) = m_p` (`factorContribution`): every root of
+modulus `> 1` counts with its multiplicity, every Jordan block of size `≥ 2` at a root on the unit
+circle counts in full, and a cyclotomic factor all of whose Jordan blocks have size one costs one
+line (`x ± 1`) or one plane (`Φ_n`, `n ≥ 3`), however large its multiplicity. Equivalently, through
+the Jordan form (which the definitions do not use; this restatement is not formalized),
+`d(A) = Σ_{|λ|>1} a_λ + Σ_{|λ|=1} (a_λ − s_λ) + #{n ≤ 2 : n ∈ 𝒮(A)} + 2·#{n ≥ 3 : n ∈ 𝒮(A)}`, with
+`a_λ` the multiplicity of `λ`, `s_λ` the number of Jordan blocks of size one at `λ`, and `𝒮(A)` the
+set of `n` whose primitive `n`-th roots of unity are eigenvalues with all Jordan blocks of size one.
+(b) The value is an invariant of rational similarity: if `P A = B P` with `P` rational and
+invertible, `B` has the same least physical dimension. (c) The irreducible factors whose roots all
+lie on the unit circle are exactly the cyclotomic ones (Kronecker). (d) For `χ_A` squarefree over
+`ℚ`: every `A`-invariant splitting `ℝ^ι = E ⊕ H` is `E = ker q_E(A)`, `H = ker q_H(A)` with
 `χ_A = q_E q_H` over `ℝ`, where `q_E`, `q_H` are the characteristic polynomials of `A|_E`, `A|_H`;
 it carries an admissible scheme if and only if every root of `q_H` lies in the closed unit disk and
 every irreducible factor of `χ_A` over `ℚ` shares a complex root with `q_E`; and the value is
-`U(A) + circleCount A`. For squarefree `χ_A`, hence diagonalizable `A`, this count also follows
-from the arguments of Masáková–Mazáč–Pelantová (2021), Lemma 5.1, Prop. 8.1(iii) and Cor. 13.4,
-which are stated there for generic (aperiodic) schemes, under which a factor `x ± 1`, `Φ₃`, `Φ₄`
-or `Φ₆` admits no scheme. -/
+`U(A) + circleCount A`. For squarefree `χ_A`, hence diagonalizable `A`, this count also follows from
+the arguments of Masáková–Mazáč–Pelantová (2021), Lemma 5.1, Prop. 8.1(iii) and Cor. 13.4, which are
+stated there for generic (aperiodic) schemes, under which a factor `x ± 1`, `Φ₃`, `Φ₄` or `Φ₆`
+admits no scheme. -/
 theorem least_physical_dimension {ι : Type*} [Fintype ι] [DecidableEq ι] (A : Matrix ι ι ℤ)
     (hdet : A.det ≠ 0) :
     IsLeast (physDims A) (dimensionFormula A) ∧
@@ -250,11 +252,15 @@ theorem compositum_dilations :
 
 /-- **(11) The three-dimensional model set of `Q`.** On `ℤ[Q]` (`CQ`), `(E^u, E^s)` is a
 `Q`-invariant scheme with `ℤ⁴ ∩ E = 0` (aperiodic). With `q′ < 0` the negative real root of
-`x⁴ − x − 1` and the internal coordinate `h ↦ Σ_j h_j q′^j`, the window `|·| ≤ 1/2` is a
-segment, its model set is `{π_E γ : |Σ_j γ_j q′^j| ≤ 1/2}`, and `Q` maps it into itself. `Q`
-multiplies volume on `E` by `−1/q′`, its non-real eigenvalues have modulus squared `1/(Q|q′|)`
-and exceed `1` in modulus, and the form of `GramQ` has type `(2,1)` on `E` and `(1,0)` on `H`. By
-(8), `3` is the least physical dimension, attained only here. -/
+`x⁴ − x − 1` and the internal coordinate `h ↦ Σ_j h_j q′^j`, the window `|·| ≤ 1/2` is a segment,
+its model set is `{π_E γ : |Σ_j γ_j q′^j| ≤ 1/2}`, and `Q` maps it into itself. `Q` multiplies
+volume on `E` by `−1/q′`, its non-real eigenvalues have modulus squared `1/(Q|q′|)` and exceed `1`
+in modulus, and the form of `GramQ` has type `(2,1)` on `E` and `(1,0)` on `H`. By (4) and (8), `3`
+is the least physical dimension, attained only here. The scheme and model set are, in substance, an
+instance of Masáková–Mazáč–Pelantová (2021), Thm 13.1, and of Harriss–Koivusalo–Walton (preprint,
+arXiv:2512.13659), §3.4; compare Kalle–Steiner (2012), Lemma 4.3. They are not claimed as new. The
+regularity and pure-point diffraction of the model set (Hof 1995; Schlottmann 2000) are cited only.
+-/
 theorem quartic_model_set :
     ∃ Qr q' : ℝ, Qr ^ 4 = Qr + 1 ∧ 1 < Qr ∧ q' ^ 4 = q' + 1 ∧ q' < 0 ∧
     ∃ S : InvariantCPS CQ,

@@ -48,21 +48,21 @@ stated there, between `-- BEGIN SHARED DEFINITIONS` and `-- END SHARED DEFINITIO
 2. `kronecker_density_criterion` — for complementary `E`, `H`, the projection of `ℤ^ι` to `H`
    along `E` is dense in `H` if and only if every real functional that is integer-valued on
    `ℤ^ι` and vanishes on `E` is zero.
-3. `least_physical_dimension` — for `det A ≠ 0`, any `χ_A`: (a) `d(A) = dimensionFormula A`, the
-   sum over the distinct irreducible factors `p` of `χ_A` over `ℚ` of
-   `m_p u_p + c_p (m_p − r₁(p))`, plus `min (deg p, 2)` if every root of `p` lies on the unit
-   circle and `r₁(p) = m_p`, where `r₁(p) = (2 dim_ℚ ker p(A) − dim_ℚ ker p(A)²) / deg p`; through
-   the Jordan form (which the definitions do not use) this reads
+3. `least_physical_dimension` — for `det A ≠ 0`, any `χ_A`: (a) `d(A) = dimensionFormula A`, the sum
+   over the distinct irreducible factors `p` of `χ_A` over `ℚ` of `m_p u_p + c_p (m_p − r₁(p))`,
+   plus `min (deg p, 2)` if every root of `p` lies on the unit circle and `r₁(p) = m_p`, where
+   `r₁(p) = (2 dim_ℚ ker p(A) − dim_ℚ ker p(A)²) / deg p`; through the Jordan form (which the
+   definitions do not use; this restatement is not formalized) this reads
    `d(A) = Σ_{|λ|>1} a_λ + Σ_{|λ|=1} (a_λ − s_λ) + #{n ≤ 2 : n ∈ 𝒮(A)} + 2·#{n ≥ 3 : n ∈ 𝒮(A)}`,
-   `a_λ` the multiplicity, `s_λ` the number of Jordan blocks of size one at `λ`, `𝒮(A)` the set
-   of `n` whose primitive `n`-th roots of unity are eigenvalues with all blocks of size one;
-   (b) if `P A = B P` for an invertible rational `P`, then `B` has the same value; (c) an
-   irreducible factor has all its roots on the unit circle if and only if it is cyclotomic;
-   (d) for `χ_A` squarefree over `ℚ`, every `A`-invariant splitting is `E = ker q_E(A)`,
-   `H = ker q_H(A)` with `χ_A = q_E q_H` over `ℝ`, `q_E`, `q_H` the characteristic polynomials of
-   `A|_E`, `A|_H`; it carries an admissible scheme if and only if every root of `q_H` lies in the
-   closed unit disk and every irreducible factor of `χ_A` over `ℚ` shares a complex root with
-   `q_E`; and the value is `U(A) + circleCount A`.
+   `a_λ` the multiplicity, `s_λ` the number of Jordan blocks of size one at `λ`, `𝒮(A)` the set of
+   `n` whose primitive `n`-th roots of unity are eigenvalues with all blocks of size one; (b) if
+   `P A = B P` for an invertible rational `P`, then `B` has the same value; (c) an irreducible
+   factor has all its roots on the unit circle if and only if it is cyclotomic; (d) for `χ_A`
+   squarefree over `ℚ`, every `A`-invariant splitting is `E = ker q_E(A)`, `H = ker q_H(A)` with
+   `χ_A = q_E q_H` over `ℝ`, `q_E`, `q_H` the characteristic polynomials of `A|_E`, `A|_H`; it
+   carries an admissible scheme if and only if every root of `q_H` lies in the closed unit disk and
+   every irreducible factor of `χ_A` over `ℚ` shares a complex root with `q_E`; and the value is
+   `U(A) + circleCount A`.
 4. `hyperbolic_case` — for `det A ≠ 0` and no eigenvalue on the unit circle, any `χ_A` (no
    diagonalizability): a scheme is admissible if and only if `E ⊇ E^u(A)`, if and only if
    `H ⊆ E^s(A)`; an `A`-invariant splitting `E ⊕ H` carries an admissible scheme if and only if
@@ -99,12 +99,11 @@ stated there, between `-- BEGIN SHARED DEFINITIONS` and `-- END SHARED DEFINITIO
     `t > 1`, `t⁴ = t³ + 1`, and `P` carries the cubic sector `ℝ³ ⊗ e₀` onto `E^u` with the
     pairing of `GramRho`; `GramQ` has type `(3, 1)` and `GramRho` type `(2, 1)` (Mathlib's
     `sigPos`, `sigNeg`).
-11. `quartic_model_set` — for `CQ` on `ℤ⁴`: `(E^u, E^s)` is a scheme with `ℤ⁴ ∩ E = 0`; the
-    window `|Σ_j h_j q′^j| ≤ 1/2` is a segment, its model set is
-    `{π_E γ : |Σ_j γ_j q′^j| ≤ 1/2}`, and `CQ` maps it into itself; `det(CQ|_E) = −1/q′`; the
-    non-real eigenvalues `w` have `|w|² = 1/(Q|q′|) > 1`; and the form of `GramQ` has type
-    `(2, 1)` on `E` and `(1, 0)` on `H`. By (8), `3` is the least physical dimension of `CQ`,
-    attained only by this scheme.
+11. `quartic_model_set` — for `CQ` on `ℤ⁴`: `(E^u, E^s)` is a scheme with `ℤ⁴ ∩ E = 0`; the window
+    `|Σ_j h_j q′^j| ≤ 1/2` is a segment, its model set is `{π_E γ : |Σ_j γ_j q′^j| ≤ 1/2}`, and `CQ`
+    maps it into itself; `det(CQ|_E) = −1/q′`; the non-real eigenvalues `w` have
+    `|w|² = 1/(Q|q′|) > 1`; and the form of `GramQ` has type `(2, 1)` on `E` and `(1, 0)` on `H`.
+    By (4) and (8), `3` is the least physical dimension of `CQ`, attained only by this scheme.
 12. `salem_witness` — the companion matrix of `x⁴ − x³ − x² − x + 1` has that characteristic
     polynomial, is not hyperbolic and has `d = 1`; its Salem root lies in `(1.7220, 1.7221)`, and
     every admissible scheme with `dim E = 1` is on its eigenline.
@@ -264,10 +263,10 @@ dimensions each of the theory's inflations needs to be the symmetry of one, and 
 
 Space inflates the parent through spacetime, and spacetime inflates it through space. On the
 parent's lattice the plastic inflation `ρ` needs exactly four physical dimensions, and only one
-scheme attains four (9). Those four are a copy of spacetime's: `ρ` has a single expanding embedding
-in `ℚ(ρ)`, the real one, and the spectral projection maps the quartic sector onto them, carrying
-`ℤ[Q]` with its trace form unchanged, of Lorentzian type `(3, 1)` (10). `ρ` acts on them as a pure
-dilation by `ρ ≈ 1.3247`, the same stretch in every direction (10). Symmetrically, the unit
+scheme attains four (4, 9). Those four are a copy of spacetime's: `ρ` has a single expanding
+embedding in `ℚ(ρ)`, the real one, and the spectral projection maps the quartic sector onto them,
+carrying `ℤ[Q]` with its trace form unchanged, of Lorentzian type `(3, 1)` (10). `ρ` acts on them as
+a pure dilation by `ρ ≈ 1.3247`, the same stretch in every direction (10). Symmetrically, the unit
 `θ = −Q⁻¹ = 1 − Q³` needs exactly three, and those three are a copy of space's: `ℚ(ρ)`'s real space
 with its form of type `(2, 1)` unchanged, dilated by `t = −1/q′ ≈ 1.3803` (8, 9, 10). Taken over all
 three embeddings of `ℚ(ρ)` instead of the one expanding embedding, the form on the quartic sector is

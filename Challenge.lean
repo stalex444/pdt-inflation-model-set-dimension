@@ -121,40 +121,41 @@ Jordan blocks of size one at each root of `p`; no Jordan form enters the definit
 by statement. The mathematics of (1), (2), (4), (5) for irreducible `χ_A`, and (13), and of (6) for
 `χ_A = Φ_n` (the planar cyclotomic model sets), is known in other formulations, and the scheme and
 model set of (11) are, in substance, an instance of Masáková–Mazáč–Pelantová (Linear Algebra Appl.
-625 (2021) 279–321), Thm 13.1; none of this is claimed as new. Beyond the cited cases, the entry
-proves the least physical dimension for every nonsingular integer matrix (3), including what lies
-outside the diagonalizable class of Masáková–Mazáč–Pelantová: a Jordan block of size `≥ 2` at an
-eigenvalue on the unit circle counts in full (the terms `c_p (m_p − r₁(p))`, which vanish for
-diagonalizable `A`), and at a cyclotomic factor with such a block the blocks of size one cost
-nothing, the internal space being tilted into the socle of the larger blocks; the witnesses are
-`J₂`, `1 ⊕ J₂(1)` and `1 ⊕ J₃(1)` (7). The Jordan-block terms are not confined to periodic schemes:
-for the companion matrix of the square of the Salem polynomial of (12), (3) gives `d = 6`, against
-`d = 2` for two copies of the companion matrix of (12) (the same `χ_A`), and in both cases the
-minimal scheme meets the lattice only in `0` (the values are (3) evaluated by hand; this last fact
-is not formalized). The master's thesis of J. Mazáč (Czech Technical University in Prague, 2019, hdl
-10467/82624), whose abstract treats, physical map first, the existence of a scheme with a given
-self-similarity for all linear maps and the minimal lattice dimension for diagonalizable maps, was
-not read: its full text is not public. Its treatment of non-diagonalizable maps, existence only by
-its abstract, was not checked against the Jordan-block terms of (3); the later paper of
-Masáková–Mazáč–Pelantová states (§14) that its answer covers nonsingular maps diagonalizable over ℂ
-only. The entry also proves the characterization of every admissible splitting for squarefree `χ_A`
-((3)(d)), non-generic splittings included (its necessity half is the argument of
-Masáková–Mazáč–Pelantová, Lemma 5.1, which uses only the injectivity `ℤ^ι ∩ H = 0` and so needs no
-genericity), and (1) for every integer matrix and (4) for every nonsingular hyperbolic integer
-matrix, with no diagonalizability hypothesis; for diagonalizable `A` and generic schemes, the
-uniqueness of the minimal scheme in (4) and of the minimal physical line in (5) is immediate from
-Masáková–Mazáč–Pelantová, Cor. 13.4. For `det A ≠ 0` and squarefree `χ_A` with a factor `Φ_n`,
-`n ∉ {1, 2, 3, 4, 6}`, the minimal scheme is not unique, by (3)(d). For squarefree `χ_A`, hence
-diagonalizable `A`, the count of (3) also follows from the arguments of Masáková–Mazáč–Pelantová,
-Lemma 5.1, Prop. 8.1(iii) and Cor. 13.4 (numbering of arXiv:1909.10753v2), which are stated there
-for generic (aperiodic) schemes, under which a factor `x ± 1`, `Φ₃`, `Φ₄` or `Φ₆` admits no scheme.
-We did not find the least physical dimension for a given lattice map, statement (3), stated in the
-sources we read (search completed 2026-10-20); this is a search result, not a guarantee.
+625 (2021) 279–321), Thm 13.1, and of Harriss–Koivusalo–Walton, §3.4 (compare Kalle–Steiner 2012,
+Lemma 4.3); none of this is claimed as new. Beyond the cited cases, the entry proves the least
+physical dimension for every nonsingular integer matrix (3), including what lies outside the
+diagonalizable class of Masáková–Mazáč–Pelantová: a Jordan block of size `≥ 2` at an eigenvalue on
+the unit circle counts in full (the terms `c_p (m_p − r₁(p))`, which vanish for diagonalizable `A`),
+and at a cyclotomic factor with such a block the blocks of size one cost nothing, the internal space
+being tilted into the socle of the larger blocks; the witnesses are `J₂`, `1 ⊕ J₂(1)` and
+`1 ⊕ J₃(1)` (7). The Jordan-block terms are not confined to periodic schemes: for the companion
+matrix of the square of the Salem polynomial of (12), (3) gives `d = 6`, against `d = 2` for two
+copies of the companion matrix of (12) (the same `χ_A`), and in both cases the minimal scheme meets
+the lattice only in `0` (the values are (3) evaluated by hand; this last fact is not formalized).
+The master's thesis of J. Mazáč (Czech Technical University in Prague, 2019, hdl 10467/82624), whose
+abstract treats, physical map first, the existence of a scheme with a given self-similarity for all
+linear maps and the minimal lattice dimension for diagonalizable maps, was not read: its full text
+is not public. Its treatment of non-diagonalizable maps, existence only by its abstract, was not
+checked against the Jordan-block terms of (3); the later paper of Masáková–Mazáč–Pelantová states
+(§14) that its answer covers nonsingular maps diagonalizable over ℂ only. The entry also proves the
+characterization of every admissible splitting for squarefree `χ_A` ((3)(d)), non-generic splittings
+included (its necessity half is the argument of Masáková–Mazáč–Pelantová, Lemma 5.1, which uses only
+the injectivity `ℤ^ι ∩ H = 0` and so needs no genericity), and (1) for every integer matrix and (4)
+for every nonsingular hyperbolic integer matrix, with no diagonalizability hypothesis; for
+diagonalizable `A` and generic schemes, the uniqueness of the minimal scheme in (4) and of the
+minimal physical line in (5) is immediate from Masáková–Mazáč–Pelantová, Cor. 13.4. For `det A ≠ 0`
+and squarefree `χ_A` with a factor `Φ_n`, `n ∉ {1, 2, 3, 4, 6}`, the minimal scheme is not unique,
+by (3)(d). For squarefree `χ_A`, hence diagonalizable `A`, the count of (3) also follows from the
+arguments of Masáková–Mazáč–Pelantová, Lemma 5.1, Prop. 8.1(iii) and Cor. 13.4 (numbering of
+arXiv:1909.10753v2), which are stated there for generic (aperiodic) schemes, under which a factor
+`x ± 1`, `Φ₃`, `Φ₄` or `Φ₆` admits no scheme. We did not find the least physical dimension for a
+given lattice map, statement (3), stated in the sources we read (search completed 2026-10-20); this
+is a search result, not a guarantee.
 
 **The proofs.** No Jordan form of `A` and no diagonalization of `A` is used: the Jordan data of (3)
-are ranks of rational kernels. The lower bound in (3): admissibility is power-boundedness on `H`
-(1), the largest power-bounded invariant summand has dimension `Σ_p (m_p s_p + c_p r₁(p))`, `s_p`
-the number of roots of `p` inside the unit disk (a power-bounded map is semisimple on its
+are ranks of rational kernels. The lower bound in (3): admissibility is power-boundedness on
+`H` (1), the largest power-bounded invariant summand has dimension `Σ_p (m_p s_p + c_p r₁(p))`,
+`s_p` the number of roots of `p` inside the unit disk (a power-bounded map is semisimple on its
 unit-circle part, and an invariant summand killed by `p(A)` misses `im p(A)`), and at a cyclotomic
 factor with all Jordan blocks of size one the physical space meets the generalized eigenspace in at
 least `min (deg p, 2)` dimensions. The upper bound: from a largest power-bounded summand, the
@@ -162,18 +163,19 @@ component of each cyclotomic factor is replaced by a scheme of the integer matri
 on a `ℤ`-basis of the lattice points of that component; there the least scheme is a generic line or
 plane at one place of `ℚ(ζ_n)` if all Jordan blocks have size one, and otherwise an internal space
 tilted into the socle of the larger blocks, with generic parameters avoiding countably many proper
-affine subspaces (Haar measure). Such a splitting is admissible once, at every cyclotomic factor, no
-lattice vector of `H` and no integer vector orthogonal to `E` is seen, by the rational annihilator
-of a lattice vector and Kronecker's theorem for the factors of `χ_A`
-(`NumberField.Embeddings.pow_eq_one_of_norm_eq_one`); density is (2). Part (d) of (3) rests on a
-rational kernel lemma (for an irreducible rational factor `p` of `χ_A`, `ker p(A)` contains a
-nonzero lattice vector) and a Lagrange-interpolation power bound on `H`. The rates in (4) come from
-Gelfand's spectral radius formula. The signatures in (10) and (11) are computed by Sylvester's law
-of inertia in Mathlib (D. Loeffler's `sigPos`, `sigNeg`). Statements (8)–(11) are about explicit
-integer matrices. That `Cρ` and `CQ` are multiplication by `ρ` and `Q` in the power bases is their
-definition (companion matrices), so `Cρ^i ⊗ CQ^j` is multiplication by `ρ^i Q^j` in the product
-basis. That the `ρ^i Q^j` are a `ℤ`-basis of the ring of integers of `ℚ(ρ, Q)` is statement (8) of
-the author's registered entry PALOMAR-2026-10-21-000012
+affine subspaces (Haar measure). Such a splitting is admissible once, at every cyclotomic factor
+`p`, no nonzero lattice vector of `H` is killed by `p(A)` and no nonzero integer vector is
+orthogonal to both `E` and `im p(A)`: the rational annihilator of a lattice vector and Kronecker's
+theorem for the factors of `χ_A` (`NumberField.Embeddings.pow_eq_one_of_norm_eq_one`) reduce every
+obstruction to a cyclotomic factor; density is (2). Part (d) of (3) rests on a rational kernel lemma
+(for an irreducible rational factor `p` of `χ_A`, `ker p(A)` contains a nonzero lattice vector) and
+a Lagrange-interpolation power bound on `H`. The rates in (4) come from Gelfand's spectral radius
+formula. The signatures in (10) and (11) are computed by Sylvester's law of inertia in Mathlib (D.
+Loeffler's `sigPos`, `sigNeg`). Statements (8)–(11) are about explicit integer matrices. That `Cρ`
+and `CQ` are multiplication by `ρ` and `Q` in the power bases is their definition (companion
+matrices), so `Cρ^i ⊗ CQ^j` is multiplication by `ρ^i Q^j` in the product basis. That the `ρ^i Q^j`
+are a `ℤ`-basis of the ring of integers of `ℚ(ρ, Q)` is statement (8) of the author's registered
+entry PALOMAR-2026-10-21-000012
 (stalex444/pdt-hermite-signature-compositum@5aa870e98236ba240561b798265c629df8c2d031); that
 `GramRho`, `GramQ` and `GramRho ⊗ GramQ` are the Gram matrices of the trace forms in these bases is
 statements (8), (9) and (19) of the author's registered entry PALOMAR-2026-09-02-000014, in which
@@ -194,9 +196,11 @@ of `InflationDimension/Defs.lean`, on which the proof modules are built. This fi
 only. The Mathlib definitions the statements use are quoted in `MATHLIB_DEFINITIONS.md`, and
 `DefinitionAudit.lean` checks facts about them.
 
-**Not formalized.** The least physical dimension when `det A = 0`; the least dimension under
-aperiodicity; and the regularity and pure-point diffraction of the model sets (Hof 1995;
-Schlottmann 2000), which are cited only.
+**Not formalized.** The least physical dimension when `det A = 0`; the reading of `r₁(p)`, defined
+by rational ranks, as the number of Jordan blocks of size one at each root of `p` (standard linear
+algebra; Mathlib at the pin has no Jordan form), and with it the Jordan-form restatement in (3); the
+least dimension under aperiodicity; and the regularity and pure-point diffraction of the model sets
+(Hof 1995; Schlottmann 2000), which are cited only.
 
 **Application (cited, not a claim of the entry).** In the author's Pisot Dimensional Theory, `ℚ(ρ)`
 is the arithmetic of three-dimensional space and `ℚ(Q)` the arithmetic of four-dimensional
@@ -209,10 +213,10 @@ dimensions each of the theory's inflations needs to be the symmetry of one, and 
 
 Space inflates the parent through spacetime, and spacetime inflates it through space. On the
 parent's lattice the plastic inflation `ρ` needs exactly four physical dimensions, and only one
-scheme attains four (9). Those four are a copy of spacetime's: `ρ` has a single expanding embedding
-in `ℚ(ρ)`, the real one, and the spectral projection maps the quartic sector onto them, carrying
-`ℤ[Q]` with its trace form unchanged, of Lorentzian type `(3, 1)` (10). `ρ` acts on them as a pure
-dilation by `ρ ≈ 1.3247`, the same stretch in every direction (10). Symmetrically, the unit
+scheme attains four (4, 9). Those four are a copy of spacetime's: `ρ` has a single expanding
+embedding in `ℚ(ρ)`, the real one, and the spectral projection maps the quartic sector onto them,
+carrying `ℤ[Q]` with its trace form unchanged, of Lorentzian type `(3, 1)` (10). `ρ` acts on them as
+a pure dilation by `ρ ≈ 1.3247`, the same stretch in every direction (10). Symmetrically, the unit
 `θ = −Q⁻¹ = 1 − Q³` needs exactly three, and those three are a copy of space's: `ℚ(ρ)`'s real space
 with its form of type `(2, 1)` unchanged, dilated by `t = −1/q′ ≈ 1.3803` (8, 9, 10). Taken over all
 three embeddings of `ℚ(ρ)` instead of the one expanding embedding, the form on the quartic sector is
@@ -466,10 +470,12 @@ namespace ModelSetDimension
 admissible if and only if `A` is power-bounded on `H`; then the orbit window
 `W_* = {h ∈ H : ‖Aⁿ h‖ ≤ 1 for all n}` is a compact, convex, centrally symmetric window with
 `A W_* ⊆ W_*` and `A Λ(W_*) ⊆ Λ(W_*)`. (b) Per window: `A Λ(W) ⊆ Λ(W)` if and only if `A` maps the
-lattice points `W ∩ π_H(ℤ^ι)` of the window into `W`; for a closed window contained in the
-closure of its lattice points, if and only if `A W ⊆ W`. (c) Every eigenvalue of `A|_H` lies in
-the closed unit disk, so `U(A) ≤ dim E`. The necessity half is Masáková–Mazáč–Pelantová (2021),
-Prop. 13.2 and Cor. 13.4, there for diagonalizable maps and generic schemes. -/
+lattice points `W ∩ π_H(ℤ^ι)` of the window into `W`; for a closed window contained in the closure
+of its lattice points, if and only if `A W ⊆ W`. (c) Every eigenvalue of `A|_H` lies in the closed
+unit disk, so `U(A) ≤ dim E`. The necessity half is Masáková–Mazáč–Pelantová (2021), Prop. 13.2 and
+Cor. 13.4, there for diagonalizable maps and generic schemes; for self-similarities,
+Baake–Moody (2001), §1.4, remarked that a compact window forces the internal map to have no
+eigenvalue of modulus `> 1`. -/
 theorem admissibility_criterion {ι : Type*} [Fintype ι] [DecidableEq ι] (A : Matrix ι ι ℤ)
     (S : InvariantCPS A) :
     (S.Admissible ↔ ∃ C : ℝ, ∀ n : ℕ, ∀ v ∈ S.H, ‖(act A ^ n) v‖ ≤ C * ‖v‖) ∧
@@ -501,27 +507,27 @@ theorem kronecker_density_criterion {ι : Type*} [Fintype ι] [DecidableEq ι]
   sorry
 
 /-- **(3) The least physical dimension** (`det A ≠ 0`; any `χ_A`; eigenvalues on the unit circle and
-Jordan blocks allowed). (a) `d(A) = Σ_p f_p` over the distinct irreducible factors `p` of `χ_A`
-over `ℚ` (`dimensionFormula A`), where `f_p = m_p u_p + c_p (m_p − r₁(p))`, plus `min (deg p, 2)`
-when every root of `p` lies on the unit circle and `r₁(p) = m_p` (`factorContribution`): every
-root of modulus `> 1` counts with its multiplicity, every Jordan block of size `≥ 2` at a root on
-the unit circle counts in full, and a cyclotomic factor all of whose Jordan blocks have size one
-costs one line (`x ± 1`) or one plane (`Φ_n`, `n ≥ 3`), however large its multiplicity.
-Equivalently, through the Jordan form (which the definitions do not use),
-`d(A) = Σ_{|λ|>1} a_λ + Σ_{|λ|=1} (a_λ − s_λ) + #{n ≤ 2 : n ∈ 𝒮(A)} + 2·#{n ≥ 3 : n ∈ 𝒮(A)}`,
-with `a_λ` the multiplicity of `λ`, `s_λ` the number of Jordan blocks of size one at `λ`, and
-`𝒮(A)` the set of `n` whose primitive `n`-th roots of unity are eigenvalues with all Jordan blocks
-of size one. (b) The value is an invariant of rational similarity: if `P A = B P` with `P` rational
-and invertible, `B` has the same least physical dimension. (c) The irreducible factors whose roots
-all lie on the unit circle are exactly the cyclotomic ones (Kronecker). (d) For `χ_A` squarefree
-over `ℚ`: every `A`-invariant splitting `ℝ^ι = E ⊕ H` is `E = ker q_E(A)`, `H = ker q_H(A)` with
+Jordan blocks allowed). (a) `d(A) = Σ_p f_p` over the distinct irreducible factors `p` of `χ_A` over
+`ℚ` (`dimensionFormula A`), where `f_p = m_p u_p + c_p (m_p − r₁(p))`, plus `min (deg p, 2)` when
+every root of `p` lies on the unit circle and `r₁(p) = m_p` (`factorContribution`): every root of
+modulus `> 1` counts with its multiplicity, every Jordan block of size `≥ 2` at a root on the unit
+circle counts in full, and a cyclotomic factor all of whose Jordan blocks have size one costs one
+line (`x ± 1`) or one plane (`Φ_n`, `n ≥ 3`), however large its multiplicity. Equivalently, through
+the Jordan form (which the definitions do not use; this restatement is not formalized),
+`d(A) = Σ_{|λ|>1} a_λ + Σ_{|λ|=1} (a_λ − s_λ) + #{n ≤ 2 : n ∈ 𝒮(A)} + 2·#{n ≥ 3 : n ∈ 𝒮(A)}`, with
+`a_λ` the multiplicity of `λ`, `s_λ` the number of Jordan blocks of size one at `λ`, and `𝒮(A)` the
+set of `n` whose primitive `n`-th roots of unity are eigenvalues with all Jordan blocks of size one.
+(b) The value is an invariant of rational similarity: if `P A = B P` with `P` rational and
+invertible, `B` has the same least physical dimension. (c) The irreducible factors whose roots all
+lie on the unit circle are exactly the cyclotomic ones (Kronecker). (d) For `χ_A` squarefree over
+`ℚ`: every `A`-invariant splitting `ℝ^ι = E ⊕ H` is `E = ker q_E(A)`, `H = ker q_H(A)` with
 `χ_A = q_E q_H` over `ℝ`, where `q_E`, `q_H` are the characteristic polynomials of `A|_E`, `A|_H`;
 it carries an admissible scheme if and only if every root of `q_H` lies in the closed unit disk and
 every irreducible factor of `χ_A` over `ℚ` shares a complex root with `q_E`; and the value is
-`U(A) + circleCount A`. For squarefree `χ_A`, hence diagonalizable `A`, this count also follows
-from the arguments of Masáková–Mazáč–Pelantová (2021), Lemma 5.1, Prop. 8.1(iii) and Cor. 13.4,
-which are stated there for generic (aperiodic) schemes, under which a factor `x ± 1`, `Φ₃`, `Φ₄`
-or `Φ₆` admits no scheme. -/
+`U(A) + circleCount A`. For squarefree `χ_A`, hence diagonalizable `A`, this count also follows from
+the arguments of Masáková–Mazáč–Pelantová (2021), Lemma 5.1, Prop. 8.1(iii) and Cor. 13.4, which are
+stated there for generic (aperiodic) schemes, under which a factor `x ± 1`, `Φ₃`, `Φ₄` or `Φ₆`
+admits no scheme. -/
 theorem least_physical_dimension {ι : Type*} [Fintype ι] [DecidableEq ι] (A : Matrix ι ι ℤ)
     (hdet : A.det ≠ 0) :
     IsLeast (physDims A) (dimensionFormula A) ∧
@@ -687,11 +693,15 @@ theorem compositum_dilations :
 
 /-- **(11) The three-dimensional model set of `Q`.** On `ℤ[Q]` (`CQ`), `(E^u, E^s)` is a
 `Q`-invariant scheme with `ℤ⁴ ∩ E = 0` (aperiodic). With `q′ < 0` the negative real root of
-`x⁴ − x − 1` and the internal coordinate `h ↦ Σ_j h_j q′^j`, the window `|·| ≤ 1/2` is a
-segment, its model set is `{π_E γ : |Σ_j γ_j q′^j| ≤ 1/2}`, and `Q` maps it into itself. `Q`
-multiplies volume on `E` by `−1/q′`, its non-real eigenvalues have modulus squared `1/(Q|q′|)`
-and exceed `1` in modulus, and the form of `GramQ` has type `(2,1)` on `E` and `(1,0)` on `H`. By
-(8), `3` is the least physical dimension, attained only here. -/
+`x⁴ − x − 1` and the internal coordinate `h ↦ Σ_j h_j q′^j`, the window `|·| ≤ 1/2` is a segment,
+its model set is `{π_E γ : |Σ_j γ_j q′^j| ≤ 1/2}`, and `Q` maps it into itself. `Q` multiplies
+volume on `E` by `−1/q′`, its non-real eigenvalues have modulus squared `1/(Q|q′|)` and exceed `1`
+in modulus, and the form of `GramQ` has type `(2,1)` on `E` and `(1,0)` on `H`. By (4) and (8), `3`
+is the least physical dimension, attained only here. The scheme and model set are, in substance, an
+instance of Masáková–Mazáč–Pelantová (2021), Thm 13.1, and of Harriss–Koivusalo–Walton (preprint,
+arXiv:2512.13659), §3.4; compare Kalle–Steiner (2012), Lemma 4.3. They are not claimed as new. The
+regularity and pure-point diffraction of the model set (Hof 1995; Schlottmann 2000) are cited only.
+-/
 theorem quartic_model_set :
     ∃ Qr q' : ℝ, Qr ^ 4 = Qr + 1 ∧ 1 < Qr ∧ q' ^ 4 = q' + 1 ∧ q' < 0 ∧
     ∃ S : InvariantCPS CQ,
