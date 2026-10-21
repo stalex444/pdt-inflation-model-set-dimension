@@ -136,9 +136,10 @@ stated there, between `-- BEGIN SHARED DEFINITIONS` and `-- END SHARED DEFINITIO
   Gelfand's spectral radius formula, Sylvester's law of inertia (D. Loeffler's
   `QuadraticForm.sigPos_of_equiv_weightedSumSquares`), the `ZSpan` floor, Selmer's
   irreducibility of `x^n − x − 1` (`X_pow_sub_X_sub_one_irreducible_rat`) and Mathlib's Delone
-  sets (N. Jensen). The one ingredient of (3) that was on paper only at design time, that
+  sets (N. Jensen). The rational kernel lemma behind the necessity half of (3)(b), that
   `ker p(A)` contains a nonzero lattice vector for every irreducible rational factor `p` of
-  `χ_A` (`InflationDimension.exists_int_mem_ker`), is kernel-checked here.
+  `χ_A` (`InflationDimension.exists_int_mem_ker`, with no squarefree or `det` hypothesis), is
+  proved here.
 * **Instances at matrix level.** Statements (8)–(11) are about explicit integer matrices and
   explicit Gram matrices. That `mulMatrix a` is multiplication by `α = Σ a(i,j) ρ^i Q^j` on the
   ring of integers `ℤ[ρ] ⊗ ℤ[Q]` of `K = ℚ(ρ, Q)` in the basis `ρ^i Q^j`, and that
