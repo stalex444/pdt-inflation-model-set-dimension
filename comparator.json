@@ -1,0 +1,24 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "ModelSetDimension.admissibility_criterion",
+    "ModelSetDimension.kronecker_density_criterion",
+    "ModelSetDimension.least_physical_dimension_squarefree",
+    "ModelSetDimension.hyperbolic_case",
+    "ModelSetDimension.dimension_one_pisot_or_salem",
+    "ModelSetDimension.finite_order_case",
+    "ModelSetDimension.squarefree_hypothesis_needed",
+    "ModelSetDimension.sector_rings",
+    "ModelSetDimension.compositum_lattice",
+    "ModelSetDimension.compositum_dilations",
+    "ModelSetDimension.quartic_model_set",
+    "ModelSetDimension.salem_witness",
+    "ModelSetDimension.modelSet_isMeyer"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}
