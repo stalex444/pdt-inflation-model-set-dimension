@@ -18,88 +18,99 @@ project:
     orbit window is a compact convex symmetric invariant window; the
     per-window criterion; and U(A) <= dim E, U(A) the number of eigenvalues
     of modulus > 1. (2) Kronecker's density criterion in cut-and-project
-    form. (3) For every integer A with det A != 0, any chi_A: d(A) is the
-    sum over the distinct irreducible factors p of chi_A over Q of m_p u_p +
-    c_p (m_p - r_1(p)), plus min(deg p, 2) when every root of p lies on the
-    unit circle and r_1(p) = m_p, where m_p is the multiplicity, u_p and c_p
-    count the roots of p of modulus > 1 and = 1, and r_1(p) = (2 dim ker
-    p(A) - dim ker p(A)^2) / deg p (ranks over Q) is the number of Jordan
-    blocks of size one at each root of p; the value is an invariant of
-    rational similarity; the factors with all roots on the unit circle are
-    the cyclotomic ones; and for chi_A squarefree every invariant splitting
-    is E = ker q_E(A), H = ker q_H(A) with chi_A = q_E q_H, it is admissible
-    iff the roots of q_H lie in the closed unit disk and every irreducible
-    rational factor of chi_A shares a root with q_E, and d(A) = U(A) +
-    circleCount(A), counting 1 for each factor x - 1, x + 1 and 2 for each
-    other cyclotomic factor. (4) For det A != 0 and hyperbolic A, any chi_A
-    and no diagonalizability: a scheme is admissible iff E contains the
-    unstable set iff H lies in the stable set; an invariant splitting
-    carries an admissible scheme iff E contains the unstable set; d(A) =
-    U(A), attained only by the unstable/stable splitting. (5) For det A !=
-    0, any chi_A: d(A) = 1 iff chi_A is irreducible with exactly one root of
-    modulus > 1 (a real root, a Pisot or Salem number up to sign, or an
-    integer on Z^1), or A = +-1 in any rank; every admissible line is the
-    eigenline. (6) If A^k = 1: every factor is cyclotomic and d = sum of
-    min(deg p, 2) over the distinct factors; the same for chi_A squarefree
-    with all roots on the unit circle; every integer matrix with chi_A =
-    Phi_n, n >= 3 (multiplication by a primitive n-th root of unity), needs
-    exactly a plane. (7) Jordan blocks on the circle: I_2 and the Jordan
-    block J_2 both have chi = (x - 1)^2, with d = 1 and 2; 1 + J_2(1) and 1
-    + J_3(1) have d = 2 and 3. (8) Multiplication by rho, rho^-1, Q and
-    theta = -Q^-1 = 1 - Q^3 on Z[rho] and Z[Q] (rho^3 = rho + 1, Q^4 = Q +
-    1): d = 1, 2, 3, 1. (9) On Z[rho] (x) Z[Q] (degree 12), multiplication
-    by every alpha other than 0, +-1 is nonsingular (det != 0) and
-    hyperbolic with d = U; for rho, theta, rho Q and Q the values are 4, 3,
-    5, 9. (10) rho and theta act on their unstable spaces as real scalars,
-    and the spectral projection carries the quartic (resp. cubic) sector
-    onto them with the Gram pairing GramRho (x) GramQ equal to that of GramQ
-    (resp. GramRho), of types (3,1) and (2,1). (11) The scheme of Q on Z^4
-    with an interval window: a segment, an explicit Q-invariant model set in
-    R^3, determinant -1/q' on E, non-real moduli, and the types (2,1) and
-    (1,0) of the trace form on E and H. (12) A Salem witness, the companion
-    of x^4 - x^3 - x^2 - x + 1: not hyperbolic, d = 1. (13) Every model set
-    is a Delone set (Mathlib's Delone.DeloneSet) with uniformly discrete
-    difference set. The mathematics of (1), (2), (4), (5), (6) and (13) is
-    known in other formulations (Masakova-Mazac-Pelantova 2021; Kronecker,
-    Pleasants 2000; Harriss-Koivusalo-Walton 2025, preprint; Meyer 1972,
-    1995; Solomyak 2020; the classical cyclotomic model sets; Moody 1997);
+    form. (3) For every integer A with det A != 0, any chi_A: (a) d(A) is
+    the sum over the distinct irreducible factors p of chi_A over Q of m_p
+    u_p + c_p (m_p - r_1(p)), plus min(deg p, 2) when every root of p lies
+    on the unit circle and r_1(p) = m_p, where m_p is the multiplicity, u_p
+    and c_p count the roots of p of modulus > 1 and = 1, and r_1(p) = (2 dim
+    ker p(A) - dim ker p(A)^2) / deg p (ranks over Q) is the number of
+    Jordan blocks of size one at each root of p; (b) the value is an
+    invariant of rational similarity; (c) the factors with all roots on the
+    unit circle are the cyclotomic ones; and (d) for chi_A squarefree every
+    invariant splitting is E = ker q_E(A), H = ker q_H(A) with chi_A = q_E
+    q_H, it is admissible iff the roots of q_H lie in the closed unit disk
+    and every irreducible rational factor of chi_A shares a root with q_E,
+    and d(A) = U(A) + circleCount(A), counting 1 for each factor x - 1,
+    x + 1 and 2 for each other cyclotomic factor, each with its
+    multiplicity. (4) For det A != 0 and hyperbolic A, any chi_A and no
+    diagonalizability: a scheme is admissible iff E contains the unstable
+    set iff H lies in the stable set; an invariant splitting carries an
+    admissible scheme iff E contains the unstable set; d(A) = U(A), attained
+    only by the unstable/stable splitting. (5) For det A != 0, any chi_A:
+    d(A) = 1 iff chi_A is irreducible with exactly one root of modulus > 1
+    (a real root, a Pisot or Salem number up to sign, or an integer on Z^1),
+    or A = +-1 in any rank; every admissible line is the eigenline. (6) If
+    A^k = 1: every factor is cyclotomic and d = sum of min(deg p, 2) over
+    the distinct factors; the same for chi_A squarefree with all roots on
+    the unit circle; every integer matrix with chi_A = Phi_n, n >= 3
+    (multiplication by a primitive n-th root of unity), needs exactly a
+    plane. (7) Jordan blocks on the circle: I_2 and the Jordan block J_2
+    both have chi = (x - 1)^2, for which the squarefree count of (3), with
+    x - 1 counted twice, gives 2, but d = 1 and 2; 1 + J_2(1) and 1 + J_3(1)
+    have d = 2 and 3. (8) Multiplication by rho, rho^-1, Q and
+    theta = -Q^-1 = 1 - Q^3 on Z[rho] and Z[Q] (rho^3 = rho + 1,
+    Q^4 = Q + 1): d = 1, 2, 3, 1. (9) On Z[rho] (x) Z[Q] (degree 12),
+    multiplication by every alpha other than 0, +-1 is nonsingular
+    (det != 0) and hyperbolic with d = U; for rho, theta, rho Q and Q the
+    values are 4, 3, 5, 9. (10) rho and theta act on their unstable spaces
+    as real scalars, and the spectral projection carries the quartic (resp.
+    cubic) sector onto them with the Gram pairing GramRho (x) GramQ equal to
+    that of GramQ (resp. GramRho), of types (3,1) and (2,1). (11) The scheme
+    of Q on Z^4 with an interval window: a segment, an explicit Q-invariant
+    model set in R^3, determinant -1/q' on E, non-real moduli, and the types
+    (2,1) and (1,0) of the trace form on E and H. (12) A Salem witness, the
+    companion of x^4 - x^3 - x^2 - x + 1: not hyperbolic, d = 1. (13) Every
+    model set is a Delone set (Mathlib's Delone.DeloneSet) with uniformly
+    discrete difference set. The mathematics of (1), (2), (4), (5) and (13),
+    and of (6) for squarefree chi_A, is known in other formulations
+    (Masakova-Mazac-Pelantova 2021; Kronecker, Pleasants 2000;
+    Harriss-Koivusalo-Walton 2025, preprint; Meyer 1972, 1995; Lagarias
+    1999; Solomyak 2020; the classical cyclotomic model sets; Moody 1997);
     (1) and (4) are stated with no diagonalizability hypothesis. The scheme
     and model set of (11) are, in substance, instances of
     Masakova-Mazac-Pelantova Thm 13.1 and of Harriss-Koivusalo-Walton
     Section 3.4, and are not new. For squarefree chi_A, hence diagonalizable
     A, the count of (3) also follows from the arguments of
     Masakova-Mazac-Pelantova, Lemma 5.1, Prop. 8.1(iii) and Cor. 13.4, which
-    are stated there for generic (aperiodic) schemes, under which a factor x
-    +- 1, Phi_3, Phi_4 or Phi_6 admits no scheme; the lattice-first least
+    are stated there for generic (aperiodic) schemes, under which a factor
+    x +- 1, Phi_3, Phi_4 or Phi_6 admits no scheme; the lattice-first least
     physical dimension was not found stated in the sources read (search
     completed 2026-10-20). Beyond the cited cases, the entry proves the
-    least physical dimension for every nonsingular integer matrix, Jordan
-    blocks on the unit circle included (3); the characterization of every
-    admissible splitting for squarefree chi_A ((3), (4)); the admissibility
-    criterion (1) and the hyperbolic case (4) for every integer matrix, with
-    no diagonalizability; and the uniqueness of the minimal scheme when A is
-    hyperbolic (4) or when chi_A is irreducible with d(A) = 1 (5). For det A
-    != 0 and squarefree chi_A with a factor Phi_n, n not in {1, 2, 3, 4, 6},
-    the minimal scheme is not unique, by (3). The companion matrices are
-    multiplication by rho and Q in the power bases by definition, so Crho^i
-    (x) CQ^j is multiplication by rho^i Q^j in the product basis. That the
-    rho^i Q^j are a Z-basis of the ring of integers of Q(rho, Q) is
-    statement (8) of the author's registered entry PALOMAR-2026-10-21-000012
-    (stalex444/pdt-hermite-signature-compositum@5aa870e9); that GramRho,
-    GramQ and GramRho (x) GramQ are the Gram matrices of the trace forms in
-    these bases is statements (8), (9) and (19) of the author's registered
-    entry PALOMAR-2026-09-02-000014, in which Q(rho) (x) Q(Q) is the field
-    Q(rho, Q) (its (23)). These are cited, not compared. Application (cited,
-    not a claim of the entry): In the author's Pisot Dimensional Theory,
-    Q(rho) is the arithmetic of three-dimensional space and Q(Q) the
-    arithmetic of four-dimensional spacetime, and their compositum K, whose
-    integers are Z[rho] (x) Z[Q], is the parent of both (the author's
+    least physical dimension for every nonsingular integer matrix (3),
+    including what lies outside the diagonalizable class of
+    Masakova-Mazac-Pelantova: a Jordan block of size >= 2 at an eigenvalue
+    on the unit circle counts in full (the terms c_p (m_p - r_1(p)), which
+    vanish for diagonalizable A), and at a cyclotomic factor with such a
+    block the blocks of size one cost nothing, the internal space being
+    tilted into the socle of the larger blocks; the witnesses are J_2,
+    1 + J_2(1) and 1 + J_3(1) (7). It also proves the characterization of
+    every admissible splitting for squarefree chi_A ((3)(d)), and (1) for
+    every integer matrix and (4) for every nonsingular hyperbolic integer
+    matrix, with no diagonalizability hypothesis; for diagonalizable A the
+    uniqueness of the minimal scheme in (4) and (5) is immediate from
+    Masakova-Mazac-Pelantova, Cor. 13.4. For det A != 0 and squarefree chi_A
+    with a factor Phi_n, n not in {1, 2, 3, 4, 6}, the minimal scheme is not
+    unique, by (3)(d). The companion matrices are multiplication by rho and
+    Q in the power bases by definition, so Crho^i (x) CQ^j is multiplication
+    by rho^i Q^j in the product basis. That the rho^i Q^j are a Z-basis of
+    the ring of integers of Q(rho, Q) is statement (8) of the author's
     registered entry PALOMAR-2026-10-21-000012
-    (stalex444/pdt-hermite-signature-compositum@5aa870e9), statements (7),
-    (8)). A model set is the shadow of a lattice cut through a window, a
-    standard mathematical model of a quasicrystal (Moody 2000). Read through
-    the theory, this entry's theorems fix how many dimensions each of the
-    theory's inflations needs to be the symmetry of one, and which ones.
+    (stalex444/pdt-hermite-signature-compositum@5aa870e98236ba240561b798265c629df8c2d031);
+    that GramRho, GramQ and GramRho (x) GramQ are the Gram matrices of the
+    trace forms in these bases is statements (8), (9) and (19) of the
+    author's registered entry PALOMAR-2026-09-02-000014, in which
+    Q(rho) (x) Q(Q) is the field Q(rho, Q) (its (23)). These are cited, not
+    compared. Application (cited, not a claim of the entry): In the author's
+    Pisot Dimensional Theory, Q(rho) is the arithmetic of three-dimensional
+    space and Q(Q) the arithmetic of four-dimensional spacetime, and their
+    compositum K, whose integers are Z[rho] (x) Z[Q], is the parent of both
+    (the author's registered entry PALOMAR-2026-10-21-000012
+    (stalex444/pdt-hermite-signature-compositum@5aa870e98236ba240561b798265c629df8c2d031),
+    statements (7), (8)). A model set is the shadow of a lattice cut through
+    a window, a standard mathematical model of a quasicrystal (Moody 2000).
+    Read through the theory, this entry's theorems fix how many dimensions
+    each of the theory's inflations needs to be the symmetry of one, and
+    which ones.
 
     Space inflates the parent through spacetime, and spacetime inflates it
     through space. On the parent's lattice the plastic inflation rho needs
@@ -131,15 +142,16 @@ project:
 
     The parent holds no circle, so every minimal scheme is forced. Off the
     parent, eigenvalues on the unit circle can change the count: a Salem
-    inflation's circle eigenvalues lie in the window and cost nothing, so it
-    still needs only a line (5, 12), but multiplication by a primitive n-th
-    root of unity, n >= 3, needs exactly a plane, and with squarefree
-    characteristic polynomial every element of order n >= 3 needs at least
-    one (6). The parent has none. No element of K other than +-1 has a
-    conjugate on the unit circle (the companion's statement (17)), so every
-    inflation of the parent is hyperbolic, needs exactly as many dimensions
-    as it has expanding embeddings (a complex place counts twice), and has a
-    unique minimal scheme (4, 9).
+    inflation's circle eigendirections lie in the internal space and cost
+    nothing, so it still needs only a line (5, 12), but multiplication by a
+    primitive n-th root of unity, n >= 3, needs exactly a plane, and with
+    squarefree characteristic polynomial every element of order n >= 3 needs
+    at least one (6). The parent has none. No element of K other than +-1
+    has a conjugate on the unit circle (the companion's statement (17)), so
+    every inflation of the parent by an element other than 0 and +-1 is
+    hyperbolic, needs exactly as many dimensions as it has expanding
+    embeddings (a complex place counts twice), and has a unique minimal
+    scheme (4, 9).
   authors:
     - "Stephanie Alexander"
   license: "MIT"
@@ -172,7 +184,7 @@ sources:
       matrix with no diagonalizability hypothesis, and they give the
       necessity of H in E^s in (4); Lemma 5.1 (whose relevant half uses only
       non-degeneracy) is the lower-bound part of the squarefree
-      characterization in (3); Prop. 3.3(iii) and Prop. 8.1(iii) are the
+      characterization in (3)(d); Prop. 3.3(iii) and Prop. 8.1(iii) are the
       cut-and-project form of (2). For squarefree chi_A, hence
       diagonalizable A, the count of (3) also follows from the arguments of
       Lemma 5.1, Prop. 8.1(iii) and Cor. 13.4, which are stated for generic
@@ -239,7 +251,26 @@ sources:
       is irreducible with exactly one root of modulus > 1 (or A = +-1), that
       root real; it does not prove the theorem for arbitrary Meyer sets. The
       dichotomy goes back to Meyer, Algebraic Numbers and Harmonic Analysis,
-      North-Holland Mathematical Library 2 (1972).
+      North-Holland Mathematical Library 2 (1972); for Meyer sets in general
+      it is also Lagarias 1999, Thm 4.1 (listed below).
+    license: "unknown"
+    author_endorsement: "n/a"
+  - title: "Geometric Models for Quasicrystals I. Delone Sets of Finite Type"
+    authors:
+      - "J. C. Lagarias"
+    id: "Discrete and Computational Geometry 21 (1999), 161-191"
+    # Crossref-verified 2026-10-21: DOI 10.1007/PL00009413 (J. C. Lagarias, DCG 21(2), 161-191,
+    # 1999-02). Primary not opened; the theorem is as stated in Solomyak 2020, Thm 3(iii)
+    # (attributed there to Lagarias 1999 and Meyer 1972), numbered Thm 4.1 by
+    # Masakova-Mazac-Pelantova, Section 14.
+    type: "article"
+    location: "https://doi.org/10.1007/PL00009413"
+    relationship: "background"
+    note: >-
+      Thm 4.1: if a Meyer set X in R^d satisfies eta X contained in X for a
+      real eta > 1, then eta is a Pisot or Salem number. With Meyer 1972, the
+      necessity half of the Pisot-or-Salem dichotomy for Meyer sets; compared
+      statement (5) proves only its lattice-first, model-set form.
     license: "unknown"
     author_endorsement: "n/a"
   - title: "Delone Sets and Dynamical Systems"
@@ -337,7 +368,24 @@ sources:
       phi(n) as the least lattice rank of a planar model set with n-fold
       symmetry (as cited by Masakova-Mazac-Pelantova, Section 14): the dual
       quantity to the physical dimension 2 of compared statement (6). Not
-      Hiller's bound psi(n) for lattices with an order-n symmetry.
+      Hiller's bound psi(n) for lattices with an order-n symmetry (Hiller
+      1985, listed below).
+    license: "unknown"
+    author_endorsement: "n/a"
+  - title: "The crystallographic restriction in higher dimensions"
+    authors:
+      - "H. Hiller"
+    id: "Acta Crystallographica Section A 41 (1985), 541-544"
+    # Crossref-verified 2026-10-21: DOI 10.1107/S0108767385001180 (Acta Cryst. A 41(6),
+    # 541-544, 1985-11). Not opened; as cited by Masakova-Mazac-Pelantova, Section 1.
+    type: "article"
+    location: "https://doi.org/10.1107/S0108767385001180"
+    relationship: "background"
+    note: >-
+      The least rank psi(n) of a lattice with a symmetry of order n (as
+      cited by Masakova-Mazac-Pelantova, Section 1). Cited only to separate
+      it from phi(n), the least lattice rank of a planar model set with
+      n-fold symmetry, which is the dual quantity to compared statement (6).
     license: "unknown"
     author_endorsement: "n/a"
   - title: "Meyer Sets and Their Duals"
@@ -530,12 +578,13 @@ related_formalizations:
       has a conjugate on the unit circle) are ported to this repository in
       InflationDimension/Compositum/Tower.lean and
       InflationDimension/Compositum/CircleFree.lean, statements unchanged,
-      and used in the proof of compared statement (9). Its statement (8),
-      that the rho^i Q^j are a Z-basis of O_L = Z[rho] (x) Z[Q], is cited
-      here and not compared: with it, the matrices of (9) are multiplication
-      on O_L in that basis.
+      in the namespace InflationDimension.Compositum (so no declaration name
+      of that entry is declared again), and used in the proof of compared
+      statement (9). Its statement (8), that the rho^i Q^j are a Z-basis of
+      O_L = Z[rho] (x) Z[Q], is cited here and not compared: with it, the
+      matrices of (9) are multiplication on O_L in that basis.
 
-  - id: "Registered entry PALOMAR-2026-09-02-000014 (stalex444/golden-family-trace-forms)"
+  - id: "Registered entry PALOMAR-2026-09-02-000014 (stalex444/golden-family-trace-forms, commit 9528df064df58318213b541048e05ff4c0d9cb67)"
     relationship: "builds-on"
     note: >-
       The Q-level inputs of the ported tower (the two polynomials and their
@@ -547,7 +596,7 @@ related_formalizations:
       Q(rho) (x) Q(Q) is a field, are cited for compared statements (10)
       and (11) and not compared.
 
-  - id: "Registered entry PALOMAR-2026-09-04-000004 (stalex444/chiral-padovan-histories)"
+  - id: "Registered entry PALOMAR-2026-09-04-000004 (stalex444/chiral-padovan-histories, commit 14711e6cffdc74669d15f808d4aec8cbb373d71f)"
     relationship: "other"
     note: >-
       The registered entry this one overlaps most. Its cubic_record_windows
@@ -663,7 +712,7 @@ fidelity:
     (i) The lattice is the integer lattice Z^iota of R^iota for a finite
     type iota (the Z-span of the standard basis), and the map an integer
     matrix acting by Matrix.toLin'; an arbitrary lattice with an
-    automorphism is reduced to this case by a choice of basis. (ii) The
+    endomorphism is reduced to this case by a choice of basis. (ii) The
     scheme notion: A-invariant complementary subspaces E, H with Z^iota
     meeting H only in 0 and the projection of Z^iota to H dense in H;
     aperiodicity is not required and H = 0 is allowed. A window is a bounded
@@ -674,10 +723,11 @@ fidelity:
     tending to 0), E^s as the vectors whose forward orbit tends to 0; U(A)
     counts the complex roots of chi_A of modulus > 1 with multiplicity. (v)
     circleCount is defined through Mathlib's normalizedFactors of chi_A over
-    Q. (vi) Statement (5) is in root-count form, with no Pisot or Salem
-    predicate. (vii) Statement (6)'s first clause is stated for A^k = 1, k
-    >= 1, and its planar clause for every integer matrix with chi_A = Phi_n
-    over Z. (viii) Statements (8)-(11) are about explicit integer matrices
+    Q, a multiset, so each factor is counted with its multiplicity. (vi)
+    Statement (5) is in root-count form, with no Pisot or Salem predicate.
+    (vii) Statement (6)'s first clause is stated for A^k = 1, k >= 1, and
+    its planar clause for every integer matrix with chi_A = Phi_n over Z.
+    (viii) Statements (8)-(11) are about explicit integer matrices
     (companion matrices, Kronecker products of their powers) and explicit
     integer Gram matrices; (9) quantifies over the coefficient vectors a
     other than 0 and +-e_00, i.e. alpha other than 0, +-1. (ix) In (10) the
@@ -725,17 +775,17 @@ alignment:
       module: "Solution"
       status: "proved"
       note: "Density of the projected lattice iff no nonzero integral functional vanishes on E. Proved by InflationDimension.kronecker_density_criterion."
-    - source: "this work (for squarefree chi_A the count also follows from Masakova-Mazac-Pelantova Lemma 5.1, Prop. 8.1(iii), Cor. 13.4); Kronecker 1857 via Mathlib for the circle factors"
+    - source: "this work (for squarefree chi_A the count also follows from the arguments of Masakova-Mazac-Pelantova Lemma 5.1, Prop. 8.1(iii), Cor. 13.4, stated there for generic schemes); Kronecker 1857 via Mathlib for the circle factors"
       lean: "ModelSetDimension.least_physical_dimension"
       module: "Solution"
       status: "proved"
-      note: "det A != 0, any chi_A: d(A) = dimensionFormula A, the sum over the distinct rational factors p of m_p u_p + c_p (m_p - r_1(p)) plus min(deg p, 2) for a circle factor with r_1(p) = m_p; invariance under rational similarity; circle factors cyclotomic; for squarefree chi_A the normal form, the characterization and d(A) = U(A) + circleCount(A). Proved by InflationDimension.least_physical_dimension."
+      note: "det A != 0, any chi_A: (a) d(A) = dimensionFormula A, the sum over the distinct rational factors p of m_p u_p + c_p (m_p - r_1(p)) plus min(deg p, 2) for a circle factor with r_1(p) = m_p; (b) invariance under rational similarity; (c) circle factors cyclotomic; (d) for squarefree chi_A the normal form, the characterization and d(A) = U(A) + circleCount(A). Proved by InflationDimension.least_physical_dimension."
     - source: "inclusion-notion analogue of Harriss-Koivusalo-Walton Thm 3.3 (preprint); contains the necessity half of Masakova-Mazac-Pelantova Cor. 13.4 without diagonalizability"
       lean: "ModelSetDimension.hyperbolic_case"
       module: "Solution"
       status: "proved"
       note: "Admissible iff E contains E^u iff H lies in E^s; an invariant splitting carries an admissible scheme iff E contains E^u; d(A) = U(A), attained only by (E^u, E^s). Proved by InflationDimension.hyperbolic_case."
-    - source: "Meyer 1972; Meyer 1995, Thm 6 (lattice-first model-set form); Salem case Solomyak 2020, Section 4(iv), credited to Akiyama"
+    - source: "Meyer 1972; Meyer 1995, Thm 6 (lattice-first model-set form); for Meyer sets also Lagarias 1999, Thm 4.1; Salem case Solomyak 2020, Section 4(iv), credited to Akiyama"
       lean: "ModelSetDimension.dimension_one_pisot_or_salem"
       module: "Solution"
       status: "proved"
@@ -749,13 +799,13 @@ alignment:
       lean: "ModelSetDimension.jordan_block_witnesses"
       module: "Solution"
       status: "proved"
-      note: "I_2 and J_2: chi = (x - 1)^2, squarefree count 2, d = 1 and 2; 1 + J_2(1) and 1 + J_3(1): d = 2 and 3. Proved by InflationDimension.jordan_block_witnesses."
+      note: "I_2 and J_2: chi = (x - 1)^2, squarefree count 2 (x - 1 counted twice), d = 1 and 2; 1 + J_2(1) and 1 + J_3(1): d = 2 and 3. Proved by InflationDimension.jordan_block_witnesses."
     - source: "instances of (4)"
       lean: "ModelSetDimension.sector_rings"
       module: "Solution"
       status: "proved"
       note: "rho, rho^-1, Q, theta on Z[rho], Z[Q]: characteristic polynomials, hyperbolic, d = 1, 2, 3, 1; the expanding eigenvalue of theta in (1.3802, 1.3803). Proved by InflationDimension.sector_rings."
-    - source: "instances of (4); circle-freeness ported from the author's registered entry PALOMAR-2026-10-21-000012 (stalex444/pdt-hermite-signature-compositum@5aa870e9)"
+    - source: "instances of (4); circle-freeness ported from the author's registered entry PALOMAR-2026-10-21-000012 (stalex444/pdt-hermite-signature-compositum@5aa870e98236ba240561b798265c629df8c2d031)"
       lean: "ModelSetDimension.compositum_lattice"
       module: "Solution"
       status: "proved"

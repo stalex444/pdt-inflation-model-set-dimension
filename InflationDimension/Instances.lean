@@ -24,7 +24,7 @@ Statements (8), (9), (10) of `Challenge.lean`, at the level of explicit integer 
   `L = ℚ(ρ)[Y]/(Y⁴ − Y − 1)` sending `ρ ↦ z`, `Q ↦ w`, so `α(z, w)` is a conjugate of
   `β = Σ a(i,j) ρ^i Q^j ∈ L`. The field `L` is circle-free (an element with a conjugate on the unit
   circle is `±1`; ported from the author's registered entry PALOMAR-2026-10-21-000012,
-  stalex444/pdt-hermite-signature-compositum@5aa870e9, see
+  stalex444/pdt-hermite-signature-compositum@5aa870e98236ba240561b798265c629df8c2d031, see
   `InflationDimension.Compositum.CircleFree`), and `β = c ∈ ℤ` forces `a = c · e₀₀` because
   `V₃ ⊗ V₄` is invertible.
 * (10): the spectral projections are `Π ⊗ I₄` and `I₃ ⊗ Π′` with `Π = v ℓᵀ/(ℓ·v)` built from the
@@ -1241,31 +1241,31 @@ theorem a_eq_of_αv (a : Fin 3 × Fin 4 → ℤ) (c : ℤ) (h : ∀ p, αv a p =
   simp only [Pi.smul_apply, smul_eq_mul]
   linarith
 
-open HermiteCompositum.Instance in
+open InflationDimension.Compositum.Instance in
 /-- The complex embedding of `K₃ = ℚ[X]/(X³ − X − 1)` sending the root to `zs k`. -/
 def φ₃ (k : Fin 3) : K₃ →+* ℂ :=
   AdjoinRoot.lift (algebraMap ℚ ℂ) (zs k) (by
-    simp [HermiteCompositum.Port014.fρ]
+    simp [InflationDimension.Compositum.fρ]
     linear_combination zs_eq k)
 
-open HermiteCompositum.Instance in
+open InflationDimension.Compositum.Instance in
 /-- The complex embedding of `L` sending `ρ ↦ zs p.1` and `Q ↦ ws p.2`. -/
 def φL (p : Fin 3 × Fin 4) : L →+* ℂ :=
   AdjoinRoot.lift (φ₃ p.1) (ws p.2) (by
     rw [g, Polynomial.eval₂_map]
-    simp [HermiteCompositum.Port014.fQ]
+    simp [InflationDimension.Compositum.fQ]
     linear_combination ws_eq p.2)
 
-open HermiteCompositum.Instance in
+open InflationDimension.Compositum.Instance in
 theorem φL_ρ (p : Fin 3 × Fin 4) : φL p ρ = zs p.1 := by
-  simp only [φL, φ₃, HermiteCompositum.Instance.ρ, AdjoinRoot.algebraMap_eq, AdjoinRoot.lift_of,
-    AdjoinRoot.lift_root]
+  simp only [φL, φ₃, InflationDimension.Compositum.Instance.ρ, AdjoinRoot.algebraMap_eq,
+    AdjoinRoot.lift_of, AdjoinRoot.lift_root]
 
-open HermiteCompositum.Instance in
+open InflationDimension.Compositum.Instance in
 theorem φL_Q (p : Fin 3 × Fin 4) : φL p Q = ws p.2 := by
-  simp only [φL, HermiteCompositum.Instance.Q, AdjoinRoot.lift_root]
+  simp only [φL, InflationDimension.Compositum.Instance.Q, AdjoinRoot.lift_root]
 
-open HermiteCompositum.Instance in
+open InflationDimension.Compositum.Instance in
 /-- `β = Σ a(i,j) ρ^i Q^j ∈ L`. -/
 def βL (a : Fin 3 × Fin 4 → ℤ) : L :=
   ∑ q : Fin 3 × Fin 4, (a q : L) * (ρ ^ (q.1 : ℕ) * Q ^ (q.2 : ℕ))
@@ -1273,17 +1273,17 @@ def βL (a : Fin 3 × Fin 4 → ℤ) : L :=
 theorem φL_β (a : Fin 3 × Fin 4 → ℤ) (p : Fin 3 × Fin 4) : φL p (βL a) = αv a p := by
   simp [βL, αv, map_sum, map_mul, map_intCast, map_pow, φL_ρ, φL_Q]
 
-open HermiteCompositum.Instance in
+open InflationDimension.Compositum.Instance in
 theorem L_ρ_eq : ρ ^ 3 - ρ - 1 = 0 := by
   have := aeval_ρ
-  simpa [HermiteCompositum.Port014.fρ] using this
+  simpa [InflationDimension.Compositum.fρ] using this
 
-open HermiteCompositum.Instance in
+open InflationDimension.Compositum.Instance in
 theorem L_Q_eq : Q ^ 4 - Q - 1 = 0 := by
   have := aeval_Q
-  simpa [HermiteCompositum.Port014.fQ] using this
+  simpa [InflationDimension.Compositum.fQ] using this
 
-open HermiteCompositum.Instance in
+open InflationDimension.Compositum.Instance in
 theorem general_part (a : Fin 3 × Fin 4 → ℤ) (h0 : a ≠ 0) (h1 : a ≠ Pi.single (0, 0) 1)
     (h2 : a ≠ -Pi.single (0, 0) 1) :
     (mulMatrix a).det ≠ 0 ∧ IsHyperbolic (mulMatrix a) := by
@@ -1299,7 +1299,7 @@ theorem general_part (a : Fin 3 × Fin 4 → ℤ) (h0 : a ≠ 0) (h1 : a ≠ Pi.
     rw [hd, Int.cast_zero] at this
     exact Finset.prod_ne_zero_iff.mpr (fun p _ => hne p) this.symm
   · rw [← φL_β] at hp
-    rcases HermiteCompositum.circle_free finrank_L ρ Q L_ρ_eq L_Q_eq (βL a) (φL p) hp with h | h
+    rcases InflationDimension.Compositum.circle_free finrank_L ρ Q L_ρ_eq L_Q_eq (βL a) (φL p) hp with h | h
     · apply h1
       have := a_eq_of_αv a 1 (fun p' => by rw [← φL_β, h, map_one, Int.cast_one])
       simpa using this

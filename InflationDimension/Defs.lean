@@ -118,8 +118,9 @@ def IsCircleFactor (p : ℚ[X]) : Prop := ∀ z ∈ (p.map (algebraMap ℚ ℂ))
 
 open Classical in
 /-- The circle term of the count: over the irreducible factors of `χ_A` over `ℚ` whose roots
-all lie on the unit circle, `1` for a factor of degree one (`X - 1` or `X + 1`) and `2` for each
-other one. -/
+all lie on the unit circle, each counted with its multiplicity in `χ_A` (the multiset
+`normalizedFactors`), `1` for a factor of degree one (`X - 1` or `X + 1`) and `2` for each other
+one. -/
 def circleCount (A : Matrix ι ι ℤ) : ℕ :=
   (((UniqueFactorizationMonoid.normalizedFactors (charpolyQ A)).filter IsCircleFactor).map
     (fun p => min p.natDegree 2)).sum

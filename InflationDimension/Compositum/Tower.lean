@@ -6,18 +6,21 @@ public import Mathlib
 # The degree-12 field `L = K₃[Y]/(Y⁴ − Y − 1)` over `K₃ = ℚ[X]/(X³ − X − 1)`
 
 Ported from the author's registered entry PALOMAR-2026-10-21-000012
-(stalex444/pdt-hermite-signature-compositum@5aa870e9), `HermiteCompositum/Defs.lean` (from the
-sections `HermiteCompositum.Port014` and `HermiteCompositum.Instance`: `fρ`, `fQ`, their monicity
-and degrees, `irreducible_map_of_coprime_finrank`, `algebraRat_eq`, the tower `K₃`, `g`,
-`L` with its instances, `ρ`, `Q`, `aeval_ρ`, `aeval_Q`) and `HermiteCompositum/Instance.lean`
-(`g_natDegree`, `finrank_K₃_L`, `finrank_L`); changes: the irreducibility of `X³ − X − 1` and
-`X⁴ − X − 1` over `ℚ` is taken from Mathlib (`X_pow_sub_X_sub_one_irreducible_rat`) in place of
-the reduction modulo 2, and only these declarations are kept.
+(stalex444/pdt-hermite-signature-compositum@5aa870e98236ba240561b798265c629df8c2d031),
+`HermiteCompositum/Defs.lean` (from the sections `HermiteCompositum.Port014` and
+`HermiteCompositum.Instance`: `fρ`, `fQ`, their monicity and degrees,
+`irreducible_map_of_coprime_finrank`, `algebraRat_eq`, the tower `K₃`, `g`, `L` with its
+instances, `ρ`, `Q`, `aeval_ρ`, `aeval_Q`) and `HermiteCompositum/Instance.lean` (`g_natDegree`,
+`finrank_K₃_L`, `finrank_L`); changes: the irreducibility of `X³ − X − 1` and `X⁴ − X − 1` over
+`ℚ` is taken from Mathlib (`X_pow_sub_X_sub_one_irreducible_rat`) in place of the reduction
+modulo 2, only these declarations are kept, and they are declared here in the namespaces
+`InflationDimension.Compositum` (the two polynomials) and `InflationDimension.Compositum.Instance`
+(the tower), so that no declaration name of that entry is declared again.
 -/
 
 open Polynomial
 
-namespace HermiteCompositum.Port014
+namespace InflationDimension.Compositum
 
 /-- The quartic `X⁴ − X − 1`. -/
 noncomputable def fQ : ℚ[X] := X ^ 4 - X - 1
@@ -45,9 +48,9 @@ theorem cubicQ_irreducible : Irreducible (X ^ 3 - X - 1 : ℚ[X]) :=
 theorem quarticQ_irreducible : Irreducible (X ^ 4 - X - 1 : ℚ[X]) :=
   X_pow_sub_X_sub_one_irreducible_rat (by norm_num)
 
-end HermiteCompositum.Port014
+end InflationDimension.Compositum
 
-namespace HermiteCompositum.Instance
+namespace InflationDimension.Compositum.Instance
 
 open Polynomial NumberField NumberField.InfinitePlace IntermediateField Module
 
@@ -105,28 +108,27 @@ theorem algebraRat_eq {A : Type*} [Semiring A] (P Q : Algebra ℚ A) : P = Q :=
     congrArg (fun f : ℚ →+* A => f r)
       (RingHom.ext_rat (@algebraMap ℚ A _ _ P) (@algebraMap ℚ A _ _ Q))
 
-open Port014 in
 /-- `X³ − X − 1` is irreducible over `ℚ` (from the port of 000014). -/
 instance : Fact (Irreducible fρ) := ⟨cubicQ_irreducible⟩
 
 /-- The cubic field `K₃ = ℚ[X]/(X³ − X − 1)` (the base of the tower). -/
-abbrev K₃ := AdjoinRoot Port014.fρ
+abbrev K₃ := AdjoinRoot fρ
 
 theorem finrank_K₃ : Module.finrank ℚ K₃ = 3 := by
-  have h := (AdjoinRoot.powerBasis' Port014.fρ_monic).finrank
-  rw [AdjoinRoot.powerBasis'_dim, Port014.fρ_natDegree] at h
+  have h := (AdjoinRoot.powerBasis' fρ_monic).finrank
+  rw [AdjoinRoot.powerBasis'_dim, fρ_natDegree] at h
   convert h
 
 /-- The quartic `Y⁴ − Y − 1` read over the cubic field. -/
-noncomputable def g : K₃[X] := Port014.fQ.map (algebraMap ℚ K₃)
+noncomputable def g : K₃[X] := fQ.map (algebraMap ℚ K₃)
 
-theorem g_monic : g.Monic := Port014.fQ_monic.map _
+theorem g_monic : g.Monic := fQ_monic.map _
 
 /-- **Irreducibility over the cubic field**: `Y⁴ − Y − 1` stays irreducible over the cubic field (degrees `3` and
 `4` are coprime). -/
 theorem g_irreducible : Irreducible g :=
-  irreducible_map_of_coprime_finrank Port014.quarticQ_irreducible Port014.fQ_monic
-    (by rw [Port014.fQ_natDegree, finrank_K₃]; decide)
+  irreducible_map_of_coprime_finrank quarticQ_irreducible fQ_monic
+    (by rw [fQ_natDegree, finrank_K₃]; decide)
 
 instance : Fact (Irreducible g) := ⟨g_irreducible⟩
 
@@ -138,24 +140,24 @@ instance : Module.Finite K₃ L := g_monic.finite_adjoinRoot
 instance : NumberField L := NumberField.of_module_finite K₃ L
 
 /-- `ρ ∈ L`: the image of the cubic root. -/
-noncomputable abbrev ρ : L := algebraMap K₃ L (AdjoinRoot.root Port014.fρ)
+noncomputable abbrev ρ : L := algebraMap K₃ L (AdjoinRoot.root fρ)
 
 /-- `Q ∈ L`: the quartic root. -/
 noncomputable abbrev Q : L := AdjoinRoot.root g
 
-theorem aeval_ρ : aeval ρ Port014.fρ = 0 := by
-  have h := AdjoinRoot.aeval_eq (f := Port014.fρ) Port014.fρ
+theorem aeval_ρ : aeval ρ fρ = 0 := by
+  have h := AdjoinRoot.aeval_eq (f := fρ) fρ
   rw [AdjoinRoot.mk_self] at h
   have h2 := congrArg (algebraMap K₃ L) h
   rw [map_zero] at h2
   rw [Polynomial.aeval_algebraMap_apply]
   convert h2 <;> exact algebraRat_eq _ _
 
-theorem aeval_Q : aeval Q Port014.fQ = 0 := by
+theorem aeval_Q : aeval Q fQ = 0 := by
   rw [← Polynomial.aeval_map_algebraMap K₃, ← g, AdjoinRoot.aeval_eq, AdjoinRoot.mk_self]
 
 theorem g_natDegree : g.natDegree = 4 := by
-  rw [g, natDegree_map, Port014.fQ_natDegree]
+  rw [g, natDegree_map, fQ_natDegree]
 
 theorem finrank_K₃_L : Module.finrank K₃ L = 4 := by
   rw [(AdjoinRoot.powerBasis' g_monic).finrank, AdjoinRoot.powerBasis'_dim, g_natDegree]
@@ -164,4 +166,4 @@ theorem finrank_K₃_L : Module.finrank K₃ L = 4 := by
 theorem finrank_L : Module.finrank ℚ L = 12 := by
   rw [← Module.finrank_mul_finrank ℚ K₃ L, finrank_K₃, finrank_K₃_L]
 
-end HermiteCompositum.Instance
+end InflationDimension.Compositum.Instance

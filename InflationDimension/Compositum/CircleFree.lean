@@ -6,14 +6,15 @@ public import Mathlib
 # Circle-freeness of a degree-12 field containing roots of `x³ − x − 1` and `x⁴ − x − 1`
 
 Ported from the author's registered entry PALOMAR-2026-10-21-000012
-(stalex444/pdt-hermite-signature-compositum@5aa870e9), `HermiteCompositum/Extras.lean` (the
-discriminant transport lemmas `discr_eq_index_sq_mul_discr`, `discr_map_of_monic`,
-`discr_minpoly_eq_discr_powerBasis`, `discr_int_eq_discr_rat`, `discr_pow_eq_discr_minpoly`, and
-the declarations from `monic_natDegree_two_eq` through
+(stalex444/pdt-hermite-signature-compositum@5aa870e98236ba240561b798265c629df8c2d031),
+`HermiteCompositum/Extras.lean` (the discriminant transport lemmas `discr_eq_index_sq_mul_discr`,
+`discr_map_of_monic`, `discr_minpoly_eq_discr_powerBasis`, `discr_int_eq_discr_rat`,
+`discr_pow_eq_discr_minpoly`, and the declarations from `monic_natDegree_two_eq` through
 `circle_free`) and `HermiteCompositum/Defs.lean` (the definition `RootRigid`); changes: only these
 declarations are kept (the ruler-polynomial and Mahler-measure material is omitted), the section
-headers no longer carry that entry's statement numbers, and `RootRigid` is defined here.
-Proofs and statements are unchanged.
+headers no longer carry that entry's statement numbers, `RootRigid` is defined here, and the
+declarations are in the namespace `InflationDimension.Compositum`, so that no declaration name of
+that entry is declared again. Proofs and statements are unchanged.
 
 For a number field `L` with `[L : ℚ] = 12` containing a root `ρ` of `x³ − x − 1` and a root `Q`
 of `x⁴ − x − 1`: every intermediate field is `⊥`, `ℚ⟮ρ⟯`, `ℚ⟮Q⟯` or `⊤` (`subfield_lattice`); no
@@ -23,7 +24,7 @@ only elements with a complex embedding of modulus `1` are `±1` (`circle_free`).
 
 open Polynomial Module Matrix
 
-namespace HermiteCompositum
+namespace InflationDimension.Compositum
 
 set_option linter.unusedSimpArgs false
 
@@ -848,4 +849,4 @@ theorem circle_free {L : Type*} [Field L] [NumberField L] (hL : finrank ℚ L = 
   circle_free_of_rootRigid (rootRigid_of_roots hL ρ Q hρ hQ) α σ hα
 
 
-end HermiteCompositum
+end InflationDimension.Compositum

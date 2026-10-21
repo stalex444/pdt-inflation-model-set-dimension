@@ -136,9 +136,10 @@ is irreducible over `ℚ` with exactly one root of modulus `> 1`, or `A = ±1` o
 positive rank. In the irreducible case that root `r` is real, every other root has modulus at most
 `1` (so `|r|` is a Pisot number, a Salem number, or for `#ι = 1` an integer `≥ 2`), and every
 admissible scheme with `dim E = 1` has `E` the `r`-eigenline. This is the lattice-first,
-model-set form of Meyer's theorem (1972; 1995, Thm 6): existence on the line and the model-set
-case of necessity, for `A`-invariant schemes. The Salem case is the model set on `ℤ^s` of
-Solomyak (2020), §4(iv), credited there to Akiyama. -/
+model-set form of Meyer's theorem (1972; 1995, Thm 6; the Meyer-set inflation case also Lagarias
+1999, Thm 4.1): existence on the line and the model-set case of necessity, for `A`-invariant
+schemes. The Salem case is the model set on `ℤ^s` of Solomyak (2020), §4(iv), credited there to
+Akiyama. -/
 theorem dimension_one_pisot_or_salem {ι : Type*} [Fintype ι] [DecidableEq ι] (A : Matrix ι ι ℤ)
     (hdet : A.det ≠ 0) :
     (IsLeast (physDims A) 1 ↔
@@ -174,11 +175,11 @@ theorem finite_order_case {ι : Type*} [Fintype ι] [DecidableEq ι] (A : Matrix
   InflationDimension.finite_order_case A
 
 /-- **(7) Jordan blocks on the unit circle.** On `ℤ²`, `I₂` and the Jordan block
-`J₂ = [[1, 1], [0, 1]]` both have `χ = (x − 1)²`, for which the squarefree count of (3) gives `2`;
-but `d(I₂) = 1` (a cyclotomic factor with Jordan blocks of size one costs one line, whatever its
-multiplicity) and `d(J₂) = 2` (a Jordan block of size two counts in full). On `ℤ³` and `ℤ⁴`,
-`1 ⊕ J₂(1)` and `1 ⊕ J₃(1)` have `d = 2` and `d = 3`: the block of size one costs nothing, its
-internal line being tilted into the socle of the larger block. -/
+`J₂ = [[1, 1], [0, 1]]` both have `χ = (x − 1)²`, for which the squarefree count of (3), with
+`x − 1` counted twice, gives `2`; but `d(I₂) = 1` (a cyclotomic factor with Jordan blocks of size
+one costs one line, whatever its multiplicity) and `d(J₂) = 2` (a Jordan block of size two counts
+in full). On `ℤ³` and `ℤ⁴`, `1 ⊕ J₂(1)` and `1 ⊕ J₃(1)` have `d = 2` and `d = 3`: the block of
+size one costs nothing, its internal line being tilted into the socle of the larger block. -/
 theorem jordan_block_witnesses :
     (1 : Matrix (Fin 2) (Fin 2) ℤ).charpoly = (X - 1) ^ 2 ∧
     (!![1, 1; 0, 1] : Matrix (Fin 2) (Fin 2) ℤ).charpoly = (X - 1) ^ 2 ∧
