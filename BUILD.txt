@@ -3,14 +3,14 @@ Toolchain: leanprover/lean4:v4.35.0-rc2
 Mathlib rev: 065356127b1dc0016f66b7283ce0ce2c4055aa55 (lake-manifest.json; required in git form in lakefile.toml; no lake update)
 Build: lake build (defaultTargets ["InflationDimension", "Challenge", "Solution", "DefinitionAudit"]) -> exit 0
   build log tail:
-    ✔ [8948/8952] Built InflationDimension.FormulaA (6.2s)
-    ✔ [8949/8952] Built InflationDimension (2.4s)
-    ✔ [8951/8952] Built Solution (3.3s)
+    ✔ [8948/8952] Built InflationDimension.FormulaA (5.1s)
+    ✔ [8949/8952] Built InflationDimension (2.1s)
+    ✔ [8951/8952] Built Solution (2.9s)
     Build completed successfully (8952 jobs).
   warnings and errors by file: {'Challenge.lean': 13}
   'declaration uses sorry' warnings: 13, all in Challenge.lean: True; compared statements: 13
   every other file (InflationDimension.lean, InflationDimension/*.lean, InflationDimension/Compositum/*.lean, Solution.lean, DefinitionAudit.lean): no warnings
-  Challenge.lean imports: ['Mathlib']; 715 lines, 48039 bytes
+  Challenge.lean imports: ['Mathlib']; 721 lines, 48965 bytes
   sorry / native_decide / axiom outside Challenge.lean: 0
 
 #print axioms for the 13 compared declarations (check file outside the package: `import Solution`, `import DefinitionAudit`, then #print axioms):
@@ -83,29 +83,30 @@ Build: lake build (defaultTargets ["InflationDimension", "Challenge", "Solution"
   (35 theorems; every one on a subset of [propext, Classical.choice, Quot.sound]: True)
 
 Statement identity, Challenge.lean vs Solution.lean (opens, namespace, docstrings and statement text after the shared definitions, proofs removed): identical
-Shared definitions, Challenge.lean vs InflationDimension/Defs.lean: PASS: shared block identical in Challenge.lean and InflationDimension/Defs.lean (216 lines, 10215 bytes)
+Shared definitions, Challenge.lean vs InflationDimension/Defs.lean: PASS: shared block identical in Challenge.lean and InflationDimension/Defs.lean (217 lines, 10296 bytes)
 
-The registry's pipeline, replicated locally on a fresh clone of commit e7e95e1 (the Lean content
+The registry's pipeline, replicated locally on a fresh clone of commit 99103e5 (the Lean content
 of this commit; only this file differs), with .lake/packages linked to the pinned, prebuilt
 Mathlib:
   clean clone build: lake build -> Build completed successfully (8952 jobs); all 18 project
     modules (15 library modules, Challenge, Solution, DefinitionAudit) compiled from scratch, no
     Mathlib module rebuilt; 13 warnings, all 'declaration uses sorry' in Challenge.lean
   canonical-challenge: lean -o on Challenge.lean under the alias
-    PalomarCanonical03b49166222466b59d0bb3ae.Challenge, with only the toolchain and the manifest
+    PalomarCanonical228b4cea0b1dd08cacb1f677.Challenge, with only the toolchain and the manifest
     packages on LEAN_PATH -> 13 sorry warnings, 0 errors
   challenge-provenance: lean --src-deps Challenge.lean -> 3 transitive sources (2 toolchain,
     1 mathlib); untrusted sources []
   source requirements (scripts.source_requirements.inspect_lean_sources): 18 files, issues []
   challenge-export / solution-export: leanexport on the registry's 46 targets (13 theorem_names,
-    3 axioms, Quot, Quot.mk, Quot.lift, Quot.ind, 26 primitives); lake build Solution -> ok
+    3 axioms, Quot, Quot.mk, Quot.lift, Quot.ind, 26 primitives); lake build Solution -> ok;
+    both exports pass verify_export
   lake comparator (toolchain v4.35.0-rc2), --inadvisably-no-sandbox (no bubblewrap on macOS):
     submitted comparator.json, from the clone root:
-      Lean default kernel accepts the solution / Your solution is okay!   exit 0   (97 s)
+      Lean default kernel accepts the solution / Your solution is okay!   exit 0   (88 s)
     protected configuration (challenge_module = the alias, definition_names [], external kernels
     nanoda and con-ron), from an empty judge directory:
       con-ron: accepted 73438 declarations (--verified) / con-ron kernel accepts / nanoda kernel
-      accepts / Lean default kernel accepts / Your solution is okay!   exit 0   (145 s)
+      accepts / Lean default kernel accepts / Your solution is okay!   exit 0   (148 s)
   formalization.yaml through the registry contract (scripts.submission_contract
     load_formalization_metadata, normalized_provenance): no error; result_origin source-based;
     JSON schema v0.4: 0 errors
@@ -128,18 +129,18 @@ Proof map (Solution.lean, one application each):
 FILES (sha256, lines; git ls-files, BUILD.txt excluded):
   054145cf46a7a7a950a7027a79369b1fe1ed92b8dff0512ab0350b00141ec91e     24  .github/workflows/palomar-preflight.yml
   c14b0bd2a9533a6177683e29926f2e053b0db769736ad816adf1df752f7bb727      2  .gitignore
-  5fb68ee5a02ae5cc121269ee4d0c784327c006fcbbd58fcc9c4f0f16aad94e23    715  Challenge.lean
+  c2fa7aa6d9dfa4578bb07f4c601365717acc08b8384dd6aa244db32b84ae992f    721  Challenge.lean
   ca3b720cfbad2843487446df990e32352c35e319b18ccc8061aba74235fb94f2    276  DefinitionAudit.lean
-  6d5e4dcf1d554afeaa7cdb876a0d962489d129954c482c820282ca2bbf146962     49  InflationDimension.lean
+  fc75a59517fc4546810cc85450a750b94bced3331c64419a0726bf257437fe09     50  InflationDimension.lean
   74f8dc36f893fe40b789abf450796f279a4c2f31197a96acd14c32bd7c5b2f37    742  InflationDimension/Admissibility.lean
-  d5d1aa46274b8c87d5c9188187384d0bcb47bc2245e368bc076d89cefe5ed535    851  InflationDimension/Compositum/CircleFree.lean
-  16fbfcfe0be1d03ba56bcf00df78e24d82c7a73532203b9b3f01c00eabb6cf0d    167  InflationDimension/Compositum/Tower.lean
+  f940268550abf941430e0c0ce0bfbde7db9377cf3aa0a28c3d443feec91d7e3d    852  InflationDimension/Compositum/CircleFree.lean
+  525d4b82051089c27706a27ac7cf1ef27a30ebbeab5b33f34d8d59f7fb1338da    169  InflationDimension/Compositum/Tower.lean
   ebcf5cc9929bfd73e6ef5a8fffa2e046766746e463510c0152fe833fc647a235    786  InflationDimension/Count.lean
-  00262cbedbc6401ffb92e913a8e3ab319ad53126b6c7f7c72a9fc7c33804e87d    229  InflationDimension/Defs.lean
+  c4b63a8055568c3529ab7e4cb140f914ada6d398cdfb1583a9022e29932dfe9d    230  InflationDimension/Defs.lean
   84ccf3581cc7703f7fee1a81a1ca6246a0b38143c25e85f184637b61f15ff2dd    900  InflationDimension/DimOne.lean
   aa2a249ec3b8aa56b7d65f69635b0875229d3ebfac8e1cad7ea8159f1f886c37   1973  InflationDimension/FormulaA.lean
   302b03b3368a47acd6b58769e9e557c868eabdcdec012037b76a79598210043e   1219  InflationDimension/Hyperbolic.lean
-  4834df3431177f8b82c719af2737e2e4286c4f0b34c05e703886996397379e0e   1435  InflationDimension/Instances.lean
+  a8595f7206ac9a789830f6255179ac694e6c1e124a1b7369ff2344dd953e10ae   1435  InflationDimension/Instances.lean
   80f2c822a9a2d472cdef463a411f9b9e25d58e952c84dde5ef52f890e8f92a71   2129  InflationDimension/JordanData.lean
   5e8d9a8305e067a21a904f75a68bddd540fc611322c87e94e8524a3dd00035c8    223  InflationDimension/Meyer.lean
   a5b4882f91d62eb72beaf54ff1cbf4c803455185605e87a881f09851644c7b26   1062  InflationDimension/ModelSetQ.lean
@@ -147,10 +148,10 @@ FILES (sha256, lines; git ls-files, BUILD.txt excluded):
   07e4211d949ba1bbd971ba6fb101121ade0fd551b10858f9402fe5e3de9aff17   2479  InflationDimension/Tilt.lean
   d32be532ae3b0129081943d5ba0140833d203720b69e21bc64c735160db351cb     21  LICENSE
   a179eacadc3091873b2bf598f3f7dc477dc6198c9cd61d3b1a9b950d78e6ec3b    466  MATHLIB_DEFINITIONS.md
-  12df3def7511a9be561feab3c254ce43764fa6e879e5326543eed948fbd362d3    367  README.md
-  087d8eaf3c02e4182939ea4adbc640ddc362e48626fa1db103c9450743549859    297  Solution.lean
+  20a1bfcad2503d8d0ffb2b9bccc2142bdcfca0421d2093de4950268b9157bff1    379  README.md
+  301f8eb1484a5765a8b41bf344d2bfa9d57e0fd55d70e788360ed37c92a39998    298  Solution.lean
   e30bd7b4b8847dd368e4ebcd54be73d79edc4065869a1f4f165eb0473a3a746e     24  comparator.json
-  3fd8a13af247644bd90ccfbc0cfc48fdfd8369c69e7c3d4b806c4eb8f0452629    789  formalization.yaml
+  cb4bbbeeee668ebe72669bed8f8e6884e49f9b44406615df9dfc064ef7f7de90    839  formalization.yaml
   40e50b31779815c75f6e29385cdad2baf58198f04cb4fde8c081a370f6321db7    117  lake-manifest.json
   cfeeb28199118f04164392cbd4b6de0195c41e1c1e6bd1421066bf555f707f6a     20  lakefile.toml
   8dc8d6f560141069d9073e370611716ef77ada0da8ffa37e2149f44b2e63ac7a      1  lean-toolchain
