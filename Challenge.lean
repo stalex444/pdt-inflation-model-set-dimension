@@ -5,16 +5,16 @@ public import Mathlib
 /-!
 # The least physical dimension of an inflation-symmetric model set
 
-Thirteen compared statements, (1)–(13) below. The main theorem is (3): for every integer matrix
-`A` with `det A ≠ 0`, `d(A)` is the sum over the distinct irreducible factors `p` of `χ_A` over `ℚ`
-of `m_p u_p + c_p (m_p − r₁(p))`, plus `min (deg p, 2)` when every root of `p` lies on the unit
-circle and every Jordan block at the roots of `p` has size one (`dimensionFormula A`); the value
-is an invariant of rational similarity, and for squarefree `χ_A` every admissible splitting is
+Thirteen compared statements, (1)–(13) below. The main theorem is (3): for every integer matrix `A`
+with `det A ≠ 0`, `d(A)` is the sum over the distinct irreducible factors `p` of `χ_A` over `ℚ` of
+`m_p u_p + c_p (m_p − r₁(p))`, plus `min (deg p, 2)` when every root of `p` lies on the unit circle
+and every Jordan block at the roots of `p` has size one (`dimensionFormula A`); the value is an
+invariant of rational similarity, and for squarefree `χ_A` every admissible splitting is
 characterized and `d(A) = U(A) + #{x ± 1 ∣ χ_A} + 2·#{Φ_n ∣ χ_A, n ≥ 3}`. (4) is the hyperbolic
-case, any `χ_A`: `d(A) = U(A)`, attained only by `(E^u, E^s)`. (1), (2) and (13) are the general
-tools, (5)–(7) corollaries and witnesses of (3), and (8)–(12) the instances: multiplication by
-`ρ`, `ρ⁻¹`, `Q`, `θ = −Q⁻¹` and `ρQ` on `ℤ[ρ]`, `ℤ[Q]` and `ℤ[ρ] ⊗ ℤ[Q]`, where `ρ³ = ρ + 1` and
-`Q⁴ = Q + 1`, and a Salem witness.
+case, `det A ≠ 0` and any `χ_A`: `d(A) = U(A)`, attained only by `(E^u, E^s)`. (1), (2) and (13) are
+the general tools, (5)–(7) corollaries and witnesses of (3), and (8)–(12) the instances:
+multiplication by `ρ`, `ρ⁻¹`, `Q`, `θ = −Q⁻¹` and `ρQ` on `ℤ[ρ]`, `ℤ[Q]` and `ℤ[ρ] ⊗ ℤ[Q]`, where
+`ρ³ = ρ + 1` and `Q⁴ = Q + 1`, and a Salem witness.
 
 **Setting.** `ι` is a finite type, `ℤ^ι ⊂ ℝ^ι` is the integer lattice (`intLattice`) and an
 integer matrix `A` acts on `ℝ^ι` (`act A`). An `A`-invariant cut-and-project scheme
@@ -44,12 +44,15 @@ Jordan blocks of size one at each root of `p`; no Jordan form enters the definit
   (2021), Thm 13.7 (diagonalizable maps, generic schemes); it is cited, not re-proved.
 * Inflation symmetry is the inclusion `A Λ ⊆ Λ`, in Meyer's sense, linear and centred at the origin.
   It is not the substitutional notion (up to mutual local derivability) of Harriss–Koivusalo–Walton.
-* Aperiodicity (`ℤ^ι ∩ E = 0`) is not required, `H = 0` is admitted, and `A` need not be
-  unimodular: the counts assume `det A ≠ 0` only. When `det A ≠ 0` and `χ_A` is squarefree, the line
-  of a factor `x ± 1` and the plane of a factor `Φ₃`, `Φ₄` or `Φ₆` lie in `E` in every admissible
-  scheme (by (3)(d)), so such a factor excludes an aperiodic scheme; the generic schemes of
-  Masáková–Mazáč–Pelantová are aperiodic. The least dimension under aperiodicity is a different
-  problem and is not treated.
+* Aperiodicity (`ℤ^ι ∩ E = 0`) is not required, `H = 0` is admitted, and `A` need not be unimodular:
+  the counts assume `det A ≠ 0` only. When `det A ≠ 0` and `χ_A` is squarefree, the line of a factor
+  `x ± 1` and the plane of a factor `Φ₃`, `Φ₄` or `Φ₆` lie in `E` in every admissible scheme
+  (by (3)(d)), so such a factor excludes an aperiodic scheme; the generic schemes of
+  Masáková–Mazáč–Pelantová are aperiodic. Likewise, at a cyclotomic factor `p` with a Jordan block
+  of size `≥ 2`, `p(A)` kills the `p`-component of `H` (power-boundedness), so the nonzero rational
+  subspace `im p(A)` of that component lies in `E`: at a root of unity, the Jordan-block terms and
+  the tilt occur only in schemes with `ℤ^ι ∩ E ≠ 0`. The least dimension under aperiodicity is a
+  different problem and is not treated.
 * The value is an invariant of the `ℚ`-module `(ℚ^ι, A)` (3), not of an eigenvalue: multiplication
   by `ρ` needs one physical dimension on `ℤ[ρ]` (8) and four on `ℤ[ρ] ⊗ ℤ[Q]` (9).
 * The statements are about inflation-symmetric model sets, not tilings. The substitution
@@ -113,28 +116,32 @@ Jordan blocks of size one at each root of `p`; no Jordan form enters the definit
     `Delone.DeloneSet`) and `Λ(W) − Λ(W)` is uniformly discrete.
 
 **Attributions.** Each statement's docstring names its sources, and the README gives them statement
-by statement. The mathematics of (1), (2), (4), (5) and (13), and of (6) for squarefree `χ_A`, is
-known in other formulations, and the scheme and model set of (11) are, in substance, an instance of
-Masáková–Mazáč–Pelantová (Linear Algebra Appl. 625 (2021) 279–321), Thm 13.1; none of this is
-claimed as new. Beyond the cited cases, the entry proves the least physical dimension for every
-nonsingular integer matrix (3), including what lies outside the diagonalizable class of
-Masáková–Mazáč–Pelantová: a Jordan block of size `≥ 2` at an eigenvalue on the unit circle counts in
-full (the terms `c_p (m_p − r₁(p))`, which vanish for diagonalizable `A`), and at a cyclotomic
-factor with such a block the blocks of size one cost nothing, the internal space being tilted into
-the socle of the larger blocks; the witnesses are `J₂`, `1 ⊕ J₂(1)` and `1 ⊕ J₃(1)` (7). It also
-proves the characterization of every admissible splitting for squarefree `χ_A` ((3)(d)), and (1) for
-every integer matrix and (4) for every nonsingular hyperbolic integer matrix, with no
-diagonalizability hypothesis; for diagonalizable `A` the uniqueness of the minimal scheme in (4) and
-(5) is immediate from Masáková–Mazáč–Pelantová, Cor. 13.4. For `det A ≠ 0` and squarefree `χ_A` with
-a factor `Φ_n`, `n ∉ {1, 2, 3, 4, 6}`, the minimal scheme is not unique, by (3)(d). For squarefree
-`χ_A`, hence diagonalizable `A`, the count of (3) also follows from the arguments of
+by statement. The mathematics of (1), (2), (4), (5) for irreducible `χ_A`, and (13), and of (6) for
+squarefree `χ_A`, is known in other formulations, and the scheme and model set of (11) are, in
+substance, an instance of Masáková–Mazáč–Pelantová (Linear Algebra Appl. 625 (2021) 279–321),
+Thm 13.1; none of this is claimed as new. Beyond the cited cases, the entry proves the least
+physical dimension for every nonsingular integer matrix (3), including what lies outside the
+diagonalizable class of Masáková–Mazáč–Pelantová: a Jordan block of size `≥ 2` at an eigenvalue on
+the unit circle counts in full (the terms `c_p (m_p − r₁(p))`, which vanish for diagonalizable `A`),
+and at a cyclotomic factor with such a block the blocks of size one cost nothing, the internal space
+being tilted into the socle of the larger blocks; the witnesses are `J₂`, `1 ⊕ J₂(1)` and
+`1 ⊕ J₃(1)` (7). The master's thesis of J. Mazáč (Czech Technical University in Prague, hdl
+10467/82624), whose abstract treats existence for all linear maps and minimal scheme dimension for
+diagonalizable maps, physical map first, was not read: its full text is not public. Its treatment of
+non-diagonalizable maps, existence only by its abstract, was not checked against the Jordan-block
+terms of (3). The entry also proves the characterization of every admissible splitting for
+squarefree `χ_A` ((3)(d)), non-generic splittings included (for generic schemes its necessity half
+is Masáková–Mazáč–Pelantová, Lemma 5.1), and (1) for every integer matrix and (4) for every
+nonsingular hyperbolic integer matrix, with no diagonalizability hypothesis; for diagonalizable `A`
+and generic schemes, the uniqueness of the minimal scheme in (4) and of the minimal physical line
+in (5) is immediate from Masáková–Mazáč–Pelantová, Cor. 13.4. For `det A ≠ 0` and squarefree `χ_A`
+with a factor `Φ_n`, `n ∉ {1, 2, 3, 4, 6}`, the minimal scheme is not unique, by (3)(d). For
+squarefree `χ_A`, hence diagonalizable `A`, the count of (3) also follows from the arguments of
 Masáková–Mazáč–Pelantová, Lemma 5.1, Prop. 8.1(iii) and Cor. 13.4 (numbering of arXiv:1909.10753v2),
 which are stated there for generic (aperiodic) schemes, under which a factor `x ± 1`, `Φ₃`, `Φ₄` or
 `Φ₆` admits no scheme. We did not find the least physical dimension for a given lattice map,
 statement (3), stated in the sources we read (search completed 2026-10-20); this is a search result,
-not a guarantee. The master's thesis of J. Mazáč (Czech Technical University in Prague, hdl
-10467/82624), whose abstract treats existence for all linear maps and minimal scheme dimension for
-diagonalizable maps, physical map first, was not read: its full text is not public.
+not a guarantee.
 
 **The proofs.** No Jordan form of `A` and no diagonalization of `A` is used: the Jordan data of (3)
 are ranks of rational kernels. The lower bound in (3): admissibility is power-boundedness on `H`
@@ -199,28 +206,27 @@ in `ℚ(ρ)`, the real one, and the spectral projection maps the quartic sector 
 `ℤ[Q]` with its trace form unchanged, of Lorentzian type `(3, 1)` (10). `ρ` acts on them as a pure
 dilation by `ρ ≈ 1.3247`, the same stretch in every direction (10). Symmetrically, the unit
 `θ = −Q⁻¹ = 1 − Q³` needs exactly three, and those three are a copy of space's: `ℚ(ρ)`'s real space
-with its form of type `(2, 1)` unchanged, dilated by `t = −1/q′ ≈ 1.3803` (8, 9, 10). Taken over
-all three embeddings of `ℚ(ρ)` instead of the one expanding embedding, the form on the quartic
-sector is tripled: the factor 3 of the companion's statement (13).
+with its form of type `(2, 1)` unchanged, dilated by `t = −1/q′ ≈ 1.3803` (8, 9, 10). Taken over all
+three embeddings of `ℚ(ρ)` instead of the one expanding embedding, the form on the quartic sector is
+tripled: the factor 3 of statement (13) of PALOMAR-2026-10-21-000012.
 
-The clock needs one dimension; the ruler needs five. On `ℤ[ρ]` the plastic inflation needs
-exactly one: the line, over a two-dimensional window at the complex place (8). The plastic
-substitution's control-point sets are regular model sets in this scheme, with Rauzy-fractal
-windows in `ℂ` (Baake and Grimm 2020), and in the theory the line is time and its points are the
-ticks (PALOMAR-2026-08-19-000006, PALOMAR-2026-10-18-000019). The coupling ruler `ρQ`, which
-generates the parent field (`ℚ(ρQ) = K`; the companion's statement (15), where `ℤ[ρQ]` has index
-53 in the integers; PALOMAR-2026-09-01-000005), needs
-exactly five, over a seven-dimensional window (9): one real and two complex expanding places, a
-dimension neither sector has.
+The clock needs one dimension; the ruler needs five. On `ℤ[ρ]` the plastic inflation needs exactly
+one: the line, over a two-dimensional window at the complex place (8). The plastic substitution's
+control-point sets are regular model sets in this scheme, with Rauzy-fractal windows in `ℂ` (Baake
+and Grimm 2020), and in the theory the line is time and its points are the ticks
+(PALOMAR-2026-08-19-000006, PALOMAR-2026-10-18-000019). The coupling ruler `ρQ`, which generates the
+parent field (`ℚ(ρQ) = K`; statement (15) of PALOMAR-2026-10-21-000012, where `ℤ[ρQ]` has index 53
+in the integers; PALOMAR-2026-09-01-000005), needs exactly five, over a seven-dimensional
+window (9): one real and two complex expanding places, a dimension neither sector has.
 
 The parent holds no circle, so every minimal scheme is forced. Off the parent, eigenvalues on the
 unit circle can change the count: a Salem inflation's circle eigendirections lie in the internal
 space and cost nothing, so it still needs only a line (5, 12), but multiplication by a primitive
-`n`-th root of unity, `n ≥ 3`, needs exactly a plane, and with squarefree characteristic polynomial
-every element of order `n ≥ 3` needs at least one (6). The parent has none. No element of `K` other
-than `±1` has a conjugate on the unit circle (the companion's statement (17)), so every inflation of
-the parent by an element other than `0` and `±1` is hyperbolic, needs exactly as many dimensions as
-it has expanding embeddings (a complex place counts twice), and has a unique minimal scheme (4, 9).
+`n`-th root of unity, `n ≥ 3`, needs exactly a plane, and every element of finite order `n ≥ 3`
+needs at least one (6). The parent has none. No element of `K` other than `±1` has a conjugate on
+the unit circle (statement (17) of PALOMAR-2026-10-21-000012), so every inflation of the parent by
+an element other than `0` and `±1` is hyperbolic, needs exactly as many dimensions as it has
+expanding embeddings (a complex place counts twice), and has a unique minimal scheme (4, 9).
 -/
 
 -- BEGIN SHARED DEFINITIONS
@@ -558,11 +564,11 @@ theorem hyperbolic_case {ι : Type*} [Fintype ι] [DecidableEq ι] (A : Matrix �
 is irreducible over `ℚ` with exactly one root of modulus `> 1`, or `A = ±1` on a lattice of any
 positive rank. In the irreducible case that root `r` is real, every other root has modulus at most
 `1` (so `|r|` is a Pisot number, a Salem number, or for `#ι = 1` an integer `≥ 2`), and every
-admissible scheme with `dim E = 1` has `E` the `r`-eigenline. This is the lattice-first,
-model-set form of Meyer's theorem (1972; 1995, Thm 6; the Meyer-set inflation case also Lagarias
-1999, Thm 4.1): existence on the line and the model-set case of necessity, for `A`-invariant
-schemes. The Salem case is the model set on `ℤ^s` of Solomyak (2020), §4(iv), credited there to
-Akiyama. -/
+admissible scheme with `dim E = 1` has `E` the `r`-eigenline. For irreducible `χ_A` this is the
+lattice-first, model-set form of Meyer's theorem (1972; 1995, Thm 6; the Meyer-set inflation case
+also Lagarias 1999, Thm 4.1): existence on the line and the model-set case of necessity, for
+`A`-invariant schemes. The Salem case is the model set on `ℤ^s` of Solomyak (2020), §4(iv),
+credited there to Akiyama. The clause `A = ±1`, in any rank, is a corollary of (3). -/
 theorem dimension_one_pisot_or_salem {ι : Type*} [Fintype ι] [DecidableEq ι] (A : Matrix ι ι ℤ)
     (hdet : A.det ≠ 0) :
     (IsLeast (physDims A) 1 ↔

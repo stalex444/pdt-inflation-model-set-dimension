@@ -122,15 +122,16 @@ stated there, between `-- BEGIN SHARED DEFINITIONS` and `-- END SHARED DEFINITIO
   patterns (up to mutual local derivability) with expansive inflation, Harriss–Koivusalo–Walton
   (HKW, arXiv:2512.13659, preprint, v1) prove that the internal space is the contracting subspace
   (Thm 3.3); (4) is its analogue for the inclusion notion, and contains, with no diagonalizability,
-  the necessity of `H ⊆ E^s` from MMP Cor. 13.4. (5) is the lattice-first, model-set form of Meyer's
-  theorem (Meyer 1972; 1995, Thm 6, read through Berthé–Yassawi, arXiv:2404.04116, Thm 2.2; the
-  Meyer-set inflation case also Lagarias 1999, Thm 4.1, as stated in Solomyak 2020, Thm 3(iii)); the
-  explicit Salem model set on `ℤ^s` is Solomyak (2020), §4(iv), credited there to Akiyama, and (12)
-  is an instance. (6): the planar cyclotomic model sets (Huck, arXiv:math/0701141, Def. 11 and Rem.
-  18; Baake–Grimm 2013, §7.3) have physical dimension 2 and internal dimension `φ(n) − 2`; `φ(n)` is
-  the least lattice rank for a planar model set with `n`-fold symmetry (Baake–Joseph–Schlottmann
-  1991), the dual quantity, and is not Hiller's bound `ψ(n)` for lattices with an order-`n` symmetry
-  (Hiller 1985, as cited by MMP §1; not opened). (13) is classical (Meyer 1972; Moody 1997).
+  the necessity of `H ⊆ E^s` from MMP Cor. 13.4. (5), for irreducible `χ_A`, is the lattice-first,
+  model-set form of Meyer's theorem (Meyer 1972; 1995, Thm 6, read through Berthé–Yassawi,
+  arXiv:2404.04116, Thm 2.2; the Meyer-set inflation case also Lagarias 1999, Thm 4.1, as stated in
+  Solomyak 2020, Thm 3(iii)); the explicit Salem model set on `ℤ^s` is Solomyak (2020), §4(iv),
+  credited there to Akiyama, and (12) is an instance. (6): the planar cyclotomic model sets (Huck,
+  arXiv:math/0701141, Def. 11 and Rem. 18; Baake–Grimm 2013, §7.3) have physical dimension 2 and
+  internal dimension `φ(n) − 2`; `φ(n)` is the least lattice rank for a planar model set with
+  `n`-fold symmetry (Baake–Joseph–Schlottmann 1991), the dual quantity, and is not Hiller's bound
+  `ψ(n)` for lattices with an order-`n` symmetry (Hiller 1985, as cited by MMP §1; not opened). (13)
+  is classical (Meyer 1972; Moody 1997).
 * **(11) is not new.** The scheme and model set of (11) are, in substance, instances of MMP
   Thm 13.1 and of HKW §3.4 (codimension-one schemes with interval windows), and the translation
   set of the Thurston dual tiling of the Pisot unit `−1/q′` is a model set of the same kind
@@ -140,34 +141,40 @@ stated there, between `-- BEGIN SHARED DEFINITIONS` and `-- END SHARED DEFINITIO
   `≥ 2` at an eigenvalue on the unit circle counts in full (the terms `c_p (m_p − r₁(p))`, which
   vanish for diagonalizable `A`), and at a cyclotomic factor with such a block the blocks of size
   one cost nothing, the internal space being tilted into the socle of the larger blocks; the
-  witnesses are `J₂`, `1 ⊕ J₂(1)` and `1 ⊕ J₃(1)` (7). It also proves the characterization of every
-  admissible splitting for squarefree `χ_A` ((3)(d)), and (1) for every integer matrix and (4) for
-  every nonsingular hyperbolic integer matrix, with no diagonalizability hypothesis; for
-  diagonalizable `A` the uniqueness of the minimal scheme in (4) and (5) is immediate from MMP Cor.
-  13.4. For `det A ≠ 0` and squarefree `χ_A` with a factor `Φ_n`, `n ∉ {1, 2, 3, 4, 6}`, the minimal
-  scheme is not unique, by (3)(d).
+  witnesses are `J₂`, `1 ⊕ J₂(1)` and `1 ⊕ J₃(1)` (7). The master's thesis of J. Mazáč, "Delone sets
+  closed under affine mappings" (Czech Technical University in Prague, hdl 10467/82624), whose
+  abstract treats existence for all linear maps and minimal scheme dimension for diagonalizable
+  maps, physical map first, was not read: the repository record has no public full text. Its
+  treatment of non-diagonalizable maps, existence only by its abstract, was not checked against the
+  Jordan-block terms of (3). The entry also proves the characterization of every admissible
+  splitting for squarefree `χ_A` ((3)(d)), non-generic splittings included (for generic schemes its
+  necessity half is MMP, Lemma 5.1), and (1) for every integer matrix and (4) for every nonsingular
+  hyperbolic integer matrix, with no diagonalizability hypothesis; for diagonalizable `A` and
+  generic schemes, the uniqueness of the minimal scheme in (4) and of the minimal physical line
+  in (5) is immediate from MMP Cor. 13.4. For `det A ≠ 0` and squarefree `χ_A` with a factor `Φ_n`,
+  `n ∉ {1, 2, 3, 4, 6}`, the minimal scheme is not unique, by (3)(d).
 * **Priority, bounded (literature).** The necessity halves of the window criterion (1) and of the
   hyperbolic case (4) are MMP Prop. 13.2 and Cor. 13.4 (diagonalizable maps, generic schemes); the
-  expansive substitutional analogue of (4) is HKW Thm 3.3 (preprint). The dimension-one case is
-  Meyer's (1972; 1995, Thm 6; for Meyer sets also Lagarias 1999, Thm 4.1), and the density criterion
-  is Kronecker's, in Pleasants's cut-and-project form (2000, Cor. 2.12). The minimal internal
-  dimension for a given physical map, unit-circle spectrum included, is MMP Thm 13.7 (diagonalizable
-  maps, generic schemes). For squarefree `χ_A`, hence diagonalizable `A`, the count of (3) also
-  follows from the arguments of MMP, Lemma 5.1, Prop. 8.1(iii) and Cor. 13.4, which are stated there
-  for generic (aperiodic) schemes, under which a factor `x ± 1`, `Φ₃`, `Φ₄` or `Φ₆` admits no
-  scheme. We did not find the lattice-first least physical dimension, statement (3), stated in the
-  sources listed (search completed 2026-10-20). The master's thesis of J. Mazáč, "Delone sets closed
-  under affine mappings" (Czech Technical University in Prague, hdl 10467/82624), whose abstract
-  treats existence for all linear maps and minimal scheme dimension for diagonalizable maps,
-  physical map first, was not read: the repository record has no public full text. This is a search
+  expansive substitutional analogue of (4) is HKW Thm 3.3 (preprint). The dimension-one case, for
+  irreducible `χ_A`, is Meyer's (1972; 1995, Thm 6; for Meyer sets also Lagarias 1999, Thm 4.1), and
+  the density criterion is Kronecker's, in Pleasants's cut-and-project form (2000, Cor. 2.12). The
+  minimal internal dimension for a given physical map, unit-circle spectrum included, is MMP
+  Thm 13.7 (diagonalizable maps, generic schemes). For squarefree `χ_A`, hence diagonalizable `A`,
+  the count of (3) also follows from the arguments of MMP, Lemma 5.1, Prop. 8.1(iii) and Cor. 13.4,
+  which are stated there for generic (aperiodic) schemes, under which a factor `x ± 1`, `Φ₃`, `Φ₄`
+  or `Φ₆` admits no scheme. We did not find the lattice-first least physical dimension,
+  statement (3), stated in the sources listed (search completed 2026-10-20). This is a search
   result, not a guarantee.
 * **Scheme notion.** Aperiodicity (`ℤ^ι ∩ E = 0`) is not required, `H = 0` is admitted, and `A` need
   not be unimodular: the counts assume `det A ≠ 0` only. For `det A ≠ 0` and squarefree `χ_A`, the
   line of a factor `x ± 1` and the plane of a factor `Φ₃`, `Φ₄` or `Φ₆` lie in `E` in every
   admissible scheme ((3)(d)), so the model set is periodic in those directions, and under MMP's
-  generic (aperiodic) schemes such a factor makes a scheme impossible. The least dimension under
-  aperiodicity is not treated. "Minimal" in Baake–Lenz–Moody (2007) and Aujogue (2016) refers to a
-  given point set, a different question.
+  generic (aperiodic) schemes such a factor makes a scheme impossible. Likewise, at a cyclotomic
+  factor `p` with a Jordan block of size `≥ 2`, `p(A)` kills the `p`-component of `H`
+  (power-boundedness), so the nonzero rational subspace `im p(A)` of that component lies in `E`: at
+  a root of unity, the Jordan-block terms and the tilt occur only in schemes with `ℤ^ι ∩ E ≠ 0`. The
+  least dimension under aperiodicity is not treated. "Minimal" in Baake–Lenz–Moody (2007) and
+  Aujogue (2016) refers to a given point set, a different question.
 * **Proved here.** All thirteen statements, from Mathlib, with no Jordan form of `A` and no
   diagonalization of `A`. In (3) the lower bound comes from the largest power-bounded invariant
   summand, of dimension `Σ_p (m_p s_p + c_p r₁(p))` with `s_p` the number of roots of `p` inside the
@@ -201,9 +208,9 @@ stated there, between `-- BEGIN SHARED DEFINITIONS` and `-- END SHARED DEFINITIO
   `InflationDimension/Compositum/` (namespace `InflationDimension.Compositum`, so no declaration
   name of that entry is declared again) and used in the proof of (9); the eigenvalues of
   `mulMatrix a` are the twelve conjugates of `α`, so `U` counts the expanding embeddings of `α`. The
-  general slice lemma behind the companion's factor 3 (the restriction of the trace form of `K` to a
-  sector over all three embeddings of `ℚ(ρ)`) is not compared here; (10) uses the one expanding
-  embedding, where the multiple is exactly `1`.
+  general slice lemma behind the factor 3 of PALOMAR-2026-10-21-000012, statement (13) (the
+  restriction of the trace form of `K` to a sector over all three embeddings of `ℚ(ρ)`) is not
+  compared here; (10) uses the one expanding embedding, where the multiple is exactly `1`.
 * **The author's registered entries.** PALOMAR-2026-09-04-000004 (chiral Padovan histories) is
   the registered entry this one overlaps most. Its `cubic_record_windows` proves the Meyer
   property of the cubic record window by norm arguments, with no model-set definition; its
@@ -249,32 +256,32 @@ dimensions each of the theory's inflations needs to be the symmetry of one, and 
 
 Space inflates the parent through spacetime, and spacetime inflates it through space. On the
 parent's lattice the plastic inflation `ρ` needs exactly four physical dimensions, and only one
-scheme attains four (9). Those four are a copy of spacetime's: `ρ` has a single expanding
-embedding in `ℚ(ρ)`, the real one, and the spectral projection maps the quartic sector onto them,
-carrying `ℤ[Q]` with its trace form unchanged, of Lorentzian type `(3, 1)` (10). `ρ` acts on them
-as a pure dilation by `ρ ≈ 1.3247`, the same stretch in every direction (10). Symmetrically, the
-unit `θ = −Q⁻¹ = 1 − Q³` needs exactly three, and those three are a copy of space's: `ℚ(ρ)`'s real
-space with its form of type `(2, 1)` unchanged, dilated by `t = −1/q′ ≈ 1.3803` (8, 9, 10).
-Taken over all three embeddings of `ℚ(ρ)` instead of the one expanding embedding, the form on the
-quartic sector is tripled: the factor 3 of the companion's statement (13).
+scheme attains four (9). Those four are a copy of spacetime's: `ρ` has a single expanding embedding
+in `ℚ(ρ)`, the real one, and the spectral projection maps the quartic sector onto them, carrying
+`ℤ[Q]` with its trace form unchanged, of Lorentzian type `(3, 1)` (10). `ρ` acts on them as a pure
+dilation by `ρ ≈ 1.3247`, the same stretch in every direction (10). Symmetrically, the unit
+`θ = −Q⁻¹ = 1 − Q³` needs exactly three, and those three are a copy of space's: `ℚ(ρ)`'s real space
+with its form of type `(2, 1)` unchanged, dilated by `t = −1/q′ ≈ 1.3803` (8, 9, 10). Taken over all
+three embeddings of `ℚ(ρ)` instead of the one expanding embedding, the form on the quartic sector is
+tripled: the factor 3 of statement (13) of PALOMAR-2026-10-21-000012.
 
 The clock needs one dimension; the ruler needs five. On `ℤ[ρ]` the plastic inflation needs exactly
 one: the line, over a two-dimensional window at the complex place (8). The plastic substitution's
 control-point sets are regular model sets in this scheme, with Rauzy-fractal windows in `ℂ` (Baake
 and Grimm 2020), and in the theory the line is time and its points are the ticks
 (PALOMAR-2026-08-19-000006, PALOMAR-2026-10-18-000019). The coupling ruler `ρQ`, which generates the
-parent field (`ℚ(ρQ) = K`; the companion's statement (15), where `ℤ[ρQ]` has index 53 in the
-integers; PALOMAR-2026-09-01-000005), needs exactly five, over a seven-dimensional window (9): one
-real and two complex expanding places, a dimension neither sector has.
+parent field (`ℚ(ρQ) = K`; statement (15) of PALOMAR-2026-10-21-000012, where `ℤ[ρQ]` has index 53
+in the integers; PALOMAR-2026-09-01-000005), needs exactly five, over a seven-dimensional
+window (9): one real and two complex expanding places, a dimension neither sector has.
 
 The parent holds no circle, so every minimal scheme is forced. Off the parent, eigenvalues on the
 unit circle can change the count: a Salem inflation's circle eigendirections lie in the internal
 space and cost nothing, so it still needs only a line (5, 12), but multiplication by a primitive
-`n`-th root of unity, `n ≥ 3`, needs exactly a plane, and with squarefree characteristic polynomial
-every element of order `n ≥ 3` needs at least one (6). The parent has none. No element of `K` other
-than `±1` has a conjugate on the unit circle (the companion's statement (17)), so every inflation of
-the parent by an element other than `0` and `±1` is hyperbolic, needs exactly as many dimensions as
-it has expanding embeddings (a complex place counts twice), and has a unique minimal scheme (4, 9).
+`n`-th root of unity, `n ≥ 3`, needs exactly a plane, and every element of finite order `n ≥ 3`
+needs at least one (6). The parent has none. No element of `K` other than `±1` has a conjugate on
+the unit circle (statement (17) of PALOMAR-2026-10-21-000012), so every inflation of the parent by
+an element other than `0` and `±1` is hyperbolic, needs exactly as many dimensions as it has
+expanding embeddings (a complex place counts twice), and has a unique minimal scheme (4, 9).
 
 ## Layout and build
 

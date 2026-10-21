@@ -135,11 +135,11 @@ theorem hyperbolic_case {ι : Type*} [Fintype ι] [DecidableEq ι] (A : Matrix �
 is irreducible over `ℚ` with exactly one root of modulus `> 1`, or `A = ±1` on a lattice of any
 positive rank. In the irreducible case that root `r` is real, every other root has modulus at most
 `1` (so `|r|` is a Pisot number, a Salem number, or for `#ι = 1` an integer `≥ 2`), and every
-admissible scheme with `dim E = 1` has `E` the `r`-eigenline. This is the lattice-first,
-model-set form of Meyer's theorem (1972; 1995, Thm 6; the Meyer-set inflation case also Lagarias
-1999, Thm 4.1): existence on the line and the model-set case of necessity, for `A`-invariant
-schemes. The Salem case is the model set on `ℤ^s` of Solomyak (2020), §4(iv), credited there to
-Akiyama. -/
+admissible scheme with `dim E = 1` has `E` the `r`-eigenline. For irreducible `χ_A` this is the
+lattice-first, model-set form of Meyer's theorem (1972; 1995, Thm 6; the Meyer-set inflation case
+also Lagarias 1999, Thm 4.1): existence on the line and the model-set case of necessity, for
+`A`-invariant schemes. The Salem case is the model set on `ℤ^s` of Solomyak (2020), §4(iv),
+credited there to Akiyama. The clause `A = ±1`, in any rank, is a corollary of (3). -/
 theorem dimension_one_pisot_or_salem {ι : Type*} [Fintype ι] [DecidableEq ι] (A : Matrix ι ι ℤ)
     (hdet : A.det ≠ 0) :
     (IsLeast (physDims A) 1 ↔
