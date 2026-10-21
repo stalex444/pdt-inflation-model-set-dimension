@@ -1,0 +1,682 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+# Review status: self-assessed by the author (see the review block below).
+
+project:
+  name: "The least physical dimension of an inflation-symmetric model set, with the cubic, quartic and degree-12 inflations of x^3 - x - 1 and x^4 - x - 1"
+  description: >-
+    Kernel-checked proofs, in Lean 4 + Mathlib, about cut-and-project
+    schemes on a fixed integer lattice Z^iota invariant under an integer
+    matrix A: splittings R^iota = E + H into A-invariant subspaces with
+    Z^iota meeting H only in 0 and the projection of Z^iota to H dense in
+    H, a window W in H (bounded, containing a relative ball), the model set
+    Lambda(W) = {pi_E g : g in Z^iota, pi_H g in W}, and admissibility, some
+    window with A Lambda(W) contained in Lambda(W) (inflation symmetry in
+    Meyer's inclusion sense). The least physical dimension d(A) is the
+    least dim E over admissible schemes. Thirteen compared theorems. (1)
+    For every integer A, a scheme is admissible iff A is power-bounded on
+    H; then the orbit window is a compact convex symmetric invariant window;
+    the per-window criterion; and U(A) <= dim E, U(A) the number of
+    eigenvalues of modulus > 1. (2) Kronecker's density criterion in
+    cut-and-project form. (3) For det A != 0 and chi_A squarefree over Q:
+    every invariant splitting is E = ker q_E(A), H = ker q_H(A) with
+    chi_A = q_E q_H; it is admissible iff the roots of q_H lie in the closed
+    unit disk and every irreducible rational factor of chi_A shares a root
+    with q_E; d(A) = U(A) + circleCount(A), counting 1 for each factor
+    x - 1, x + 1 and 2 for each other cyclotomic factor; and the factors
+    with all roots on the unit circle are the cyclotomic ones. (4) For
+    hyperbolic A, any chi_A and no diagonalizability: admissible iff E
+    contains the unstable set iff H lies in the stable set; d(A) = U(A),
+    attained only by the unstable/stable splitting. (5) d(A) = 1 iff chi_A
+    is irreducible with exactly one root of modulus > 1 (a real root, a
+    Pisot or Salem number up to sign, or an integer on Z^1), or A = +-1 on
+    Z^1; every admissible line is the eigenline. (6) The cyclotomic case:
+    d = sum of min(deg p, 2) over the factors; multiplication by a
+    primitive n-th root of unity, n >= 3, needs a plane. (7) The squarefree
+    hypothesis is needed: I_2 and the Jordan block J_2 both have
+    chi = (x - 1)^2, with d = 1 and 2. (8) Multiplication by rho, rho^-1, Q
+    and theta = -Q^-1 = 1 - Q^3 on Z[rho] and Z[Q] (rho^3 = rho + 1,
+    Q^4 = Q + 1): d = 1, 2, 3, 1. (9) On Z[rho] (x) Z[Q] (degree 12),
+    multiplication by every alpha other than 0, +-1 is invertible and
+    hyperbolic with d = U; for rho, theta, rho Q and Q the values are 4, 3,
+    5, 9. (10) rho and theta act on their unstable spaces as real scalars,
+    and the spectral projection carries the quartic (resp. cubic) sector
+    onto them with the Gram pairing GramRho (x) GramQ equal to that of
+    GramQ (resp. GramRho), of types (3,1) and (2,1). (11) The scheme of Q on
+    Z^4 with an interval window: a segment, an explicit Q-invariant model
+    set in R^3, determinant -1/q' on E, non-real moduli, and the types
+    (2,1) and (1,0) of the trace form on E and H. (12) A Salem witness, the
+    companion of x^4 - x^3 - x^2 - x + 1: not hyperbolic, d = 1. (13) Every
+    model set is a Delone set (Mathlib's Delone.DeloneSet) with uniformly
+    discrete difference set. The mathematics of (1), (2), (4), (5), (6) and
+    (13) is known in other formulations (Masakova-Mazac-Pelantova 2021;
+    Kronecker, Pleasants 2000; Harriss-Koivusalo-Walton 2025, preprint;
+    Meyer 1972, 1995; Solomyak 2020; the classical cyclotomic model sets;
+    Moody 1997); (1) and (4) are stated with no diagonalizability
+    hypothesis. The scheme and model set of (11) are, in substance,
+    instances of Masakova-Mazac-Pelantova Thm 13.1 and of
+    Harriss-Koivusalo-Walton Section 3.4, and are not new. For squarefree
+    chi_A the count (3) also follows from Masakova-Mazac-Pelantova Lemma
+    5.1, Prop. 8.1(iii) and Cor. 13.4; the lattice-first least physical
+    dimension was not found stated in the sources read (search completed
+    2026-10-20). That the matrices of (9) are multiplication on the ring of
+    integers of Q(rho, Q) and that GramRho (x) GramQ is its trace form are
+    cited from the author's stalex444/pdt-hermite-signature-compositum at
+    commit 5aa870e8 and not compared.
+    Application (cited, not a claim of the entry): In the author's Pisot
+    Dimensional Theory, Q(rho) is the arithmetic of three-dimensional space
+    and Q(Q) the arithmetic of four-dimensional spacetime, and their
+    compositum K, whose integers are Z[rho] (x) Z[Q], is the parent of both
+    (stalex444/pdt-hermite-signature-compositum@5aa870e8, statements (7),
+    (8)). A model set is the shadow of a lattice cut through a window, a
+    standard mathematical model of a quasicrystal (Moody 2000). Read through
+    the theory, this entry's theorems fix how many dimensions each of the
+    theory's inflations needs to be the symmetry of one, and which ones.
+
+    Space inflates the parent through spacetime, and spacetime inflates it
+    through space. On the parent's lattice the plastic inflation rho needs
+    exactly four physical dimensions, and only one scheme attains four (9).
+    Those four are a copy of spacetime's: rho has a single expanding
+    embedding in Q(rho), the real one, and the spectral projection maps the
+    quartic sector onto them, carrying Z[Q] with its trace form unchanged,
+    of Lorentzian type (3,1) (10). rho acts on them as a pure dilation by
+    rho = 1.3247..., the same stretch in every direction (10).
+    Symmetrically, the unit theta = -Q^-1 = 1 - Q^3 needs exactly three, and
+    those three are a copy of space's: Q(rho)'s real space with its form of
+    type (2,1) unchanged, dilated by theta_4 = -1/q' = 1.3803... (8, 9, 10).
+    Taken over all three embeddings of Q(rho) instead of the one expanding
+    embedding, the form on the quartic sector is tripled: the factor 3 of
+    the companion's statement (13).
+
+    The clock needs one dimension; the ruler needs five. On Z[rho] the
+    plastic inflation needs exactly one: the line, over a two-dimensional
+    window at the complex place (8). The plastic substitution's
+    control-point sets are regular model sets in this scheme, with
+    Rauzy-fractal windows in C (Baake and Grimm 2020), and in the theory the
+    line is time and its points are the ticks (PALOMAR-2026-08-19-000006,
+    PALOMAR-2026-10-18-000019). The coupling ruler rho Q, which generates
+    the whole parent (the companion's statement (15);
+    PALOMAR-2026-09-01-000005), needs exactly five, over a
+    seven-dimensional window (9): one real and two complex expanding places,
+    a dimension neither sector has.
+
+    The parent holds no circle, so every minimal scheme is forced. Off the
+    parent, eigenvalues on the unit circle change the count: a Salem
+    inflation needs only a line (5, 12), multiplication by a primitive n-th
+    root of unity, n >= 3, needs exactly a plane, and with squarefree
+    characteristic polynomial every element of order n >= 3 needs at least
+    one (6). The parent has none. No element of K other than +-1 has a
+    conjugate on the unit circle (the companion's statement (17)), so every
+    inflation of the parent is hyperbolic, needs exactly as many dimensions
+    as it has expanding embeddings (a complex place counts twice), and has a
+    unique minimal scheme (4, 9).
+  authors:
+    - "Stephanie Alexander"
+  license: "MIT"
+  responsible_maintainers:
+    - "Stephanie Alexander"
+
+classification:
+  arxiv: ["math.MG", "math.DS", "math.NT", "math-ph", "gr-qc", "cs.LO"]
+  msc2020: ["52C23", "37D20", "11R06", "11J71", "11R04", "68V20"]
+
+sources:
+  - title: "On generalized self-similarities of cut-and-project sets"
+    authors:
+      - "Zuzana Masakova"
+      - "Jan Mazac"
+      - "Edita Pelantova"
+    id: "Linear Algebra and its Applications 625 (2021), 279-321; arXiv:1909.10753"
+    # Crossref-verified 2026-10-21: DOI 10.1016/j.laa.2021.05.010 (three authors, LAA 625,
+    # 279-321, 2021-09). arXiv:1909.10753v2 (2020-01-30) is the latest version and the text
+    # read; theorem numbers below are those of arXiv v2 (the journal numbering was not checked).
+    type: "article"
+    location: "https://doi.org/10.1016/j.laa.2021.05.010"
+    relationship: "independently-proves"
+    note: >-
+      Scoped to schemes on a fixed integer lattice (integer-lifted schemes).
+      For diagonalizable maps and generic (non-degenerate, aperiodic,
+      irreducible) schemes, physical map first: Prop. 13.2 and Cor. 13.4
+      (spectral radius of the internal map at most 1) are the necessity half
+      of compared statement (1), which is proved here for every integer
+      matrix with no diagonalizability hypothesis, and they give the
+      necessity of H in E^s in (4); Lemma 5.1 (whose relevant half uses only
+      non-degeneracy) is the lower-bound part of (3)(b); Prop. 3.3(iii) and
+      Prop. 8.1(iii) are the cut-and-project form of (2). For squarefree
+      chi_A, hence diagonalizable A, the count of (3) follows from Lemma
+      5.1, Prop. 8.1(iii) and Cor. 13.4. Thm 13.7, the minimal lattice rank
+      for a given physical map (unit circle allowed; diagonalizable maps,
+      generic schemes), is the physical-map-first dual of (3), cited and not
+      re-proved. The scheme of (11) is in substance an instance of Thm 13.1.
+    license: "unknown"
+    author_endorsement: "n/a"
+  - title: "When is a cut and project set substitutional?"
+    authors:
+      - "Edmund Harriss"
+      - "Henna Koivusalo"
+      - "James J. Walton"
+    id: "arXiv:2512.13659 (v1, 2025-12-15; preprint)"
+    # arXiv metadata checked 2026-10-21: v1 only, no journal reference.
+    type: "preprint"
+    location: "https://arxiv.org/abs/2512.13659"
+    relationship: "other"
+    note: >-
+      Preprint, not refereed. Thm 3.3: for patterns that are substitutional
+      up to mutual local derivability with expansive inflation, the internal
+      space is the contracting subspace of a hyperbolic lattice automorphism.
+      Compared statement (4) is the analogue for the inclusion notion
+      A Lambda(W) contained in Lambda(W), a different notion; density is
+      proved here and assumed there. Section 3.4 (codimension-one schemes
+      with interval windows) covers the scheme of (11) in substance.
+    license: "unknown"
+    author_endorsement: "n/a"
+  - title: "Designer quasicrystals: cut-and-project sets with pre-assigned properties"
+    authors:
+      - "P. A. B. Pleasants"
+    id: "Directions in Mathematical Quasicrystals, CRM Monograph Series 13, American Mathematical Society (2000), 95-141"
+    # Crossref-verified 2026-10-21: DOI 10.1090/crmm/013/04, pages 95-141 (the Crossref record
+    # has no author field; the author is as cited by Masakova-Mazac-Pelantova). Primary not
+    # opened; Cor. 2.12 as stated in Masakova-Mazac-Pelantova Prop. 3.3.
+    type: "incollection"
+    location: "https://doi.org/10.1090/crmm/013/04"
+    relationship: "independently-proves"
+    note: >-
+      Cor. 2.12: the projection of the lattice to the internal space is
+      dense iff the physical space lies in no hyperplane spanned by lattice
+      vectors, the cut-and-project form of Kronecker's classical density
+      theorem. Compared statement (2), in the equivalent form: every real
+      functional that is integer-valued on Z^iota and vanishes on E is zero.
+    license: "unknown"
+    author_endorsement: "n/a"
+  - title: "Quasicrystals, Diophantine approximation and algebraic numbers"
+    authors:
+      - "Yves Meyer"
+    id: "Beyond Quasicrystals (Les Houches, 1994), Springer (1995), 3-16"
+    # Crossref-verified 2026-10-21: DOI 10.1007/978-3-662-03130-8_1. Thm 6 read through
+    # Berthe-Yassawi, arXiv:2404.04116, Thm 2.2.
+    type: "incollection"
+    location: "https://doi.org/10.1007/978-3-662-03130-8_1"
+    relationship: "independently-proves"
+    note: >-
+      Thm 6: if a Meyer set is mapped into itself by multiplication by
+      beta > 1 then beta is a Pisot or Salem number; conversely every Pisot
+      or Salem number is the inflation factor of a model set. Compared
+      statement (5) proves the lattice-first, model-set form: for
+      A-invariant schemes, d(A) = 1 iff chi_A is irreducible with exactly
+      one root of modulus > 1 (or A = +-1 on Z^1), that root real; it does
+      not prove the theorem for arbitrary Meyer sets. The dichotomy goes
+      back to Meyer, Algebraic Numbers and Harmonic Analysis, North-Holland
+      Mathematical Library 2 (1972).
+    license: "unknown"
+    author_endorsement: "n/a"
+  - title: "Delone Sets and Dynamical Systems"
+    authors:
+      - "Boris Solomyak"
+    id: "Substitution and Tiling Dynamics: Introduction to Self-inducing Structures, Lecture Notes in Mathematics 2273, Springer (2020), 1-32; arXiv:1802.02370"
+    # Crossref-verified 2026-10-21: DOI 10.1007/978-3-030-57666-0_1. arXiv v1 read.
+    type: "incollection"
+    location: "https://doi.org/10.1007/978-3-030-57666-0_1"
+    relationship: "background"
+    note: >-
+      Section 4(iv): for a Salem number beta of degree s >= 4, an explicit
+      model set on Z^s with physical space the beta-eigenline of the
+      companion matrix and the other eigenvectors, unit-circle ones included,
+      internal; called folklore there and credited to S. Akiyama. The Salem
+      case of compared statement (5), and (12) is an instance.
+    license: "unknown"
+    author_endorsement: "n/a"
+  - title: "Zwei Saetze ueber Gleichungen mit ganzzahligen Coefficienten"
+    authors:
+      - "Leopold Kronecker"
+    id: "Journal fuer die reine und angewandte Mathematik 53 (1857), 173-175"
+    # Crossref-verified 2026-10-21: DOI 10.1515/crll.1857.53.173 (the Crossref author array is
+    # empty).
+    type: "article"
+    location: "https://doi.org/10.1515/crll.1857.53.173"
+    relationship: "background"
+    note: >-
+      Kronecker's theorem that an algebraic integer whose conjugates all
+      lie on the unit circle is a root of unity, used through Mathlib's
+      NumberField.Embeddings.pow_eq_one_of_norm_eq_one for the last clause
+      of compared statement (3) (the circle factors are the cyclotomic
+      ones). Not re-proved.
+    license: "unknown"
+    author_endorsement: "n/a"
+  - title: "Uniqueness in Discrete Tomography of Planar Model Sets"
+    authors:
+      - "Christian Huck"
+    id: "arXiv:math/0701141"
+    # arXiv metadata checked 2026-10-21 (v2). Def. 11 and Rem. 18 read.
+    type: "preprint"
+    location: "https://arxiv.org/abs/math/0701141"
+    relationship: "background"
+    note: >-
+      Def. 11 and Rem. 18: the planar cyclotomic model sets, physical space
+      R^2 and internal dimension phi(n) - 2. Compared statement (6): the
+      plane is the least physical dimension for multiplication by zeta_n,
+      n >= 3.
+    license: "unknown"
+    author_endorsement: "n/a"
+  - title: "Aperiodic Order, Vol. 1: A Mathematical Invitation"
+    authors:
+      - "Michael Baake"
+      - "Uwe Grimm"
+    id: "Cambridge University Press (2013)"
+    # Crossref-verified 2026-10-21: DOI 10.1017/CBO9781139025256. Table of contents read.
+    type: "book"
+    location: "https://doi.org/10.1017/CBO9781139025256"
+    relationship: "background"
+    note: >-
+      Section 7.3, cyclotomic model sets (compared statement (6)); Section
+      7.2, cut-and-project schemes and model sets. Text not read beyond the
+      table of contents.
+    license: "unknown"
+    author_endorsement: "n/a"
+  - title: "The root lattice D4 and planar quasilattices with octagonal and dodecagonal symmetry"
+    authors:
+      - "Michael Baake"
+      - "D. Joseph"
+      - "Martin Schlottmann"
+    id: "International Journal of Modern Physics B 5 (1991), 1927-1953"
+    # Crossref-verified 2026-10-21: DOI 10.1142/S0217979291000754. Not opened.
+    type: "article"
+    location: "https://doi.org/10.1142/S0217979291000754"
+    relationship: "background"
+    note: >-
+      phi(n) as the least lattice rank of a planar model set with n-fold
+      symmetry (as cited by Masakova-Mazac-Pelantova, Section 14): the dual
+      quantity to the physical dimension 2 of compared statement (6). Not
+      Hiller's bound psi(n) for lattices with an order-n symmetry.
+    license: "unknown"
+    author_endorsement: "n/a"
+  - title: "Meyer Sets and Their Duals"
+    authors:
+      - "Robert V. Moody"
+    id: "The Mathematics of Long-Range Aperiodic Order, NATO ASI Series C 489, Kluwer (1997), 403-441"
+    # Crossref-verified 2026-10-21: DOI 10.1007/978-94-015-8784-6_16. Not opened.
+    type: "incollection"
+    location: "https://doi.org/10.1007/978-94-015-8784-6_16"
+    relationship: "background"
+    note: >-
+      Model sets are Meyer sets (compared statement (13)), classical since
+      Meyer 1972.
+    license: "unknown"
+    author_endorsement: "n/a"
+  - title: "Self-Similarities and Invariant Densities for Model Sets"
+    authors:
+      - "Michael Baake"
+      - "Robert V. Moody"
+    id: "Algebraic Methods in Physics, Springer (2001), 1-15; arXiv:math-ph/9809006"
+    # Crossref-verified 2026-10-21: DOI 10.1007/978-1-4613-0119-6_1. Section 1.4 read.
+    type: "incollection"
+    location: "https://doi.org/10.1007/978-1-4613-0119-6_1"
+    relationship: "background"
+    note: >-
+      Section 1.4: for a self-similarity of a model set, compactness of the
+      window forces the internal map to have no eigenvalue of modulus > 1;
+      an early form of the necessity half of compared statement (1).
+    license: "unknown"
+    author_endorsement: "n/a"
+  - title: "Beta-expansions, natural extensions and multiple tilings associated with Pisot units"
+    authors:
+      - "Charlene Kalle"
+      - "Wolfgang Steiner"
+    id: "Transactions of the American Mathematical Society 364 (2012), 2281-2318"
+    # Crossref-verified 2026-10-21: DOI 10.1090/S0002-9947-2012-05362-1. arXiv:0907.2676v2,
+    # Section 1, Section 4.1 and Lemma 4.3 read.
+    type: "article"
+    location: "https://doi.org/10.1090/S0002-9947-2012-05362-1"
+    relationship: "background"
+    note: >-
+      Lemma 4.3: the translation set of the Thurston dual tiling of a Pisot
+      unit is a model set in the contracting hyperplane. For the Pisot unit
+      -1/q' (a root of x^4 - x^3 - 1) this is a model set of the kind of
+      compared statement (11), which is therefore not claimed as new.
+    license: "unknown"
+    author_endorsement: "n/a"
+  - title: "Model Sets: A Survey"
+    authors:
+      - "Robert V. Moody"
+    id: "From Quasicrystals to More Complex Systems, Springer (2000), 145-166; arXiv:math/0002020"
+    # Crossref-verified 2026-10-21: DOI 10.1007/978-3-662-04253-3_6.
+    type: "incollection"
+    location: "https://doi.org/10.1007/978-3-662-04253-3_6"
+    relationship: "background"
+    note: >-
+      Model sets as mathematical models of quasicrystals; cited in the
+      application paragraph.
+    license: "unknown"
+    author_endorsement: "n/a"
+  - title: "Characterization of model sets by dynamical systems"
+    authors:
+      - "Michael Baake"
+      - "Daniel Lenz"
+      - "Robert V. Moody"
+    id: "Ergodic Theory and Dynamical Systems 27 (2007), 341-382"
+    # Crossref-verified 2026-10-21: DOI 10.1017/S0143385706000800.
+    type: "article"
+    location: "https://doi.org/10.1017/S0143385706000800"
+    relationship: "background"
+    note: >-
+      Wording only: "minimal" there refers to the scheme of a given point
+      set; here the minimum is over A-invariant schemes on a given lattice.
+    license: "unknown"
+    author_endorsement: "n/a"
+  - title: "Optimal embedding of Meyer sets into model sets"
+    authors:
+      - "Jean-Baptiste Aujogue"
+    id: "Proceedings of the American Mathematical Society 144 (2016), 1277-1288"
+    # Crossref-verified 2026-10-21: DOI 10.1090/proc/12790.
+    type: "article"
+    location: "https://doi.org/10.1090/proc/12790"
+    relationship: "background"
+    note: >-
+      Wording only: the smallest model set containing a given Meyer set, a
+      different minimality from d(A).
+    license: "unknown"
+    author_endorsement: "n/a"
+  - title: "On diffraction by aperiodic structures"
+    authors:
+      - "A. Hof"
+    id: "Communications in Mathematical Physics 169 (1995), 25-43"
+    # Crossref-verified 2026-10-21: DOI 10.1007/BF02101595.
+    type: "article"
+    location: "https://doi.org/10.1007/BF02101595"
+    relationship: "background"
+    note: >-
+      Pure-point diffraction of regular model sets, cited and not
+      formalized (Mathlib at the pin has no diffraction measure).
+    license: "unknown"
+    author_endorsement: "n/a"
+  - title: "Generalized model sets and dynamical systems"
+    authors:
+      - "Martin Schlottmann"
+    id: "Directions in Mathematical Quasicrystals, CRM Monograph Series 13, American Mathematical Society (2000), 143-159"
+    # Crossref-verified 2026-10-21: DOI 10.1090/crmm/013/05 (no author field in the record).
+    type: "incollection"
+    location: "https://doi.org/10.1090/crmm/013/05"
+    relationship: "background"
+    note: >-
+      Pure-point spectrum of regular model sets, cited and not formalized.
+    license: "unknown"
+    author_endorsement: "n/a"
+  - title: "Diffraction of a model set with complex windows"
+    authors:
+      - "Michael Baake"
+      - "Uwe Grimm"
+    id: "Journal of Physics: Conference Series 1458 (2020), 012006; arXiv:1904.08285"
+    # Crossref-verified 2026-10-21: DOI 10.1088/1742-6596/1458/1/012006.
+    type: "article"
+    location: "https://doi.org/10.1088/1742-6596/1458/1/012006"
+    relationship: "background"
+    note: >-
+      The plastic substitution's control-point sets are regular model sets
+      with Rauzy-fractal windows in C, in the scheme of compared statement
+      (8) for rho on Z[rho]; cited in the application paragraph.
+    license: "unknown"
+    author_endorsement: "n/a"
+
+related_formalizations:
+  - id: "https://github.com/leanprover-community/mathlib4 (commit 065356127b1dc0016f66b7283ce0ce2c4055aa55)"
+    relationship: "builds-on"
+    note: >-
+      The compared statements use Mathlib's Matrix.toLin', Pi.basisFun,
+      Submodule.projection, the sup norm, Matrix.charpoly,
+      LinearMap.charpoly, Matrix.det, LinearMap.det, Polynomial.roots,
+      UniqueFactorizationMonoid.normalizedFactors, Polynomial.cyclotomic,
+      Squarefree, the Kronecker product, Matrix.toQuadraticForm',
+      QuadraticMap.comp, sigPos, sigNeg, Delone.DeloneSet, segment and
+      IsLeast, quoted verbatim with permalinks in MATHLIB_DEFINITIONS.md.
+      Consumed on the proof route, not re-proved: Kronecker's theorem
+      (NumberField.Embeddings.pow_eq_one_of_norm_eq_one), Gelfand's
+      formula, Sylvester's law of inertia
+      (QuadraticForm.sigPos_of_equiv_weightedSumSquares, D. Loeffler),
+      Selmer's irreducibility of x^n - x - 1
+      (X_pow_sub_X_sub_one_irreducible_rat), the ZSpan floor and Mathlib's
+      Delone sets (N. Jensen).
+
+  - id: "https://github.com/stalex444/pdt-hermite-signature-compositum (commit 5aa870e98236ba240561b798265c629df8c2d031; submitted to the registry, registration pending)"
+    relationship: "builds-on"
+    note: >-
+      The author's entry on the degree-12 compositum L of Q(rho) and Q(Q).
+      Its tower L = K3[Y]/(Y^4 - Y - 1), K3 = Q[X]/(X^3 - X - 1), and the
+      circle-freeness of L (statement (17) there: no element other than +-1
+      has a conjugate on the unit circle) are ported to this repository in
+      InflationDimension/Compositum/Tower.lean and
+      InflationDimension/Compositum/CircleFree.lean, statements unchanged,
+      and used in the proof of compared statement (9). That the matrices of
+      (9) are multiplication on O_L = Z[rho] (x) Z[Q] in the basis
+      rho^i Q^j, and that GramRho (x) GramQ is the trace form of L in that
+      basis, are its statements (8) and (11), cited here and not compared.
+
+  - id: "Registered entry PALOMAR-2026-09-02-000014 (stalex444/golden-family-trace-forms)"
+    relationship: "builds-on"
+    note: >-
+      The Q-level inputs of the ported tower (the two polynomials and their
+      basic facts) come from this entry through the companion's port; the
+      irreducibility of x^3 - x - 1 and x^4 - x - 1 is taken here from
+      Mathlib's Selmer theorem.
+
+  - id: "Registered entry PALOMAR-2026-09-04-000004 (stalex444/chiral-padovan-histories)"
+    relationship: "other"
+    note: >-
+      The registered entry this one overlaps most. Its cubic_record_windows
+      proves the Meyer property of the cubic record window by norm
+      arguments, with no model-set definition; its
+      quartic_record_obstruction shows that a window on the real expanding
+      place of Z[Q], observed at the complex place, gives a set that is not
+      uniformly discrete, and quartic_escaping_coordinate that the omitted
+      coordinate at q' is unbounded along the units Q^-n. Compared statement
+      (4) accounts for both: every admissible Q-invariant scheme on Z^4 has
+      H in E^s, the line of the contracting place q', and (11) builds that
+      scheme.
+
+  - id: "Registered entries PALOMAR-2026-08-19-000006, PALOMAR-2026-10-18-000019 and PALOMAR-2026-09-01-000005 (version 2)"
+    relationship: "other"
+    note: >-
+      The Padovan substitution and the slowest settling clock (000006,
+      000019), and the degree-12 minimal polynomial of rho Q (000005). Cited
+      in the application paragraph only; nothing here depends on them.
+
+  - id: "https://github.com/dkunert/cut-and-project (D. Kunert, 2026)"
+    relationship: "other"
+    note: >-
+      A one-dimensional strip projection of Z^2 with period formulas for
+      rational slope and no finite period for irrational slope; narrower
+      than the general-dimension schemes here. Nothing is imported.
+
+  - id: "Registered entry PALOMAR-2026-10-18-000015"
+    relationship: "other"
+    note: >-
+      Bohr_0 sets; a related, narrower development. Nothing is imported.
+
+status:
+  scope: >-
+    Formalized, 13 compared theorems, hypotheses inline, in namespace
+    ModelSetDimension: admissibility_criterion, kronecker_density_criterion,
+    least_physical_dimension_squarefree, hyperbolic_case,
+    dimension_one_pisot_or_salem, finite_order_case,
+    squarefree_hypothesis_needed, sector_rings, compositum_lattice,
+    compositum_dilations, quartic_model_set, salem_witness and
+    modelSet_isMeyer. Each compared theorem is one declaration; Solution.lean
+    proves each by one application of the theorem of the same name in
+    namespace InflationDimension. NOT formalized: the least physical
+    dimension when chi_A is not squarefree and has eigenvalues on the unit
+    circle (Jordan blocks on the circle); the least dimension under
+    aperiodicity; regularity and pure-point diffraction of the model sets
+    (Hof 1995; Schlottmann 2000, cited); the identification of the matrices
+    of (9) with multiplication on the ring of integers of Q(rho, Q) and of
+    GramRho (x) GramQ with its trace form (cited from the companion); and
+    everything in the application paragraph.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: ["propext", "Classical.choice", "Quot.sound"]
+  # Every compared theorem's #print axioms output is exactly
+  # [propext, Classical.choice, Quot.sound] (BUILD.txt).
+
+automation:
+  methods:
+    - method: "agent"
+      models: ["Anthropic Claude (Opus-class, 2026)"]
+      framework: "Claude Code"
+      tool_setup: >-
+        AI-assisted design, proof drafting and error-loop iteration against
+        lake build at the pinned toolchain and Mathlib. The statements and
+        definitions were fixed first, with a design and a critique of it; the
+        proof modules (Admissibility, Normal, Count, Hyperbolic, DimOne,
+        Instances with the Compositum port, ModelSetQ, Meyer) were then
+        developed in eight parallel agent sessions in one workflow (about 90
+        module compilations in total; one further exploratory session
+        compiled lemmas toward a stronger general statement, not included),
+        each proving its compared statements
+        with the exact text of Challenge.lean; a further agent session
+        assembled the package, generated Solution.lean, DefinitionAudit.lean
+        and MATHLIB_DEFINITIONS.md, and checked every compared declaration
+        (axiom audit, the registry's comparator run locally). Exploratory
+        compilation at the pin preceded the proofs.
+      cost:
+        wall_time: "scoping and design 2026-10-20; proof modules and packaging 2026-10-20 to 2026-10-21"
+        spend_usd: "subscription-based"
+        hardware: "local machine, Apple silicon"
+      prompting_notes: >-
+        Statements fixed first, each with its intended Lean form and Mathlib
+        route; a statement that could not be closed exactly
+        was to be removed from the compared set, not weakened (none was).
+    - method: "manual"
+      models: []
+      framework: "n/a"
+      tool_setup: >-
+        Author-directed target selection, statement design and acceptance.
+      cost:
+        wall_time: "included in the sessions above"
+        spend_usd: "not tracked"
+        hardware: "local machine"
+      prompting_notes: "n/a"
+  spend_usd: "subscription-based"
+  notes: >-
+    Human-directed, machine-verified workflow: the author fixes targets and
+    reviews statements; AI assistance drafts and repairs proofs; the Lean
+    kernel is the acceptance criterion.
+
+fidelity:
+  divergences: >-
+    (i) The lattice is the integer lattice Z^iota of R^iota for a finite
+    type iota (the Z-span of the standard basis), and the map an integer
+    matrix acting by Matrix.toLin'; an arbitrary lattice with an
+    automorphism is reduced to this case by a choice of basis. (ii) The
+    scheme notion: A-invariant complementary subspaces E, H with Z^iota
+    meeting H only in 0 and the projection of Z^iota to H dense in H;
+    aperiodicity is not required and H = 0 is allowed. A window is a
+    bounded subset of H containing a relative ball of H (not necessarily
+    compact or regular), and admissibility is the existence of a window with
+    A Lambda(W) contained in Lambda(W). (iii) Norms are the sup norm on
+    R^iota. (iv) E^u is defined dynamically (vectors with a backward orbit
+    tending to 0), E^s as the vectors whose forward orbit tends to 0; U(A)
+    counts the complex roots of chi_A of modulus > 1 with multiplicity. (v)
+    circleCount is defined through Mathlib's normalizedFactors of chi_A over
+    Q. (vi) Statement (5) is in root-count form, with no Pisot or Salem
+    predicate. (vii) Statement (6)'s planar clause is stated for every
+    integer matrix with chi_A = Phi_n over Z. (viii) Statements (8)-(11) are
+    about explicit integer matrices (companion matrices, Kronecker products
+    of their powers) and explicit integer Gram matrices; (9) quantifies over
+    the coefficient vectors a other than 0 and +-e_00, i.e. alpha other
+    than 0, +-1. (ix) In (10) the spectral projection is stated as the
+    existence of a linear map onto E^u that fixes E^u and kills E^s, and the
+    pairings are those of the Gram matrices. (x) In (11) the window is a
+    specific subset of E^s, shown to be a segment, and the trace form is the
+    quadratic form of GramQ restricted to E and H. (xi) In (13) the Delone
+    set lives in E with the metric of the sup norm restricted to E. (xii)
+    The compared statements use definitions of this entry, stated in
+    Challenge.lean itself between the lines -- BEGIN SHARED DEFINITIONS and
+    -- END SHARED DEFINITIONS; that text is byte for byte the body of
+    InflationDimension/Defs.lean, on which the proof modules are built.
+    Challenge.lean imports Mathlib only and says so in its opening
+    docstring.
+
+review:
+  status: "self-assessed"
+  reviewers:
+    - "Stephanie Alexander"
+  notes: >-
+    The kernel and the axiom audit are the acceptance criteria. The package
+    was re-verified after assembly (build green with exactly thirteen
+    placeholder warnings, all in Challenge.lean; axioms re-elaborated for all
+    13 compared declarations; Challenge and Solution statements identical as
+    source text; the registry's comparator, run locally, accepts), and every
+    bibliographic item was checked against Crossref or arXiv.
+
+alignment:
+  namespace: "ModelSetDimension"
+  statements:
+    - source: "Masakova-Mazac-Pelantova 2021, Prop. 13.2, Cor. 13.4 (necessity, diagonalizable maps); proved here for every integer matrix"
+      lean: "ModelSetDimension.admissibility_criterion"
+      module: "Solution"
+      status: "proved"
+      note: "Admissible iff power-bounded on H; the orbit window; the per-window criterion; U(A) <= dim E. Proved by InflationDimension.admissibility_criterion."
+    - source: "Kronecker's density theorem; cut-and-project form Pleasants 2000, Cor. 2.12, and Masakova-Mazac-Pelantova Prop. 3.3(iii)"
+      lean: "ModelSetDimension.kronecker_density_criterion"
+      module: "Solution"
+      status: "proved"
+      note: "Density of the projected lattice iff no nonzero integral functional vanishes on E. Proved by InflationDimension.kronecker_density_criterion."
+    - source: "this work (for squarefree chi_A also a consequence of Masakova-Mazac-Pelantova Lemma 5.1, Prop. 8.1(iii), Cor. 13.4); Kronecker 1857 via Mathlib for the circle factors"
+      lean: "ModelSetDimension.least_physical_dimension_squarefree"
+      module: "Solution"
+      status: "proved"
+      note: "Normal form, characterization, d(A) = U(A) + circleCount(A), circle factors cyclotomic. Proved by InflationDimension.least_physical_dimension_squarefree."
+    - source: "inclusion-notion analogue of Harriss-Koivusalo-Walton Thm 3.3 (preprint); contains the necessity half of Masakova-Mazac-Pelantova Cor. 13.4 without diagonalizability"
+      lean: "ModelSetDimension.hyperbolic_case"
+      module: "Solution"
+      status: "proved"
+      note: "Admissible iff E contains E^u iff H lies in E^s; d(A) = U(A), attained only by (E^u, E^s). Proved by InflationDimension.hyperbolic_case."
+    - source: "Meyer 1972; Meyer 1995, Thm 6 (lattice-first model-set form); Salem case Solomyak 2020, Section 4(iv), credited to Akiyama"
+      lean: "ModelSetDimension.dimension_one_pisot_or_salem"
+      module: "Solution"
+      status: "proved"
+      note: "d(A) = 1 iff chi_A irreducible with one root of modulus > 1, or A = +-1 on Z^1; the root is real and the line is its eigenline. Proved by InflationDimension.dimension_one_pisot_or_salem."
+    - source: "classical planar cyclotomic model sets (Huck; Baake-Grimm 2013, Section 7.3)"
+      lean: "ModelSetDimension.finite_order_case"
+      module: "Solution"
+      status: "proved"
+      note: "Squarefree chi_A on the circle: cyclotomic factors, d = sum of min(deg p, 2); chi_A = Phi_n, n >= 3, gives d = 2. Proved by InflationDimension.finite_order_case."
+    - source: "this work (example)"
+      lean: "ModelSetDimension.squarefree_hypothesis_needed"
+      module: "Solution"
+      status: "proved"
+      note: "I_2 and J_2: chi = (x - 1)^2, count 2, d = 1 and 2. Proved by InflationDimension.squarefree_hypothesis_needed."
+    - source: "instances of (4)"
+      lean: "ModelSetDimension.sector_rings"
+      module: "Solution"
+      status: "proved"
+      note: "rho, rho^-1, Q, theta on Z[rho], Z[Q]: characteristic polynomials, hyperbolic, d = 1, 2, 3, 1; the expanding eigenvalue of theta in (1.3802, 1.3803). Proved by InflationDimension.sector_rings."
+    - source: "instances of (4); circle-freeness ported from stalex444/pdt-hermite-signature-compositum@5aa870e8"
+      lean: "ModelSetDimension.compositum_lattice"
+      module: "Solution"
+      status: "proved"
+      note: "Every mulMatrix a, a != 0, +-e_00, is invertible and hyperbolic with d = U; rho, theta, rho Q, Q give 4, 3, 5, 9. Proved by InflationDimension.compositum_lattice."
+    - source: "this work"
+      lean: "ModelSetDimension.compositum_dilations"
+      module: "Solution"
+      status: "proved"
+      note: "rho and theta act on E^u as real scalars; the spectral projection carries the quartic (cubic) sector onto E^u with the pairing of GramQ (GramRho) exactly; types (3,1), (2,1). Proved by InflationDimension.compositum_dilations."
+    - source: "in substance an instance of Masakova-Mazac-Pelantova Thm 13.1 and Harriss-Koivusalo-Walton Section 3.4; compare Kalle-Steiner 2012, Lemma 4.3; not new"
+      lean: "ModelSetDimension.quartic_model_set"
+      module: "Solution"
+      status: "proved"
+      note: "The scheme (E^u, E^s) of Q on Z^4, the interval window, the Q-invariant model set, det -1/q', the non-real moduli, the types (2,1) and (1,0). Proved by InflationDimension.quartic_model_set."
+    - source: "an instance of Solomyak 2020, Section 4(iv), credited to Akiyama"
+      lean: "ModelSetDimension.salem_witness"
+      module: "Solution"
+      status: "proved"
+      note: "The companion of x^4 - x^3 - x^2 - x + 1: not hyperbolic, d = 1, Salem root in (1.7220, 1.7221), unique eigenline. Proved by InflationDimension.salem_witness."
+    - source: "classical (Meyer 1972; Moody 1997)"
+      lean: "ModelSetDimension.modelSet_isMeyer"
+      module: "Solution"
+      status: "proved"
+      note: "Every model set is a Delone.DeloneSet in E with uniformly discrete difference set. Proved by InflationDimension.modelSet_isMeyer."
+
+acknowledgements: >-
+  Built on Mathlib and the Lean 4 toolchain, in particular D. Loeffler's
+  signature of quadratic forms, N. Jensen's Delone sets, the number-field
+  embeddings and the spectral theory of Banach algebras; thanks to the
+  leanprover community. Developed with AI assistance (Anthropic Claude, in
+  Claude Code) under the author's direction.

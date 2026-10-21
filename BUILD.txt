@@ -1,0 +1,126 @@
+cut-project-dimension -- kernel build record, 2026-10-21
+Toolchain: leanprover/lean4:v4.35.0-rc2
+Mathlib rev: 065356127b1dc0016f66b7283ce0ce2c4055aa55 (lake-manifest.json; required in git form in lakefile.toml; no lake update)
+Build: lake build (defaultTargets ["InflationDimension", "Challenge", "Solution", "DefinitionAudit"]) -> exit 0
+  build log tail:
+    warning: Challenge.lean:566:8: declaration uses `sorry`
+    warning: Challenge.lean:588:8: declaration uses `sorry`
+    warning: Challenge.lean:599:8: declaration uses `sorry`
+    Build completed successfully (8949 jobs).
+  warnings and errors by file: {'Challenge.lean': 13}
+  'declaration uses sorry' warnings: 13, all in Challenge.lean: True; compared statements: 13
+  every other file (InflationDimension.lean, InflationDimension/*.lean, InflationDimension/Compositum/*.lean, Solution.lean, DefinitionAudit.lean): no warnings
+  Challenge.lean imports: ['Mathlib']; 606 lines, 40209 bytes
+  sorry / native_decide / axiom outside Challenge.lean: 0
+
+#print axioms for the 13 compared declarations (check file outside the package: `import Solution`, `import DefinitionAudit`, then #print axioms):
+  'ModelSetDimension.admissibility_criterion' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'ModelSetDimension.kronecker_density_criterion' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'ModelSetDimension.least_physical_dimension_squarefree' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'ModelSetDimension.hyperbolic_case' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'ModelSetDimension.dimension_one_pisot_or_salem' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'ModelSetDimension.finite_order_case' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'ModelSetDimension.squarefree_hypothesis_needed' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'ModelSetDimension.sector_rings' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'ModelSetDimension.compositum_lattice' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'ModelSetDimension.compositum_dilations' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'ModelSetDimension.quartic_model_set' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'ModelSetDimension.salem_witness' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'ModelSetDimension.modelSet_isMeyer' depends on axioms: [propext, Classical.choice, Quot.sound]
+  (13/13 compared names; 13 lines exactly [propext, Classical.choice, Quot.sound])
+
+#print axioms for the theorems of the same names in namespace InflationDimension (the proof modules), which Solution.lean applies:
+  'InflationDimension.admissibility_criterion' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'InflationDimension.kronecker_density_criterion' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'InflationDimension.least_physical_dimension_squarefree' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'InflationDimension.hyperbolic_case' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'InflationDimension.dimension_one_pisot_or_salem' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'InflationDimension.finite_order_case' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'InflationDimension.squarefree_hypothesis_needed' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'InflationDimension.sector_rings' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'InflationDimension.compositum_lattice' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'InflationDimension.compositum_dilations' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'InflationDimension.quartic_model_set' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'InflationDimension.salem_witness' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'InflationDimension.modelSet_isMeyer' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+#print axioms for DefinitionAudit.lean (imports Mathlib only; not compared):
+  'DefinitionAudit.toLin'_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'DefinitionAudit.toLin'_single' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'DefinitionAudit.mem_span_basisFun_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'DefinitionAudit.norm_le_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'DefinitionAudit.projection_add_projection' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'DefinitionAudit.projection_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'DefinitionAudit.projection_of_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'DefinitionAudit.projection_of_mem_compl' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'DefinitionAudit.isCompl_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'DefinitionAudit.charpoly_eq_det' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'DefinitionAudit.charpoly_fin_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'DefinitionAudit.charpoly_map' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'DefinitionAudit.charpoly_toMatrix' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'DefinitionAudit.det_toMatrix' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'DefinitionAudit.roots_X_sub_C_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'DefinitionAudit.irreducible_of_mem_normalizedFactors' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'DefinitionAudit.monic_of_mem_normalizedFactors' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'DefinitionAudit.prod_normalizedFactors' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'DefinitionAudit.cyclotomic_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'DefinitionAudit.cyclotomic_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'DefinitionAudit.squarefree_iff' does not depend on any axioms
+  'DefinitionAudit.kronecker_apply' depends on axioms: [Quot.sound]
+  'DefinitionAudit.toQuadraticForm'_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'DefinitionAudit.dotProduct_mulVec' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'DefinitionAudit.sigNeg_eq_sigPos_neg' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'DefinitionAudit.sigPos_eq_card_pos_weights' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'DefinitionAudit.sigNeg_eq_card_neg_weights' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'DefinitionAudit.sigPos_x_sq_sub_y_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'DefinitionAudit.sigNeg_x_sq_sub_y_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'DefinitionAudit.deloneSet_separated' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'DefinitionAudit.deloneSet_cover' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'DefinitionAudit.segment_eq_image' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'DefinitionAudit.isLeast_iff' does not depend on any axioms
+  'DefinitionAudit.mem_sub' depends on axioms: [propext, Classical.choice, Quot.sound]
+  (34 theorems; every one on a subset of [propext, Classical.choice, Quot.sound]: True)
+
+Statement identity, Challenge.lean vs Solution.lean (opens, namespace, docstrings and statement text after the shared definitions, proofs removed): identical
+Shared definitions, Challenge.lean vs InflationDimension/Defs.lean: PASS: shared block identical in Challenge.lean and InflationDimension/Defs.lean (175 lines, 8227 bytes)
+
+Proof map (Solution.lean, one application each):
+  ModelSetDimension.admissibility_criterion := InflationDimension.admissibility_criterion
+  ModelSetDimension.kronecker_density_criterion := InflationDimension.kronecker_density_criterion
+  ModelSetDimension.least_physical_dimension_squarefree := InflationDimension.least_physical_dimension_squarefree
+  ModelSetDimension.hyperbolic_case := InflationDimension.hyperbolic_case
+  ModelSetDimension.dimension_one_pisot_or_salem := InflationDimension.dimension_one_pisot_or_salem
+  ModelSetDimension.finite_order_case := InflationDimension.finite_order_case
+  ModelSetDimension.squarefree_hypothesis_needed := InflationDimension.squarefree_hypothesis_needed
+  ModelSetDimension.sector_rings := InflationDimension.sector_rings
+  ModelSetDimension.compositum_lattice := InflationDimension.compositum_lattice
+  ModelSetDimension.compositum_dilations := InflationDimension.compositum_dilations
+  ModelSetDimension.quartic_model_set := InflationDimension.quartic_model_set
+  ModelSetDimension.salem_witness := InflationDimension.salem_witness
+  ModelSetDimension.modelSet_isMeyer := InflationDimension.modelSet_isMeyer
+
+FILES (sha256, lines; git ls-files, BUILD.txt excluded):
+  c14b0bd2a9533a6177683e29926f2e053b0db769736ad816adf1df752f7bb727      2  .gitignore
+  b35ee7972e40c4faaa8de3157b61f95c5f2f03bb6f0ef96cc74a9c168450080f    606  Challenge.lean
+  151496f2c09a33688e3480dffc1368d27c5a025b2e1c0346d62359a4a4ffbc2e    271  DefinitionAudit.lean
+  8f0c2f91abe3625812b95034096720f67864c8c17ff05399010e62656b390604     38  InflationDimension.lean
+  74f8dc36f893fe40b789abf450796f279a4c2f31197a96acd14c32bd7c5b2f37    742  InflationDimension/Admissibility.lean
+  e2b558331b424618a086a41a747f89d6f19642df8f65edc9676ab1286b467c6b    850  InflationDimension/Compositum/CircleFree.lean
+  5d1d730f5795be2744e5ecef625256ca8b111282086202ee78d86edbf5cd3f47    166  InflationDimension/Compositum/Tower.lean
+  ebcf5cc9929bfd73e6ef5a8fffa2e046766746e463510c0152fe833fc647a235    786  InflationDimension/Count.lean
+  f33a5bdf7ac90dac1587217790a2db59ffc414e21ed8e61830a86721735156ef    188  InflationDimension/Defs.lean
+  3e9a88103b8b24296956e19fdc611499bac03363b6cb5505e40c5892992e0807    898  InflationDimension/DimOne.lean
+  8e0610dd8e983cf6994c864c476236adb9c824eb3397756d902c5bafc121025f   1174  InflationDimension/Hyperbolic.lean
+  a8e7f20ddf857030428f5aed1c4b7e42d4c5581d27cdc6992d1ffc30bfab3922   1434  InflationDimension/Instances.lean
+  5e8d9a8305e067a21a904f75a68bddd540fc611322c87e94e8524a3dd00035c8    223  InflationDimension/Meyer.lean
+  a5b4882f91d62eb72beaf54ff1cbf4c803455185605e87a881f09851644c7b26   1062  InflationDimension/ModelSetQ.lean
+  09bfaf99474bfd42af491578c13424becc80467ca57a2494eea12c585b503fa2    828  InflationDimension/Normal.lean
+  d32be532ae3b0129081943d5ba0140833d203720b69e21bc64c735160db351cb     21  LICENSE
+  8f922a45ef38a54ea8adc36f02a725d2b603415cb6fef056a3eb0efa2c5f371c    441  MATHLIB_DEFINITIONS.md
+  3599ce2bcdcd8e1da84953ae919609ba32d6ceed4c930374dc9dc1e0100715fa    305  README.md
+  54eb45b137a066bdc252983413ca8b65b3cfaba36dc68350ea2f6e20dbbaff78    261  Solution.lean
+  fcbd7dd084338356688e22f91f2b3c06ed244994c993900f98d5a95c9af7d3cb     24  comparator.json
+  6ab0b22a457aa1c12fd330cbb88fb2f838c3859ead3ecf624f1c484fa2556f5e    682  formalization.yaml
+  40e50b31779815c75f6e29385cdad2baf58198f04cb4fde8c081a370f6321db7    117  lake-manifest.json
+  cfeeb28199118f04164392cbd4b6de0195c41e1c1e6bd1421066bf555f707f6a     20  lakefile.toml
+  8dc8d6f560141069d9073e370611716ef77ada0da8ffa37e2149f44b2e63ac7a      1  lean-toolchain

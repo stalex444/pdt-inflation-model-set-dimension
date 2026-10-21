@@ -1,5 +1,5 @@
 name = "cut_project_dimension"
-defaultTargets = ["InflationDimension", "Challenge"]
+defaultTargets = ["InflationDimension", "Challenge", "Solution", "DefinitionAudit"]
 
 [[require]]
 name = "mathlib"
