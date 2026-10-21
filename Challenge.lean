@@ -5,12 +5,15 @@ public import Mathlib
 /-!
 # The least physical dimension of an inflation-symmetric model set
 
-Thirteen compared statements, (1)–(13) below. The main theorem is (3) together with (4): for
-`det A ≠ 0` and squarefree `χ_A`, every admissible splitting is characterized and
-`d(A) = U(A) + #{x ± 1 ∣ χ_A} + 2·#{Φ_n ∣ χ_A, n ≥ 3}`; for `det A ≠ 0` and hyperbolic `A`, any
-`χ_A`, `d(A) = U(A)`, attained only by `(E^u, E^s)`. (1), (2) and (13) are the general tools,
-(5)–(7) the corollaries and sharpness of (3), and (8)–(12) the instances: multiplication by `ρ`,
-`ρ⁻¹`, `Q`, `θ = −Q⁻¹` and `ρQ` on `ℤ[ρ]`, `ℤ[Q]` and `ℤ[ρ] ⊗ ℤ[Q]`, where `ρ³ = ρ + 1` and
+Thirteen compared statements, (1)–(13) below. The main theorem is (3): for every integer matrix
+`A` with `det A ≠ 0`, `d(A)` is the sum over the distinct irreducible factors `p` of `χ_A` over `ℚ`
+of `m_p u_p + c_p (m_p − r₁(p))`, plus `min (deg p, 2)` when every root of `p` lies on the unit
+circle and every Jordan block at the roots of `p` has size one (`dimensionFormula A`); the value
+is an invariant of rational similarity, and for squarefree `χ_A` every admissible splitting is
+characterized and `d(A) = U(A) + #{x ± 1 ∣ χ_A} + 2·#{Φ_n ∣ χ_A, n ≥ 3}`. (4) is the hyperbolic
+case, any `χ_A`: `d(A) = U(A)`, attained only by `(E^u, E^s)`. (1), (2) and (13) are the general
+tools, (5)–(7) corollaries and witnesses of (3), and (8)–(12) the instances: multiplication by
+`ρ`, `ρ⁻¹`, `Q`, `θ = −Q⁻¹` and `ρQ` on `ℤ[ρ]`, `ℤ[Q]` and `ℤ[ρ] ⊗ ℤ[Q]`, where `ρ³ = ρ + 1` and
 `Q⁴ = Q + 1`, and a Salem witness.
 
 **Setting.** `ι` is a finite type, `ℤ^ι ⊂ ℝ^ι` is the integer lattice (`intLattice`) and an
@@ -26,7 +29,11 @@ multiplicity; `E^u(A)` (`unstableSet`) is the set of vectors with a backward orb
 and `E^s(A)` (`stableSet`) the set of vectors whose forward orbit tends to `0`; `A` is hyperbolic
 if no eigenvalue has modulus `1`; and `circleCount A` counts `1` for each irreducible factor
 `x ± 1` of `χ_A` over `ℚ` and `2` for each other irreducible factor whose roots all lie on the
-unit circle.
+unit circle. For an irreducible factor `p` of `χ_A` over `ℚ`, `m_p` (`factorMult`) is its
+multiplicity, `u_p` and `c_p` (`expandingRootCount`, `circleRootCount`) are the numbers of its
+complex roots of modulus `> 1` and `= 1`, and
+`r₁(p) = (2 dim_ℚ ker p(A) − dim_ℚ ker p(A)²) / deg p` (`sizeOneBlocks`), which is the number of
+Jordan blocks of size one at each root of `p`; no Jordan form enters the definitions.
 
 **Scope.**
 * The minimum is over `A`-invariant schemes on the fixed lattice `ℤ^ι`: the lattice and the map are
@@ -36,13 +43,14 @@ unit circle.
   (2021), Thm 13.7 (diagonalizable maps, generic schemes); it is cited, not re-proved.
 * Inflation symmetry is the inclusion `A Λ ⊆ Λ`, in Meyer's sense, linear and centred at the origin.
   It is not the substitutional notion (up to mutual local derivability) of Harriss–Koivusalo–Walton.
-* Aperiodicity (`ℤ^ι ∩ E = 0`) is not required and `H = 0` is admitted. When `det A ≠ 0` and `χ_A`
-  is squarefree, the line of a factor `x ± 1` and the plane of a factor `Φ₃`, `Φ₄` or `Φ₆` lie in
-  `E` in every admissible scheme (by (3)), so such a factor excludes an aperiodic scheme; the
-  generic schemes of Masáková–Mazáč–Pelantová are aperiodic. The least dimension under aperiodicity
-  is a different problem and is not treated.
-* The value belongs to the `ℚ`-module `(ℚ^ι, A)`, not to an eigenvalue: multiplication by `ρ` needs
-  one physical dimension on `ℤ[ρ]` (8) and four on `ℤ[ρ] ⊗ ℤ[Q]` (9).
+* Aperiodicity (`ℤ^ι ∩ E = 0`) is not required, `H = 0` is admitted, and `A` need not be
+  unimodular: the counts assume `det A ≠ 0` only. When `det A ≠ 0` and `χ_A` is squarefree, the line
+  of a factor `x ± 1` and the plane of a factor `Φ₃`, `Φ₄` or `Φ₆` lie in `E` in every admissible
+  scheme (by (3)), so such a factor excludes an aperiodic scheme; the generic schemes of
+  Masáková–Mazáč–Pelantová are aperiodic. The least dimension under aperiodicity is a different
+  problem and is not treated.
+* The value is an invariant of the `ℚ`-module `(ℚ^ι, A)` (3), not of an eigenvalue: multiplication
+  by `ρ` needs one physical dimension on `ℤ[ρ]` (8) and four on `ℤ[ρ] ⊗ ℤ[Q]` (9).
 * The statements are about inflation-symmetric model sets, not tilings. The substitution
   `a ↦ b, b ↦ c, c ↦ d, d ↦ ab` is primitive and its substitution matrix is the companion matrix of
   `x⁴ − x − 1`, so its self-similar tiling of the line has expansion `Q`; a model set inflated by
@@ -59,25 +67,28 @@ unit circle.
    the eigenvalues of `A|_H` in the closed unit disk, so `U(A) ≤ dim E`.
 2. `kronecker_density_criterion` — `π_H(ℤ^ι)` is dense in `H` if and only if every real linear
    functional that is integer-valued on `ℤ^ι` and vanishes on `E` is zero.
-3. `least_physical_dimension_squarefree` — for `det A ≠ 0` and `χ_A` squarefree over `ℚ`: every
-   invariant splitting is `E = ker q_E(A)`, `H = ker q_H(A)` with `χ_A = q_E q_H`; it carries an
-   admissible scheme if and only if the roots of `q_H` lie in the closed unit disk and every
-   irreducible factor of `χ_A` over `ℚ` shares a complex root with `q_E`;
-   `d(A) = U(A) + circleCount A`; and the irreducible factors with all roots on the unit circle
-   are exactly the cyclotomic ones.
+3. `least_physical_dimension` — for `det A ≠ 0`: `d(A) = dimensionFormula A`; if `P A = B P` for an
+   invertible rational matrix `P`, then `B` has the same value; the irreducible factors of `χ_A`
+   with all roots on the unit circle are exactly the cyclotomic ones; and for `χ_A` squarefree over
+   `ℚ`, every invariant splitting is `E = ker q_E(A)`, `H = ker q_H(A)` with `χ_A = q_E q_H`, it
+   carries an admissible scheme if and only if the roots of `q_H` lie in the closed unit disk and
+   every irreducible factor of `χ_A` over `ℚ` shares a complex root with `q_E`, and
+   `dimensionFormula A = U(A) + circleCount A`.
 4. `hyperbolic_case` — for `det A ≠ 0` and `A` hyperbolic, any `χ_A`: a scheme is admissible if
    and only if `E ⊇ E^u`, if and only if `H ⊆ E^s`; an `A`-invariant splitting carries an
    admissible scheme if and only if `E ⊇ E^u`; `(E^u, E^s)` carries an admissible scheme;
    `d(A) = U(A)`; and every admissible scheme with `dim E = U(A)` is `(E^u, E^s)`.
-5. `dimension_one_pisot_or_salem` — for `det A ≠ 0` and `χ_A` squarefree: `d(A) = 1` if and only
-   if `χ_A` is irreducible with exactly one root of modulus `> 1`, or `A = ±1` on `ℤ¹`; that
-   root `r` is real, every other root has modulus at most `1`, and every admissible scheme with
+5. `dimension_one_pisot_or_salem` — for `det A ≠ 0`, any `χ_A`: `d(A) = 1` if and only if `χ_A` is
+   irreducible with exactly one root of modulus `> 1`, or `A = ±1` (`ι` nonempty); that root `r`
+   is real, every other root has modulus at most `1`, and every admissible scheme with
    `dim E = 1` has `E` the `r`-eigenline.
-6. `finite_order_case` — if `χ_A` is squarefree with all roots on the unit circle, its
-   irreducible factors are cyclotomic and `d(A) = Σ_p min(deg p, 2)`; every integer matrix with
-   `χ_A = Φ_n`, `n ≥ 3`, has `d = 2`.
-7. `squarefree_hypothesis_needed` — `I₂` and `[[1, 1], [0, 1]]` both have `χ = (x − 1)²`, for
-   which the count of (3) is `2`; but `d(I₂) = 1`, and `d = 2` for the Jordan block.
+6. `finite_order_case` — if `A^k = 1` for some `k ≥ 1`, the irreducible factors of `χ_A` are
+   cyclotomic and `d(A) = Σ_p min(deg p, 2)` over the distinct factors; if `χ_A` is squarefree
+   with all roots on the unit circle, the same count holds; every integer matrix with `χ_A = Φ_n`,
+   `n ≥ 3`, has `d = 2`.
+7. `jordan_block_witnesses` — `I₂` and `[[1, 1], [0, 1]]` both have `χ = (x − 1)²`, for which the
+   squarefree count of (3) is `2`; but `d(I₂) = 1`, and `d = 2` for the Jordan block; and
+   `1 ⊕ J₂(1)` and `1 ⊕ J₃(1)` have `d = 2` and `d = 3`.
 8. `sector_rings` — `Cρ`, `Cρ² − 1`, `CQ` and `1 − CQ³`, multiplication by `ρ`, `ρ⁻¹`, `Q` and
    `θ = −Q⁻¹` on `ℤ[ρ]` and `ℤ[Q]`, have characteristic polynomials `x³ − x − 1`, `x³ + x² − 1`,
    `x⁴ − x − 1`, `x⁴ − x³ − 1`, are hyperbolic and have `d = 1, 2, 3, 1`; the one expanding
@@ -104,33 +115,47 @@ unit circle.
 by statement. The mathematics of (1), (2), (4), (5), (6) and (13) is known in other formulations,
 and the scheme and model set of (11) are, in substance, an instance of Masáková–Mazáč–Pelantová
 (Linear Algebra Appl. 625 (2021) 279–321), Thm 13.1; none of this is claimed as new. Beyond the
-cited cases, the entry proves the characterization of every admissible splitting ((3)(a)(b), (4));
-the admissibility criterion (1) and the hyperbolic case (4) for every integer matrix, with no
-diagonalizability; and the uniqueness of the minimal scheme when `A` is hyperbolic (4) or when `χ_A`
-is irreducible with `d(A) = 1` (5). For `det A ≠ 0` and squarefree `χ_A` with a factor `Φ_n`,
-`n ∉ {1, 2, 3, 4, 6}`, the minimal scheme is not unique, by (3). For squarefree `χ_A`, hence
-diagonalizable `A`, the count of (3) also follows from the arguments of Masáková–Mazáč–Pelantová,
-Lemma 5.1, Prop. 8.1(iii) and Cor. 13.4 (numbering of arXiv:1909.10753v2), which are stated there
-for generic (aperiodic) schemes, under which a factor `x ± 1`, `Φ₃`, `Φ₄` or `Φ₆` admits no scheme.
-We did not find the least physical dimension for a given lattice map, statement (3), stated in the
-sources we read (search completed 2026-10-20); this is a search result, not a guarantee. The
-master's thesis of J. Mazáč (Czech Technical University in Prague, hdl 10467/82624), whose abstract
-treats existence for all linear maps and minimal scheme dimension for diagonalizable maps, physical
-map first, was not read: its full text is not public.
+cited cases, the entry proves the least physical dimension for every nonsingular integer matrix,
+Jordan blocks on the unit circle included (3); the characterization of every admissible splitting
+for squarefree `χ_A` ((3), (4)); the admissibility criterion (1) and the hyperbolic case (4) for
+every integer matrix, with no diagonalizability; and the uniqueness of the minimal scheme when `A`
+is hyperbolic (4) or when `χ_A` is irreducible with `d(A) = 1` (5). For `det A ≠ 0` and
+squarefree `χ_A` with a factor `Φ_n`, `n ∉ {1, 2, 3, 4, 6}`, the minimal scheme is not unique, by
+(3). For squarefree `χ_A`, hence diagonalizable `A`, the count of (3) also follows from the
+arguments of Masáková–Mazáč–Pelantová, Lemma 5.1, Prop. 8.1(iii) and Cor. 13.4 (numbering of
+arXiv:1909.10753v2), which are stated there for generic (aperiodic) schemes, under which a factor
+`x ± 1`, `Φ₃`, `Φ₄` or `Φ₆` admits no scheme. We did not find the least physical dimension for a
+given lattice map, statement (3), stated in the sources we read (search completed 2026-10-20);
+this is a search result, not a guarantee. The master's thesis of J. Mazáč (Czech Technical
+University in Prague, hdl 10467/82624), whose abstract treats existence for all linear maps and
+minimal scheme dimension for diagonalizable maps, physical map first, was not read: its full text
+is not public.
 
-**The proofs.** No Jordan form and no diagonalization is used. Necessity in (3) comes from a
-rational kernel lemma (for an irreducible rational factor `p` of `χ_A`, `ker p(A)` contains a
-nonzero lattice vector) and from (1); sufficiency from (2), a Lagrange-interpolation power bound
-on `H` and the orbit window of (1). The count in (3) is a root count over the rational factors of
-`χ_A`, and its circle factors are identified by Mathlib's form of Kronecker's theorem
-(`NumberField.Embeddings.pow_eq_one_of_norm_eq_one`). The rates in (4) come from Gelfand's
-spectral radius formula. The signatures in (10) and (11) are computed by Sylvester's law of
-inertia in Mathlib (D. Loeffler's `sigPos`, `sigNeg`). Statements (8)–(11) are about explicit
+**The proofs.** No Jordan form and no diagonalization is used: the Jordan data of (3) are ranks of
+rational kernels. The lower bound in (3): admissibility is power-boundedness on `H` (1), the
+largest power-bounded invariant summand has dimension `Σ_p (m_p s_p + c_p r₁(p))`, `s_p` the number
+of roots of `p` inside the unit disk (a power-bounded map is semisimple on its unit-circle part, and
+an invariant summand killed by `p(A)` misses `im p(A)`), and at a cyclotomic factor with all
+Jordan blocks of size one the physical space meets the generalized eigenspace in at least
+`min (deg p, 2)` dimensions. The upper bound: from a largest power-bounded summand, the component of
+each cyclotomic factor is replaced by a scheme of the integer matrix by which `A` acts on a
+`ℤ`-basis of the lattice points of that component; there the least scheme is a generic line or
+plane at one place of `ℚ(ζ_n)` if all Jordan blocks have size one, and otherwise an internal space
+tilted into the socle of the larger blocks, with generic parameters avoiding countably many proper
+affine subspaces (Haar measure). Such a splitting is admissible once, at every cyclotomic factor,
+no lattice vector of `H` and no integer vector orthogonal to `E` is seen, by the rational
+annihilator of a lattice vector and Kronecker's theorem for the factors of `χ_A`
+(`NumberField.Embeddings.pow_eq_one_of_norm_eq_one`); density is (2). The squarefree part of (3)
+rests on a rational kernel lemma (for an irreducible rational factor `p` of `χ_A`, `ker p(A)`
+contains a nonzero lattice vector) and a Lagrange-interpolation power bound on `H`. The rates in
+(4) come from
+Gelfand's spectral radius formula. The signatures in (10) and (11) are computed by Sylvester's law
+of inertia in Mathlib (D. Loeffler's `sigPos`, `sigNeg`). Statements (8)–(11) are about explicit
 integer matrices. That `Cρ` and `CQ` are multiplication by `ρ` and `Q` in the power bases is
 their definition (companion matrices), so `Cρ^i ⊗ CQ^j` is multiplication by `ρ^i Q^j` in the
 product basis. That the `ρ^i Q^j` are a `ℤ`-basis of the ring of integers of `ℚ(ρ, Q)` is
 statement (8) of the author's registered entry PALOMAR-2026-10-21-000012
-(stalex444/pdt-hermite-signature-compositum@5aa870e8); that `GramRho`, `GramQ` and
+(stalex444/pdt-hermite-signature-compositum@5aa870e9); that `GramRho`, `GramQ` and
 `GramRho ⊗ GramQ` are the Gram matrices of the trace forms in these bases is statements (8), (9)
 and (19) of the author's registered entry PALOMAR-2026-09-02-000014, in which `ℚ(ρ) ⊗ ℚ(Q)` is
 the field `ℚ(ρ, Q)` (its (23)). These are cited, not compared. The circle-freeness of `ℚ(ρ, Q)`
@@ -150,15 +175,15 @@ of `InflationDimension/Defs.lean`, on which the proof modules are built. This fi
 only. The Mathlib definitions the statements use are quoted in `MATHLIB_DEFINITIONS.md`, and
 `DefinitionAudit.lean` checks facts about them.
 
-**Not formalized.** The least physical dimension when `χ_A` is not squarefree and has
-eigenvalues on the unit circle; the least dimension under aperiodicity; and the regularity and
-pure-point diffraction of the model sets (Hof 1995; Schlottmann 2000), which are cited only.
+**Not formalized.** The least physical dimension when `det A = 0`; the least dimension under
+aperiodicity; and the regularity and pure-point diffraction of the model sets (Hof 1995;
+Schlottmann 2000), which are cited only.
 
 **Application (cited, not a claim of the entry).** In the author's Pisot Dimensional Theory,
 `ℚ(ρ)` is the arithmetic of three-dimensional space and `ℚ(Q)` the arithmetic of
 four-dimensional spacetime, and their compositum `K`, whose integers are `ℤ[ρ] ⊗ ℤ[Q]`, is the
 parent of both (the author's registered entry PALOMAR-2026-10-21-000012
-(stalex444/pdt-hermite-signature-compositum@5aa870e8), statements (7), (8)). A
+(stalex444/pdt-hermite-signature-compositum@5aa870e9), statements (7), (8)). A
 model set is the shadow of a lattice cut through a window, a standard mathematical model of a
 quasicrystal (Moody 2000). Read through the theory, this entry's theorems fix how many dimensions
 each of the theory's inflations needs to be the symmetry of one, and which ones.
@@ -309,6 +334,47 @@ def circleCount (A : Matrix ι ι ℤ) : ℕ :=
 
 end Spectrum
 
+section JordanData
+
+variable {ι : Type*} [Fintype ι] [DecidableEq ι]
+
+/-- `m_p`: the multiplicity of the irreducible factor `p` in `χ_A` over `ℚ`. -/
+def factorMult (A : Matrix ι ι ℤ) (p : ℚ[X]) : ℕ :=
+  (UniqueFactorizationMonoid.normalizedFactors (charpolyQ A)).count p
+
+/-- `dim_ℚ ker p(A)^k` for `A` acting on `ℚ^ι`. -/
+def kerRankQ (A : Matrix ι ι ℤ) (p : ℚ[X]) (k : ℕ) : ℕ :=
+  finrank ℚ (LinearMap.ker (aeval (Matrix.toLin' (A.map (Int.cast : ℤ → ℚ))) (p ^ k)))
+
+/-- `r₁(p) = (2 dim_ℚ ker p(A) − dim_ℚ ker p(A)²) / deg p`, computed from ranks: the number of
+Jordan blocks of size one at each complex root of `p`. -/
+def sizeOneBlocks (A : Matrix ι ι ℤ) (p : ℚ[X]) : ℕ :=
+  (2 * kerRankQ A p 1 - kerRankQ A p 2) / p.natDegree
+
+/-- `u_p`: the number of complex roots of `p` of modulus `> 1`. -/
+def expandingRootCount (p : ℚ[X]) : ℕ :=
+  Multiset.card ((p.map (algebraMap ℚ ℂ)).roots.filter (fun z => 1 < ‖z‖))
+
+/-- `c_p`: the number of complex roots of `p` of modulus `1`. -/
+def circleRootCount (p : ℚ[X]) : ℕ :=
+  Multiset.card ((p.map (algebraMap ℚ ℂ)).roots.filter (fun z => ‖z‖ = 1))
+
+open Classical in
+/-- The contribution of an irreducible factor `p` of `χ_A` over `ℚ`:
+`m_p u_p + c_p (m_p − r₁(p))`, plus `min (deg p, 2)` if every root of `p` lies on the unit circle
+and every Jordan block at the roots of `p` has size one (`r₁(p) = m_p`). -/
+def factorContribution (A : Matrix ι ι ℤ) (p : ℚ[X]) : ℕ :=
+  factorMult A p * expandingRootCount p +
+      circleRootCount p * (factorMult A p - sizeOneBlocks A p) +
+    if IsCircleFactor p ∧ sizeOneBlocks A p = factorMult A p then min p.natDegree 2 else 0
+
+/-- The sum of the contributions over the distinct irreducible factors of `χ_A` over `ℚ`. -/
+def dimensionFormula (A : Matrix ι ι ℤ) : ℕ :=
+  ∑ p ∈ (UniqueFactorizationMonoid.normalizedFactors (charpolyQ A)).toFinset,
+    factorContribution A p
+
+end JordanData
+
 section Instances
 
 /-- Multiplication by `ρ` on `ℤ[ρ]` in the basis `1, ρ, ρ²`, where `ρ³ = ρ + 1`: the companion
@@ -415,33 +481,49 @@ theorem kronecker_density_criterion {ι : Type*} [Fintype ι] [DecidableEq ι]
         (∀ v ∈ E, f v = 0) → f = 0 := by
   sorry
 
-/-- **(3) The least physical dimension, `χ_A` squarefree over `ℚ`** (`det A ≠ 0`; eigenvalues on
-the unit circle allowed). (a) Normal form: every `A`-invariant splitting `ℝ^ι = E ⊕ H` is
-`E = ker q_E(A)`, `H = ker q_H(A)` with `χ_A = q_E q_H` over `ℝ`, where `q_E`, `q_H` are the
-characteristic polynomials of `A|_E`, `A|_H`. (b) Characterization: the splitting carries an
-admissible scheme if and only if every root of `q_H` lies in the closed unit disk and every
-irreducible factor of `χ_A` over `ℚ` shares a complex root with `q_E`. (c) Count:
-`d(A) = U(A) + circleCount A`, the second term counting `1` for each factor `x ± 1` and `2` for
-each other irreducible factor with all roots on the unit circle; those factors are exactly the
-cyclotomic ones (Kronecker). For squarefree `χ_A`, hence diagonalizable `A`, the count of (3)
-also follows from the arguments of Masáková–Mazáč–Pelantová (2021), Lemma 5.1, Prop. 8.1(iii) and
-Cor. 13.4, which are stated there for generic (aperiodic) schemes, under which a factor `x ± 1`,
-`Φ₃`, `Φ₄` or `Φ₆` admits no scheme. -/
-theorem least_physical_dimension_squarefree {ι : Type*} [Fintype ι] [DecidableEq ι]
-    (A : Matrix ι ι ℤ) (hdet : A.det ≠ 0) (hsf : Squarefree (charpolyQ A)) :
-    (∀ (E H : Submodule ℝ (ι → ℝ)), IsCompl E H → ∀ (hE : ∀ v ∈ E, act A v ∈ E)
-        (hH : ∀ v ∈ H, act A v ∈ H),
-      A.charpoly.map (Int.castRingHom ℝ) =
-          ((act A).restrict hE).charpoly * ((act A).restrict hH).charpoly ∧
-        E = LinearMap.ker (aeval (act A) ((act A).restrict hE).charpoly) ∧
-        H = LinearMap.ker (aeval (act A) ((act A).restrict hH).charpoly) ∧
-        ((∃ S : InvariantCPS A, S.E = E ∧ S.H = H ∧ S.Admissible) ↔
-          (∀ z ∈ (((act A).restrict hH).charpoly.map (algebraMap ℝ ℂ)).roots, ‖z‖ ≤ 1) ∧
-            ∀ p ∈ UniqueFactorizationMonoid.normalizedFactors (charpolyQ A),
-              ∃ z ∈ (p.map (algebraMap ℚ ℂ)).roots, aeval z ((act A).restrict hE).charpoly = 0)) ∧
-    IsLeast (physDims A) (unstableCount A + circleCount A) ∧
-    ∀ p ∈ UniqueFactorizationMonoid.normalizedFactors (charpolyQ A),
-      IsCircleFactor p ↔ ∃ n : ℕ, 0 < n ∧ p = cyclotomic n ℚ := by
+/-- **(3) The least physical dimension** (`det A ≠ 0`; any `χ_A`; eigenvalues on the unit circle and
+Jordan blocks allowed). (a) `d(A) = Σ_p f_p` over the distinct irreducible factors `p` of `χ_A`
+over `ℚ` (`dimensionFormula A`), where `f_p = m_p u_p + c_p (m_p − r₁(p))`, plus `min (deg p, 2)`
+when every root of `p` lies on the unit circle and `r₁(p) = m_p` (`factorContribution`): every
+root of modulus `> 1` counts with its multiplicity, every Jordan block of size `≥ 2` at a root on
+the unit circle counts in full, and a cyclotomic factor all of whose Jordan blocks have size one
+costs one line (`x ± 1`) or one plane (`Φ_n`, `n ≥ 3`), however large its multiplicity.
+Equivalently, through the Jordan form (which the definitions do not use),
+`d(A) = Σ_{|λ|>1} a_λ + Σ_{|λ|=1} (a_λ − s_λ) + #{n ≤ 2 : n ∈ 𝒮(A)} + 2·#{n ≥ 3 : n ∈ 𝒮(A)}`,
+with `a_λ` the multiplicity of `λ`, `s_λ` the number of Jordan blocks of size one at `λ`, and
+`𝒮(A)` the set of `n` whose primitive `n`-th roots of unity are eigenvalues with all Jordan blocks
+of size one. (b) The value is an invariant of rational similarity: if `P A = B P` with `P` rational
+and invertible, `B` has the same least physical dimension. (c) The irreducible factors whose roots
+all lie on the unit circle are exactly the cyclotomic ones (Kronecker). (d) For `χ_A` squarefree
+over `ℚ`: every `A`-invariant splitting `ℝ^ι = E ⊕ H` is `E = ker q_E(A)`, `H = ker q_H(A)` with
+`χ_A = q_E q_H` over `ℝ`, where `q_E`, `q_H` are the characteristic polynomials of `A|_E`, `A|_H`;
+it carries an admissible scheme if and only if every root of `q_H` lies in the closed unit disk and
+every irreducible factor of `χ_A` over `ℚ` shares a complex root with `q_E`; and the value is
+`U(A) + circleCount A`. For squarefree `χ_A`, hence diagonalizable `A`, this count also follows
+from the arguments of Masáková–Mazáč–Pelantová (2021), Lemma 5.1, Prop. 8.1(iii) and Cor. 13.4,
+which are stated there for generic (aperiodic) schemes, under which a factor `x ± 1`, `Φ₃`, `Φ₄`
+or `Φ₆` admits no scheme. -/
+theorem least_physical_dimension {ι : Type*} [Fintype ι] [DecidableEq ι] (A : Matrix ι ι ℤ)
+    (hdet : A.det ≠ 0) :
+    IsLeast (physDims A) (dimensionFormula A) ∧
+    (∀ (B : Matrix ι ι ℤ) (P : Matrix ι ι ℚ), IsUnit P.det →
+      P * A.map (Int.castRingHom ℚ) = B.map (Int.castRingHom ℚ) * P →
+        IsLeast (physDims B) (dimensionFormula A)) ∧
+    (∀ p ∈ UniqueFactorizationMonoid.normalizedFactors (charpolyQ A),
+      IsCircleFactor p ↔ ∃ n : ℕ, 0 < n ∧ p = cyclotomic n ℚ) ∧
+    (Squarefree (charpolyQ A) →
+      (∀ (E H : Submodule ℝ (ι → ℝ)), IsCompl E H → ∀ (hE : ∀ v ∈ E, act A v ∈ E)
+          (hH : ∀ v ∈ H, act A v ∈ H),
+        A.charpoly.map (Int.castRingHom ℝ) =
+            ((act A).restrict hE).charpoly * ((act A).restrict hH).charpoly ∧
+          E = LinearMap.ker (aeval (act A) ((act A).restrict hE).charpoly) ∧
+          H = LinearMap.ker (aeval (act A) ((act A).restrict hH).charpoly) ∧
+          ((∃ S : InvariantCPS A, S.E = E ∧ S.H = H ∧ S.Admissible) ↔
+            (∀ z ∈ (((act A).restrict hH).charpoly.map (algebraMap ℝ ℂ)).roots, ‖z‖ ≤ 1) ∧
+              ∀ p ∈ UniqueFactorizationMonoid.normalizedFactors (charpolyQ A),
+                ∃ z ∈ (p.map (algebraMap ℚ ℂ)).roots,
+                  aeval z ((act A).restrict hE).charpoly = 0)) ∧
+        dimensionFormula A = unstableCount A + circleCount A) := by
   sorry
 
 /-- **(4) The hyperbolic case**, every `χ_A` (`det A ≠ 0`, no eigenvalue on the unit circle). An
@@ -467,32 +549,39 @@ theorem hyperbolic_case {ι : Type*} [Fintype ι] [DecidableEq ι] (A : Matrix �
       (S.E : Set (ι → ℝ)) = unstableSet A ∧ (S.H : Set (ι → ℝ)) = stableSet A := by
   sorry
 
-/-- **(5) Dimension one: Pisot or Salem** (`det A ≠ 0`, `χ_A` squarefree over `ℚ`). `d(A) = 1` if
-and only if `χ_A` is irreducible over `ℚ` with exactly one root of modulus `> 1`, or `A = ±1` on
-`ℤ¹`. In the irreducible case that root `r` is real, every other root has modulus at most `1`
-(so `|r|` is a Pisot number, a Salem number, or for `#ι = 1` an integer `≥ 2`), and every
+/-- **(5) Dimension one: Pisot or Salem** (`det A ≠ 0`, any `χ_A`). `d(A) = 1` if and only if `χ_A`
+is irreducible over `ℚ` with exactly one root of modulus `> 1`, or `A = ±1` on a lattice of any
+positive rank. In the irreducible case that root `r` is real, every other root has modulus at most
+`1` (so `|r|` is a Pisot number, a Salem number, or for `#ι = 1` an integer `≥ 2`), and every
 admissible scheme with `dim E = 1` has `E` the `r`-eigenline. This is the lattice-first,
 model-set form of Meyer's theorem (1972; 1995, Thm 6): existence on the line and the model-set
 case of necessity, for `A`-invariant schemes. The Salem case is the model set on `ℤ^s` of
 Solomyak (2020), §4(iv), credited there to Akiyama. -/
 theorem dimension_one_pisot_or_salem {ι : Type*} [Fintype ι] [DecidableEq ι] (A : Matrix ι ι ℤ)
-    (hdet : A.det ≠ 0) (hsf : Squarefree (charpolyQ A)) :
+    (hdet : A.det ≠ 0) :
     (IsLeast (physDims A) 1 ↔
-      (Irreducible (charpolyQ A) ∧ unstableCount A = 1) ∨
-        (Fintype.card ι = 1 ∧ (A = 1 ∨ A = -1))) ∧
+      (Irreducible (charpolyQ A) ∧ unstableCount A = 1) ∨ (Nonempty ι ∧ (A = 1 ∨ A = -1))) ∧
     (Irreducible (charpolyQ A) → unstableCount A = 1 →
       ∃ r : ℝ, 1 < |r| ∧ (r : ℂ) ∈ eigenvalues A ∧ (∀ z ∈ eigenvalues A, z ≠ r → ‖z‖ ≤ 1) ∧
         ∀ S : InvariantCPS A, S.Admissible → finrank ℝ S.E = 1 →
           S.E = LinearMap.ker (act A - r • LinearMap.id)) := by
   sorry
 
-/-- **(6) Finite order: the cyclotomic case.** If `χ_A` is squarefree over `ℚ` with all roots on
-the unit circle, every irreducible factor is cyclotomic and `d(A)` counts `1` for each factor
-`Φ₁ = x − 1`, `Φ₂ = x + 1` and `2` for each `Φ_n`, `n ≥ 3`. In particular every integer matrix
-with characteristic polynomial `Φ_n`, `n ≥ 3` (for example, multiplication by `ζ_n` on
-`ℤ[ζ_n]`), has `d = 2`: the physical plane of the classical planar cyclotomic model sets, whose
-internal dimension is `φ(n) − 2`. -/
+/-- **(6) Finite order: the cyclotomic case.** If `A^k = 1` for some `k ≥ 1`, every irreducible
+factor of `χ_A` over `ℚ` is cyclotomic and `d(A)` counts, over the distinct factors, `1` for
+`Φ₁ = x − 1` and `Φ₂ = x + 1` and `2` for each `Φ_n`, `n ≥ 3`, whatever the multiplicities; for
+example, an integer matrix of order `5` with `χ_A = (x − 1)² Φ₅` has `d = 3`. The same count holds
+when `χ_A` is squarefree with all roots on the unit circle. In particular every integer matrix with
+characteristic polynomial `Φ_n`, `n ≥ 3` (for example, multiplication by `ζ_n` on `ℤ[ζ_n]`), has
+`d = 2`: the physical plane of the classical planar cyclotomic model sets, whose internal
+dimension is `φ(n) − 2`. -/
 theorem finite_order_case {ι : Type*} [Fintype ι] [DecidableEq ι] (A : Matrix ι ι ℤ) :
+    (∀ k : ℕ, 0 < k → A ^ k = 1 →
+      (∀ p ∈ UniqueFactorizationMonoid.normalizedFactors (charpolyQ A),
+        ∃ n : ℕ, 0 < n ∧ p = cyclotomic n ℚ) ∧
+      IsLeast (physDims A)
+        (∑ p ∈ (UniqueFactorizationMonoid.normalizedFactors (charpolyQ A)).toFinset,
+          min p.natDegree 2)) ∧
     (Squarefree (charpolyQ A) → (∀ z ∈ eigenvalues A, ‖z‖ = 1) →
       (∀ p ∈ UniqueFactorizationMonoid.normalizedFactors (charpolyQ A),
         ∃ n : ℕ, 0 < n ∧ p = cyclotomic n ℚ) ∧
@@ -502,16 +591,22 @@ theorem finite_order_case {ι : Type*} [Fintype ι] [DecidableEq ι] (A : Matrix
     ∀ n : ℕ, 3 ≤ n → A.charpoly = cyclotomic n ℤ → IsLeast (physDims A) 2 := by
   sorry
 
-/-- **(7) The squarefree hypothesis of (3) is needed.** On `ℤ²`, `I₂` and the Jordan block
-`J₂ = [[1, 1], [0, 1]]` both have `χ = (x − 1)²`, for which the count of (3) gives `2`; but
-`d(I₂) = 1` and `d(J₂) = 2`. -/
-theorem squarefree_hypothesis_needed :
+/-- **(7) Jordan blocks on the unit circle.** On `ℤ²`, `I₂` and the Jordan block
+`J₂ = [[1, 1], [0, 1]]` both have `χ = (x − 1)²`, for which the squarefree count of (3) gives `2`;
+but `d(I₂) = 1` (a cyclotomic factor with Jordan blocks of size one costs one line, whatever its
+multiplicity) and `d(J₂) = 2` (a Jordan block of size two counts in full). On `ℤ³` and `ℤ⁴`,
+`1 ⊕ J₂(1)` and `1 ⊕ J₃(1)` have `d = 2` and `d = 3`: the block of size one costs nothing, its
+internal line being tilted into the socle of the larger block. -/
+theorem jordan_block_witnesses :
     (1 : Matrix (Fin 2) (Fin 2) ℤ).charpoly = (X - 1) ^ 2 ∧
     (!![1, 1; 0, 1] : Matrix (Fin 2) (Fin 2) ℤ).charpoly = (X - 1) ^ 2 ∧
     unstableCount (1 : Matrix (Fin 2) (Fin 2) ℤ) + circleCount (1 : Matrix (Fin 2) (Fin 2) ℤ) =
       2 ∧
     IsLeast (physDims (1 : Matrix (Fin 2) (Fin 2) ℤ)) 1 ∧
-    IsLeast (physDims (!![1, 1; 0, 1] : Matrix (Fin 2) (Fin 2) ℤ)) 2 := by
+    IsLeast (physDims (!![1, 1; 0, 1] : Matrix (Fin 2) (Fin 2) ℤ)) 2 ∧
+    IsLeast (physDims (!![1, 0, 0; 0, 1, 1; 0, 0, 1] : Matrix (Fin 3) (Fin 3) ℤ)) 2 ∧
+    IsLeast (physDims (!![1, 0, 0, 0; 0, 1, 1, 0; 0, 0, 1, 1; 0, 0, 0, 1] :
+      Matrix (Fin 4) (Fin 4) ℤ)) 3 := by
   sorry
 
 /-- **(8) The sector rings.** On `ℤ[ρ]` (basis `1, ρ, ρ²`) and `ℤ[Q]` (basis `1, Q, Q², Q³`),

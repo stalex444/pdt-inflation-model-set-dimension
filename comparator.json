@@ -4,11 +4,11 @@
   "theorem_names": [
     "ModelSetDimension.admissibility_criterion",
     "ModelSetDimension.kronecker_density_criterion",
-    "ModelSetDimension.least_physical_dimension_squarefree",
+    "ModelSetDimension.least_physical_dimension",
     "ModelSetDimension.hyperbolic_case",
     "ModelSetDimension.dimension_one_pisot_or_salem",
     "ModelSetDimension.finite_order_case",
-    "ModelSetDimension.squarefree_hypothesis_needed",
+    "ModelSetDimension.jordan_block_witnesses",
     "ModelSetDimension.sector_rings",
     "ModelSetDimension.compositum_lattice",
     "ModelSetDimension.compositum_dilations",

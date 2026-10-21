@@ -1,8 +1,8 @@
 module
 public import Mathlib
 public import InflationDimension.Admissibility
-public import InflationDimension.Count
 public import InflationDimension.Hyperbolic
+public import InflationDimension.FormulaA
 public import InflationDimension.DimOne
 public import InflationDimension.Instances
 public import InflationDimension.ModelSetQ
@@ -63,34 +63,50 @@ theorem kronecker_density_criterion {ι : Type*} [Fintype ι] [DecidableEq ι]
         (∀ v ∈ E, f v = 0) → f = 0 :=
   InflationDimension.kronecker_density_criterion E H hc
 
-/-- **(3) The least physical dimension, `χ_A` squarefree over `ℚ`** (`det A ≠ 0`; eigenvalues on
-the unit circle allowed). (a) Normal form: every `A`-invariant splitting `ℝ^ι = E ⊕ H` is
-`E = ker q_E(A)`, `H = ker q_H(A)` with `χ_A = q_E q_H` over `ℝ`, where `q_E`, `q_H` are the
-characteristic polynomials of `A|_E`, `A|_H`. (b) Characterization: the splitting carries an
-admissible scheme if and only if every root of `q_H` lies in the closed unit disk and every
-irreducible factor of `χ_A` over `ℚ` shares a complex root with `q_E`. (c) Count:
-`d(A) = U(A) + circleCount A`, the second term counting `1` for each factor `x ± 1` and `2` for
-each other irreducible factor with all roots on the unit circle; those factors are exactly the
-cyclotomic ones (Kronecker). For squarefree `χ_A`, hence diagonalizable `A`, the count of (3)
-also follows from the arguments of Masáková–Mazáč–Pelantová (2021), Lemma 5.1, Prop. 8.1(iii) and
-Cor. 13.4, which are stated there for generic (aperiodic) schemes, under which a factor `x ± 1`,
-`Φ₃`, `Φ₄` or `Φ₆` admits no scheme. -/
-theorem least_physical_dimension_squarefree {ι : Type*} [Fintype ι] [DecidableEq ι]
-    (A : Matrix ι ι ℤ) (hdet : A.det ≠ 0) (hsf : Squarefree (charpolyQ A)) :
-    (∀ (E H : Submodule ℝ (ι → ℝ)), IsCompl E H → ∀ (hE : ∀ v ∈ E, act A v ∈ E)
-        (hH : ∀ v ∈ H, act A v ∈ H),
-      A.charpoly.map (Int.castRingHom ℝ) =
-          ((act A).restrict hE).charpoly * ((act A).restrict hH).charpoly ∧
-        E = LinearMap.ker (aeval (act A) ((act A).restrict hE).charpoly) ∧
-        H = LinearMap.ker (aeval (act A) ((act A).restrict hH).charpoly) ∧
-        ((∃ S : InvariantCPS A, S.E = E ∧ S.H = H ∧ S.Admissible) ↔
-          (∀ z ∈ (((act A).restrict hH).charpoly.map (algebraMap ℝ ℂ)).roots, ‖z‖ ≤ 1) ∧
-            ∀ p ∈ UniqueFactorizationMonoid.normalizedFactors (charpolyQ A),
-              ∃ z ∈ (p.map (algebraMap ℚ ℂ)).roots, aeval z ((act A).restrict hE).charpoly = 0)) ∧
-    IsLeast (physDims A) (unstableCount A + circleCount A) ∧
-    ∀ p ∈ UniqueFactorizationMonoid.normalizedFactors (charpolyQ A),
-      IsCircleFactor p ↔ ∃ n : ℕ, 0 < n ∧ p = cyclotomic n ℚ :=
-  InflationDimension.least_physical_dimension_squarefree A hdet hsf
+/-- **(3) The least physical dimension** (`det A ≠ 0`; any `χ_A`; eigenvalues on the unit circle and
+Jordan blocks allowed). (a) `d(A) = Σ_p f_p` over the distinct irreducible factors `p` of `χ_A`
+over `ℚ` (`dimensionFormula A`), where `f_p = m_p u_p + c_p (m_p − r₁(p))`, plus `min (deg p, 2)`
+when every root of `p` lies on the unit circle and `r₁(p) = m_p` (`factorContribution`): every
+root of modulus `> 1` counts with its multiplicity, every Jordan block of size `≥ 2` at a root on
+the unit circle counts in full, and a cyclotomic factor all of whose Jordan blocks have size one
+costs one line (`x ± 1`) or one plane (`Φ_n`, `n ≥ 3`), however large its multiplicity.
+Equivalently, through the Jordan form (which the definitions do not use),
+`d(A) = Σ_{|λ|>1} a_λ + Σ_{|λ|=1} (a_λ − s_λ) + #{n ≤ 2 : n ∈ 𝒮(A)} + 2·#{n ≥ 3 : n ∈ 𝒮(A)}`,
+with `a_λ` the multiplicity of `λ`, `s_λ` the number of Jordan blocks of size one at `λ`, and
+`𝒮(A)` the set of `n` whose primitive `n`-th roots of unity are eigenvalues with all Jordan blocks
+of size one. (b) The value is an invariant of rational similarity: if `P A = B P` with `P` rational
+and invertible, `B` has the same least physical dimension. (c) The irreducible factors whose roots
+all lie on the unit circle are exactly the cyclotomic ones (Kronecker). (d) For `χ_A` squarefree
+over `ℚ`: every `A`-invariant splitting `ℝ^ι = E ⊕ H` is `E = ker q_E(A)`, `H = ker q_H(A)` with
+`χ_A = q_E q_H` over `ℝ`, where `q_E`, `q_H` are the characteristic polynomials of `A|_E`, `A|_H`;
+it carries an admissible scheme if and only if every root of `q_H` lies in the closed unit disk and
+every irreducible factor of `χ_A` over `ℚ` shares a complex root with `q_E`; and the value is
+`U(A) + circleCount A`. For squarefree `χ_A`, hence diagonalizable `A`, this count also follows
+from the arguments of Masáková–Mazáč–Pelantová (2021), Lemma 5.1, Prop. 8.1(iii) and Cor. 13.4,
+which are stated there for generic (aperiodic) schemes, under which a factor `x ± 1`, `Φ₃`, `Φ₄`
+or `Φ₆` admits no scheme. -/
+theorem least_physical_dimension {ι : Type*} [Fintype ι] [DecidableEq ι] (A : Matrix ι ι ℤ)
+    (hdet : A.det ≠ 0) :
+    IsLeast (physDims A) (dimensionFormula A) ∧
+    (∀ (B : Matrix ι ι ℤ) (P : Matrix ι ι ℚ), IsUnit P.det →
+      P * A.map (Int.castRingHom ℚ) = B.map (Int.castRingHom ℚ) * P →
+        IsLeast (physDims B) (dimensionFormula A)) ∧
+    (∀ p ∈ UniqueFactorizationMonoid.normalizedFactors (charpolyQ A),
+      IsCircleFactor p ↔ ∃ n : ℕ, 0 < n ∧ p = cyclotomic n ℚ) ∧
+    (Squarefree (charpolyQ A) →
+      (∀ (E H : Submodule ℝ (ι → ℝ)), IsCompl E H → ∀ (hE : ∀ v ∈ E, act A v ∈ E)
+          (hH : ∀ v ∈ H, act A v ∈ H),
+        A.charpoly.map (Int.castRingHom ℝ) =
+            ((act A).restrict hE).charpoly * ((act A).restrict hH).charpoly ∧
+          E = LinearMap.ker (aeval (act A) ((act A).restrict hE).charpoly) ∧
+          H = LinearMap.ker (aeval (act A) ((act A).restrict hH).charpoly) ∧
+          ((∃ S : InvariantCPS A, S.E = E ∧ S.H = H ∧ S.Admissible) ↔
+            (∀ z ∈ (((act A).restrict hH).charpoly.map (algebraMap ℝ ℂ)).roots, ‖z‖ ≤ 1) ∧
+              ∀ p ∈ UniqueFactorizationMonoid.normalizedFactors (charpolyQ A),
+                ∃ z ∈ (p.map (algebraMap ℚ ℂ)).roots,
+                  aeval z ((act A).restrict hE).charpoly = 0)) ∧
+        dimensionFormula A = unstableCount A + circleCount A) :=
+  InflationDimension.least_physical_dimension A hdet
 
 /-- **(4) The hyperbolic case**, every `χ_A` (`det A ≠ 0`, no eigenvalue on the unit circle). An
 `A`-invariant scheme is admissible if and only if `E ⊇ E^u(A)`, if and only if `H ⊆ E^s(A)`, and
@@ -115,32 +131,39 @@ theorem hyperbolic_case {ι : Type*} [Fintype ι] [DecidableEq ι] (A : Matrix �
       (S.E : Set (ι → ℝ)) = unstableSet A ∧ (S.H : Set (ι → ℝ)) = stableSet A :=
   InflationDimension.hyperbolic_case A hdet hhyp
 
-/-- **(5) Dimension one: Pisot or Salem** (`det A ≠ 0`, `χ_A` squarefree over `ℚ`). `d(A) = 1` if
-and only if `χ_A` is irreducible over `ℚ` with exactly one root of modulus `> 1`, or `A = ±1` on
-`ℤ¹`. In the irreducible case that root `r` is real, every other root has modulus at most `1`
-(so `|r|` is a Pisot number, a Salem number, or for `#ι = 1` an integer `≥ 2`), and every
+/-- **(5) Dimension one: Pisot or Salem** (`det A ≠ 0`, any `χ_A`). `d(A) = 1` if and only if `χ_A`
+is irreducible over `ℚ` with exactly one root of modulus `> 1`, or `A = ±1` on a lattice of any
+positive rank. In the irreducible case that root `r` is real, every other root has modulus at most
+`1` (so `|r|` is a Pisot number, a Salem number, or for `#ι = 1` an integer `≥ 2`), and every
 admissible scheme with `dim E = 1` has `E` the `r`-eigenline. This is the lattice-first,
 model-set form of Meyer's theorem (1972; 1995, Thm 6): existence on the line and the model-set
 case of necessity, for `A`-invariant schemes. The Salem case is the model set on `ℤ^s` of
 Solomyak (2020), §4(iv), credited there to Akiyama. -/
 theorem dimension_one_pisot_or_salem {ι : Type*} [Fintype ι] [DecidableEq ι] (A : Matrix ι ι ℤ)
-    (hdet : A.det ≠ 0) (hsf : Squarefree (charpolyQ A)) :
+    (hdet : A.det ≠ 0) :
     (IsLeast (physDims A) 1 ↔
-      (Irreducible (charpolyQ A) ∧ unstableCount A = 1) ∨
-        (Fintype.card ι = 1 ∧ (A = 1 ∨ A = -1))) ∧
+      (Irreducible (charpolyQ A) ∧ unstableCount A = 1) ∨ (Nonempty ι ∧ (A = 1 ∨ A = -1))) ∧
     (Irreducible (charpolyQ A) → unstableCount A = 1 →
       ∃ r : ℝ, 1 < |r| ∧ (r : ℂ) ∈ eigenvalues A ∧ (∀ z ∈ eigenvalues A, z ≠ r → ‖z‖ ≤ 1) ∧
         ∀ S : InvariantCPS A, S.Admissible → finrank ℝ S.E = 1 →
           S.E = LinearMap.ker (act A - r • LinearMap.id)) :=
-  InflationDimension.dimension_one_pisot_or_salem A hdet hsf
+  InflationDimension.dimension_one_pisot_or_salem A hdet
 
-/-- **(6) Finite order: the cyclotomic case.** If `χ_A` is squarefree over `ℚ` with all roots on
-the unit circle, every irreducible factor is cyclotomic and `d(A)` counts `1` for each factor
-`Φ₁ = x − 1`, `Φ₂ = x + 1` and `2` for each `Φ_n`, `n ≥ 3`. In particular every integer matrix
-with characteristic polynomial `Φ_n`, `n ≥ 3` (for example, multiplication by `ζ_n` on
-`ℤ[ζ_n]`), has `d = 2`: the physical plane of the classical planar cyclotomic model sets, whose
-internal dimension is `φ(n) − 2`. -/
+/-- **(6) Finite order: the cyclotomic case.** If `A^k = 1` for some `k ≥ 1`, every irreducible
+factor of `χ_A` over `ℚ` is cyclotomic and `d(A)` counts, over the distinct factors, `1` for
+`Φ₁ = x − 1` and `Φ₂ = x + 1` and `2` for each `Φ_n`, `n ≥ 3`, whatever the multiplicities; for
+example, an integer matrix of order `5` with `χ_A = (x − 1)² Φ₅` has `d = 3`. The same count holds
+when `χ_A` is squarefree with all roots on the unit circle. In particular every integer matrix with
+characteristic polynomial `Φ_n`, `n ≥ 3` (for example, multiplication by `ζ_n` on `ℤ[ζ_n]`), has
+`d = 2`: the physical plane of the classical planar cyclotomic model sets, whose internal
+dimension is `φ(n) − 2`. -/
 theorem finite_order_case {ι : Type*} [Fintype ι] [DecidableEq ι] (A : Matrix ι ι ℤ) :
+    (∀ k : ℕ, 0 < k → A ^ k = 1 →
+      (∀ p ∈ UniqueFactorizationMonoid.normalizedFactors (charpolyQ A),
+        ∃ n : ℕ, 0 < n ∧ p = cyclotomic n ℚ) ∧
+      IsLeast (physDims A)
+        (∑ p ∈ (UniqueFactorizationMonoid.normalizedFactors (charpolyQ A)).toFinset,
+          min p.natDegree 2)) ∧
     (Squarefree (charpolyQ A) → (∀ z ∈ eigenvalues A, ‖z‖ = 1) →
       (∀ p ∈ UniqueFactorizationMonoid.normalizedFactors (charpolyQ A),
         ∃ n : ℕ, 0 < n ∧ p = cyclotomic n ℚ) ∧
@@ -150,17 +173,23 @@ theorem finite_order_case {ι : Type*} [Fintype ι] [DecidableEq ι] (A : Matrix
     ∀ n : ℕ, 3 ≤ n → A.charpoly = cyclotomic n ℤ → IsLeast (physDims A) 2 :=
   InflationDimension.finite_order_case A
 
-/-- **(7) The squarefree hypothesis of (3) is needed.** On `ℤ²`, `I₂` and the Jordan block
-`J₂ = [[1, 1], [0, 1]]` both have `χ = (x − 1)²`, for which the count of (3) gives `2`; but
-`d(I₂) = 1` and `d(J₂) = 2`. -/
-theorem squarefree_hypothesis_needed :
+/-- **(7) Jordan blocks on the unit circle.** On `ℤ²`, `I₂` and the Jordan block
+`J₂ = [[1, 1], [0, 1]]` both have `χ = (x − 1)²`, for which the squarefree count of (3) gives `2`;
+but `d(I₂) = 1` (a cyclotomic factor with Jordan blocks of size one costs one line, whatever its
+multiplicity) and `d(J₂) = 2` (a Jordan block of size two counts in full). On `ℤ³` and `ℤ⁴`,
+`1 ⊕ J₂(1)` and `1 ⊕ J₃(1)` have `d = 2` and `d = 3`: the block of size one costs nothing, its
+internal line being tilted into the socle of the larger block. -/
+theorem jordan_block_witnesses :
     (1 : Matrix (Fin 2) (Fin 2) ℤ).charpoly = (X - 1) ^ 2 ∧
     (!![1, 1; 0, 1] : Matrix (Fin 2) (Fin 2) ℤ).charpoly = (X - 1) ^ 2 ∧
     unstableCount (1 : Matrix (Fin 2) (Fin 2) ℤ) + circleCount (1 : Matrix (Fin 2) (Fin 2) ℤ) =
       2 ∧
     IsLeast (physDims (1 : Matrix (Fin 2) (Fin 2) ℤ)) 1 ∧
-    IsLeast (physDims (!![1, 1; 0, 1] : Matrix (Fin 2) (Fin 2) ℤ)) 2 :=
-  InflationDimension.squarefree_hypothesis_needed
+    IsLeast (physDims (!![1, 1; 0, 1] : Matrix (Fin 2) (Fin 2) ℤ)) 2 ∧
+    IsLeast (physDims (!![1, 0, 0; 0, 1, 1; 0, 0, 1] : Matrix (Fin 3) (Fin 3) ℤ)) 2 ∧
+    IsLeast (physDims (!![1, 0, 0, 0; 0, 1, 1, 0; 0, 0, 1, 1; 0, 0, 0, 1] :
+      Matrix (Fin 4) (Fin 4) ℤ)) 3 :=
+  InflationDimension.jordan_block_witnesses
 
 /-- **(8) The sector rings.** On `ℤ[ρ]` (basis `1, ρ, ρ²`) and `ℤ[Q]` (basis `1, Q, Q², Q³`),
 multiplication by `ρ`, `ρ⁻¹ = ρ² − 1`, `Q` and `θ = −Q⁻¹ = 1 − Q³` has the stated characteristic

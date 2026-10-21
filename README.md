@@ -155,7 +155,7 @@ stated there, between `-- BEGIN SHARED DEFINITIONS` and `-- END SHARED DEFINITIO
   their definition (companion matrices), so `Cρ^i ⊗ CQ^j` is multiplication by `ρ^i Q^j` in the
   product basis and `mulMatrix a` is multiplication by `α = Σ a(i,j) ρ^i Q^j`. That the `ρ^i Q^j`
   are a `ℤ`-basis of the ring of integers of `K = ℚ(ρ, Q)` is statement (8) of the author's
-  registered entry PALOMAR-2026-10-21-000012 (stalex444/pdt-hermite-signature-compositum@5aa870e8);
+  registered entry PALOMAR-2026-10-21-000012 (stalex444/pdt-hermite-signature-compositum@5aa870e9);
   that `GramRho`, `GramQ` and `GramRho ⊗ GramQ` are the Gram matrices of the trace forms in these
   bases is statements (8), (9) and (19) of the author's registered entry PALOMAR-2026-09-02-000014,
   in which `ℚ(ρ) ⊗ ℚ(Q)` is the field `ℚ(ρ, Q)` (its (23)). These are cited, not compared. The
@@ -204,7 +204,7 @@ result, not a guarantee.
 In the author's Pisot Dimensional Theory, `ℚ(ρ)` is the arithmetic of three-dimensional space and
 `ℚ(Q)` the arithmetic of four-dimensional spacetime, and their compositum `K`, whose integers are
 `ℤ[ρ] ⊗ ℤ[Q]`, is the parent of both (the author's registered entry PALOMAR-2026-10-21-000012
-(stalex444/pdt-hermite-signature-compositum@5aa870e8), statements (7), (8)). A model set is the
+(stalex444/pdt-hermite-signature-compositum@5aa870e9), statements (7), (8)). A model set is the
 shadow of a lattice cut through a window, a standard mathematical model of a quasicrystal (Moody
 2000). Read through the theory, this entry's theorems fix how many dimensions each of the theory's
 inflations needs to be the symmetry of one, and which ones.
@@ -249,7 +249,7 @@ place counts twice), and has a unique minimal scheme (4, 9).
   lemma; `Count.lean` (3); `Hyperbolic.lean` (4); `DimOne.lean` (5), (6), (7), (12);
   `Compositum/Tower.lean`, `Compositum/CircleFree.lean` (the degree-12 field and its
   circle-freeness, ported from the author's registered entry PALOMAR-2026-10-21-000012
-  (stalex444/pdt-hermite-signature-compositum@5aa870e8), which ported its `ℚ`-level inputs from
+  (stalex444/pdt-hermite-signature-compositum@5aa870e9), which ported its `ℚ`-level inputs from
   PALOMAR-2026-09-02-000014); `Instances.lean` (8), (9), (10); `ModelSetQ.lean` (11); `Meyer.lean`
   (13).
 * `Solution.lean` — the same statements, each proved by one application of the theorem of the

@@ -76,7 +76,7 @@ project:
     Crho^i (x) CQ^j is multiplication by rho^i Q^j in the product basis.
     That the rho^i Q^j are a Z-basis of the ring of integers of Q(rho, Q) is
     statement (8) of the author's registered entry PALOMAR-2026-10-21-000012
-    (stalex444/pdt-hermite-signature-compositum@5aa870e8); that GramRho,
+    (stalex444/pdt-hermite-signature-compositum@5aa870e9); that GramRho,
     GramQ and GramRho (x) GramQ are the Gram matrices of the trace forms in
     these bases is statements (8), (9) and (19) of the author's registered
     entry PALOMAR-2026-09-02-000014, in which Q(rho) (x) Q(Q) is the field
@@ -86,7 +86,7 @@ project:
     arithmetic of four-dimensional spacetime, and their compositum K, whose
     integers are Z[rho] (x) Z[Q], is the parent of both (the author's
     registered entry PALOMAR-2026-10-21-000012
-    (stalex444/pdt-hermite-signature-compositum@5aa870e8), statements (7),
+    (stalex444/pdt-hermite-signature-compositum@5aa870e9), statements (7),
     (8)). A model set is the shadow of a lattice cut through a window, a
     standard mathematical model of a quasicrystal (Moody 2000). Read through
     the theory, this entry's theorems fix how many dimensions each of the
@@ -736,7 +736,7 @@ alignment:
       module: "Solution"
       status: "proved"
       note: "rho, rho^-1, Q, theta on Z[rho], Z[Q]: characteristic polynomials, hyperbolic, d = 1, 2, 3, 1; the expanding eigenvalue of theta in (1.3802, 1.3803). Proved by InflationDimension.sector_rings."
-    - source: "instances of (4); circle-freeness ported from the author's registered entry PALOMAR-2026-10-21-000012 (stalex444/pdt-hermite-signature-compositum@5aa870e8)"
+    - source: "instances of (4); circle-freeness ported from the author's registered entry PALOMAR-2026-10-21-000012 (stalex444/pdt-hermite-signature-compositum@5aa870e9)"
       lean: "ModelSetDimension.compositum_lattice"
       module: "Solution"
       status: "proved"

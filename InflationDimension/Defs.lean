@@ -126,6 +126,47 @@ def circleCount (A : Matrix ι ι ℤ) : ℕ :=
 
 end Spectrum
 
+section JordanData
+
+variable {ι : Type*} [Fintype ι] [DecidableEq ι]
+
+/-- `m_p`: the multiplicity of the irreducible factor `p` in `χ_A` over `ℚ`. -/
+def factorMult (A : Matrix ι ι ℤ) (p : ℚ[X]) : ℕ :=
+  (UniqueFactorizationMonoid.normalizedFactors (charpolyQ A)).count p
+
+/-- `dim_ℚ ker p(A)^k` for `A` acting on `ℚ^ι`. -/
+def kerRankQ (A : Matrix ι ι ℤ) (p : ℚ[X]) (k : ℕ) : ℕ :=
+  finrank ℚ (LinearMap.ker (aeval (Matrix.toLin' (A.map (Int.cast : ℤ → ℚ))) (p ^ k)))
+
+/-- `r₁(p) = (2 dim_ℚ ker p(A) − dim_ℚ ker p(A)²) / deg p`, computed from ranks: the number of
+Jordan blocks of size one at each complex root of `p`. -/
+def sizeOneBlocks (A : Matrix ι ι ℤ) (p : ℚ[X]) : ℕ :=
+  (2 * kerRankQ A p 1 - kerRankQ A p 2) / p.natDegree
+
+/-- `u_p`: the number of complex roots of `p` of modulus `> 1`. -/
+def expandingRootCount (p : ℚ[X]) : ℕ :=
+  Multiset.card ((p.map (algebraMap ℚ ℂ)).roots.filter (fun z => 1 < ‖z‖))
+
+/-- `c_p`: the number of complex roots of `p` of modulus `1`. -/
+def circleRootCount (p : ℚ[X]) : ℕ :=
+  Multiset.card ((p.map (algebraMap ℚ ℂ)).roots.filter (fun z => ‖z‖ = 1))
+
+open Classical in
+/-- The contribution of an irreducible factor `p` of `χ_A` over `ℚ`:
+`m_p u_p + c_p (m_p − r₁(p))`, plus `min (deg p, 2)` if every root of `p` lies on the unit circle
+and every Jordan block at the roots of `p` has size one (`r₁(p) = m_p`). -/
+def factorContribution (A : Matrix ι ι ℤ) (p : ℚ[X]) : ℕ :=
+  factorMult A p * expandingRootCount p +
+      circleRootCount p * (factorMult A p - sizeOneBlocks A p) +
+    if IsCircleFactor p ∧ sizeOneBlocks A p = factorMult A p then min p.natDegree 2 else 0
+
+/-- The sum of the contributions over the distinct irreducible factors of `χ_A` over `ℚ`. -/
+def dimensionFormula (A : Matrix ι ι ℤ) : ℕ :=
+  ∑ p ∈ (UniqueFactorizationMonoid.normalizedFactors (charpolyQ A)).toFinset,
+    factorContribution A p
+
+end JordanData
+
 section Instances
 
 /-- Multiplication by `ρ` on `ℤ[ρ]` in the basis `1, ρ, ρ²`, where `ρ³ = ρ + 1`: the companion

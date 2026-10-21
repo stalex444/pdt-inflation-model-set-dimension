@@ -6,6 +6,9 @@ public import InflationDimension.Normal
 public import InflationDimension.Count
 public import InflationDimension.Hyperbolic
 public import InflationDimension.DimOne
+public import InflationDimension.JordanData
+public import InflationDimension.Tilt
+public import InflationDimension.FormulaA
 public import InflationDimension.Compositum.Tower
 public import InflationDimension.Compositum.CircleFree
 public import InflationDimension.Instances
@@ -25,13 +28,21 @@ each of them by one application of the theorem of the same name in namespace
 * `InflationDimension.Admissibility` — statements (1) and (2): the admissibility criterion and
   Kronecker's density criterion in cut-and-project form.
 * `InflationDimension.Normal` — the normal form and the characterization of admissible splittings
-  when `χ_A` is squarefree (statement (3)(a)(b)), and the rational kernel lemma.
-* `InflationDimension.Count` — statement (3): the least physical dimension when `χ_A` is squarefree.
+  when `χ_A` is squarefree (part of statement (3)), and the rational kernel lemma.
+* `InflationDimension.Count` — the least physical dimension when `χ_A` is squarefree (part of
+  statement (3)).
 * `InflationDimension.Hyperbolic` — statement (4): the hyperbolic case.
-* `InflationDimension.DimOne` — statements (5), (6), (7) and (12).
+* `InflationDimension.DimOne` — the squarefree forms of statements (5) and (6), the `ℤ²` examples
+  of (7), and statement (12).
+* `InflationDimension.JordanData` — Jordan data from rational ranks, and the largest power-bounded
+  invariant summand.
+* `InflationDimension.Tilt` — a single cyclotomic factor: the semisimple collapse, the tilt, and the
+  examples `1 ⊕ J₂(1)`, `1 ⊕ J₃(1)` of (7).
+* `InflationDimension.FormulaA` — statement (3) for every nonsingular `A`, and statements (5), (6)
+  and (7).
 * `InflationDimension.Compositum.Tower`, `InflationDimension.Compositum.CircleFree` — the
   degree-12 field and its circle-freeness, ported from the author's registered entry
-  PALOMAR-2026-10-21-000012 (stalex444/pdt-hermite-signature-compositum@5aa870e8).
+  PALOMAR-2026-10-21-000012 (stalex444/pdt-hermite-signature-compositum@5aa870e9).
 * `InflationDimension.Instances` — statements (8), (9) and (10).
 * `InflationDimension.ModelSetQ` — statement (11).
 * `InflationDimension.Meyer` — statement (13).

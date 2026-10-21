@@ -24,7 +24,7 @@ Statements (8), (9), (10) of `Challenge.lean`, at the level of explicit integer 
   `L = ℚ(ρ)[Y]/(Y⁴ − Y − 1)` sending `ρ ↦ z`, `Q ↦ w`, so `α(z, w)` is a conjugate of
   `β = Σ a(i,j) ρ^i Q^j ∈ L`. The field `L` is circle-free (an element with a conjugate on the unit
   circle is `±1`; ported from the author's registered entry PALOMAR-2026-10-21-000012,
-  stalex444/pdt-hermite-signature-compositum@5aa870e8, see
+  stalex444/pdt-hermite-signature-compositum@5aa870e9, see
   `InflationDimension.Compositum.CircleFree`), and `β = c ∈ ℤ` forces `a = c · e₀₀` because
   `V₃ ⊗ V₄` is invertible.
 * (10): the spectral projections are `Π ⊗ I₄` and `I₃ ⊗ Π′` with `Π = v ℓᵀ/(ℓ·v)` built from the

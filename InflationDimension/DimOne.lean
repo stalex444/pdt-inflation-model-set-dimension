@@ -6,16 +6,16 @@ public import InflationDimension.Count
 /-!
 # Dimension one, finite order, and two examples on small lattices
 
-Statements (5), (6), (7) and (12): the least physical dimension is `1` exactly in the
-Pisot–Salem case (or for `A = ±1` on `ℤ¹`); in the finite-order case it counts `1` for each
-factor `x ± 1` and `2` for each other cyclotomic factor; on `ℤ²` the identity and the Jordan
-matrix `[[1, 1], [0, 1]]` share `χ = (x − 1)²` but have least physical dimensions `1` and `2`; and
-the companion matrix of `x⁴ − x³ − x² − x + 1` is a non-hyperbolic example with least physical
-dimension `1`.
+For squarefree `χ_A` (statements (5) and (6) in their squarefree form, the `ℤ²` examples of (7),
+and statement (12)): the least physical dimension is `1` exactly in the Pisot–Salem case (or for
+`A = ±1` on `ℤ¹`); with all roots on the unit circle it counts `1` for each factor `x ± 1` and `2`
+for each other cyclotomic factor; on `ℤ²` the identity and the Jordan matrix `[[1, 1], [0, 1]]`
+share `χ = (x − 1)²` but have least physical dimensions `1` and `2`; and the companion matrix of
+`x⁴ − x³ − x² − x + 1` is a non-hyperbolic example with least physical dimension `1`.
 
-The general statements (5) and (6) are corollaries of the count of statement (3)
-(`isLeast_physDims_squarefree`), of the expanding-root and Kronecker lemmas, of the normal form,
-and of the disk condition of statement (1).
+These are corollaries of the squarefree count (`isLeast_physDims_squarefree`), of the
+expanding-root and Kronecker lemmas, of the normal form, and of the disk condition of statement
+(1). The forms of (5) and (6) for every `χ_A` are in `InflationDimension.FormulaA`.
 -/
 
 namespace InflationDimension
@@ -818,13 +818,14 @@ end Plane
 
 end DimOne
 
-/-! ### The compared statements -/
+/-! ### The squarefree statements and the Salem witness -/
 
-/-- **(5)** `d(A) = 1` if and only if `χ_A` is irreducible with exactly one root of modulus `> 1`,
-or `A = ±1` on `ℤ¹`; in the irreducible case that root is real, all other roots lie in the closed
-unit disk, and every admissible scheme with `dim E = 1` has `E` the eigenline of that root. -/
-theorem dimension_one_pisot_or_salem {ι : Type*} [Fintype ι] [DecidableEq ι] (A : Matrix ι ι ℤ)
-    (hdet : A.det ≠ 0) (hsf : Squarefree (charpolyQ A)) :
+/-- **Dimension one, squarefree `χ_A`.** `d(A) = 1` if and only if `χ_A` is irreducible with
+exactly one root of modulus `> 1`, or `A = ±1` on `ℤ¹`; in the irreducible case that root is real,
+all other roots lie in the closed unit disk, and every admissible scheme with `dim E = 1` has `E`
+the eigenline of that root. -/
+theorem dimension_one_pisot_or_salem_squarefree {ι : Type*} [Fintype ι] [DecidableEq ι]
+    (A : Matrix ι ι ℤ) (hdet : A.det ≠ 0) (hsf : Squarefree (charpolyQ A)) :
     (IsLeast (physDims A) 1 ↔
       (Irreducible (charpolyQ A) ∧ unstableCount A = 1) ∨
         (Fintype.card ι = 1 ∧ (A = 1 ∨ A = -1))) ∧
@@ -838,9 +839,10 @@ theorem dimension_one_pisot_or_salem {ι : Type*} [Fintype ι] [DecidableEq ι] 
       (fun _ _ hc hE hH => ⟨(normal_form A hsf hc hE hH).1, (normal_form A hsf hc hE hH).2.1⟩)
       (fun S hS => roots_restrict_H_le_one S hS)⟩
 
-/-- **(6)** All roots on the unit circle: the factors are cyclotomic and `d(A)` counts `1` for a
-factor of degree one and `2` for each other factor; `χ_A = Φ_n`, `n ≥ 3`, gives `d(A) = 2`. -/
-theorem finite_order_case {ι : Type*} [Fintype ι] [DecidableEq ι] (A : Matrix ι ι ℤ) :
+/-- **Squarefree `χ_A` with all roots on the unit circle**: the factors are cyclotomic and `d(A)`
+counts `1` for a factor of degree one and `2` for each other factor; `χ_A = Φ_n`, `n ≥ 3`, gives
+`d(A) = 2`. -/
+theorem finite_order_case_squarefree {ι : Type*} [Fintype ι] [DecidableEq ι] (A : Matrix ι ι ℤ) :
     (Squarefree (charpolyQ A) → (∀ z ∈ eigenvalues A, ‖z‖ = 1) →
       (∀ p ∈ UniqueFactorizationMonoid.normalizedFactors (charpolyQ A),
         ∃ n : ℕ, 0 < n ∧ p = cyclotomic n ℚ) ∧
@@ -855,8 +857,8 @@ theorem finite_order_case {ι : Type*} [Fintype ι] [DecidableEq ι] (A : Matrix
       (fun hdet hsf' => isLeast_physDims_squarefree A hdet hsf')
       (fun _ hp => isCircleFactor_iff_cyclotomic A hp) hn hχ⟩
 
-/-- **(7)** On `ℤ²`, `I₂` and `[[1, 1], [0, 1]]` share `χ = (x − 1)²`, for which the count of (3)
-gives `2`, but their least physical dimensions are `1` and `2`. -/
+/-- On `ℤ²`, `I₂` and `[[1, 1], [0, 1]]` share `χ = (x − 1)²`, for which the squarefree count of
+(3) gives `2`, but their least physical dimensions are `1` and `2`. -/
 theorem squarefree_hypothesis_needed :
     (1 : Matrix (Fin 2) (Fin 2) ℤ).charpoly = (X - 1) ^ 2 ∧
     (!![1, 1; 0, 1] : Matrix (Fin 2) (Fin 2) ℤ).charpoly = (X - 1) ^ 2 ∧
@@ -882,7 +884,7 @@ theorem salem_witness :
   obtain ⟨r, h1, h2, hrmem, hU, hnh⟩ := DimOne.salem_spectrum
   have hdet : CSalem.det ≠ 0 := by rw [DimOne.det_CSalem]; exact one_ne_zero
   have hirr := DimOne.irreducible_charpolyQ_CSalem
-  obtain ⟨h5a, h5b⟩ := dimension_one_pisot_or_salem CSalem hdet hirr.squarefree
+  obtain ⟨h5a, h5b⟩ := dimension_one_pisot_or_salem_squarefree CSalem hdet hirr.squarefree
   refine ⟨DimOne.charpoly_CSalem, hnh, h5a.mpr (Or.inl ⟨hirr, hU⟩), r, h1, h2, hrmem, ?_⟩
   obtain ⟨r', -, -, hr'le, hr'E⟩ := h5b hirr hU
   have hrr : r = r' := by
